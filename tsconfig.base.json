@@ -13,9 +13,6 @@
 			"@zpTheme/*": [
 				"./packages/vuepress-theme-zp/src/client/components/*"
 			]
-			// "@theme/*": [
-			// 	"./node_modules/@vuepress/theme-default/lib/client/components/*"
-			// ]
 		}
 	}
 }

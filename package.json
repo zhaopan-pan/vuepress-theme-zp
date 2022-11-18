@@ -7,6 +7,9 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
+  "workspaces": [
+    "packages/vuepress-theme-zp"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +20,8 @@
     "vuepress": "2.0.0-beta.53",
     "@vuepress/utils": "2.0.0-beta.53",
     "@vuepress/plugin-git": "2.0.0-beta.53",
-    "@vuepress/theme-default": "2.0.0-beta.53"
+    "@vuepress/theme-default": "2.0.0-beta.53",
+    "vuepress-theme-zp": "workspace:*",
+    "typescript": "^4.8.4"
   }
 }

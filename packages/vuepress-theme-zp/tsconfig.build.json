@@ -3,11 +3,12 @@
 	"compilerOptions": {
 		"rootDir": "./src",
 		"outDir": "./lib",
+		"baseUrl": ".",
 		"moduleResolution": "Node",
-		"module": "ES2020",
 		"paths": {
 			"@zpTheme/*": ["./src/client/components/*"]
-		}
+		},
+		"types": ["@vuepress/client/types"]
 	},
 	"include": ["./src"]
 }

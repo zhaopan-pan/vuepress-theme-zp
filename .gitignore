@@ -1,3 +1,7 @@
 node_modules
 .temp
 .cache
+
+# Dist files
+dist/
+lib/

@@ -46,8 +46,8 @@ export const zpTheme = ({
       ...Object.fromEntries(
         fs
           .readdirSync(path.resolve(__dirname, '../client/components'))
-          .filter((file) => file.endsWith('.vue'))
-          .map((file) => [
+          .filter((file: string) => file.endsWith('.vue'))
+          .map((file: any) => [
             `@zpTheme/${file}`,
             path.resolve(__dirname, '../client/components', file),
           ])
@@ -119,7 +119,7 @@ export const zpTheme = ({
       themePlugins.externalLinkIcon !== false
         ? externalLinkIconPlugin({
           locales: Object.entries(localeOptions.locales || {}).reduce(
-            (result, [key, value]) => {
+            (result: { [key: string]: { openInNewWindow: string | undefined } }, [key, value]) => {
               result[key] = {
                 openInNewWindow:
                   value.openInNewWindow ?? localeOptions.openInNewWindow,

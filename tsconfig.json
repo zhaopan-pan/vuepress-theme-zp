@@ -1,12 +1,12 @@
 {
-	"extends": "./tsconfig.base.json",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"jsx": "preserve"
-	},
-	"references": [
-		{"path": "./packages/vuepress-theme-zp/tsconfig.build.json"}
-	],
-	"include": ["**/.vuepress/**/*", "packages/**/*", "*.config.ts"],
-	"exclude": ["node_modules", ".temp", "lib", "dist"]
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // "@zpTheme/*": ["./packages/vuepress-theme-zp/src/client/components/*"],
+    // "@vuepress/*": ["./packages/*/src"]
+  },
+  "references": [
+    { "path": "./packages/vuepress-theme-zp/tsconfig.build.json" }
+  ],
+  "include": ["**/.vuepress/**/*", "packages/**/*", "*.config.ts"],
+  "exclude": ["node_modules", ".temp", "lib", "dist"]
 }

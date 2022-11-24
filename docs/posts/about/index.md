@@ -1,6 +1,7 @@
 ---
 lang: zh-CN
 title: about
+tag: js
 description: 页面的描述
 ---
 

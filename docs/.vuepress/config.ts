@@ -1,6 +1,5 @@
 import { defineUserConfig } from 'vuepress'
 import ZpTheme from 'vuepress-theme-zp'
-// import ZpTheme from '../../packages/vuepress-theme-zp/lib/node/index.js'
 
 export default defineUserConfig({
   lang: 'zh-CN',
@@ -14,8 +13,12 @@ export default defineUserConfig({
         link: '/',
       },
       {
+        text: 'Tag',
+        link: '/tag/',
+      },
+      {
         text: 'about',
-        link: '/docs/about',
+        link: '/posts/about',
       },
     ],
   }),

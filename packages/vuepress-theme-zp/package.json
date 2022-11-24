@@ -71,5 +71,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "vuepress-plugin-blog2": "2.0.0-beta.129"
   }
 }

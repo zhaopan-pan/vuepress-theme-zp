@@ -10,6 +10,8 @@ import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import { fs, getDirname, path } from '@vuepress/utils'
+import { blogPlugin } from 'vuepress-plugin-blog2'
+
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,
@@ -64,14 +66,42 @@ export const zpTheme = ({
     },
 
     plugins: [
+      blogPlugin({
+        hotReload: true,
+        // only files under posts are articles
+        filter: ({ filePathRelative }) => {
+          console.log({ filePathRelative })
+          return (filePathRelative || '').startsWith('posts/')
+        },
+        getInfo: ({ frontmatter, title }) => ({
+          title,
+          author: frontmatter.author || '',
+          date: frontmatter.date || null,
+          category: frontmatter.category || [],
+          tag: frontmatter.tag || [],
+        }),
+        category: [
+          {
+            key: 'tag',
+            // @ts-ignore
+            getter: ({ frontmatter }) => frontmatter?.tag || [],
+            path: '/tag/',
+            // layout: 'Tag',
+            frontmatter: () => ({ title: '标签页' }),
+            itemPath: '/tag/:name/',
+            // itemLayout: 'Tag',
+            itemFrontmatter: (name) => ({ title: `${name}标签` }),
+          },
+        ],
+      }),
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false
         ? activeHeaderLinksPlugin({
-          headerLinkSelector: 'a.sidebar-item',
-          headerAnchorSelector: '.header-anchor',
-          // should greater than page transition duration
-          delay: 300,
-        })
+            headerLinkSelector: 'a.sidebar-item',
+            headerAnchorSelector: '.header-anchor',
+            // should greater than page transition duration
+            delay: 300,
+          })
         : [],
 
       // @vuepress/plugin-back-to-top
@@ -83,72 +113,78 @@ export const zpTheme = ({
         : [],
       themePlugins.container?.warning !== false
         ? containerPlugin(
-          resolveContainerPluginOptions(localeOptions, 'warning')
-        )
+            resolveContainerPluginOptions(localeOptions, 'warning')
+          )
         : [],
       themePlugins.container?.danger !== false
         ? containerPlugin(
-          resolveContainerPluginOptions(localeOptions, 'danger')
-        )
+            resolveContainerPluginOptions(localeOptions, 'danger')
+          )
         : [],
       themePlugins.container?.details !== false
         ? containerPlugin({
-          type: 'details',
-          before: (info) =>
-            `<details class="custom-container details">${info ? `<summary>${info}</summary>` : ''
-            }\n`,
-          after: () => '</details>\n',
-        })
+            type: 'details',
+            before: (info) =>
+              `<details class="custom-container details">${
+                info ? `<summary>${info}</summary>` : ''
+              }\n`,
+            after: () => '</details>\n',
+          })
         : [],
       themePlugins.container?.codeGroup !== false
         ? containerPlugin({
-          type: 'code-group',
-          before: () => `<CodeGroup>\n`,
-          after: () => '</CodeGroup>\n',
-        })
+            type: 'code-group',
+            before: () => `<CodeGroup>\n`,
+            after: () => '</CodeGroup>\n',
+          })
         : [],
       themePlugins.container?.codeGroupItem !== false
         ? containerPlugin({
-          type: 'code-group-item',
-          before: (info) => `<CodeGroupItem title="${info}">\n`,
-          after: () => '</CodeGroupItem>\n',
-        })
+            type: 'code-group-item',
+            before: (info) => `<CodeGroupItem title="${info}">\n`,
+            after: () => '</CodeGroupItem>\n',
+          })
         : [],
 
       // @vuepress/plugin-external-link-icon
       themePlugins.externalLinkIcon !== false
         ? externalLinkIconPlugin({
-          locales: Object.entries(localeOptions.locales || {}).reduce(
-            (result: { [key: string]: { openInNewWindow: string | undefined } }, [key, value]) => {
-              result[key] = {
-                openInNewWindow:
-                  value.openInNewWindow ?? localeOptions.openInNewWindow,
-              }
-              return result
-            },
-            {}
-          ),
-        })
+            locales: Object.entries(localeOptions.locales || {}).reduce(
+              (
+                result: {
+                  [key: string]: { openInNewWindow: string | undefined }
+                },
+                [key, value]
+              ) => {
+                result[key] = {
+                  openInNewWindow:
+                    value.openInNewWindow ?? localeOptions.openInNewWindow,
+                }
+                return result
+              },
+              {}
+            ),
+          })
         : [],
 
       // @vuepress/plugin-git
       themePlugins.git !== false
         ? gitPlugin({
-          createdTime: false,
-          updatedTime: localeOptions.lastUpdated !== false,
-          contributors: localeOptions.contributors !== false,
-        })
+            createdTime: false,
+            updatedTime: localeOptions.lastUpdated !== false,
+            contributors: localeOptions.contributors !== false,
+          })
         : [],
 
       // @vuepress/plugin-medium-zoom
       themePlugins.mediumZoom !== false
         ? mediumZoomPlugin({
-          selector:
-            '.theme-default-content > img, .theme-default-content :not(a) > img',
-          zoomOptions: {},
-          // should greater than page transition duration
-          delay: 300,
-        })
+            selector:
+              '.theme-default-content > img, .theme-default-content :not(a) > img',
+            zoomOptions: {},
+            // should greater than page transition duration
+            delay: 300,
+          })
         : [],
 
       // @vuepress/plugin-nprogress

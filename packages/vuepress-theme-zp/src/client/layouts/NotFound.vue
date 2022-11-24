@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useRouteLocale } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables/index.js'
+import { useBlogCategory } from "vuepress-plugin-blog2/client";
+import { useRoute } from 'vue-router'
+
+const blogCategory = useBlogCategory('tag');
+console.log(useRoute());
+console.log(blogCategory.value);
 
 const routeLocale = useRouteLocale()
 const themeLocale = useThemeLocaleData()
@@ -16,8 +22,7 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
   <div class="theme-container">
     <main class="page">
       <div class="theme-default-content">
-        <h1>404</h1>1221133333
-
+        <h1>404</h1>
         <blockquote>{{ getMsg() }}</blockquote>
 
         <RouterLink :to="homeLink">{{ homeText }}</RouterLink>

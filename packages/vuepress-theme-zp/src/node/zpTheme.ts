@@ -10,7 +10,8 @@ import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import { fs, getDirname, path } from '@vuepress/utils'
-import { blogPlugin } from 'vuepress-plugin-blog2'
+// import { blogPlugin } from 'vuepress-plugin-blog2'
+import blogPlugin from './config/blogPlugin.js'
 
 import type {
   DefaultThemeLocaleOptions,
@@ -66,34 +67,7 @@ export const zpTheme = ({
     },
 
     plugins: [
-      blogPlugin({
-        hotReload: true,
-        // only files under posts are articles
-        filter: ({ filePathRelative }) => {
-          console.log({ filePathRelative })
-          return (filePathRelative || '').startsWith('posts/')
-        },
-        getInfo: ({ frontmatter, title }) => ({
-          title,
-          author: frontmatter.author || '',
-          date: frontmatter.date || null,
-          category: frontmatter.category || [],
-          tag: frontmatter.tag || [],
-        }),
-        category: [
-          {
-            key: 'tag',
-            // @ts-ignore
-            getter: ({ frontmatter }) => frontmatter?.tag || [],
-            path: '/tag/',
-            // layout: 'Tag',
-            frontmatter: () => ({ title: '标签页' }),
-            itemPath: '/tag/:name/',
-            // itemLayout: 'Tag',
-            itemFrontmatter: (name) => ({ title: `${name}标签` }),
-          },
-        ],
-      }),
+      blogPlugin(),
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false
         ? activeHeaderLinksPlugin({

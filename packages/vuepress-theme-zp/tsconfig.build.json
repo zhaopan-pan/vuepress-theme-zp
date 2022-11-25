@@ -5,7 +5,8 @@
     "outDir": "./lib",
     "baseUrl": ".",
     "paths": {
-      "@zpTheme/*": ["./src/client/components/*"]
+      "@zpTheme/*": ["./src/client/components/*"],
+      "@vuepress-zp/*": ["./src/*"]
     },
     "types": ["@vuepress/client/types"]
   },

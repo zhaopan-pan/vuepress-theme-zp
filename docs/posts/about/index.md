@@ -1,7 +1,9 @@
 ---
 lang: zh-CN
 title: about
-tag: js
+sidebar: false
+tag: 
+ - js
 description: 页面的描述
 ---
 

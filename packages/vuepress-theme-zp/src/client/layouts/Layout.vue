@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Home from '@zpTheme/Home.vue'
+import Home from '../components/home/index.vue'
 import Navbar from '@zpTheme/Navbar.vue'
 import Page from '@zpTheme/Page.vue'
 import Sidebar from '@zpTheme/Sidebar.vue'

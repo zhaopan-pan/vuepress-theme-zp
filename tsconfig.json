@@ -1,8 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    // "@zpTheme/*": ["./packages/vuepress-theme-zp/src/client/components/*"],
-    // "@vuepress/*": ["./packages/*/src"]
+    "paths": {
+      "@zpTheme/*": ["./packages/vuepress-theme-zp/src/client/components/*"],
+      "@vuepress-zp/*": ["./packages/vuepress-theme-zp/src/*"]
+    }
   },
   "references": [
     { "path": "./packages/vuepress-theme-zp/tsconfig.build.json" }

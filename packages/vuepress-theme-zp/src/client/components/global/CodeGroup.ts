@@ -1,5 +1,6 @@
 import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
 import type { Component, VNode } from 'vue'
+import ZpIcons from './ZpIcons.vue'
 
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',
@@ -122,7 +123,11 @@ export const CodeGroup = defineComponent({
                     onClick: () => (activeIndex.value = i),
                     onKeydown: (e) => keyboardHandler(e, i),
                   },
-                  vnode.props.title
+                  h(ZpIcons, {
+                    'icon': 'FileCode',
+                    'text': vnode.props.title,
+                    'text-size': 12,
+                  })
                 )
               )
             })

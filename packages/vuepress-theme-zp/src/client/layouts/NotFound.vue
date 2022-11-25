@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { useRouteLocale } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables/index.js'
-import { useBlogCategory } from "vuepress-plugin-blog2/client";
-import { useRoute } from 'vue-router'
 
-const blogCategory = useBlogCategory('tag');
-console.log(useRoute());
-console.log(blogCategory.value);
 
 const routeLocale = useRouteLocale()
 const themeLocale = useThemeLocaleData()

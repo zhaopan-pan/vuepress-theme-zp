@@ -9,6 +9,7 @@ export interface DefaultThemePageFrontmatter {
   home?: boolean
   navbar?: boolean
   pageClass?: string
+  toc?: boolean
 }
 
 export interface DefaultThemeHomePageFrontmatter

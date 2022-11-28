@@ -123,6 +123,7 @@ export const CodeGroup = defineComponent({
                     onClick: () => (activeIndex.value = i),
                     onKeydown: (e) => keyboardHandler(e, i),
                   },
+                  // 标题前的icon
                   h(ZpIcons, {
                     'icon': 'FileCode',
                     'text': vnode.props.title,

@@ -23,10 +23,10 @@ export default () =>
         getter: ({ frontmatter }) => frontmatter?.tag || [],
         path: '/tag/',
         layout: 'Tag',
-        frontmatter: () => ({ title: 'Tag', sidebar: false }),
+        frontmatter: () => ({ title: 'Tags', sidebar: false }),
         itemLayout: 'Tag',
         itemPath: '/tag/:name/',
-        itemFrontmatter: (name) => ({ title: `${name}` }),
+        itemFrontmatter: (name) => ({ title: `${name}`, sidebar: false }),
       },
     ],
     type: [

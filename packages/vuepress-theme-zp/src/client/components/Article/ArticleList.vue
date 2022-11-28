@@ -1,15 +1,14 @@
-
 <template>
   <div>
-    <RouterLink v-for="({ info, path } ) in articles.items" :key="path" :to="path">
-      <span class="tag-num">
+    <div v-for="{ info, path } in articles.items" :key="path">
+      <RouterLink class="tag-num" :to="path">
         {{ info.title }}
-      </span>
-    </RouterLink>
+      </RouterLink>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { useBlogType } from "vuepress-plugin-blog2/client";
-const articles = useBlogType("article");
-console.log(articles.value);
+import { useBlogType } from 'vuepress-plugin-blog2/client'
+const articles = useBlogType('article')
+console.log(articles.value)
 </script>

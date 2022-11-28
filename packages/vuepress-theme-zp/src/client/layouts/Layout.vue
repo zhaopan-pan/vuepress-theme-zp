@@ -16,7 +16,6 @@ import {
 const page = usePageData()
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 const themeLocale = useThemeLocaleData()
-
 // navbar
 const shouldShowNavbar = computed(
   () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
@@ -36,8 +35,8 @@ const onTouchStart = (e): void => {
 const onTouchEnd = (e): void => {
   const dx = e.changedTouches[0].clientX - touchStart.x
   const dy = e.changedTouches[0].clientY - touchStart.y
-  if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-    if(dx > 0 && touchStart.x <= 80) {
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    if (dx > 0 && touchStart.x <= 80) {
       toggleSidebar(true)
     } else {
       toggleSidebar(false)
@@ -74,7 +73,12 @@ const onBeforeLeave = scrollPromise.pending
 </script>
 
 <template>
-  <div class="theme-container" :class="containerClass" @touchstart="onTouchStart" @touchend="onTouchEnd">
+  <div
+    class="theme-container"
+    :class="containerClass"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
     <slot name="navbar">
       <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
         <template #before>
@@ -102,7 +106,13 @@ const onBeforeLeave = scrollPromise.pending
     <slot name="page">
       <Home v-if="frontmatter.home" />
 
-      <Transition v-else name="fade-slide-y" mode="out-in" @before-enter="onBeforeEnter" @before-leave="onBeforeLeave">
+      <Transition
+        v-else
+        name="fade-slide-y"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+        @before-leave="onBeforeLeave"
+      >
         <Page :key="page.path">
           <template #top>
             <slot name="page-top" />

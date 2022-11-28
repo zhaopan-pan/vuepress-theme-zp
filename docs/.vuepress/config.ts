@@ -1,25 +1,14 @@
 import { defineUserConfig } from 'vuepress'
-import ZpTheme from 'vuepress-theme-zp'
-
+import { themeConfig } from './config/index.js'
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'vp ！',
   description: '这是我的第一个 vp 站点',
-  theme: ZpTheme({
-    // 默认主题配置
-    navbar: [
-      {
-        text: '首页',
-        link: '/',
-      },
-      {
-        text: 'Tag',
-        link: '/tag/',
-      },
-      {
-        text: 'about',
-        link: '/posts/about',
-      },
-    ],
-  }),
+  theme: themeConfig(),
+  markdown: {
+    headers: {
+      // 侧边栏<h1+>深度
+      level: [2, 3, 4],
+    },
+  },
 })

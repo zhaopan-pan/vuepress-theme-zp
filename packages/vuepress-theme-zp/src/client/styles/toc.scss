@@ -1,5 +1,28 @@
-.table-of-contents {
+@import '_variables';
+
+.zp-toc {
+  position: sticky;
+  top: calc(var(--navbar-height) + 1rem);
+  z-index: 99;
+  max-width: var(--content-width);
+  margin: 0 auto;
+
+  .table-of-contents {
+    position: absolute;
+    left: calc(100% + 2rem);
+    min-width: 10rem;
+    max-width: 15rem;
+  }
   .badge {
     vertical-align: middle;
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .zp-toc {
+    display: none;
+  }
+  .page-has-toc {
+    padding-right: 0rem;
   }
 }

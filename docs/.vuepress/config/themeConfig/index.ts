@@ -5,7 +5,6 @@ import { navbarZh } from '../navbar/index.js'
 export const themeConfig = (options?: DefaultThemeOptions) =>
   ZpTheme({
     ...options,
-    sidebarDepth: 3,
     // 默认主题配置
     // navbar: navbarZh,
     // sidebar: sidebarZh,

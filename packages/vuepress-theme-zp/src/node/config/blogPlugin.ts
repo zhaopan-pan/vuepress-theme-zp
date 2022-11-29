@@ -31,24 +31,14 @@ export default () =>
     ],
     type: [
       {
-        key: 'article',
+        key: 'home',
         // remove archive articles
         filter: (page) => !page.frontmatter.archive,
-        path: '/article/',
-        layout: 'Article',
-        frontmatter: () => ({ title: 'Articles', sidebar: false }),
+        path: '/home/',
+        layout: 'home',
+        frontmatter: () => ({ title: 'Home', sidebar: false }),
         // sort pages with time and sticky
         sorter: (pageA, pageB) => {
-          if (pageA.frontmatter.sticky && pageB.frontmatter.sticky)
-            return (
-              (pageB.frontmatter.sticky as number) -
-              (pageA.frontmatter.sticky as number)
-            )
-
-          if (pageA.frontmatter.sticky && !pageB.frontmatter.sticky) return -1
-
-          if (!pageA.frontmatter.sticky && pageB.frontmatter.sticky) return 1
-
           if (!pageB.frontmatter.date) return 1
           if (!pageA.frontmatter.date) return -1
 

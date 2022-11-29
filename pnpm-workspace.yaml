@@ -1,3 +1,4 @@
 packages:
-    - docs
-    - packages/vuepress-theme-zp
+  - docs
+  - packages/@vuepress-zp/*
+  - packages/vuepress-theme-zp

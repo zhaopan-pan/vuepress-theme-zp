@@ -1,12 +1,10 @@
 {
-	"extends": "../../tsconfig.base.json",
-	"compilerOptions": {
-		"module": "ES2020",
-		"rootDir": "./src",
-		"outDir": "./lib",
-		"paths": {
-			"@zpTheme/*": ["./src/client/components/*"]
-		}
-	},
-	"include": ["./src/client", "./src/types"]
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "module": "ES2020",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "paths": {}
+  },
+  "include": ["./src/client", "./src/types"]
 }

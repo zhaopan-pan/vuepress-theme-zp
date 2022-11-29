@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@zpTheme/*": ["./src/client/components/*"],
-      "@vuepress-zp/*": ["./src/*"]
+      "@vuepressSrc/*": ["./src/*"]
     },
     "types": ["@vuepress/client/types"]
   },

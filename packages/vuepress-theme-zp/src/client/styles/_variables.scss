@@ -1,6 +1,7 @@
 @import '@vuepress/plugin-palette/palette';
 
 // responsive breakpoints
+$MQToc: 1370px !default;
 $MQNarrow: 959px !default;
 $MQMobile: 719px !default;
 $MQMobileNarrow: 419px !default;

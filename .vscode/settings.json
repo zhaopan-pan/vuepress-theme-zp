@@ -33,10 +33,12 @@
     "prismjs",
     "shiki",
     "slugify",
+    "tsbuildinfo",
     "unmount",
     "vuejs",
     "vuepress",
     "vueuse",
     "zoomable"
-  ]
+  ],
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
 }

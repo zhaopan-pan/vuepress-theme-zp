@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DefaultThemePageFrontmatter } from '@vuepress-zp/shared/page.js'
+import type { DefaultThemePageFrontmatter } from '@vuepressSrc/shared/page.js'
 import { usePageFrontmatter } from '@vuepress/client'
 import PageMeta from '@zpTheme/PageMeta.vue'
 import PageNav from '@zpTheme/PageNav.vue'

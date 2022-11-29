@@ -1,8 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "paths": {}
   },
-  "references": [{ "path": "./vuepress-theme-zp/tsconfig.build.json" }],
+  "references": [
+    { "path": "./vuepress-theme-zp/tsconfig.build.json" },
+    { "path": "./@vuepress-zp/plugin-toc/tsconfig.build.json" }
+  ],
   "files": []
 }

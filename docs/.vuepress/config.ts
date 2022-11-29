@@ -1,5 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { themeConfig } from './config/index.js'
+
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'vp ！',
@@ -8,7 +9,7 @@ export default defineUserConfig({
   markdown: {
     headers: {
       // 侧边栏<h1+>深度
-      level: [2, 3, 4],
+      level: [2, 3],
     },
   },
 })

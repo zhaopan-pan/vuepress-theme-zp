@@ -10,9 +10,8 @@ import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import { fs, getDirname, path } from '@vuepress/utils'
-// import { blogPlugin } from 'vuepress-plugin-blog2'
 import blogPlugin from './config/blogPlugin.js'
-import { tocPlugin } from '@vuepress/plugin-toc'
+import { tocPlugin } from '@vuepress-zp/plugin-toc'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,

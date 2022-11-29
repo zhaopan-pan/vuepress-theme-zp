@@ -7,6 +7,7 @@
 <script setup lang="ts">
 const options = {
   containerClass: 'table-of-contents',
+  linkActiveClass: 'zp-link-active-class',
 }
 </script>
 

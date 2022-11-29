@@ -9,7 +9,7 @@ import {
 import { isArray } from '@vuepress/shared'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import type { DefaultThemeHomePageFrontmatter } from '@vuepress-zp/shared/index.js'
+import type { DefaultThemeHomePageFrontmatter } from '@vuepressSrc/shared/index.js'
 import { useDarkMode } from '../../composables/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
@@ -17,7 +17,7 @@ const siteLocale = useSiteLocaleData()
 const isDarkMode = useDarkMode()
 
 const heroImage = computed(() => {
-  if(isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
+  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
     return frontmatter.value.heroImageDark
   }
   return frontmatter.value.heroImage
@@ -28,14 +28,14 @@ const heroAlt = computed(
 const heroHeight = computed(() => frontmatter.value.heroHeight || 280)
 
 const heroText = computed(() => {
-  if(frontmatter.value.heroText === null) {
+  if (frontmatter.value.heroText === null) {
     return null
   }
   return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
 })
 
 const tagline = computed(() => {
-  if(frontmatter.value.tagline === null) {
+  if (frontmatter.value.tagline === null) {
     return null
   }
   return (
@@ -46,7 +46,7 @@ const tagline = computed(() => {
 })
 
 const actions = computed(() => {
-  if(!isArray(frontmatter.value.actions)) {
+  if (!isArray(frontmatter.value.actions)) {
     return []
   }
 
@@ -58,13 +58,13 @@ const actions = computed(() => {
 })
 
 const HomeHeroImage: FunctionalComponent = () => {
-  if(!heroImage.value) return null
+  if (!heroImage.value) return null
   const img = h('img', {
     src: withBase(heroImage.value),
     alt: heroAlt.value,
     height: heroHeight.value,
   })
-  if(frontmatter.value.heroImageDark === undefined) {
+  if (frontmatter.value.heroImageDark === undefined) {
     return img
   }
   // wrap hero image with <ClientOnly> to avoid ssr-mismatch
@@ -86,8 +86,13 @@ const HomeHeroImage: FunctionalComponent = () => {
     </p>
 
     <p v-if="actions.length" class="actions">
-      <AutoLink v-for="action in actions" :key="action.text" class="action-button" :class="[action.type]"
-        :item="action" />
+      <AutoLink
+        v-for="action in actions"
+        :key="action.text"
+        class="action-button"
+        :class="[action.type]"
+        :item="action"
+      />
     </p>
   </header>
 </template>

@@ -1,0 +1,48 @@
+{
+  "name": "@vuepress-zp/plugin-toc",
+  "version": "2.0.0-beta.53",
+  "description": "VuePress plugin - toc",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "toc"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "zp",
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "build:watch": "tsc --build -w tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo",
+    "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,svg,js}\" lib"
+  },
+  "dependencies": {
+    "@vuepress/client": "2.0.0-beta.53",
+    "@vuepress/core": "2.0.0-beta.53",
+    "@vuepress/utils": "2.0.0-beta.53",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

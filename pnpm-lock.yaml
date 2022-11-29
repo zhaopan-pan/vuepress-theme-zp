@@ -32,10 +32,25 @@ importers:
       vuepress: 2.0.0-beta.53_54nmke4n2vj3tdp5cd33kvtiom
       vuepress-theme-zp: link:packages/vuepress-theme-zp
 
+  packages/@vuepress-zp/plugin-toc:
+    specifiers:
+      '@vuepress/client': 2.0.0-beta.53
+      '@vuepress/core': 2.0.0-beta.53
+      '@vuepress/utils': 2.0.0-beta.53
+      vue: ^3.2.41
+      vue-router: ^4.1.6
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.53
+      '@vuepress/core': 2.0.0-beta.53
+      '@vuepress/utils': 2.0.0-beta.53
+      vue: 3.2.45
+      vue-router: 4.1.6_vue@3.2.45
+
   packages/vuepress-theme-zp:
     specifiers:
       '@vicons/fa': ^0.12.0
       '@vicons/tabler': ^0.12.0
+      '@vuepress-zp/plugin-toc': workspace:2.0.0-beta.53
       '@vuepress/client': 2.0.0-beta.53
       '@vuepress/core': 2.0.0-beta.53
       '@vuepress/plugin-active-header-links': 2.0.0-beta.53
@@ -48,7 +63,6 @@ importers:
       '@vuepress/plugin-palette': 2.0.0-beta.53
       '@vuepress/plugin-prismjs': 2.0.0-beta.53
       '@vuepress/plugin-theme-data': 2.0.0-beta.53
-      '@vuepress/plugin-toc': 2.0.0-beta.53
       '@vuepress/shared': 2.0.0-beta.53
       '@vuepress/utils': 2.0.0-beta.53
       '@vueuse/core': ^9.4.0
@@ -59,6 +73,7 @@ importers:
     dependencies:
       '@vicons/fa': 0.12.0
       '@vicons/tabler': 0.12.0
+      '@vuepress-zp/plugin-toc': link:../@vuepress-zp/plugin-toc
       '@vuepress/client': 2.0.0-beta.53
       '@vuepress/core': 2.0.0-beta.53
       '@vuepress/plugin-active-header-links': 2.0.0-beta.53
@@ -77,8 +92,6 @@ importers:
       sass: 1.56.1
       vue: 3.2.45
       vue-router: 4.1.6_vue@3.2.45
-    devDependencies:
-      '@vuepress/plugin-toc': 2.0.0-beta.53
       vuepress-plugin-blog2: 2.0.0-beta.129
 
 packages:
@@ -698,18 +711,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vuepress/plugin-toc/2.0.0-beta.53:
-    resolution: {integrity: sha512-Hz+8ZT1ZAqZIYYaw574uGs896p3Jy4EKM3/nzX86vOaEWTTiWr54UHHiNXqeJGNkabREGAUxqcIfg6Afvpzi5w==}
-    dependencies:
-      '@vuepress/client': 2.0.0-beta.53
-      '@vuepress/core': 2.0.0-beta.53
-      '@vuepress/utils': 2.0.0-beta.53
-      vue: 3.2.45
-      vue-router: 4.1.6_vue@3.2.45
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@vuepress/shared/2.0.0-beta.53:
     resolution: {integrity: sha512-B0qWorGxC3ruSHdZcJW24XtEDEU3L3uPr0xzTeKVfHjOM4b9hN83YzBtW4n/WPnmk1RXVE9266Ulh9ZL5okGOw==}
     dependencies:
@@ -1075,7 +1076,7 @@ packages:
 
   /dayjs/1.11.6:
     resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
-    dev: true
+    dev: false
 
   /debounce/1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -1951,7 +1952,7 @@ packages:
 
   /fflate/0.7.4:
     resolution: {integrity: sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==}
-    dev: true
+    dev: false
 
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
@@ -2988,7 +2989,7 @@ packages:
 
   /striptags/3.2.0:
     resolution: {integrity: sha512-g45ZOGzHDMe2bdYMdIvdAfCQkCTDMGBazSw1ypMowwGIee7ZQ5dU0rBJ8Jqgl+jAKIv4dbeE1jscZq9wid1Tkw==}
-    dev: true
+    dev: false
 
   /subarg/1.0.0:
     resolution: {integrity: sha512-RIrIdRY0X1xojthNcVtgT9sjpOGagEUKpZdgBUi054OEPFo282yg+zE+t1Rj3+RqKq2xStL7uUHhY+AjbC4BXg==}
@@ -3218,7 +3219,7 @@ packages:
       vuepress-shared: 2.0.0-beta.129
     transitivePeerDependencies:
       - supports-color
-    dev: true
+    dev: false
 
   /vuepress-shared/2.0.0-beta.129:
     resolution: {integrity: sha512-lQPsW0cBzRILwe+89Nu36AEQJM2U9kNGrQq5HSbEbSJ6xgBC+rA1FW0MSQ3FowDUNp1I6lK5OO44KXqGiAUsbA==}
@@ -3236,7 +3237,7 @@ packages:
       vue-router: 4.1.6_vue@3.2.45
     transitivePeerDependencies:
       - supports-color
-    dev: true
+    dev: false
 
   /vuepress-vite/2.0.0-beta.53_54nmke4n2vj3tdp5cd33kvtiom:
     resolution: {integrity: sha512-kITVMM+LcV5mDQXQXAKgK0adAGMm7oyPls6HPTLM9gUvpSs2A19zfwf8zFoxIF9X+ANay4Tg87egtnJOcp8Wcg==}

@@ -1,4 +1,5 @@
 @import '_variables';
+@import 'vars';
 
 .zp-toc {
   position: sticky;
@@ -12,13 +13,20 @@
     left: calc(100% + 2rem);
     min-width: 10rem;
     max-width: 15rem;
+
+    .vuepress-toc-link {
+      color: var(--c-text-light);
+    }
+    .zp-link-active-class {
+      color: var(--c-text-accent);
+    }
   }
   .badge {
     vertical-align: middle;
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: $MQToc) {
   .zp-toc {
     display: none;
   }

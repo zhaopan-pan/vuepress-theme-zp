@@ -8,17 +8,41 @@
   max-width: var(--content-width);
   margin: 0 auto;
 
+  .zp-toc-container {
+    position: relative;
+    left: calc(100% + 1rem);
+    width: max-content;
+  }
+
+  .toc-title {
+    margin: 1rem;
+    font-family: var(--font-family);
+    font-weight: bold;
+    color: var(--c-text);
+  }
+
   .table-of-contents {
-    position: absolute;
-    left: calc(100% + 2rem);
     min-width: 10rem;
     max-width: 15rem;
-
-    .vuepress-toc-link {
-      color: var(--c-text-light);
-    }
-    .zp-link-active-class {
-      color: var(--c-text-accent);
+    border-left: 0.2em solid var(--c-border);
+    margin: 0 1rem;
+    .zp-toc-list {
+      list-style: none;
+      padding-left: 0em;
+      margin: 0;
+      // a 标签 class
+      .zp-toc-link {
+        color: var(--c-text-quote);
+        padding-left: 1em;
+        display: block;
+        position: relative;
+        left: -0.2em;
+        transition: all 0.1s;
+      }
+      .zp-link-active-class {
+        color: var(--c-text-accent);
+        border-left: 0.2em solid var(--c-text-accent);
+      }
     }
   }
   .badge {

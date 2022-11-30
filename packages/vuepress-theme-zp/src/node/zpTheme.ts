@@ -71,8 +71,7 @@ export const zpTheme = ({
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false
         ? activeHeaderLinksPlugin({
-            headerLinkSelector: 'a.sidebar-item',
-            headerAnchorSelector: '.header-anchor',
+            headerLinkSelector: 'a.zp-toc-link',
             // should greater than page transition duration
             delay: 300,
           })

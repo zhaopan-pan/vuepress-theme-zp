@@ -5,10 +5,8 @@ export default () =>
     hotReload: true,
     metaScope: 'blogInfo',
     // only files under posts are articles
-    filter: ({ filePathRelative }) => {
-      console.log({ filePathRelative })
-      return (filePathRelative || '').startsWith('posts/')
-    },
+    filter: ({ filePathRelative }) =>
+      (filePathRelative || '').startsWith('posts/'),
     getInfo: ({ frontmatter, title }) => ({
       title,
       author: frontmatter.author || '',

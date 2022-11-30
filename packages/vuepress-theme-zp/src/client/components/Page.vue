@@ -19,6 +19,12 @@ const shouldShowToc = computed(
 
 <template>
   <main :class="`page ${shouldShowToc ? 'page-has-toc' : ''}`">
+    <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
     <slot name="top" />
     <MyToc v-if="shouldShowToc" />
 

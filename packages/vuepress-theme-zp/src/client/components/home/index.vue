@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import HomeContent from './HomeContent.vue'
-import HomeFeatures from './HomeFeatures.vue'
-import HomeFooter from './HomeFooter.vue'
-// import HomeHero from './HomeHero.vue'
-import ArticleList from '../Article/ArticleList.vue'
+import Content from './Content.vue'
+import Features from './Features.vue'
+import Footer from './Footer.vue'
+// import Hero from './Hero.vue'
+import Center from './Center.vue'
 </script>
 
 <template>
   <main class="home">
-    <!-- <HomeHero /> -->
+    <Center />
     <ArticleList />
-    <HomeFeatures />
-    <HomeContent />
-    <HomeFooter />
+    <Features />
+    <Content />
+    <Footer />
   </main>
 </template>

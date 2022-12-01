@@ -9,7 +9,6 @@ import Center from './Center.vue'
 <template>
   <main class="home">
     <Center />
-    <ArticleList />
     <Features />
     <Content />
     <Footer />

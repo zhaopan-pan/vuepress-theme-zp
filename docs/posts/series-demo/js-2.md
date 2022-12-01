@@ -4,7 +4,7 @@ title: js-2
 tag: 
  - js
 description: js
-toc: true
+date: 2022-11-30
 ---
 
 # js-2

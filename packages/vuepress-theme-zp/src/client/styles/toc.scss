@@ -40,8 +40,18 @@
         transition: all 0.1s;
       }
       .zp-link-active-class {
-        color: var(--c-text-accent);
         border-left: 0.2em solid var(--c-text-accent);
+        &::after {
+          content: '';
+          background-color: var(--c-text-accent);
+          height: 100%;
+          width: 100%;
+          display: block;
+          opacity: 0.2;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
       }
     }
   }

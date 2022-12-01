@@ -14,5 +14,8 @@ import BlogInfo from './BlogInfo.vue'
 @import '../../styles/_variables';
 .home-center {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 </style>

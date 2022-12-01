@@ -1,6 +1,6 @@
 <template>
-  <div class="article-item-wrapper">
-    <div v-for="item in articles.items" :key="item.path">
+  <div class="article-list-wrapper">
+    <div v-for="item in articleDataList" :key="item.path">
       <ArticleItem :data="item" />
     </div>
   </div>
@@ -9,12 +9,10 @@
 import { useBlogType } from 'vuepress-plugin-blog2/client'
 import ArticleItem from './ArticleItem.vue'
 import type { IArticleInfo } from '@vuepressSrc/shared/article.js'
+import { computed } from 'vue'
 
 const articles = useBlogType<IArticleInfo>('home')
-console.log(articles.value)
+const articleDataList = computed(() =>
+  articles.value.items.filter((d) => !d.info.readme)
+)
 </script>
-<style lang="scss">
-.article-item-wrapper {
-  max-width: 780px;
-}
-</style>

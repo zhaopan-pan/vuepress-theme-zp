@@ -49,6 +49,7 @@ importers:
   packages/vuepress-theme-zp:
     specifiers:
       '@vicons/fa': ^0.12.0
+      '@vicons/material': ^0.12.0
       '@vicons/tabler': ^0.12.0
       '@vuepress-zp/plugin-toc': workspace:2.0.0-beta.53
       '@vuepress/client': 2.0.0-beta.53
@@ -72,6 +73,7 @@ importers:
       vuepress-plugin-blog2: 2.0.0-beta.129
     dependencies:
       '@vicons/fa': 0.12.0
+      '@vicons/material': 0.12.0
       '@vicons/tabler': 0.12.0
       '@vuepress-zp/plugin-toc': link:../@vuepress-zp/plugin-toc
       '@vuepress/client': 2.0.0-beta.53
@@ -429,6 +431,10 @@ packages:
 
   /@vicons/fa/0.12.0:
     resolution: {integrity: sha512-g2PIeJLsTHUjt6bK63LxqC0uYQB7iu+xViJOxvp1s8b9/akpXVPVWjDTTsP980/0KYyMMe4U7F/aUo7wY+MsXA==}
+    dev: false
+
+  /@vicons/material/0.12.0:
+    resolution: {integrity: sha512-chv1CYAl8P32P3Ycwgd5+vw/OFNc2mtkKdb1Rw4T5IJmKy6GVDsoUKV3N2l208HATn7CCQphZtuPDdsm7K2kmA==}
     dev: false
 
   /@vicons/tabler/0.12.0:

@@ -13,6 +13,7 @@ export default () =>
       date: frontmatter.date || null,
       category: frontmatter.category || [],
       tag: frontmatter.tag || [],
+      readme: frontmatter.readme,
     }),
     category: [
       {

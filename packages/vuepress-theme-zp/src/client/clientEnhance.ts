@@ -1,11 +1,9 @@
 import { h } from 'vue'
-import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import { useScrollPromise } from './composables/index.js'
-
+import registerGlobalComponents from './utils/registerGlobalComponents.js'
 export default ({ app, router }) => {
-  app.component('Badge', Badge)
-  app.component('CodeGroup', CodeGroup)
-  app.component('CodeGroupItem', CodeGroupItem)
+  // 注册全局组件
+  registerGlobalComponents(app)
 
   // compat with @vuepress/plugin-external-link-icon
   app.component('AutoLinkExternalIcon', () => {

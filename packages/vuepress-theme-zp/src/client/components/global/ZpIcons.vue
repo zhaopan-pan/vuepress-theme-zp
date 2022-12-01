@@ -1,7 +1,11 @@
 <template>
-  <a v-if="link" :class="['icon-container', iconPosition]" :href="link" :target="target">
+  <a
+    v-if="link"
+    :class="['icon-container', iconPosition]"
+    :href="link"
+    :target="target"
+  >
     <component v-if="icon" :style="iconStyle" :is="icons[icon]" />
-
     <span v-if="text || $slots.default" :style="textStyle" class="icon-text">
       <slot>{{ text }}</slot>
     </span>
@@ -11,11 +15,10 @@
 
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue'
-// import type { Component } from 'vue'
-import * as tablerIcons from '@vicons/tabler'
+import * as materialIcons from '@vicons/material'
 import * as faIcons from '@vicons/fa'
 
-const icons = { ...faIcons, ...tablerIcons }
+const icons = { ...faIcons, ...materialIcons }
 
 const props = defineProps({
   icon: {
@@ -23,7 +26,7 @@ const props = defineProps({
     default: '',
   },
   iconPosition: {
-    type: String,// ['left', 'right', 'top', 'bottom',]
+    type: String, // ['left', 'right', 'top', 'bottom',]
     default: 'left',
   },
   iconSize: {
@@ -48,7 +51,7 @@ const props = defineProps({
   },
   link: {
     type: String,
-    default: 'javascript:void(0)',
+    default: '',
   },
   target: {
     type: String,
@@ -59,13 +62,17 @@ const props = defineProps({
 const { icon, iconSize, iconColor, textColor, textSize } = toRefs(props)
 
 const iconStyle = computed(() => {
-  return { color: iconColor.value, width: `${iconSize.value}px`, height: `${iconSize.value}px`, fontSize: `${iconSize.value}px` }
+  return {
+    color: iconColor.value,
+    width: `${iconSize.value}px`,
+    height: `${iconSize.value}px`,
+    fontSize: `${iconSize.value}px`,
+  }
 })
 
 const textStyle = computed(() => {
   return { color: textColor.value, fontSize: `${textSize.value}px` }
 })
-
 </script>
 
 <style lang="scss">
@@ -78,7 +85,7 @@ const textStyle = computed(() => {
     flex-direction: row;
     align-items: center;
 
-    flex>.icon-text {
+    flex > .icon-text {
       // @apply ml-1.5;
       margin-left: 15px;
     }
@@ -89,10 +96,8 @@ const textStyle = computed(() => {
     flex-direction: row-reverse;
     align-content: center;
 
-
-    >.icon-text {
+    > .icon-text {
       margin-right: 15px;
-      ;
     }
   }
 
@@ -101,9 +106,8 @@ const textStyle = computed(() => {
     flex-direction: column;
     align-items: center;
 
-    >.icon-text {
+    > .icon-text {
       margin-top: 15px;
-      ;
     }
   }
 
@@ -112,7 +116,7 @@ const textStyle = computed(() => {
     flex-direction: column-reverse;
     align-items: center;
 
-    >.icon-text {
+    > .icon-text {
       margin-bottom: 15px;
     }
   }

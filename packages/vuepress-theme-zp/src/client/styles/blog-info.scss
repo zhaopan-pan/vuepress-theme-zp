@@ -1,0 +1,39 @@
+@use 'vars';
+
+.blog-info {
+  min-width: 18.75rem;
+  margin-left: 1rem;
+  position: sticky;
+  top: calc(var(--navbar-height) + 1rem);
+  .author-info {
+    width: 100%;
+    height: max-content;
+    padding: 5rem 0;
+    background-color: var(--c-bg-light);
+    border-radius: var(--article-item-radius);
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .author-logo {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 5rem;
+      transform: rotate(360);
+      margin: 0 auto;
+      display: block;
+
+      animation-duration: 4s;
+      animation-name: rotate;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+}

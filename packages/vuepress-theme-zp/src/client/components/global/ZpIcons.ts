@@ -74,6 +74,7 @@ export default defineComponent({
     const containerTag = curText ? 'a' : 'div'
 
     if (!icon.value) return null
+
     return () => {
       if (link.value) {
         return h(

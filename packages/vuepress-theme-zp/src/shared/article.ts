@@ -6,6 +6,7 @@ export interface IArticleInfo extends Record<string, unknown> {
   tag: string[]
   category: string[]
   readme?: boolean
+  excerpt?: string
 }
 
 export type IArticleItem = Article<IArticleInfo>

@@ -7,6 +7,12 @@ import Center from './Center.vue'
 </script>
 
 <template>
+  <div>1</div>
+  <div>1</div>
+  <div>1</div>
+  <div>1</div>
+  <div>1</div>
+  <div>1</div>
   <main class="home">
     <Center />
     <Features />

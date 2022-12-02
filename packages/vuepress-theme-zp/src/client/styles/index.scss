@@ -1,6 +1,7 @@
 @use 'vars';
 @use 'vars-dark';
 @use 'normalize';
+@use 'common';
 
 @use 'arrow';
 @use 'badge';
@@ -18,5 +19,6 @@
 @use 'tag';
 @use 'article';
 @use 'icon';
+@use 'blog-info';
 
 @use '@vuepress/plugin-palette/style';

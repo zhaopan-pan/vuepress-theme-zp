@@ -1,8 +1,14 @@
 <template>
   <div class="article-list-wrapper">
-    <div v-for="item in articleDataList" :key="item.path">
-      <ArticleItem :data="item" />
-    </div>
+    <ArticleItem
+      v-for="item in [
+        ...articleDataList,
+        ...articleDataList,
+        ...articleDataList,
+      ]"
+      :key="item.path"
+      :data="item"
+    />
   </div>
 </template>
 <script setup lang="ts">

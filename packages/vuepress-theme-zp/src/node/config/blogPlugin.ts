@@ -7,13 +7,14 @@ export default () =>
     // only files under posts are articles
     filter: ({ filePathRelative }) =>
       (filePathRelative || '').startsWith('posts/'),
-    getInfo: ({ frontmatter, title }) => ({
+    getInfo: ({ frontmatter, title, excerpt }) => ({
       title,
       author: frontmatter.author || '',
       date: frontmatter.date || null,
       category: frontmatter.category || [],
       tag: frontmatter.tag || [],
       readme: frontmatter.readme,
+      excerpt: excerpt || '',
     }),
     category: [
       {

@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import ArticleList from '../Article/ArticleList.vue'
-import BlogInfo from './BlogInfo.vue'
+import BlogInfo from './BlogInfo/index.vue'
 </script>
 
 <style lang="scss" scoped>

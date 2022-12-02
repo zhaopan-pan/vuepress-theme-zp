@@ -1,8 +1,9 @@
 <template>
   <div class="article-item">
-    <RouterLink class="tag-num" :to="path">
+    <RouterLink class="article-name text-overflow-ellipsis" :to="path">
       {{ info.title }}
     </RouterLink>
+    <div v-html="info.excerpt"></div>
     <ArticleInfo :data="info" />
   </div>
 </template>
@@ -17,5 +18,6 @@ const { data } = defineProps({
     required: true,
   },
 })
+
 const { path, info } = data
 </script>

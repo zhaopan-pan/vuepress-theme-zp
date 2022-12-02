@@ -1,15 +1,14 @@
 .icon-container {
   display: flex;
+  margin-right: 1.25rem;
 
   &.left {
-    /* @apply flex-row items-center; */
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    flex > .icon-text {
-      // @apply ml-1.5;
-      margin-left: 15px;
+    > .icon-text {
+      margin-left: 0.5rem;
     }
   }
 

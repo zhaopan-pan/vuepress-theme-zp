@@ -7,6 +7,12 @@ docs/.vuepress/dist/
 dist/
 lib/
 
+# Test temp files
+**/__fixtures__/.temp/
+
+# Test coverage files
+coverage/
+
 # Node modules
 node_modules/
 

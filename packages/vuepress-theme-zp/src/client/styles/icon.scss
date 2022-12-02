@@ -1,0 +1,45 @@
+.icon-container {
+  display: flex;
+
+  &.left {
+    /* @apply flex-row items-center; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    flex > .icon-text {
+      // @apply ml-1.5;
+      margin-left: 15px;
+    }
+  }
+
+  &.right {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+
+    > .icon-text {
+      margin-right: 15px;
+    }
+  }
+
+  &.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .icon-text {
+      margin-top: 15px;
+    }
+  }
+
+  &.bottom {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    > .icon-text {
+      margin-bottom: 15px;
+    }
+  }
+}

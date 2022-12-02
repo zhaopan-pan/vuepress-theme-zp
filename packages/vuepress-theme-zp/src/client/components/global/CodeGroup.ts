@@ -1,6 +1,6 @@
 import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
 import type { Component, VNode } from 'vue'
-import ZpIcons from './ZpIcons.vue'
+import ZpIcons from './ZpIcons.js'
 
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',

@@ -1,6 +1,7 @@
 <template>
   <div class="article-item-wrapper">
-    <ZpIcons icon="AccessTimeFilled" iconSize="20">
+    <ZpIcons icon="PersonOutlineFilled" iconSize="20" link="#">authors</ZpIcons>
+    <ZpIcons icon="AccessTimeFilled" iconSize="20" link="#">
       {{ yearMouthDay(date) }}
     </ZpIcons>
   </div>
@@ -22,10 +23,12 @@ const yearMouthDay = (date: string) => {
 }
 
 console.log(data)
-const { date } = data
+const { date, author } = data
 </script>
 <style lang="scss">
 .article-item-wrapper {
   width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 </style>

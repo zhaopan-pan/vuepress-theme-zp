@@ -6,15 +6,23 @@
     :target="target"
   >
     <component v-if="icon" :style="iconStyle" :is="icons[icon]" />
-    <span v-if="text || $slots.default" :style="textStyle" class="icon-text">
-      <slot>{{ text }}</slot>
+    <span v-if="curText" :style="textStyle" class="icon-text">
+      <slot>{{ curText }}</slot>
     </span>
   </a>
+
+  <div v-else-if="!link && curText" :class="['icon-container']">
+    <component :style="iconStyle" :is="icons[icon]" />
+    <span :style="textStyle" class="icon-text">
+      <slot>{{ curText }}</slot>
+    </span>
+  </div>
+
   <component v-else :style="iconStyle" :is="icons[icon]" />
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs } from 'vue'
+import { computed, toRefs, useSlots } from 'vue'
 import * as materialIcons from '@vicons/material'
 import * as faIcons from '@vicons/fa'
 
@@ -58,8 +66,8 @@ const props = defineProps({
     default: '_self',
   },
 })
-
-const { icon, iconSize, iconColor, textColor, textSize } = toRefs(props)
+// console.log($slots)
+const { icon, iconSize, iconColor, textColor, textSize, text } = toRefs(props)
 
 const iconStyle = computed(() => {
   return {
@@ -69,6 +77,9 @@ const iconStyle = computed(() => {
     fontSize: `${iconSize.value}px`,
   }
 })
+
+const slots = useSlots()
+const curText = computed(() => text || slots.default?.())
 
 const textStyle = computed(() => {
   return { color: textColor.value, fontSize: `${textSize.value}px` }

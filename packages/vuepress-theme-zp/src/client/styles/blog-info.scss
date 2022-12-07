@@ -10,7 +10,8 @@
     height: max-content;
     padding: 5rem 0;
     background-color: var(--c-bg-light);
-    border-radius: var(--article-item-radius);
+    border-radius: var(--card-radius);
+    box-shadow: 0 1px 4px 1px var(--card-shadow);
 
     @keyframes rotate {
       0% {

@@ -1,0 +1,63 @@
+@use 'vars';
+
+.pagination {
+  font-weight: 700;
+  text-align: center;
+  color: #888;
+  margin: 2rem auto 0;
+  // background: #f2f2f2;
+
+  .pagination-list {
+    font-size: 0;
+    line-height: 3.5rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    span {
+      font-size: 1rem;
+
+      &.jump {
+        border: 1px solid #ccc;
+        padding: 5px 8px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+
+      &.jumping {
+        input {
+          width: 25px;
+          height: 26px;
+          font-size: 13px;
+          border: 1px solid #ccc;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+          text-align: center;
+          outline: none;
+        }
+      }
+
+      &.jumpItem {
+        cursor: default;
+        color: #fff;
+        background: var(--c-brand);
+        border-color: var(--c-border);
+      }
+
+      &.ellipsis {
+        padding: 0px 8px;
+      }
+
+      &.jumpPoint {
+        margin-left: 15px;
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ export default defineComponent({
     },
     iconSize: {
       type: [String, Number],
-      default: 18,
+      default: 1,
     },
     iconColor: {
       type: String,
@@ -31,7 +31,7 @@ export default defineComponent({
     },
     textSize: {
       type: [String, Number],
-      default: '14',
+      default: 0.9,
     },
     link: {
       type: String,
@@ -59,16 +59,16 @@ export default defineComponent({
     const iconStyle = computed(() => {
       return {
         color: iconColor.value,
-        width: `${iconSize.value}px`,
-        height: `${iconSize.value}px`,
-        fontSize: `${iconSize.value}px`,
+        width: `${iconSize.value}rem`,
+        height: `${iconSize.value}rem`,
+        fontSize: `${iconSize.value}rem`,
       }
     })
     const icons = { ...faIcons, ...materialIcons }
     const curText = computed(() => text.value || slots.default?.())
 
     const textStyle = computed(() => {
-      return { color: textColor.value, fontSize: `${textSize.value}px` }
+      return { color: textColor.value, fontSize: `${textSize.value}rem` }
     })
 
     const containerTag = curText ? 'a' : 'div'

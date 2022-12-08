@@ -1,40 +1,44 @@
 <template>
-  <div class="pagination" v-show="show">
+  <div class="pagination" v-show="showComponent">
     <div class="pagination-list">
-      <span
-        class="jump"
-        v-show="currentPage > 1"
+      <button
+        :disabled="currentPage === 1"
+        class="operation-btn"
         @click="goPrev"
-        unselectable="on"
-        >Prev</span
       >
-      <span v-show="manyPage" class="jump" @click="jumpPage(1)">1</span>
-      <span class="ellipsis" v-show="manyPage">...</span>
+        <ZpIcons icon="ChevronLeftFilled" iconSize="1.3" />
+      </button>
+      <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
+        1
+      </span>
+      <span class="ellipsis" v-show="showStartFakePageNum"> ... </span>
       <span
         class="jump"
         v-for="num in pageNumbers"
         :key="num"
-        :class="{ jumpItem: currentPage == num }"
+        :class="{ curJumpItem: currentPage == num }"
         @click="jumpPage(num)"
         >{{ num }}</span
       >
-      <span class="ellipsis" v-show="manyPage && currentPage < pages - 4"
-        >...</span
-      >
+      <span class="ellipsis" v-show="showLastFakePageNum"> ... </span>
       <span
-        v-show="manyPage && currentPage < pages - 4"
+        v-show="showLastFakePageNum"
         class="jump"
         @click="jumpPage(pages)"
         >{{ pages }}</span
       >
-      <span class="jump" v-show="currentPage < pages" @click="goNext"
-        >next</span
+      <button
+        class="operation-btn"
+        @click="goNext"
+        :disabled="currentPage >= pages"
       >
+        <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
+      </button>
       <span class="jumpPoint">跳转到：</span>
       <span class="jumping">
-        <input type="text" v-model="changePage" />
+        <input type="text" v-model="changePage" @keypress="keypress" />
       </span>
-      <span class="jump gobtn" @click="jumpPage(Number(changePage))">GO</span>
+      <span class="jump go-page" @click="jumpPage(Number(changePage))">GO</span>
     </div>
   </div>
 </template>
@@ -58,23 +62,28 @@ const changePage = ref<number>()
 const pages = computed(() => {
   return Math.ceil(total / pageSize)
 })
-const show = computed(() => {
+const showComponent = computed(() => {
   return total > pageSize
 })
-const manyPage = computed(() => {
-  if (pages.value <= 7) return false
-  return props.currentPage > 5
+const showStartFakePageNum = computed(() => {
+  return isMany.value && !pageNumbers.value.includes(1)
+})
+const showLastFakePageNum = computed(() => {
+  return isMany.value && !pageNumbers.value.includes(pages.value)
+})
+const isMany = computed(() => {
+  return pages.value > 5
 })
 
 console.log('pages:', pages.value)
 console.log('currentPage:', props.currentPage)
-console.log('manyPage:', manyPage.value)
+console.log('isMany:', isMany.value)
 const pageNumbers = computed(() => {
   let left = 1
   let right = pages.value
   let ar: number[] = []
   if (pages.value >= 7) {
-    if (props.currentPage > 5 && props.currentPage < pages.value - 4) {
+    if (props.currentPage > 5 && props.currentPage + 4 < pages.value) {
       left = Number(props.currentPage) - 3
       right = Number(props.currentPage) + 3
     } else {
@@ -92,9 +101,16 @@ const pageNumbers = computed(() => {
     ar.push(left)
     left++
   }
-  console.log(ar)
+  console.log('pageNumbers:', ar)
   return ar
 })
+
+const keypress = (e: KeyboardEvent) => {
+  console.log(e)
+  if (e.keyCode === 13 && e?.target) {
+    // e.target?.value && jumpPage(e.target?.value)
+  }
+}
 
 const goPrev = () => {
   let cp = props.currentPage

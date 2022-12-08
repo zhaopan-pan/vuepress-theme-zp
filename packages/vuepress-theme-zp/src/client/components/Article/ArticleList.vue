@@ -1,7 +1,7 @@
 <template>
   <div class="article-list-wrapper">
     <ArticleItem
-      v-for="item in articlesOfCurrentPage"
+      v-for="item in currentPageArticles"
       :key="item.path"
       :data="item"
     />
@@ -20,6 +20,7 @@ import ArticleItem from './ArticleItem.vue'
 import type { IArticleInfo } from '@vuepressSrc/shared/article.js'
 import Pagination from '@zpTheme/Pagination.vue'
 import { computed, ref } from 'vue'
+import { useArticlesCurrentPage } from '../../composables/index.js'
 
 const { curPageSize, showPagination } = defineProps({
   curPageSize: { type: Number },
@@ -33,15 +34,12 @@ const articleDataList = computed(() =>
   articles.value.items.filter((d) => !d.info.readme)
 )
 
-console.log(pageSize, articleDataList)
-const articlesOfCurrentPage = computed(() => {
-  if (!articleDataList.value.length) return []
-
-  // 减1意思是从当前页开始截取
-  let start = (currentPageNum.value - 1) * pageSize
-  let end = currentPageNum.value * pageSize
-
-  return articleDataList.value.slice(start, end)
+const currentPageArticles = computed(() => {
+  const data = useArticlesCurrentPage(articleDataList.value, {
+    pageSize,
+    pageNum: currentPageNum.value,
+  })
+  return data
 })
 
 const getCurrentPage = (n: number) => {

@@ -20,11 +20,11 @@ const { date, author } = data
     <ZpIcons
       v-if="author"
       icon="PersonOutlineFilled"
-      iconSize="20"
+      iconSize="1"
       link="#"
       :text="author"
     />
-    <ZpIcons icon="AccessTimeFilled" iconSize="20" link="#">
+    <ZpIcons icon="AccessTimeFilled" iconSize="1" link="#">
       {{ yearMouthDay(date) }}
     </ZpIcons>
   </div>

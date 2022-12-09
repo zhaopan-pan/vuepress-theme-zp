@@ -1,17 +1,18 @@
 ---
 lang: zh-CN
-title: js-2
+title: js-23
 tag: 
  - js
 description: js
-date: 2022-11-30
+date: 2022-11-31
 ---
 
-# js-2
+# js-221
 
-jsjsjsjsjs
+jsjsjsjsjs1
+
 ```js
-console.log('----')
+console.log('----')1
 console.log('----')
 console.log('----')
 console.log('----')
@@ -29,9 +30,11 @@ console.log('----')
 console.log('----')
 console.log('----')
 ```
+
 ## js-2-1
 
 jsjsjsjsjs
+
 ```js
 console.log('----')
 console.log('----')
@@ -51,6 +54,7 @@ console.log('----')
 console.log('----')
 console.log('----')
 ```
+
 ### js-2-1-1
 
 jsjsjsjsjs
@@ -58,6 +62,7 @@ jsjsjsjsjs
 #### js-2-1-1-1
 
 jsjsjsjsjs
+
 ```js
 console.log('----')
 console.log('----')

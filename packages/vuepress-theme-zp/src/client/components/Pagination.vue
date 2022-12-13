@@ -20,7 +20,12 @@
         @click="jumpPage(num)"
         >{{ num }}</span
       >
-      <span class="ellipsis" v-show="showLastFakePageNum"> ... </span>
+      <span
+        class="ellipsis"
+        v-show="showLastFakePageNum && pages - (pageNumbers.at(-1) as number) > 1"
+      >
+        ...
+      </span>
       <span
         v-show="showLastFakePageNum"
         class="jump"
@@ -44,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, toRefs } from 'vue'
+import { computed, ref } from 'vue'
 const emit = defineEmits<{
   (e: 'getCurrentPage', v: number): void
 }>()
@@ -75,9 +80,6 @@ const isMany = computed(() => {
   return pages.value > 5
 })
 
-console.log('pages:', pages.value)
-console.log('currentPage:', props.currentPage)
-console.log('isMany:', isMany.value)
 const pageNumbers = computed(() => {
   let left = 1
   let right = pages.value
@@ -101,7 +103,6 @@ const pageNumbers = computed(() => {
     ar.push(left)
     left++
   }
-  console.log('pageNumbers:', ar)
   return ar
 })
 

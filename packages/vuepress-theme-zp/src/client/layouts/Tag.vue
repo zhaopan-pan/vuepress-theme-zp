@@ -15,21 +15,29 @@
             </span>
           </RouterLink>
         </div>
-        <!-- <ArticleList :items="tagMap.currentItems" /> -->
+        <div class="tag-article-list">
+          <ArticleList :dataList="list" />
+        </div>
       </main>
     </template>
   </ParentLayout>
 </template>
 <script setup lang="ts">
-// import ArticleList from "../components/ArticleList.vue";
+import ArticleList from '../components/Article/ArticleList.vue'
 import ParentLayout from './Layout.vue'
-import { useBlogCategory } from 'vuepress-plugin-blog2/client'
-import { computed } from 'vue'
-// import { usePageData } from '@vuepress/client'
+import { useBlogCategory, BlogTypeData } from 'vuepress-plugin-blog2/client'
+import { computed, ref, watch } from 'vue'
+import { usePageData } from '@vuepress/client'
+import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
 
-// console.log('--------tag-------');
-const tagMap = computed(() => useBlogCategory('tag'))
-// const pageData = usePageData();
-// console.log(tagMap.value);
-// console.log(pageData.value);
+let list = ref<BlogTypeData<IArticleInfo>>()
+const tagMap = computed(() => useBlogCategory<IArticleInfo>('tag'))
+
+const pageData = usePageData()
+watch(
+  () => pageData.value.title,
+  () => {
+    list.value = tagMap.value.value.map[pageData.value.title]
+  }
+)
 </script>

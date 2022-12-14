@@ -11,7 +11,12 @@
       <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
         1
       </span>
-      <span class="ellipsis" v-show="showStartFakePageNum"> ... </span>
+      <span
+        class="ellipsis"
+        v-show="showStartFakePageNum && pageNumbers[0] > 2"
+      >
+        ...
+      </span>
       <span
         class="jump"
         v-for="num in pageNumbers"
@@ -51,7 +56,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 const emit = defineEmits<{
-  (e: 'getCurrentPage', v: number): void
+  (e: 'onChange', currentPage: number, pageSize: number): void
 }>()
 
 const props = defineProps({
@@ -59,16 +64,16 @@ const props = defineProps({
   pageSize: { type: Number, default: 10 },
   currentPage: { type: Number, default: 1 },
 })
-const { total, pageSize } = props
+const { pageSize } = props
 
 // 跳转指定页码
 const changePage = ref<number>()
 
 const pages = computed(() => {
-  return Math.ceil(total / pageSize)
+  return Math.ceil(props.total / pageSize)
 })
 const showComponent = computed(() => {
-  return total > pageSize
+  return props.total > pageSize
 })
 const showStartFakePageNum = computed(() => {
   return isMany.value && !pageNumbers.value.includes(1)
@@ -107,9 +112,8 @@ const pageNumbers = computed(() => {
 })
 
 const keypress = (e: KeyboardEvent) => {
-  console.log(e)
-  if (e.keyCode === 13 && e?.target) {
-    // e.target?.value && jumpPage(e.target?.value)
+  if (e.key === 'Enter' && e?.target && e.target['value']) {
+    jumpPage(Number(e.target['value']))
   }
 }
 
@@ -140,6 +144,6 @@ const jumpPage = (num?: number) => {
 }
 
 const change = (num: number) => {
-  emit('getCurrentPage', num)
+  emit('onChange', num, pageSize)
 }
 </script>

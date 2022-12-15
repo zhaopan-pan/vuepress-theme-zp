@@ -21,7 +21,6 @@ const options = {
 const page = usePageData()
 const { frontmatter, headers } = page?.value
 
-console.log(frontmatter)
 // 没有配置 toc 默认展示 toc
 const hasHeader = computed(
   () => (frontmatter.toc || frontmatter.toc === undefined) && headers?.length

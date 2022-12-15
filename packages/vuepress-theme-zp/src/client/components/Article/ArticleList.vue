@@ -21,6 +21,7 @@ import type { IArticleInfo } from '@vuepressSrc/shared/article.js'
 import Pagination from '@zpTheme/Pagination.vue'
 import { computed, PropType, ref, watch, watchEffect } from 'vue'
 import { useArticlesCurrentPage } from '../../composables/index.js'
+import { scrollToTop } from '../../utils/index.js'
 
 const props = defineProps({
   pageSize: { type: Number },
@@ -34,9 +35,7 @@ const { pageSize, showPagination } = props
 const curPageSize = pageSize || 10
 const currentPageNum = ref(1)
 
-const articles = computed(
-  () => props.dataList || useBlogType<IArticleInfo>('home').value
-)
+const articles = computed(() => useBlogType<IArticleInfo>('home').value)
 
 const articleDataList = computed(() =>
   articles.value.items.filter((d) => !d.info.readme)
@@ -60,5 +59,6 @@ watch(
 
 const paginationOnChange = (c: number) => {
   currentPageNum.value = c
+  // scrollToTop()
 }
 </script>

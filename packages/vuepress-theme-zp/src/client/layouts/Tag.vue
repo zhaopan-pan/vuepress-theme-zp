@@ -4,7 +4,7 @@
       <main class="page">
         <div class="tag-wrapper">
           <RouterLink
-            v-for="({ items, path }, name) in tagMap.value.map"
+            v-for="({ items, path }, name) in tagMap.map"
             :key="name"
             :to="path"
             class="tag"
@@ -16,7 +16,7 @@
           </RouterLink>
         </div>
         <div class="tag-article-list">
-          <ArticleList :dataList="list" />
+          <ArticleList :dataList="tagMap.currentItems" />
         </div>
       </main>
     </template>
@@ -25,19 +25,17 @@
 <script setup lang="ts">
 import ArticleList from '../components/Article/ArticleList.vue'
 import ParentLayout from './Layout.vue'
-import { useBlogCategory, BlogTypeData } from 'vuepress-plugin-blog2/client'
-import { computed, ref, watch } from 'vue'
-import { usePageData } from '@vuepress/client'
+import { useBlogCategory } from 'vuepress-plugin-blog2/client'
 import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-let list = ref<BlogTypeData<IArticleInfo>>()
-const tagMap = computed(() => useBlogCategory<IArticleInfo>('tag'))
+const router = useRouter()
 
-const pageData = usePageData()
-watch(
-  () => pageData.value.title,
-  () => {
-    list.value = tagMap.value.value.map[pageData.value.title]
-  }
-)
+const tagMap = useBlogCategory<IArticleInfo>('tag')
+
+onMounted(() => {
+  const path = Object.values(tagMap.value.map)?.[0]?.path
+  path && router.push(path)
+})
 </script>

@@ -44,11 +44,15 @@
       >
         <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
       </button>
-      <span class="jumpPoint">跳转到：</span>
-      <span class="jumping">
-        <input type="text" v-model="changePage" @keypress="keypress" />
+      <span v-show="pages > 1">
+        <span class="jumpPoint">跳转到：</span>
+        <span class="jumping">
+          <input type="text" v-model="changePage" @keypress="keypress" />
+        </span>
+        <span class="jump go-page" @click="jumpPage(Number(changePage))"
+          >GO</span
+        >
       </span>
-      <span class="jump go-page" @click="jumpPage(Number(changePage))">GO</span>
     </div>
   </div>
 </template>

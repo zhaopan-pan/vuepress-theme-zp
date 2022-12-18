@@ -7,10 +7,10 @@ import type { IArticleItem } from '@vuepressSrc/shared/article.js'
  * @returns
  */
 export const useArticlesCurrentPage = (
-  list: IArticleItem[],
+  list: IArticleItem[] | undefined,
   { pageSize, pageNum }
 ): IArticleItem[] => {
-  if (!list.length) return []
+  if (!list?.length) return []
 
   // 减1意思是从当前页开始截取
   let start = (pageNum - 1) * pageSize

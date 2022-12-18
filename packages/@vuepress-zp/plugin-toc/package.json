@@ -36,10 +36,10 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,svg,js}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.55",
-    "@vuepress/core": "2.0.0-beta.55",
-    "@vuepress/utils": "2.0.0-beta.55",
-    "vue": "^3.2.41",
+    "@vuepress/client": "2.0.0-beta.59",
+    "@vuepress/core": "2.0.0-beta.59",
+    "@vuepress/utils": "2.0.0-beta.59",
+    "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
   "publishConfig": {

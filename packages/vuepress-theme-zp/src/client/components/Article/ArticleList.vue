@@ -7,7 +7,7 @@
     />
     <Pagination
       v-show="showPagination"
-      :total="articleDataList.length"
+      :total="articleDataList?.length"
       :currentPage="currentPageNum"
       :pageSize="pageSize"
       @onChange="paginationOnChange"
@@ -15,18 +15,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useBlogType, BlogTypeData } from 'vuepress-plugin-blog2/client'
+import type {
+  BlogCategoryData,
+  BlogTypeData,
+} from 'vuepress-plugin-blog2/client'
 import ArticleItem from './ArticleItem.vue'
-import type { IArticleInfo } from '@vuepressSrc/shared/article.js'
+import type { IArticleInfo, IArticleItem } from '@vuepressSrc/shared/article.js'
 import Pagination from '@zpTheme/Pagination.vue'
-import { computed, PropType, ref, watch, watchEffect } from 'vue'
+import { computed, PropType, ref, watch } from 'vue'
 import { useArticlesCurrentPage } from '../../composables/index.js'
+import { useRoute } from 'vue-router'
+// import { scrollToTop } from '../../'
 
 const props = defineProps({
   pageSize: { type: Number },
   showPagination: { type: Boolean, default: true },
   dataList: {
-    type: Object as PropType<BlogTypeData<IArticleInfo>>,
+    type: Object as PropType<IArticleItem[]>,
     default: undefined,
   },
 })
@@ -34,12 +39,10 @@ const { pageSize, showPagination } = props
 const curPageSize = pageSize || 10
 const currentPageNum = ref(1)
 
-const articles = computed(
-  () => props.dataList || useBlogType<IArticleInfo>('home').value
-)
+// const articles = useBlogType<IArticleInfo>('home').value
 
 const articleDataList = computed(() =>
-  articles.value.items.filter((d) => !d.info.readme)
+  props.dataList?.filter((d) => !d.info.readme)
 )
 
 const currentPageArticles = computed(() => {
@@ -49,9 +52,10 @@ const currentPageArticles = computed(() => {
   })
   return data
 })
+const route = useRoute()
 
 watch(
-  () => articles.value,
+  () => route.path,
   () => {
     // 传入数据有变就重置当前页数据
     currentPageNum.value = 1
@@ -60,5 +64,6 @@ watch(
 
 const paginationOnChange = (c: number) => {
   currentPageNum.value = c
+  // scrollToTop()
 }
 </script>

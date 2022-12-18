@@ -83,10 +83,24 @@
     }
 
     > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        transition: width 0.2s;
+        content: '';
+        width: 0%;
+        height: 2px;
+        background-color: var(--c-brand);
+        position: absolute;
+        bottom: 0;
+      }
       &:hover,
       &.router-link-active {
-        margin-bottom: -2px;
-        border-bottom: 2px solid var(--c-text-accent);
+        &::after {
+          width: 100%;
+        }
       }
     }
   }
@@ -98,10 +112,12 @@
       margin-left: 0;
 
       > a {
+        display: inline-block;
         &:hover,
         &.router-link-active {
-          margin-bottom: 0;
-          border-bottom: none;
+          &::after {
+            width: 0%;
+          }
         }
       }
     }
@@ -110,6 +126,9 @@
       &:hover,
       &.router-link-active {
         color: var(--c-text-accent);
+        &::after {
+          width: 0%;
+        }
       }
     }
   }

@@ -1,13 +1,16 @@
 <template>
   <div class="home-center">
-    <ArticleList />
+    <ArticleList :data-list="articles.items" />
     <BlogInfo />
   </div>
 </template>
 
 <script setup lang="ts">
 import ArticleList from '../Article/ArticleList.vue'
+import { useBlogType } from 'vuepress-plugin-blog2/client'
+import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
 import BlogInfo from './BlogInfo/index.vue'
+const articles = useBlogType<IArticleInfo>('home')
 </script>
 
 <style lang="scss" scoped>

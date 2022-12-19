@@ -1,10 +1,12 @@
 import ZpTheme, { DefaultThemeOptions } from 'vuepress-theme-zp'
 import { sidebarZh } from '../sidebar/index.js'
 import { navbarZh } from '../navbar/index.js'
+import blogPlugin from '../blogPlugin/index.js'
 
 export const themeConfig = (options?: DefaultThemeOptions) =>
   ZpTheme({
     ...options,
+    blogPluginOptions: blogPlugin,
     // 默认主题配置
     // navbar: navbarZh,
     // sidebar: sidebarZh,

@@ -39,8 +39,6 @@ const { pageSize, showPagination } = props
 const curPageSize = pageSize || 10
 const currentPageNum = ref(1)
 
-// const articles = useBlogType<IArticleInfo>('home').value
-
 const articleDataList = computed(() =>
   props.dataList?.filter((d) => !d.info.readme)
 )

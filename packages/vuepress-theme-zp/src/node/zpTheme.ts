@@ -21,6 +21,7 @@ import {
   assignDefaultLocaleOptions,
   resolveContainerPluginOptions,
 } from './utils/index.js'
+import type { BlogOptions } from 'vuepress-plugin-blog2'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -30,10 +31,13 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
    * we use `themePlugins`
    */
   themePlugins?: DefaultThemePluginsOptions
+
+  blogPluginOptions?: BlogOptions
 }
 
 export const zpTheme = ({
   themePlugins = {},
+  blogPluginOptions = {},
   ...localeOptions
 }: DefaultThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
@@ -66,7 +70,7 @@ export const zpTheme = ({
     },
 
     plugins: [
-      blogPlugin(),
+      blogPlugin(blogPluginOptions),
       tocPlugin({}),
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false

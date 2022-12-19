@@ -32,7 +32,14 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const tagMap = useBlogCategory<IArticleInfo>('tag')
+const { type } = defineProps({
+  type: {
+    type: String,
+    required: false,
+    default: 'tag',
+  },
+})
+const tagMap = useBlogCategory<IArticleInfo>(type)
 
 onMounted(() => {
   const path = Object.values(tagMap.value.map)?.[0]?.path

@@ -10,6 +10,7 @@
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
   --c-bg-navbar: var(--c-bg);
+  --c-bg-navbar-custom: rgba(242, 242, 242, 0.5);
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
 
@@ -20,7 +21,6 @@
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
-  --c-text-a-href: #536271;
 
   // border colors
   --c-border: #eaecef;
@@ -90,6 +90,7 @@
   // article
   --card-radius: 0.4rem;
   --card-shadow: rgba(0, 0, 0, 0.15);
+  --nav-shadow: var(--card-shadow);
 }
 
 // plugin-back-to-top

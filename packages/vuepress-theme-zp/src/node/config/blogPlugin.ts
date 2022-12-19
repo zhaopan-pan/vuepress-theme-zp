@@ -1,6 +1,6 @@
-import { blogPlugin } from 'vuepress-plugin-blog2'
+import { blogPlugin, BlogOptions } from 'vuepress-plugin-blog2'
 
-export default () =>
+export default (options: BlogOptions = {}) =>
   blogPlugin({
     hotReload: true,
     metaScope: 'blogInfo',
@@ -49,4 +49,5 @@ export default () =>
         },
       },
     ],
+    ...options,
   })

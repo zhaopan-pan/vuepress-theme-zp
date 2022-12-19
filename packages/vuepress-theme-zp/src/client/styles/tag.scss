@@ -9,25 +9,20 @@
 
   font-size: 14px;
 
-  a {
-    color: var(--c-text-a-href) !important;
-  }
-
   .tag {
     display: inline-block;
     vertical-align: middle;
 
-    overflow: hidden;
+    // overflow: hidden;
 
     margin: 0.3rem 0.6rem 0.8rem;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
     border: 0.15rem solid var(--c-brand);
-
     cursor: pointer;
-
     transition: all 0.3s, color 0.3s;
 
+    position: relative;
     @media (max-width: 419px) {
       font-size: 0.9rem;
     }
@@ -43,15 +38,22 @@
       font-size: 0.7rem;
       line-height: 1.2rem;
       text-align: center;
-      color: inherit;
+      color: #fff;
+
+      position: absolute;
+      top: -0.6rem;
+      right: -0.6rem;
+      background: #238551;
+      padding: 0 0.2rem;
+    }
+    &:hover {
+      background: var(--c-brand);
+      color: var(--c-bg);
     }
 
     &.router-link-active {
       background: var(--c-brand);
-
-      // .tag-num {
-      //   color: var(--c-bg);
-      // }
+      color: var(--c-bg);
     }
   }
 }

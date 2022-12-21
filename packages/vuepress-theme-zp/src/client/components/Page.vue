@@ -15,6 +15,8 @@ const themeLocale = useThemeLocaleData()
 const shouldShowToc = computed(
   () => frontmatter.value.toc !== false && themeLocale.value.toc !== false
 )
+
+console.log(frontmatter.value)
 </script>
 
 <template>
@@ -31,9 +33,8 @@ const shouldShowToc = computed(
     </div>
 
     <PageMeta />
-
     <PageNav />
-
+    <CommentService />
     <slot name="bottom" />
   </main>
 </template>

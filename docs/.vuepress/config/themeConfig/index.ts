@@ -1,12 +1,11 @@
 import ZpTheme, { DefaultThemeOptions } from 'vuepress-theme-zp'
 import { sidebarZh } from '../sidebar/index.js'
 import { navbarZh } from '../navbar/index.js'
-import blogPlugin from '../blogPlugin/index.js'
+import { blogPlugin, commentPlugin } from '../plugin/index.js'
 
 export const themeConfig = (options?: DefaultThemeOptions) =>
   ZpTheme({
     ...options,
-    blogPluginOptions: blogPlugin,
     // 默认主题配置
     // navbar: navbarZh,
     // sidebar: sidebarZh,
@@ -20,5 +19,9 @@ export const themeConfig = (options?: DefaultThemeOptions) =>
         // page meta
         editLinkText: 'Edit this page on GitHub',
       },
+    },
+    themePlugins: {
+      blog: blogPlugin,
+      comment: commentPlugin,
     },
   })

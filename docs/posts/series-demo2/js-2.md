@@ -4,6 +4,8 @@ title: js-23
 tag: 
  - js
 description: js
+category: 
+ - front
 date: 2022-11-31
 ---
 
@@ -12,7 +14,7 @@ date: 2022-11-31
 jsjsjsjsjs1
 
 ```js
-console.log('----')1
+console.log('----') 1
 console.log('----')
 console.log('----')
 console.log('----')

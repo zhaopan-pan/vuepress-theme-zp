@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination" v-show="showComponent">
+  <div class="pagination" v-if="showComponent">
     <div class="pagination-list">
       <button
         :disabled="currentPage === 1"
@@ -44,7 +44,7 @@
       >
         <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
       </button>
-      <span v-show="pages > 1">
+      <span v-show="pages > 3">
         <span class="jumpPoint">跳转到：</span>
         <span class="jumping">
           <input type="text" v-model="changePage" @keypress="keypress" />
@@ -77,7 +77,7 @@ const pages = computed(() => {
   return Math.ceil(props.total / pageSize)
 })
 const showComponent = computed(() => {
-  return props.total > pageSize
+  return props.total > pageSize && pages.value > 1
 })
 const showStartFakePageNum = computed(() => {
   return isMany.value && !pageNumbers.value.includes(1)

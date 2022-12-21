@@ -40,7 +40,6 @@ const { type } = defineProps({
   },
 })
 const tagMap = useBlogCategory<IArticleInfo>(type)
-
 onMounted(() => {
   const path = Object.values(tagMap.value.map)?.[0]?.path
   path && router.push(path)

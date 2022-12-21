@@ -1,3 +1,17 @@
+<template>
+  <div class="article-info-wrapper">
+    <ZpIcons
+      v-if="author"
+      icon="PersonOutlineFilled"
+      iconSize="1"
+      link="#"
+      :text="author"
+    />
+    <ZpIcons icon="AccessTimeFilled" iconSize="1" link="#">
+      {{ yearMouthDay(date) }}
+    </ZpIcons>
+  </div>
+</template>
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { IArticleItem } from '@vuepressSrc/shared/index.js'
@@ -15,20 +29,6 @@ const yearMouthDay = (date: string) => {
 
 const { date, author } = data
 </script>
-<template>
-  <div class="article-info-wrapper">
-    <ZpIcons
-      v-if="author"
-      icon="PersonOutlineFilled"
-      iconSize="1"
-      link="#"
-      :text="author"
-    />
-    <ZpIcons icon="AccessTimeFilled" iconSize="1" link="#">
-      {{ yearMouthDay(date) }}
-    </ZpIcons>
-  </div>
-</template>
 <style lang="scss">
 .article-info-wrapper {
   width: 100%;

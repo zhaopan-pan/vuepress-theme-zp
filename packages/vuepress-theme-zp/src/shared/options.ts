@@ -1,7 +1,8 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from '@vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav.js'
-
+import type { BlogOptions } from 'vuepress-plugin-blog2'
+import type { CommentOptions } from 'vuepress-plugin-comment2'
 export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-active-header-links or not
@@ -49,6 +50,17 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-prismjs or not
    */
   prismjs?: boolean
+
+  /**
+   * vuepress-plugin-blog2配置，
+   * 作用：分类、标签等页面和元数据的生成
+   */
+  blog?: BlogOptions
+
+  /**
+   * 评论插件配置
+   */
+  comment?: CommentOptions
 }
 
 export type DefaultThemeLocaleOptions = DefaultThemeData

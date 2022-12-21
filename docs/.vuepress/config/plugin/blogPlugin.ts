@@ -1,4 +1,4 @@
-export default {
+export const blogPlugin = {
   hotReload: true,
   metaScope: 'blogInfo',
   // only files under posts are articles
@@ -14,6 +14,17 @@ export default {
     excerpt: excerpt || '',
   }),
   category: [
+    {
+      key: 'category',
+      // @ts-ignore
+      getter: ({ frontmatter }) => frontmatter?.category || [],
+      path: '/category/',
+      layout: 'Category',
+      frontmatter: () => ({ title: `category's`, sidebar: false }),
+      itemLayout: 'Category',
+      // itemPath: '/category/:name/',
+      itemFrontmatter: (name) => ({ title: `${name}`, sidebar: false }),
+    },
     {
       key: 'tag',
       // @ts-ignore
@@ -46,4 +57,4 @@ export default {
       },
     },
   ],
-}
+} as {}

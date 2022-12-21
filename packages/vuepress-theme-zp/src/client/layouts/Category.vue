@@ -1,0 +1,12 @@
+<template>
+  <div>
+    <Tag type="category" />
+  </div>
+</template>
+
+<script setup lang="ts">
+import Tag from './Tag.vue'
+console.log('----------')
+</script>
+
+<style scoped></style>

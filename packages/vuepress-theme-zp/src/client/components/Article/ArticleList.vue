@@ -15,17 +15,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import type {
-  BlogCategoryData,
-  BlogTypeData,
-} from 'vuepress-plugin-blog2/client'
 import ArticleItem from './ArticleItem.vue'
-import type { IArticleInfo, IArticleItem } from '@vuepressSrc/shared/article.js'
+import type { IArticleItem } from '@vuepressSrc/shared/article.js'
 import Pagination from '@zpTheme/Pagination.vue'
 import { computed, PropType, ref, watch } from 'vue'
 import { useArticlesCurrentPage } from '../../composables/index.js'
 import { useRoute } from 'vue-router'
-// import { scrollToTop } from '../../'
+import { scrollToTop } from '../../utils/index.js'
 
 const props = defineProps({
   pageSize: { type: Number },
@@ -62,6 +58,6 @@ watch(
 
 const paginationOnChange = (c: number) => {
   currentPageNum.value = c
-  // scrollToTop()
+  scrollToTop()
 }
 </script>

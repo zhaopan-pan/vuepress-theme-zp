@@ -4,15 +4,16 @@ export const blogPlugin = {
   // only files under posts are articles
   filter: ({ filePathRelative }) =>
     (filePathRelative || '').startsWith('posts/'),
-  getInfo: ({ frontmatter, title, excerpt }) => ({
+  getInfo: ({ frontmatter, title, data }) => ({
     title,
     author: frontmatter.author || '',
     date: frontmatter.date || null,
     category: frontmatter.category || [],
     tag: frontmatter.tag || [],
     readme: frontmatter.readme,
-    excerpt: excerpt || '',
+    excerpt: data.excerpt || '',
   }),
+  excerptFilter: ({ frontmatter }) => frontmatter.excerpt,
   category: [
     {
       key: 'category',

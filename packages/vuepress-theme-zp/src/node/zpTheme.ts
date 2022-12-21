@@ -6,9 +6,7 @@ import type {
   DefaultThemePluginsOptions,
 } from '../shared/index.js'
 import { assignDefaultLocaleOptions } from './utils/index.js'
-import type { BlogOptions } from 'vuepress-plugin-blog2'
 import getPlugins from './plugin/index.js'
-import type { CommentOptions } from 'vuepress-plugin-comment2'
 
 const __dirname = getDirname(import.meta.url)
 

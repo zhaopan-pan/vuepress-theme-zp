@@ -16,10 +16,16 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
    * we use `themePlugins`
    */
   themePlugins?: DefaultThemePluginsOptions
+
+  /**
+   * 首页顶部背景图
+   */
+  homeTopBg?: string
 }
 
 export const zpTheme = ({
   themePlugins = {},
+  homeTopBg = '',
   ...localeOptions
 }: DefaultThemeOptions): Theme => {
   assignDefaultLocaleOptions(localeOptions)
@@ -48,6 +54,9 @@ export const zpTheme = ({
       page.data.filePathRelative = page.filePathRelative
       // save title into route meta to generate navbar and sidebar
       page.routeMeta.title = page.title
+      // if (homeTopBg) {
+      //   page['homeTopBg'] = homeTopBg
+      // }
     },
 
     plugins: getPlugins({ themePlugins, ...localeOptions }),

@@ -90,6 +90,11 @@ export interface DefaultThemeLocaleData extends LocaleData {
   home?: string
 
   /**
+   * Home top background img
+   */
+  homeTopBg?: string
+
+  /**
    * Navbar config
    *
    * Set to `false` to disable navbar in current locale

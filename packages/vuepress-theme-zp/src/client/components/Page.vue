@@ -15,8 +15,6 @@ const themeLocale = useThemeLocaleData()
 const shouldShowToc = computed(
   () => frontmatter.value.toc !== false && themeLocale.value.toc !== false
 )
-
-console.log(frontmatter.value)
 </script>
 
 <template>

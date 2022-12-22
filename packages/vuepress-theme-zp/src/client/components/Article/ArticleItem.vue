@@ -1,9 +1,11 @@
 <template>
-  <div @click="toDetail" class="article-item">
-    <div class="article-name text-overflow-ellipsis">
-      {{ info.title }}
-    </div>
-    <div v-html="info.excerpt"></div>
+  <div class="article-item">
+    <article @click="toDetail">
+      <div class="article-name text-overflow-ellipsis">
+        {{ info.title }}
+      </div>
+      <div v-html="info.excerpt"></div>
+    </article>
     <ArticleInfo :data="info" />
   </div>
 </template>

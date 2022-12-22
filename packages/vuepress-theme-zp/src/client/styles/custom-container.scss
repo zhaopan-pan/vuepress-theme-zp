@@ -1,6 +1,5 @@
 .custom-container {
-  transition: color var(--t-color), border-color var(--t-color),
-    background-color var(--t-color);
+  transition: color var(--t-color), border-color var(--t-color), background-color var(--t-color);
 
   .custom-container-title {
     font-weight: 600;
@@ -16,12 +15,14 @@
     border-left-width: 0.5rem;
     border-left-style: solid;
     margin: 1rem 0;
+    border-radius: var(--card-radius);
+    border-width: 0.3rem;
   }
 
   &.tip {
     border-color: var(--c-tip);
-    background-color: var(--c-tip-bg);
     color: var(--c-tip-text);
+    background-color: rgba(var(--c-tip-rgb), 0.1);
 
     .custom-container-title {
       color: var(--c-tip-title);

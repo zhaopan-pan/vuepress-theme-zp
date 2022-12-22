@@ -19,8 +19,8 @@
   height: var(--navbar-height);
   box-sizing: border-box;
   background-color: var(--c-bg-navbar-custom);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
   transition: background-color var(--t-color), border-color var(--t-color);
 }
 

@@ -1,4 +1,5 @@
 @use 'vars';
+@import '_variables';
 
 .blog-info {
   min-width: 18.75rem;
@@ -36,5 +37,11 @@
       animation-iteration-count: infinite;
       animation-timing-function: linear;
     }
+  }
+}
+
+@media (max-width: $MQNarrow) {
+  .blog-info {
+    display: none;
   }
 }

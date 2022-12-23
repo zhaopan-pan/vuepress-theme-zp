@@ -10,6 +10,9 @@ export const themeConfig = (options?: DefaultThemeOptions) =>
     // navbar: navbarZh,
     // sidebar: sidebarZh,
     // theme-level locales config
+    homeTopBg:
+      'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    // 'https://images.pexels.com/photos/3695297/pexels-photo-3695297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     locales: {
       '/': {
         // navbar

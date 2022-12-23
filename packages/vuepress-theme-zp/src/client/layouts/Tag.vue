@@ -2,15 +2,15 @@
   <ParentLayout>
     <template #page>
       <main class="page">
-        <div class="tag-wrapper">
+        <div class="tag-wrapper" v-once>
           <RouterLink
             v-for="({ items, path }, name) in tagMap.map"
             :key="name"
             :to="path"
-            class="tag"
+            :class="!isCategory ? `${type}-${createRandomNum(0, 4)}` : type"
           >
             {{ name }}
-            <span class="tag-num">
+            <span :class="`${type}-num`">
               {{ items.length }}
             </span>
           </RouterLink>
@@ -29,8 +29,7 @@ import { useBlogCategory } from 'vuepress-plugin-blog2/client'
 import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
-const router = useRouter()
+import { createRandomNum } from '../utils/index.js'
 
 const { type } = defineProps({
   type: {
@@ -39,9 +38,21 @@ const { type } = defineProps({
     default: 'tag',
   },
 })
+
+const isCategory = type === 'category'
 const tagMap = useBlogCategory<IArticleInfo>(type)
+
 onMounted(() => {
-  const path = Object.values(tagMap.value.map)?.[0]?.path
-  path && router.push(path)
+  const router = useRouter()
+  router.afterEach((to, from) => {
+    if (to.path === from.path) return
+
+    const pathArr = to.path.split('/').filter((i) => i)
+    if (pathArr.length > 1) return
+
+    const path = Object.values(tagMap.value.map)?.[0]?.path
+
+    path && router.push(path)
+  })
 })
 </script>

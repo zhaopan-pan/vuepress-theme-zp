@@ -2,7 +2,7 @@
 lang: zh-CN
 title: js-2
 tag: 
- - js
+ - c++
 description: js
 date: 2022-11-30
 ---

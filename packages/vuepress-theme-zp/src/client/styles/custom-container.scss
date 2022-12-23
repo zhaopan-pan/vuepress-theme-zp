@@ -39,7 +39,7 @@
 
   &.warning {
     border-color: var(--c-warning);
-    background-color: var(--c-warning-bg);
+    background-color: rgba(var(--c-warning-rgb), 0.1);
     color: var(--c-warning-text);
 
     .custom-container-title {
@@ -75,7 +75,7 @@
 
   &.danger {
     border-color: var(--c-danger);
-    background-color: var(--c-danger-bg);
+    background-color: rgba(var(--c-danger-rgb), 0.1);
     color: var(--c-danger-text);
 
     .custom-container-title {

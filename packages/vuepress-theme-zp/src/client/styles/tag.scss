@@ -1,5 +1,8 @@
+@use 'sass:list';
+@use 'sass:color';
 @use 'mixins';
-@use 'vars';
+@import 'vars';
+@import '@vuepress/plugin-palette/palette';
 
 .tag-wrapper {
   @include mixins.content_wrapper;
@@ -9,16 +12,13 @@
 
   font-size: 14px;
 
-  .tag {
+  .category {
     display: inline-block;
     vertical-align: middle;
-
-    // overflow: hidden;
-
     margin: 0.3rem 0.6rem 0.8rem;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
-    border: 0.15rem solid var(--c-brand);
+    border: 0.15rem solid $tag-color;
     cursor: pointer;
     transition: all 0.3s, color 0.3s;
 
@@ -27,11 +27,10 @@
       font-size: 0.9rem;
     }
 
-    .tag-num {
+    .category-num {
       display: inline-block;
       min-width: 1rem;
       height: 1.2rem;
-      margin-left: 0.2em;
       padding: 0 0.1rem;
       border-radius: 1rem;
 
@@ -43,17 +42,92 @@
       position: absolute;
       top: -0.6rem;
       right: -0.6rem;
-      background: #238551;
-      padding: 0 0.2rem;
+      background: darken($tag-color, 10%);
     }
+
     &:hover {
-      background: var(--c-brand);
+      background-color: $tag-color;
       color: var(--c-bg);
     }
 
     &.router-link-active {
-      background: var(--c-brand);
+      background: $tag-color;
       color: var(--c-bg);
+    }
+  }
+
+  @each $color in $tag-colors {
+    $index: list.index($tag-colors, $color) - 1;
+
+    .tag-#{$index} {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0.3rem 0.6rem 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.4rem;
+      background-color: color.scale($color, $lightness: 85%);
+      cursor: pointer;
+      transition: all 0.3s, color 0.3s;
+      position: relative;
+      color: $color;
+      box-shadow: 0 4px 1px 4px var(--card-shadow);
+
+      .dark & {
+        background-color: color.scale($color, $lightness: -70%);
+      }
+
+      @media (max-width: 419px) {
+        font-size: 0.9rem;
+      }
+
+      .tag-num {
+        display: inline-block;
+        min-width: 1rem;
+        height: 1.2rem;
+        padding: 0 0.1rem;
+        border-radius: 1rem;
+
+        font-size: 0.7rem;
+        line-height: 1.2rem;
+        text-align: center;
+        color: #fff;
+
+        position: absolute;
+        top: -0.6rem;
+        right: -0.6rem;
+        background-color: darken($color, 10%);
+
+        .dark & {
+          background-color: darken($color, 35%);
+        }
+      }
+
+      &:hover {
+        background-color: $color;
+        color: darken($color, 40%);
+        box-shadow: 0 3px 1px 3px var(--card-shadow);
+
+        .tag-num {
+          background-color: darken($color, 30%);
+        }
+        .dark & {
+          background-color: color.scale($color, $lightness: -40%);
+        }
+      }
+
+      &.router-link-active {
+        background-color: $color;
+        color: darken($color, 40%);
+        box-shadow: 0 2px 1px 2px var(--card-shadow);
+
+        .tag-num {
+          background-color: darken($color, 30%);
+        }
+        .dark & {
+          color: color.scale($color, $lightness: 20%);
+          background-color: color.scale($color, $lightness: -40%);
+        }
+      }
     }
   }
 }

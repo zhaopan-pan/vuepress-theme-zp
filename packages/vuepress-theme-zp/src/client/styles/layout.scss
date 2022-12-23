@@ -37,7 +37,7 @@
   border-right: 1px solid var(--c-border);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--c-brand) var(--c-border);
+  scrollbar-color: var(--c-theme) var(--c-border);
   background-color: var(--c-bg-sidebar);
   transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color);
   &::-webkit-scrollbar {
@@ -47,7 +47,7 @@
     background-color: var(--c-border);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: var(--c-brand);
+    background-color: var(--c-theme);
   }
 }
 

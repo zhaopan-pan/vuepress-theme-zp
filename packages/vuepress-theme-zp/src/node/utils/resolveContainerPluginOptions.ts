@@ -1,5 +1,5 @@
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import type { DefaultThemeData } from '../../shared/index.js'
+import type { ZpThemeOptions } from '../../shared/index.js'
 
 /**
  * Resolve options for @vuepress/plugin-container
@@ -7,7 +7,7 @@ import type { DefaultThemeData } from '../../shared/index.js'
  * For custom containers default title
  */
 export const resolveContainerPluginOptions = (
-  localeOptions: DefaultThemeData,
+  localeOptions: ZpThemeOptions,
   type: 'tip' | 'warning' | 'danger'
 ): ContainerPluginOptions => {
   const locales = Object.entries(localeOptions.locales || {}).reduce(

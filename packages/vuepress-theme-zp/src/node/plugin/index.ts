@@ -9,15 +9,12 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
-import type { DefaultThemeOptions } from '../zpTheme.js'
+import type { ZpThemeOptions } from '../../shared/index.js'
 import { resolveContainerPluginOptions } from '../utils/index.js'
 import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
 
-export default ({
-  themePlugins = {},
-  ...localeOptions
-}: DefaultThemeOptions) => {
+export default ({ themePlugins = {}, ...localeOptions }: ZpThemeOptions) => {
   const { blog = {}, comment = {} } = themePlugins
   return [
     blogPlugin(blog),

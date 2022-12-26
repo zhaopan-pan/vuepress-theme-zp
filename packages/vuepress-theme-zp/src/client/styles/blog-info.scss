@@ -9,7 +9,7 @@
   .author-info {
     width: 100%;
     height: max-content;
-    padding: 5rem 0;
+    padding: 2rem 0;
     background-color: var(--c-bg-light);
     border-radius: var(--card-radius);
     box-shadow: 0 1px 4px 1px var(--card-shadow);
@@ -36,6 +36,30 @@
       animation-name: rotate;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+    }
+
+    .author-name {
+      text-align: center;
+      font-weight: bold;
+      font-family: none;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+
+    .blog-overview {
+      display: flex;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 400;
+      text-align: center;
+
+      .blog-overview-item {
+        .blog-overview-count {
+        }
+        .blog-overview-name {
+          font-size: 0.7rem;
+        }
+      }
     }
   }
 }

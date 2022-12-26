@@ -1,33 +1,15 @@
 import type { Page, Theme } from '@vuepress/core'
 import { fs, getDirname, path } from '@vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-  DefaultThemePluginsOptions,
-} from '../shared/index.js'
+import type { DefaultThemePageData, ZpThemeOptions } from '../shared/index.js'
 import { assignDefaultLocaleOptions } from './utils/index.js'
 import getPlugins from './plugin/index.js'
 
 const __dirname = getDirname(import.meta.url)
 
-export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
-  /**
-   * To avoid confusion with the root `plugins` option,
-   * we use `themePlugins`
-   */
-  themePlugins?: DefaultThemePluginsOptions
-
-  /**
-   * 首页顶部背景图
-   */
-  homeTopBg?: string
-}
-
 export const zpTheme = ({
   themePlugins = {},
-  homeTopBg = '',
   ...localeOptions
-}: DefaultThemeOptions): Theme => {
+}: ZpThemeOptions): Theme => {
   assignDefaultLocaleOptions(localeOptions)
   return {
     name: 'vuepress-theme-zp',
@@ -54,9 +36,6 @@ export const zpTheme = ({
       page.data.filePathRelative = page.filePathRelative
       // save title into route meta to generate navbar and sidebar
       page.routeMeta.title = page.title
-      // if (homeTopBg) {
-      //   page['homeTopBg'] = homeTopBg
-      // }
     },
 
     plugins: getPlugins({ themePlugins, ...localeOptions }),

@@ -27,8 +27,8 @@ import ArticleList from '../components/Article/ArticleList.vue'
 import ParentLayout from './Layout.vue'
 import { useBlogCategory } from 'vuepress-plugin-blog2/client'
 import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { createRandomNum } from '../utils/index.js'
 
 const { type } = defineProps({
@@ -41,18 +41,19 @@ const { type } = defineProps({
 
 const isCategory = type === 'category'
 const tagMap = useBlogCategory<IArticleInfo>(type)
+console.log(tagMap.value)
+const route = useRoute()
+const router = useRouter()
 
-onMounted(() => {
-  const router = useRouter()
-  router.afterEach((to, from) => {
-    if (to.path === from.path) return
-
-    const pathArr = to.path.split('/').filter((i) => i)
-    if (pathArr.length > 1) return
-
+watch(
+  () => route.path,
+  () => {
+    const pathArr = route.path.split('/').filter((i) => i)
+    if (pathArr.length > 1) {
+      return
+    }
     const path = Object.values(tagMap.value.map)?.[0]?.path
-
     path && router.push(path)
-  })
-})
+  }
+)
 </script>

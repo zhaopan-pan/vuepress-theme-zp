@@ -1,6 +1,8 @@
 import { computed, defineComponent, h, toRefs } from 'vue'
 import * as materialIcons from '@vicons/material'
 import * as faIcons from '@vicons/fa'
+import * as tablerIcons from '@vicons/tabler'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'ZpIcons',
@@ -56,6 +58,7 @@ export default defineComponent({
       text,
     } = toRefs(props)
 
+    const router = useRouter()
     const iconStyle = computed(() => {
       return {
         color: iconColor.value,
@@ -64,25 +67,36 @@ export default defineComponent({
         fontSize: `${iconSize.value}rem`,
       }
     })
-    const icons = { ...faIcons, ...materialIcons }
+    const icons = { ...faIcons, ...materialIcons, ...tablerIcons }
     const curText = computed(() => text.value || slots.default?.())
 
     const textStyle = computed(() => {
-      return { color: textColor.value, fontSize: `${textSize.value}rem` }
+      return {
+        color: textColor.value,
+        fontSize: `${textSize.value}rem`,
+        lineHeight: '',
+      }
     })
 
-    const containerTag = curText ? 'a' : 'div'
+    const toPage = () => {
+      link.value && router.push(link.value)
+    }
+
+    const containerTag = 'div'
 
     if (!icon.value) return null
 
     return () => {
-      if (link.value) {
+      if (link.value || curText.value) {
         return h(
           containerTag,
           {
             class: ['icon-container', iconPosition.value],
-            href: link.value,
-            target: target.value,
+            style: {
+              lineHeight: `${iconSize.value}rem`,
+              cursor: link.value ? 'pointer' : '',
+            },
+            onClick: toPage,
           },
           [
             h(icons[`${icon.value}`], { style: iconStyle.value }),

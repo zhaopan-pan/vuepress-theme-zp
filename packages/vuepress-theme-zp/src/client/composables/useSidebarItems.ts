@@ -10,7 +10,7 @@ import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
 import type {
-  DefaultThemeData,
+  ZpThemeOptions,
   DefaultThemeNormalPageFrontmatter,
   ResolvedSidebarItem,
   SidebarConfigArray,
@@ -55,7 +55,7 @@ export const setupSidebarItems = (): void => {
  */
 export const resolveSidebarItems = (
   frontmatter: DefaultThemeNormalPageFrontmatter,
-  themeLocale: DefaultThemeData
+  themeLocale: ZpThemeOptions
 ): ResolvedSidebarItem[] => {
   // get sidebar config from frontmatter > theme data
   const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'

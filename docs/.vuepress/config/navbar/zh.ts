@@ -8,6 +8,10 @@ export const navbarZh: NavbarConfig = [
   {
     text: 'Category',
     link: '/category/',
+    children: [
+      { text: 'back-end', link: '/category/back-end/' },
+      { text: 'front', link: '/category/front/' },
+    ],
   },
   {
     text: 'Tag',

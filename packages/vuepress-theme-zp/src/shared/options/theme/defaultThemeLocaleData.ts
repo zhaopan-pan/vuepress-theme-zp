@@ -1,6 +1,6 @@
-import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from '@vuepress/shared'
-import type { NavbarConfig, SidebarConfig } from './options/nav.js'
+import type { NavbarConfig, SidebarConfig } from '../nav.js'
+import type { ThemeData } from '@vuepress/plugin-theme-data'
 
 export type DefaultThemeLocaleOptions = DefaultThemeData
 
@@ -27,11 +27,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Used as the link of back-to-home and navbar logo
    */
   home?: string
-
-  /**
-   * Home top background img
-   */
-  homeTopBg?: string
 
   /**
    * Navbar config

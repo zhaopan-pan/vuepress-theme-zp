@@ -48,7 +48,6 @@ export default defineComponent({
   setup(props, { slots }) {
     const {
       icon,
-      target,
       link,
       iconPosition,
       iconSize,

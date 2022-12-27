@@ -8,37 +8,55 @@
     />
     <div class="author-name">{{ blogInfo.name || '' }}</div>
     <div class="blog-overview">
-      <div class="blog-overview-item">
-        <div class="blog-overview-count">100</div>
-        <div class="blog-overview-name">文章</div>
+      <div
+        class="blog-overview-item cp"
+        v-for="(item, index) in blogOverviewData"
+        :key="index"
+        @click="toPage(item.link)"
+      >
+        <div class="blog-overview-count">{{ item.value }}</div>
+        <div class="blog-overview-name">{{ item.name }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { IArticleInfo } from '@vuepressSrc/node/index.js'
-import { useBlogCategory } from 'vuepress-plugin-blog2/client'
-import { useThemeData } from '../../../composables/index.js'
+import { useRouter } from 'vue-router'
+import {
+  useThemeData,
+  useArticles,
+  useCategory,
+  useTag,
+} from '../../../composables/index.js'
 
-// import { useThemeData } from '../..//useThemeData.js'
 const themeData = useThemeData()
+const articles = useArticles()
+const router = useRouter()
+
 const blogInfo = themeData.value?.blog || null
-// const getArticles = (t?: string) => useBlogCategory<IArticleInfo>()
-// console.log(getArticles().value)
-// console.log(useBlogCategory().value)
+
+const categoryKeys = Object.keys(useCategory().value.map)
+const tagKeys = Object.keys(useTag().value.map)
+
+const toPage = (link: string) => link && router.push(link)
+
 const blogOverviewData = [
-  // {
-  //   name: '文章',
-  //   value: Object.values(getArticles().value).reduce(
-  //     (pre, cur) => pre + cur.items.length,
-  //     0
-  //   ),
-  // },
-  // {
-  //   name: '分类',
-  //   value: Object.keys(getArticles('category').value).length,
-  // },
+  {
+    name: '文章',
+    value: articles.value.items.length,
+    link: '',
+  },
+  {
+    name: '分类',
+    value: categoryKeys.length,
+    link: `/category/${categoryKeys[0]}/`,
+  },
+  {
+    name: '标签',
+    value: tagKeys.length,
+    link: `/tag/${tagKeys[0]}/`,
+  },
 ]
 </script>
 

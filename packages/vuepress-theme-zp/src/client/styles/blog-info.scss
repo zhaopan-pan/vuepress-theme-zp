@@ -1,18 +1,20 @@
 @use 'vars';
+@use 'tag';
+@use 'mixins';
 @import '_variables';
 
 .blog-info {
-  min-width: 18.75rem;
+  max-width: $BIMinWidth;
   margin-left: 1rem;
   position: sticky;
   top: calc(var(--navbar-height) + 1rem);
   .author-info {
+    @include mixins.card_item;
     width: 100%;
     height: max-content;
     padding: 2rem 0;
     background-color: var(--c-bg-light);
     border-radius: var(--card-radius);
-    box-shadow: 0 1px 4px 1px var(--card-shadow);
 
     @keyframes rotate {
       0% {
@@ -41,26 +43,48 @@
     .author-name {
       text-align: center;
       font-weight: bold;
-      font-family: none;
       margin: 1rem 0;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
     .blog-overview {
       display: flex;
-      justify-content: center;
-      font-size: 1rem;
+      justify-content: space-evenly;
+      font-size: 1.1rem;
       font-weight: 400;
       text-align: center;
 
       .blog-overview-item {
-        .blog-overview-count {
-        }
+        // .blog-overview-count {
+        // }
         .blog-overview-name {
+          margin-top: 0.3rem;
           font-size: 0.7rem;
         }
       }
     }
+  }
+
+  @mixin categoryTag {
+    @include mixins.card_item;
+    @include tag.tag_wrapper;
+    display: flex;
+    margin-top: 1rem;
+    padding: 1rem 0.4rem;
+    background-color: var(--c-bg-light);
+    .icon-container {
+      margin: 0rem 0.6rem 0.6rem;
+    }
+  }
+
+  .category-info {
+    flex-direction: column;
+    @include categoryTag;
+  }
+
+  .tag-info {
+    @include categoryTag;
+    display: block;
   }
 }
 

@@ -44,7 +44,6 @@ export const blogPlugin = {
       // remove archive articles
       filter: (page) => !page.frontmatter.archive,
       path: '/home/',
-      layout: 'home',
       frontmatter: () => ({ title: 'Home', sidebar: false }),
       // sort pages with time and sticky
       sorter: (pageA, pageB) => {

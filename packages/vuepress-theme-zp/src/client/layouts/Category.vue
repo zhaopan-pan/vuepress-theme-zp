@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tag type="category" />
+    <Tag blogKey="category" />
   </div>
 </template>
 

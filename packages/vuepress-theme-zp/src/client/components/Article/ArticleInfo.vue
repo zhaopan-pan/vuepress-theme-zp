@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { IArticleItem } from '@vuepressSrc/shared/index.js'
-import { useRouter } from 'vue-router'
+
 const { data } = defineProps({
   data: {
     type: Object as PropType<IArticleItem['info']>,

@@ -1,5 +1,11 @@
 import { defineClientConfig } from '@vuepress/client'
-import { setupDarkMode, setupSidebarItems } from './composables/index.js'
+import {
+  setupDarkMode,
+  setupSidebarItems,
+  setupArticles,
+  setupTag,
+  setupCategory,
+} from './composables/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 import Tag from './layouts/Tag.vue'
@@ -11,6 +17,9 @@ export default defineClientConfig({
   enhance: (...arg) => clientEnhance(...arg),
 
   setup() {
+    setupTag()
+    setupCategory()
+    setupArticles()
     setupDarkMode()
     setupSidebarItems()
   },

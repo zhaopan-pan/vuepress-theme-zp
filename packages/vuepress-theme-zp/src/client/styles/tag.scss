@@ -4,18 +4,15 @@
 @import 'vars';
 @import '@vuepress/plugin-palette/palette';
 
-.tag-wrapper {
-  @include mixins.content_wrapper;
-
-  padding-top: 1rem !important;
-  padding-bottom: 0 !important;
+@mixin tag_wrapper {
+  // padding-bottom: 0 !important;
 
   font-size: 14px;
 
   .category {
     display: inline-block;
     vertical-align: middle;
-    margin: 0.3rem 0.6rem 0.8rem;
+    margin: 0.3rem 0.6rem;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
     border: 0.15rem solid $tag-color;
@@ -62,7 +59,7 @@
     .tag-#{$index} {
       display: inline-block;
       vertical-align: middle;
-      margin: 0.3rem 0.6rem 0.8rem;
+      margin: 0.4rem 0.6rem;
       padding: 0.5rem 1rem;
       border-radius: 0.4rem;
       background-color: color.scale($color, $lightness: 85%);
@@ -134,8 +131,13 @@
   }
 }
 
+.tag-wrapper {
+  @include mixins.content_wrapper;
+  @include tag_wrapper;
+  padding: 1rem 0rem !important;
+}
+
 .tag-article-list {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }

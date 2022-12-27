@@ -1,6 +1,7 @@
 ---
 lang: zh-CN
 title: rust-1
+author: huanwu
 tag: 
  - rust
 category: 

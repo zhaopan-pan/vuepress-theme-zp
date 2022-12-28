@@ -30,7 +30,7 @@
 </template>
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { IArticleItem } from '@vuepressSrc/shared/index.js'
+import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 
 const { data } = defineProps({
   data: {

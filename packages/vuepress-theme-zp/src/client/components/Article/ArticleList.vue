@@ -1,10 +1,12 @@
 <template>
   <div class="article-list-wrapper">
-    <ArticleItem
-      v-for="item in currentPageArticles"
-      :key="item.path"
-      :data="item"
-    />
+    <DropTransition>
+      <ArticleItem
+        v-for="item in currentPageArticles"
+        :key="item.path"
+        :data="item"
+      />
+    </DropTransition>
     <Pagination
       v-show="showPagination"
       :total="articleDataList?.length"
@@ -16,12 +18,13 @@
 </template>
 <script setup lang="ts">
 import ArticleItem from './ArticleItem.vue'
-import type { IArticleItem } from '@vuepressSrc/shared/article.js'
-import Pagination from '@zpTheme/Pagination.vue'
+import type { IArticleItem } from '@theme-zp-src/shared/article.js'
+import Pagination from '@theme-zp-client/components/Pagination.vue'
 import { computed, PropType, ref, watch } from 'vue'
-import { useArticlesCurrentPage } from '../../composables/index.js'
+import { useArticlesCurrentPage } from '@theme-zp-client/composables/index.js'
 import { useRoute } from 'vue-router'
 import { scrollToTop } from '../../utils/index.js'
+import DropTransition from '@theme-zp-client/components/transitions/DropTransition.vue'
 
 const props = defineProps({
   pageSize: { type: Number },

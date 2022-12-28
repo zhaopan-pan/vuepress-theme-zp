@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AutoLink from '@zpTheme/AutoLink.vue'
-import NavbarDropdown from '@zpTheme/NavbarDropdown.vue'
+import AutoLink from '@theme-zp-components/AutoLink.vue'
+import NavbarDropdown from '@theme-zp-components/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed, onMounted, ref } from 'vue'

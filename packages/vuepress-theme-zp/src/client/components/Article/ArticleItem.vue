@@ -1,6 +1,6 @@
 <template>
-  <div class="article-item">
-    <article @click="toDetail">
+  <div class="article-item cp" @click="toDetail">
+    <article>
       <div class="article-name text-overflow-ellipsis">
         {{ info.title }}
       </div>
@@ -11,7 +11,7 @@
 </template>
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { IArticleItem } from '@vuepressSrc/shared/index.js'
+import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import ArticleInfo from './ArticleInfo.vue'
 import { useRouter } from 'vue-router'
 
@@ -23,6 +23,5 @@ const { data } = defineProps({
   },
 })
 const { path, info } = data
-
 const toDetail = () => router.push(path)
 </script>

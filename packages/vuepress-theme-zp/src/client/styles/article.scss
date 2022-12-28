@@ -11,12 +11,6 @@
     padding: 1rem;
     background-color: var(--c-bg-light);
 
-    article {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
     &:not(:first-child) {
       margin-top: 2rem;
     }

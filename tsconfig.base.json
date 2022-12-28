@@ -10,8 +10,12 @@
     "skipLibCheck": true,
     "target": "ES2020",
     "paths": {
-      "@zpTheme/*": ["./packages/vuepress-theme-zp/src/client/components/*"],
-      "@vuepress-zp/*": ["./packages/vuepress-zp/*"]
+      "@theme-zp-components/*": [
+        "./packages/vuepress-theme-zp/src/client/components/*"
+      ],
+      "@theme-zp-client/*": ["./packages/vuepress-theme-zp/src/client/*"],
+      "@theme-zp-src/*": ["./packages/vuepress-theme-zp/src/*"],
+      "@vuepress-zp/*": ["./packages/@vuepress-zp/*"]
     }
   }
 }

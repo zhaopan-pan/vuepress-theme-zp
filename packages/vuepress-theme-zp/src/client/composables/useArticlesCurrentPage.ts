@@ -1,4 +1,4 @@
-import type { IArticleItem } from '@vuepressSrc/shared/article.js'
+import type { IArticleItem } from '@theme-zp-src/shared/article.js'
 
 /**
  * 获取当前页文章

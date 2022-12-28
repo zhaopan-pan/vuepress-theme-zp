@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, toRefs } from 'vue'
+import { computed, defineComponent, h, toRefs, withModifiers } from 'vue'
 import * as materialIcons from '@vicons/material'
 import * as faIcons from '@vicons/fa'
 import * as tablerIcons from '@vicons/tabler'
@@ -95,7 +95,7 @@ export default defineComponent({
               lineHeight: `${iconSize.value}rem`,
               cursor: link.value ? 'pointer' : '',
             },
-            onClick: toPage,
+            onClick: withModifiers(toPage, ['stop', 'prevent']),
           },
           [
             h(icons[`${icon.value}`], { style: iconStyle.value }),

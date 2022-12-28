@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SidebarItem from '@zpTheme/SidebarItem.vue'
+import SidebarItem from '@theme-zp-components/SidebarItem.vue'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSidebarItems } from '../composables/index.js'

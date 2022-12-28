@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Home from '../components/home/index.vue'
-import Navbar from '@zpTheme/Navbar.vue'
-import Page from '@zpTheme/Page.vue'
-import Sidebar from '@zpTheme/Sidebar.vue'
+import Navbar from '@theme-zp-components/Navbar.vue'
+import Page from '@theme-zp-components/Page.vue'
+import Sidebar from '@theme-zp-components/Sidebar.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'

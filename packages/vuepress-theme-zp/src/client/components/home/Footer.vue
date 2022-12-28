@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
-import type { DefaultThemeHomePageFrontmatter } from '@vuepressSrc/shared/index.js'
+import type { DefaultThemeHomePageFrontmatter } from '@theme-zp-src/shared/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const footer = computed(() => frontmatter.value.footer)

@@ -3,7 +3,7 @@ import { useBlogType } from 'vuepress-plugin-blog2/client'
 
 import type { ComputedRef, InjectionKey } from 'vue'
 import type { BlogTypeData } from 'vuepress-plugin-blog2/client'
-import type { IArticleInfo } from '@vuepressSrc/shared/index.js'
+import type { IArticleInfo } from '@theme-zp-src/shared/index.js'
 
 export type ArticlesRef = ComputedRef<BlogTypeData<IArticleInfo>>
 

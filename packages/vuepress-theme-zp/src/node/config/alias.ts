@@ -44,13 +44,6 @@ export default function (): Record<string, string> {
       .filter<[string, string]>(
         (item): item is [string, string] => item !== null
       ),
-    ...fs
-      .readdirSync(path.resolve(__dirname, '../../client/components'))
-      .filter((file: string) => file.endsWith('.vue'))
-      .map((file: any) => [
-        `@theme-zp-components/${file}`,
-        path.resolve(__dirname, '../../client/components', file),
-      ]),
   ])
 
   return alias

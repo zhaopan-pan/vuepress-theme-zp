@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AutoLink from '@theme-zp-components/AutoLink.vue'
-import NavbarDropdown from '@theme-zp-components/NavbarDropdown.vue'
+import AutoLink from '@theme-zp-client/components/AutoLink.vue'
+import NavbarDropdown from '@theme-zp-client/components/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed, onMounted, ref } from 'vue'
@@ -31,7 +31,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     }
     const currentPath = router.currentRoute.value.path
     const currentFullPath = router.currentRoute.value.fullPath
-    const currentHash = router.currentRoute.value.hash
+    // const currentHash = router.currentRoute.value.hash
 
     const languageDropdown: ResolvedNavbarItem = {
       text: themeLocale.value.selectLanguageText ?? 'unknown language',
@@ -65,8 +65,8 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           if (
             router.getRoutes().some((item) => item.path === targetLocalePage)
           ) {
-            // try to keep current hash across languages
-            link = `${targetLocalePage}${currentHash}`
+            // try to keep current hash and params across languages
+            link = currentFullPath.replace(currentPath, targetLocalePage)
           } else {
             link = targetThemeLocale.home ?? targetLocalePath
           }
@@ -176,7 +176,7 @@ onMounted(() => {
   <nav v-if="navbarLinks.length" class="navbar-items">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
       <NavbarDropdown
-        v-if="item.children"
+        v-if="item?.children"
         :item="item"
         :class="isMobile ? 'mobile' : ''"
       />

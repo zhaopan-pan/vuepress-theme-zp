@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NavbarItems from '@theme-zp-components/NavbarItems.vue'
-import SidebarItems from '@theme-zp-components/SidebarItems.vue'
+import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
+import SidebarItems from '@theme-zp-client/components/SidebarItems.vue'
 </script>
 
 <template>

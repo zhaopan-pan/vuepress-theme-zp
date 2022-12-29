@@ -13,6 +13,7 @@ import type { ZpThemeOptions } from '../../../shared/index.js'
 import { resolveContainerPluginOptions } from '../../utils/index.js'
 import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
+import docsearch from './docsearch.js'
 
 export default ({ themePlugins = {}, ...localeOptions }: ZpThemeOptions) => {
   const { blog = {}, comment = {} } = themePlugins
@@ -20,6 +21,7 @@ export default ({ themePlugins = {}, ...localeOptions }: ZpThemeOptions) => {
     blogPlugin(blog),
     commentPlugin(comment),
     tocPlugin({}),
+    docsearch(),
     // @vuepress/plugin-active-header-link
     themePlugins.activeHeaderLinks !== false
       ? activeHeaderLinksPlugin({

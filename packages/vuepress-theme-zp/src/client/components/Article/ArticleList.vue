@@ -17,13 +17,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArticleItem from './ArticleItem.vue'
+import ArticleItem from '@theme-zp-client/components/article/ArticleItem.vue'
 import type { IArticleItem } from '@theme-zp-src/shared/article.js'
 import Pagination from '@theme-zp-client/components/Pagination.vue'
 import { computed, PropType, ref, watch } from 'vue'
 import { useArticlesCurrentPage } from '@theme-zp-client/composables/index.js'
 import { useRoute } from 'vue-router'
-import { scrollToTop } from '../../utils/index.js'
+import { scrollToTop } from '@theme-zp-client/utils/index.js'
 import DropTransition from '@theme-zp-client/components/transitions/DropTransition.vue'
 
 const props = defineProps({

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import NavbarBrand from '@theme-zp-components/NavbarBrand.vue'
-import NavbarItems from '@theme-zp-components/NavbarItems.vue'
-import ToggleColorModeButton from '@theme-zp-components/ToggleColorModeButton.vue'
-import ToggleSidebarButton from '@theme-zp-components/ToggleSidebarButton.vue'
+import NavbarBrand from '@theme-zp-client/components/NavbarBrand.vue'
+import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
+import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
+import ToggleSidebarButton from '@theme-zp-client/components/ToggleSidebarButton.vue'
 import { computed, onMounted, ref } from 'vue'
 import { useThemeLocaleData } from '../composables/index.js'
 

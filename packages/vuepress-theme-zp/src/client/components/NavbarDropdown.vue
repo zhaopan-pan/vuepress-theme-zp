@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AutoLink from '@theme-zp-components/AutoLink.vue'
-import DropdownTransition from '@theme-zp-components/DropdownTransition.vue'
+import AutoLink from '@theme-zp-client/components/AutoLink.vue'
+import DropdownTransition from '@theme-zp-client/components/DropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'

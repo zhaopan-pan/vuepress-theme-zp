@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/page.js'
 import { usePageFrontmatter } from '@vuepress/client'
-import PageMeta from '@theme-zp-components/PageMeta.vue'
-import PageNav from '@theme-zp-components/PageNav.vue'
-import MyToc from '@theme-zp-components/MyToc.vue'
+import PageMeta from '@theme-zp-client/components/PageMeta.vue'
+import PageNav from '@theme-zp-client/components/PageNav.vue'
+import MyToc from '@theme-zp-client/components/MyToc.vue'
 
 import { computed } from 'vue'
 import { useThemeLocaleData } from '../composables/index.js'

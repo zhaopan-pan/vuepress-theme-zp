@@ -5,7 +5,6 @@
     "outDir": "./lib",
     "baseUrl": ".",
     "paths": {
-      "@theme-zp-components/*": ["./src/client/components/*"],
       "@theme-zp-src/*": ["./src/*"],
       "@theme-zp-client/*": ["./src/client/*"]
     },

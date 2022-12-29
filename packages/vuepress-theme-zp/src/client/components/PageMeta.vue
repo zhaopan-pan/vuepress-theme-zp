@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AutoLink from '@theme-zp-components/AutoLink.vue'
+import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'

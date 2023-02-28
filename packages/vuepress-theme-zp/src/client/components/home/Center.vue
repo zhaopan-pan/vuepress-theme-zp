@@ -1,7 +1,9 @@
 <template>
   <div class="home-center">
-    <ArticleList :data-list="articles.items" />
-    <BlogInfo />
+    <DropTransition type="group">
+      <ArticleList :data-list="articles.items" key="ArticleList" />
+      <BlogInfo key="BlogInfo" />
+    </DropTransition>
   </div>
 </template>
 

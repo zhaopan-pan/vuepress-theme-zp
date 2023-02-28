@@ -1,6 +1,6 @@
 <template>
   <div class="article-list-wrapper">
-    <DropTransition>
+    <DropTransition :delay="0.3">
       <ArticleItem
         v-for="item in currentPageArticles"
         :key="item.path"
@@ -24,7 +24,6 @@ import { computed, PropType, ref, watch } from 'vue'
 import { useArticlesCurrentPage } from '@theme-zp-client/composables/index.js'
 import { useRoute } from 'vue-router'
 import { scrollToTop } from '@theme-zp-client/utils/index.js'
-import DropTransition from '@theme-zp-client/components/transitions/DropTransition.vue'
 
 const props = defineProps({
   pageSize: { type: Number },

@@ -1,7 +1,11 @@
 <template>
   <div class="home-center">
     <DropTransition type="group">
-      <ArticleList :data-list="articles.items" key="ArticleList" />
+      <ArticleList
+        :data-list="articles.items"
+        key="ArticleList"
+        :showTag="false"
+      />
       <BlogInfo key="BlogInfo" />
     </DropTransition>
   </div>

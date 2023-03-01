@@ -15,7 +15,6 @@ const getDirAlias = (dir: string): [string, string][] =>
         file.endsWith('.vue')
     )
     .map<[string, string]>((file) => {
-      console.log({ file })
       return [
         `@theme-zp-client/${dir}/${file.replace(/\.js$/, '')}`,
         path.resolve(path.resolve(__dirname, '../../client'), dir, file),
@@ -36,6 +35,10 @@ const getEntryAlias = (entry: string): [string, string] | null =>
       ]
     : null
 
+/**
+ * 生成别名配置
+ * @returns {'alias':path}
+ */
 export default function (): Record<string, string> {
   const alias = Object.fromEntries([
     ...getDirAlias('components'),

@@ -29,9 +29,6 @@ const { blogKey, tagMap } = defineProps({
   },
 })
 const isCategory = blogKey === 'category'
-
-console.log(createRandomNum(0, 4))
-console.log({ blogKey })
 </script>
 
 <style scoped></style>

@@ -3,6 +3,8 @@ lang: zh-CN
 title: home
 tag: 
  - java
+category: 
+ - test
 description: 页面的描述
 excerpt: true
 sidebar: false

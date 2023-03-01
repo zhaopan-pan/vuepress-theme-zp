@@ -6,7 +6,7 @@
       </div>
       <div v-html="info.excerpt"></div>
     </article>
-    <ArticleInfo :data="info" />
+    <ArticleInfo :data="info" :showTag="showTag" />
   </div>
 </template>
 <script setup lang="ts">
@@ -16,11 +16,12 @@ import ArticleInfo from './ArticleInfo.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const { data } = defineProps({
+const { data, showTag } = defineProps({
   data: {
     type: Object as PropType<IArticleItem>,
     required: true,
   },
+  showTag: { type: Boolean, default: true },
 })
 const { path, info } = data
 const toDetail = () => router.push(path)

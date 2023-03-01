@@ -1,10 +1,11 @@
 <template>
   <div class="article-list-wrapper">
-    <DropTransition :delay="0.3">
+    <DropTransition :delay="0.3" type="group">
       <ArticleItem
         v-for="item in currentPageArticles"
         :key="item.path"
         :data="item"
+        :showTag="showTag"
       />
     </DropTransition>
     <Pagination
@@ -28,12 +29,13 @@ import { scrollToTop } from '@theme-zp-client/utils/index.js'
 const props = defineProps({
   pageSize: { type: Number },
   showPagination: { type: Boolean, default: true },
+  showTag: { type: Boolean, default: true },
   dataList: {
     type: Object as PropType<IArticleItem[]>,
     default: undefined,
   },
 })
-const { pageSize, showPagination } = props
+const { pageSize, showPagination, showTag } = props
 const curPageSize = pageSize || 10
 const currentPageNum = ref(1)
 

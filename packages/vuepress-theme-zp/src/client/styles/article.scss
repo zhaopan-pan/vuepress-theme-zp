@@ -1,5 +1,6 @@
 @use 'vars.scss';
 @use 'mixins';
+@import '_variables';
 
 .article-list-wrapper {
   flex: 1;
@@ -38,5 +39,47 @@
         }
       }
     }
+  }
+
+  .article-info-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1rem;
+
+    .category-text {
+      color: inherit;
+      font-size: inherit;
+      font-weight: normal;
+      &:not(&:first-child) {
+        &::before {
+          content: '/';
+          margin: 0 0.5rem;
+        }
+      }
+      // 屏幕过小不展示
+      // @media (max-width: $MQMobile) {
+      //   &:not(&:first-child) {
+      //     display: none;
+      //     &::before {
+      //       content: '';
+      //     }
+      //   }
+      // }
+    }
+    .article-info-items {
+      line-height: 1.2rem !important;
+      .icon-text {
+        margin-left: 0.4rem !important;
+      }
+    }
+    // @media (max-width: $MQMobile) {
+    //   .article-info-tag {
+    //     display: none;
+    //   }
+    // }
   }
 }

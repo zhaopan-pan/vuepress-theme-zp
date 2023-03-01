@@ -3,7 +3,7 @@ import { Transition, TransitionGroup, defineComponent, h } from 'vue'
 import type { PropType, VNode } from 'vue'
 
 export default defineComponent({
-  name: 'DropTransitions',
+  name: 'DropTransition',
 
   props: {
     /**
@@ -26,9 +26,7 @@ export default defineComponent({
   },
 
   setup(props, { slots }) {
-    console.log(slots['default']?.())
-    // todo
-    const isSingle = slots['default']?.()[0]['children']?.length === 1
+    const isSingle = props.type === 'single'
 
     const setStyle = (item: HTMLElement): void => {
       item.style.transition = `transform ${props.duration}s ease-in-out ${props.delay}s, opacity ${props.duration}s ease-in-out ${props.delay}s`

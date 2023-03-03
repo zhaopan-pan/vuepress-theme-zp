@@ -1,1 +1,1 @@
-# zp-blog-v2
+# custom theme of vuepress2.x

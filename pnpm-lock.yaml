@@ -65,7 +65,7 @@ importers:
       '@vicons/fa': ^0.12.0
       '@vicons/material': ^0.12.0
       '@vicons/tabler': ^0.12.0
-      '@vuepress-zp/plugin-toc': workspace:2.0.0-beta.53
+      '@vuepress-zp/plugin-toc': workspace:0.0.1
       '@vuepress/client': 2.0.0-beta.61
       '@vuepress/core': 2.0.0-beta.61
       '@vuepress/plugin-active-header-links': 2.0.0-beta.61

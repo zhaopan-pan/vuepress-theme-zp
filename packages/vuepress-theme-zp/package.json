@@ -1,20 +1,20 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "0.0.3",
-  "description": "Default theme of VuePress",
+  "version": "1.0.0",
+  "description": "custom theme of vuepress2.x",
   "keywords": [
+    "vuepress-theme-zp",
     "vuepress-theme",
     "vuepress",
-    "theme",
-    "default"
+    "theme"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://github.com/zhaopan-pan/vuepress-theme-zp",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/zhaopan-pan/vuepress-theme-zp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/zhaopan-pan/vuepress-theme-zp.git"
   },
   "license": "MIT",
   "author": "zp",
@@ -45,7 +45,7 @@
     "@vicons/fa": "^0.12.0",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
-    "@vuepress-zp/plugin-toc": "workspace:1.0.0",
+    "@vuepress-zp/plugin-toc": "workspace:0.0.1",
     "@vuepress/client": "2.0.0-beta.61",
     "@vuepress/core": "2.0.0-beta.61",
     "@vuepress/plugin-active-header-links": "2.0.0-beta.61",

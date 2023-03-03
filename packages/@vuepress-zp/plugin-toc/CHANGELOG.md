@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-toc
 
+## 1.0.0
+
+### Major Changes
+
+- This is a vuepress@2.x plugin for toc
+
 ## 0.1.0
 
 ### Minor Changes

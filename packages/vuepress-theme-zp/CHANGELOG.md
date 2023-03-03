@@ -1,5 +1,12 @@
 # vuepress-theme-zp
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @vuepress-zp/plugin-toc@1.0.0
+
 ## 0.0.2
 
 ### Patch Changes

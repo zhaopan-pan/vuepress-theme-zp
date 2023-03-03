@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -45,7 +45,7 @@
     "@vicons/fa": "^0.12.0",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
-    "@vuepress-zp/plugin-toc": "workspace:0.1.0",
+    "@vuepress-zp/plugin-toc": "workspace:1.0.0",
     "@vuepress/client": "2.0.0-beta.61",
     "@vuepress/core": "2.0.0-beta.61",
     "@vuepress/plugin-active-header-links": "2.0.0-beta.61",

@@ -17,7 +17,8 @@
     "docs:build": "vuepress build docs",
     "clean": "pnpm --parallel --stream clean",
     "commit": "git add . && git-cz",
-    "release": "pnpm build && bash scripts/release.sh"
+    "release": "pnpm build && bash scripts/release.sh",
+    "init": "changeset init"
   },
   "config": {
     "commitizen": {

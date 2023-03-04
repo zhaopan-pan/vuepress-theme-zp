@@ -8,13 +8,13 @@
     "plugin",
     "toc"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://github.com/zhaopan-pan/vuepress-theme-zp/tree/master/packages/%40vuepress-zp/plugin-toc",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/zhaopan-pan/vuepress-theme-zp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/zhaopan-pan/vuepress-theme-zp.git"
   },
   "license": "MIT",
   "author": "zp",

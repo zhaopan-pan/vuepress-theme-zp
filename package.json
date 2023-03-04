@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Related packages of vuepress-theme",
   "main": "index.js",
   "workspaces": [

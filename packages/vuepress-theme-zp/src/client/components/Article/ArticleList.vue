@@ -1,6 +1,6 @@
 <template>
   <div class="article-list-wrapper">
-    <DropTransition :delay="0.3" type="group">
+    <DropTransition :delay="0.1" type="group">
       <ArticleItem
         v-for="item in currentPageArticles"
         :key="item.path"

@@ -7,6 +7,7 @@ export const themeConfig = (options?: ZpThemeOptions) => ({
   ...options,
   blog: {
     name: '幻无',
+    description: '',
     avatar:
       'http://p2.music.126.net/s-RX4DnzNQdcOM0pRNrVxQ==/109951166556851964.jpg?param=177y177',
     // homeTopBg:

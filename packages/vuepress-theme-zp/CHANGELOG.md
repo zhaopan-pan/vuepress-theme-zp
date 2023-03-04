@@ -1,7 +1,7 @@
 # vuepress-theme-zp
 
-## 1.0.0
+## 0.1.0
 
-### Major Changes
+### Minor Changes
 
 - custom theme of vuepress2.x

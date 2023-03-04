@@ -1,7 +1,7 @@
 <template>
   <div class="article-item cp" @click="toDetail">
     <article>
-      <div class="article-name text-overflow-ellipsis">
+      <div class="article-name">
         {{ info.title }}
       </div>
       <div v-html="info.excerpt"></div>

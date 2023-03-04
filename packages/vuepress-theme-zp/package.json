@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "custom theme of vuepress2.x",
   "keywords": [
     "vuepress-theme-zp",
@@ -62,7 +62,11 @@
     "@vueuse/core": "^9.6.0",
     "sass": "^1.56.2",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.61",
+    "@vuepress/plugin-palette": "2.0.0-beta.61",
+    "vuepress-plugin-blog2": "2.0.0-beta.184",
+    "vuepress-plugin-comment2": "2.0.0-beta.184"
   },
   "peerDependencies": {
     "sass-loader": "^13.2.0"
@@ -75,10 +79,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@vuepress/plugin-docsearch": "2.0.0-beta.61",
-    "@vuepress/plugin-palette": "2.0.0-beta.61",
-    "vuepress-plugin-blog2": "2.0.0-beta.184",
-    "vuepress-plugin-comment2": "2.0.0-beta.184"
-  }
+  "devDependencies": {}
 }

@@ -15,7 +15,7 @@
       v-if="tag && tag.length"
       icon="Tag"
       iconSize="1"
-      :link="`/tag/${tag[0]}/`"
+      :link="`${categoryTagsObj[tag[0]]?.path}`"
       class="article-info-items"
     >
       {{ tag[0] }}
@@ -29,7 +29,7 @@
       <RouterLink
         v-for="(item, index) in category"
         :key="index"
-        :to="`/category/${item}/`"
+        :to="`${categoryTagsObj[item]?.path}`"
         class="category-text"
       >
         {{ item }}
@@ -38,10 +38,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue'
+import { computed, PropType } from 'vue'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import { RouterLink } from 'vue-router'
-
+import { useCategory, useTag } from '@theme-zp-client/composables/index.js'
 const { data } = defineProps({
   data: {
     type: Object as PropType<IArticleItem['info']>,
@@ -50,6 +50,13 @@ const { data } = defineProps({
   showTag: { type: Boolean, default: true },
 })
 const { date, author, tag, category = [] } = data
+
+const categoryList = useCategory()
+const tags = useTag()
+// 分类和标签放在一起 方便取值 {分类1:{},标签1:{}}
+const categoryTagsObj = computed(() =>
+  Object.assign(categoryList.value.map, tags.value.map)
+)
 
 const yearMouthDay = (date: string) => {
   const d = new Date(date)

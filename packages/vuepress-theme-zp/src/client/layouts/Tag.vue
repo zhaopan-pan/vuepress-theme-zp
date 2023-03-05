@@ -6,7 +6,7 @@
           <Tags :blogKey="blogKey" :tagMap="tagMap" />
         </div>
         <div class="tag-article-list">
-          <ArticleList :dataList="tagMap.currentItems" />
+          <ArticleList :dataList="currentItems" :tagMap="tagMap" />
         </div>
       </main>
     </template>
@@ -17,9 +17,11 @@ import ArticleList from '../components/article/ArticleList.vue'
 import Tags from '../components/tag/Tags.vue'
 
 import ParentLayout from './Layout.vue'
-import { watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCategory, useTag } from '../composables/index.js'
+import { dateSortByTime } from '../utils/index.js'
+
 const route = useRoute()
 const router = useRouter()
 
@@ -30,9 +32,10 @@ const { blogKey } = defineProps({
     default: 'tag',
   },
 })
-
 const isCategory = blogKey === 'category'
 const tagMap = isCategory ? useCategory() : useTag()
+
+const currentItems = computed(() => dateSortByTime(tagMap.value.currentItems))
 
 watch(
   () => route.path,
@@ -42,7 +45,7 @@ watch(
       return
     }
     const path = Object.values(tagMap.value.map)?.[0]?.path
-    path && router.push(path)
+    path !== route.path && router.push(path)
   }
 )
 </script>

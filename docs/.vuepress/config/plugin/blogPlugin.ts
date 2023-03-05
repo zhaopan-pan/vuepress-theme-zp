@@ -13,6 +13,7 @@ export const blogPlugin = {
     readme: frontmatter.readme,
     excerpt: data.excerpt || '',
   }),
+  // 展示excerpt为true的文章
   excerptFilter: ({ frontmatter }) => frontmatter.excerpt,
   category: [
     {

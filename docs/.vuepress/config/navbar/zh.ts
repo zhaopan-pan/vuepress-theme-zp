@@ -19,7 +19,7 @@ export const navbarZh: NavbarConfig = [
   },
   {
     text: 'about',
-    link: '/posts/about',
+    link: '/about',
   },
   // {
   //   text: 'series',

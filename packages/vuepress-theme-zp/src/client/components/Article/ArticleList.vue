@@ -51,7 +51,6 @@ const currentPageArticles = computed(() => {
   return data
 })
 const route = useRoute()
-
 watch(
   () => route.path,
   () => {

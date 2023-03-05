@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.3
+
+### Patch Changes
+
+- fix home category problem
+
 ## 1.0.2
 
 ### Patch Changes

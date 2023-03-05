@@ -54,9 +54,10 @@ const { date, author, tag, category = [] } = data
 const categoryList = useCategory()
 const tags = useTag()
 // 分类和标签放在一起 方便取值 {分类1:{},标签1:{}}
-const categoryTagsObj = computed(() =>
-  Object.assign(categoryList.value.map, tags.value.map)
-)
+const categoryTagsObj = computed(() => ({
+  ...categoryList.value.map,
+  ...tags.value.map,
+}))
 
 const yearMouthDay = (date: string) => {
   const d = new Date(date)

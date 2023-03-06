@@ -15,7 +15,7 @@
     margin: 0.3rem 0.6rem;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
-    border: 0.15rem solid $tag-color;
+    border: 0.15rem solid var(--c-theme);
     cursor: pointer;
     transition: all 0.3s, color 0.3s;
 
@@ -39,16 +39,17 @@
       position: absolute;
       top: -0.6rem;
       right: -0.6rem;
-      background: darken($tag-color, 10%);
+      background-color: var(--c-theme);
+      filter: saturate(230%);
     }
 
     &:hover {
-      background-color: $tag-color;
+      background-color: var(--c-theme);
       color: var(--c-bg);
     }
 
     &.router-link-active {
-      background: $tag-color;
+      background: var(--c-theme);
       color: var(--c-bg);
     }
   }

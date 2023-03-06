@@ -134,7 +134,7 @@ const handleLoading = () => {
 let unregisterRouterHook
 onMounted(() => {
   handleLoading()
-  document.getElementById('#loader-wrapper')?.remove()
+  document.querySelector('#loader-wrapper')?.remove()
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)

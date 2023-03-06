@@ -5,7 +5,6 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Loading v-if="isFirstLoad" />
     <slot name="navbar">
       <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
         <template #before>
@@ -62,7 +61,6 @@
 import Home from '../components/home/index.vue'
 import Navbar from '@theme-zp-client/components/Navbar.vue'
 import Page from '@theme-zp-client/components/Page.vue'
-import Loading from '@theme-zp-client/components/Loading.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
@@ -81,8 +79,6 @@ const themeLocale = useThemeLocaleData()
 const shouldShowNavbar = computed(
   () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
 )
-// Loading
-const isFirstLoad = ref(true)
 
 // sidebar
 const sidebarItems = useSidebarItems()
@@ -117,23 +113,9 @@ const containerClass = computed(() => [
   frontmatter.value.pageClass,
 ])
 
-const handleLoading = () => {
-  const time =
-    page.value.frontmatter.home &&
-    sessionStorage.getItem('firstLoad') == undefined
-      ? 1000
-      : 0
-  setTimeout(() => {
-    isFirstLoad.value = false
-    if (sessionStorage.getItem('firstLoad') == undefined)
-      sessionStorage.setItem('firstLoad', '1')
-  }, time)
-}
-
 // close sidebar after navigation
 let unregisterRouterHook
 onMounted(() => {
-  handleLoading()
   document.querySelector('#loader-wrapper')?.remove()
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {

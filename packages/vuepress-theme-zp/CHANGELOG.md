@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.4
+
+### Patch Changes
+
+- 优化 css 变量,添加首屏 loading
+
 ## 1.0.3
 
 ### Patch Changes

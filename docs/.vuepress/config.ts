@@ -2,6 +2,9 @@ import { defineUserConfig } from 'vuepress'
 import { themeConfig } from './config/index.js'
 import ZpTheme from 'vuepress-theme-zp'
 
+// todo 采用ejs模板变量注入的形式
+// https://v2.vuepress.vuejs.org/zh/reference/bundler/vite.html#vite
+// https://www.npmjs.com/package/vite-plugin-html
 export default defineUserConfig({
   lang: 'zh-CN',
   title: 'vp ！',

@@ -16,6 +16,7 @@ export const zpTheme = ({
     name: 'vuepress-theme-zp',
 
     templateBuild: path.resolve(__dirname, '../../templates/build.html'),
+    templateDev: path.resolve(__dirname, '../../templates/dev.html'),
 
     alias: createAlias(),
 

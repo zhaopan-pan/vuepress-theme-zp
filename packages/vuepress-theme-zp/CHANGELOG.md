@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.6
+
+### Patch Changes
+
+- 1.optimize loading style
+
 ## 1.0.5
 
 ### Patch Changes
@@ -27,12 +33,6 @@
 ## 1.0.1
 
 ### Patch Changes
-
-- fix dep
-
-## 2.0.0
-
-### Major Changes
 
 - fix dep
 

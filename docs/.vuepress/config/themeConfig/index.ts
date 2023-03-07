@@ -2,6 +2,7 @@ import { ZpThemeOptions } from 'vuepress-theme-zp'
 import { sidebarZh } from '../sidebar/index.js'
 import { navbarZh } from '../navbar/index.js'
 import { blogPlugin, commentPlugin } from '../plugin/index.js'
+import cssStr from '../../styles/cssVar'
 
 export const themeConfig = (options?: ZpThemeOptions) => ({
   ...options,
@@ -14,6 +15,15 @@ export const themeConfig = (options?: ZpThemeOptions) => ({
     //   'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
     // 'https://images.pexels.com/photos/3695297/pexels-photo-3695297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: 'http://p2.music.126.net/s-RX4DnzNQdcOM0pRNrVxQ==/109951166556851964.jpg?param=177y177',
+      },
+    ],
+  ],
   locales: {
     '/': {
       // navbar
@@ -28,4 +38,5 @@ export const themeConfig = (options?: ZpThemeOptions) => ({
     blog: blogPlugin,
     comment: commentPlugin,
   },
+  cssVariableStr: cssStr,
 })

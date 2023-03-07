@@ -12,6 +12,12 @@
     "webRoot": "${workspaceFolder}"
   },
     {
+      "name": "dev",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm dev"
+    },
+    {
       "name": "docs:dev",
       "type": "node-terminal",
       "request": "launch",

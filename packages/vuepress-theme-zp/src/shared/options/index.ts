@@ -17,6 +17,11 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
    * blog 相关配置项
    */
   blog: BlogLocaleInfo
+
+  /**
+   * css变量字符串
+   */
+  cssVariableStr?: string
 }
 
 export {

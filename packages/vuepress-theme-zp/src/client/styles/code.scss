@@ -116,7 +116,7 @@ pre[class*='language-'] {
 }
 
 .token.inserted {
-  color: #3eaf7c;
+  color: var(--c-theme);
 }
 
 // ===============================

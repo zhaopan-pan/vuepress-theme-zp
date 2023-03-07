@@ -15,7 +15,10 @@ import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
 import docsearch from './docsearch.js'
 
-export default ({ themePlugins = {}, ...localeOptions }: ZpThemeOptions) => {
+export const getPlugins = ({
+  themePlugins = {},
+  ...localeOptions
+}: ZpThemeOptions) => {
   const { blog = {}, comment = {} } = themePlugins
   return [
     blogPlugin(blog),

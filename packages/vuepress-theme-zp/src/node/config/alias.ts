@@ -39,7 +39,7 @@ const getEntryAlias = (entry: string): [string, string] | null =>
  * 生成别名配置
  * @returns {'alias':path}
  */
-export default function (): Record<string, string> {
+export function createAlias(): Record<string, string> {
   const alias = Object.fromEntries([
     ...getDirAlias('components'),
     ...['composables', 'utils']

@@ -9,6 +9,7 @@ lib/
 
 # Test temp files
 **/__fixtures__/.temp/
+/packages/vuepress-theme-zp/templates/.temp/
 
 # Test coverage files
 coverage/
@@ -24,3 +25,6 @@ node_modules/
 
 # Typescript build info
 *.tsbuildinfo
+
+# codeRunner created file
+.output-file

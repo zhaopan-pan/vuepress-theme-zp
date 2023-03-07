@@ -1,3 +1,4 @@
+import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
 import type { BlogOptions } from 'vuepress-plugin-blog2'
 import type { CommentOptions } from 'vuepress-plugin-comment2'
 
@@ -59,4 +60,9 @@ export interface DefaultThemePluginsOptions {
    * 评论插件配置
    */
   comment?: CommentOptions
+
+  /**
+   * 搜索插件配置
+   */
+  search?: DocsearchPluginOptions
 }

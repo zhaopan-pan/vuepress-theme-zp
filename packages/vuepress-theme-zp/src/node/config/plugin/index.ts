@@ -19,12 +19,12 @@ export const getPlugins = ({
   themePlugins = {},
   ...localeOptions
 }: ZpThemeOptions) => {
-  const { blog = {}, comment = {} } = themePlugins
+  const { blog = {}, comment = {}, search } = themePlugins
   return [
     blogPlugin(blog),
-    commentPlugin(comment),
     tocPlugin({}),
-    docsearch(),
+    comment ? commentPlugin(comment) : [],
+    search ? docsearch(search) : [],
     // @vuepress/plugin-active-header-link
     themePlugins.activeHeaderLinks !== false
       ? activeHeaderLinksPlugin({

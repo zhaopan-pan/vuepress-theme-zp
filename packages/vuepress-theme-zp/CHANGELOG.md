@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.7
+
+### Patch Changes
+
+- feat: add search setting
+
 ## 1.0.6
 
 ### Patch Changes

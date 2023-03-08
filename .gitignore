@@ -9,7 +9,7 @@ lib/
 
 # Test temp files
 **/__fixtures__/.temp/
-/packages/vuepress-theme-zp/templates/.temp/
+**/templates/.temp/
 
 # Test coverage files
 coverage/

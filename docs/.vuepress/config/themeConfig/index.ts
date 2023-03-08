@@ -3,6 +3,7 @@ import { sidebarZh } from '../sidebar/index.js'
 import { navbarZh } from '../navbar/index.js'
 import { blogPlugin, commentPlugin, docsearchPlugin } from '../plugin/index.js'
 import cssStr from '../../styles/cssVar'
+import path from 'path'
 
 export const themeConfig = (options?: ZpThemeOptions) => ({
   ...options,
@@ -31,4 +32,5 @@ export const themeConfig = (options?: ZpThemeOptions) => ({
     search: docsearchPlugin,
   },
   cssVariableStr: cssStr,
+  templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 })

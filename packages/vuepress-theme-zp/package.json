@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "custom theme of vuepress2.x",
   "keywords": [
     "vuepress-theme-zp",
@@ -36,7 +36,7 @@
     "templates"
   ],
   "scripts": {
-    "build": "tsc --build tsconfig.build.json",
+    "build": "rm -rf ./templates/.temp && tsc --build tsconfig.build.json",
     "build:watch": "tsc --build -w tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo",
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"

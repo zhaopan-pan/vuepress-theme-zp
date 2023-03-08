@@ -22,6 +22,11 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
    * css变量字符串
    */
   cssVariableStr?: string
+
+  /**
+   * 生产模板
+   */
+  templateBuild?: string
 }
 
 export {

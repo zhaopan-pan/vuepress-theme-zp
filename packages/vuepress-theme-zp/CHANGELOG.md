@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.8
+
+### Patch Changes
+
+- feat: 添加自定义模板配置
+
 ## 1.0.7
 
 ### Patch Changes

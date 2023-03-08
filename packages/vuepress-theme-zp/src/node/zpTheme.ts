@@ -22,7 +22,9 @@ export const zpTheme = ({
           templateDev: path.resolve(__dirname, '../../templates/dev.html'),
         }
       : {
-          templateBuild: path.resolve(__dirname, '../../templates/build.html'),
+          templateBuild:
+            localeOptions.templateBuild ||
+            path.resolve(__dirname, '../../templates/build.html'),
         },
     localeOptions.cssVariableStr
   )

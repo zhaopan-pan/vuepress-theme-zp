@@ -5,7 +5,7 @@ import { blogPlugin, commentPlugin, docsearchPlugin } from '../plugin/index.js'
 import cssStr from '../../styles/cssVar'
 import path from 'path'
 
-export const themeConfig = (options?: ZpThemeOptions) => ({
+export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
   ...options,
   blog: {
     name: '幻无',

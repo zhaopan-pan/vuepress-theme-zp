@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.9
+
+### Patch Changes
+
+- feat: optimize loading style
+
 ## 1.0.8
 
 ### Patch Changes

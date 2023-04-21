@@ -11,6 +11,7 @@ export const navbarZh: NavbarConfig = [
     children: [
       { text: 'back-end', link: '/category/back-end/' },
       { text: 'front', link: '/category/front/' },
+      { text: '源码', link: '/category/源码/' },
     ],
   },
   {

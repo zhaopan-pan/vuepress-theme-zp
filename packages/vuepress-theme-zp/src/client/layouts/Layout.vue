@@ -116,7 +116,7 @@ const containerClass = computed(() => [
 // close sidebar after navigation
 let unregisterRouterHook
 onMounted(() => {
-  document.querySelector('#loader-wrapper')?.remove()
+  document.querySelector('#loading-wrapper')?.remove()
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)

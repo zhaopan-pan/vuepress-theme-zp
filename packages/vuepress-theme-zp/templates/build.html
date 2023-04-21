@@ -31,7 +31,7 @@
   <!--vuepress-ssr-styles-->
   <!--vuepress-ssr-resources-->
   <style>
-    #loader-wrapper {
+    #loading-wrapper {
       position: fixed;
       top: 0;
       left: 0;
@@ -122,15 +122,15 @@
           transparent 14px,
           transparent);
       background-size: 28px 100%;
-      position: relative;
-      top: 18%;
+      position: absolute;
+      bottom: 45%;
     }
   </style>
 </head>
 
 <body>
   <div id="app"><!--vuepress-ssr-app--></div>
-  <div id="loader-wrapper">
+  <div id="loading-wrapper">
     <div class="loader-box">
       <div class="label">loading...</div>
       <div class="loader">

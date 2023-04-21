@@ -31,7 +31,7 @@
   <!--vuepress-ssr-styles-->
   <!--vuepress-ssr-resources-->
   <style>
-    #loader-wrapper {
+    #loading-wrapper {
       position: fixed;
       top: 0;
       left: 0;
@@ -122,16 +122,17 @@
           transparent 14px,
           transparent);
       background-size: 28px 100%;
-      position: relative;
-      top: 18%;
+      position: absolute;
+      bottom: 45%;
     }
   </style>
+  <link rel="import" href="loading.html" id="loading" />
 </head>
 
 <body>
   <div id="app"><!--vuepress-ssr-app--></div>
   <!--vuepress-ssr-scripts-->
-  <div id="loader-wrapper">
+  <!-- <div id="loading-wrapper">
     <div class="loader-box">
       <div class="label">loading...</div>
       <div class="loader">
@@ -154,7 +155,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </body>
+<script type="text/javascript">
+  console.log(loading.import);
+  document.write(loading.import.body.innerHTML);
+</script>
 
 </html>

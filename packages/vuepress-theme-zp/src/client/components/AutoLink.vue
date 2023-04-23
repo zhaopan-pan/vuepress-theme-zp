@@ -70,7 +70,7 @@ const isActiveInSubpath = computed(() => {
   if (!shouldBeActiveInSubpath.value) {
     return false
   }
-  return route.path.startsWith(item.value.link)
+  return route.path.startsWith(encodeURI(item.value.link))
 })
 
 // if this link is active

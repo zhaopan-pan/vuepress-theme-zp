@@ -17,15 +17,12 @@ export const zpTheme = ({
   assignDefaultLocaleOptions(localeOptions)
   // 注入css变量,并返回新的临时文件地址
   const templatePaths = injectCssVarToTemplatesFile(
-    isDev
-      ? {
-          templateDev: path.resolve(__dirname, '../../templates/dev.html'),
-        }
-      : {
-          templateBuild:
-            localeOptions.templateBuild ||
-            path.resolve(__dirname, '../../templates/build.html'),
-        },
+    {
+      templateDev: path.resolve(__dirname, '../../templates/dev.html'),
+      templateBuild:
+        localeOptions.templateBuild ||
+        path.resolve(__dirname, '../../templates/build.html'),
+    },
     localeOptions.cssVariableStr
   )
   return {

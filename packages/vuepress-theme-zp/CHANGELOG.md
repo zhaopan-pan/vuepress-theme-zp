@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.10
+
+### Patch Changes
+
+- fix: 修复 nav 选中问题
+
 ## 1.0.9
 
 ### Patch Changes

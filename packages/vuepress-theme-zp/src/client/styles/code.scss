@@ -217,7 +217,7 @@ div[class*='language-'] {
       text-align: center;
       color: var(--code-ln-color);
       padding-top: 3rem;
-      line-height: 1.5;
+      line-height: 1.9rem;
       counter-reset: line-number;
 
       .line-number {
@@ -225,7 +225,7 @@ div[class*='language-'] {
         z-index: 3;
         user-select: none;
         height: 1.5em;
-
+        text-align: center;
         &::before {
           counter-increment: line-number;
           content: counter(line-number);
@@ -234,18 +234,18 @@ div[class*='language-'] {
       }
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0.775rem;
-      left: 1rem;
-      height: 0.625rem;
-      width: 0.625rem;
-      border-radius: 9999px;
-      content: '';
-      background: #f95c5b;
-      box-shadow: 0 0 0 1px #da3d42, 22px 0 0 0 #fabe3b, 22px 0 0 1px #ecb03e, 44px 0 0 0 #38cd46, 44px 0 0 1px #2eae32;
-    }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0.775rem;
+    //   left: 1rem;
+    //   height: 0.625rem;
+    //   width: 0.625rem;
+    //   border-radius: 9999px;
+    //   content: '';
+    //   background: #f95c5b;
+    //   box-shadow: 0 0 0 1px #da3d42, 22px 0 0 0 #fabe3b, 22px 0 0 1px #ecb03e, 44px 0 0 0 #38cd46, 44px 0 0 1px #2eae32;
+    // }
   }
 }
 

@@ -1,34 +1,34 @@
 ---
 lang: zh-CN
-title: js-2
+title: test-code-group
 tag: 
  - c++
 description: js
 date: 2022-11-30
 ---
 
-# js-2
+# js-21
+:::: code-group
 
-jsjsjsjsjs
-```js
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
-console.log('----')
+::: code-group-item pnpm
+
+```bash
+pnpm create vuepress-theme-hope [dir]
 ```
+
+:::
+
+::: code-group-item npm:active
+
+```bash
+npm init vuepress-theme-hope [dir]
+```
+
+:::
+
+::::
+
+
 ## js-2-1
 
 jsjsjsjsjs

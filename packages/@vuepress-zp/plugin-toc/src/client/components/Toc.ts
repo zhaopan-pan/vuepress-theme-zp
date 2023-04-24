@@ -41,6 +41,7 @@ const renderLink = (
         to: hash,
         class: linkClass,
         ariaLabel: header.title,
+        title: header.title,
       },
       () => header.title
     )
@@ -52,6 +53,7 @@ const renderLink = (
       href: hash,
       class: linkClass,
       ariaLabel: header.title,
+      title: header.title,
     },
     header.title
   )

@@ -28,3 +28,20 @@
     box-shadow: 0 2px 6px 2px var(--card-shadow);
   }
 }
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+* css 文本省略
+* @param $line 几行省略
+*/
+@mixin textEllipsis($line) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}

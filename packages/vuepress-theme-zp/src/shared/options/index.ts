@@ -27,6 +27,13 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
    * 生产模板
    */
   templateBuild?: string
+  /**
+   * footer 自定义配置
+   */
+  footer?: {
+    nameLink?: string
+    startYear?: number
+  }
 }
 
 export {

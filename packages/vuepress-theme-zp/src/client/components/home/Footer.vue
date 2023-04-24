@@ -1,17 +1,34 @@
 <script setup lang="ts">
-import { usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
-import type { DefaultThemeHomePageFrontmatter } from '@theme-zp-src/shared/index.js'
+import { useThemeData } from '../../composables/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const footer = computed(() => frontmatter.value.footer)
-const footerHtml = computed(() => frontmatter.value.footerHtml)
+const themeData = useThemeData()
+const { startYear, nameLink = '' } = themeData.value?.footer || {}
+const userName = themeData.value?.blog.name || {}
+const endYear = new Date().getFullYear()
+const timeText = computed(() =>
+  startYear && endYear > startYear ? `${startYear}-${endYear}` : endYear
+)
 </script>
 
 <template>
-  <template v-if="footer">
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-if="footerHtml" class="footer" v-html="footer" />
-    <div v-else class="footer" v-text="footer" />
-  </template>
+  <div class="footer">
+    <div>
+      theme from
+      <a
+        target="_blank"
+        href="https://github.com/zhaopan-pan/vuepress-theme-zp"
+      >
+        vuepress-theme-zp
+      </a>
+    </div>
+    <div class="info">
+      Copyright
+      <ZpIcons icon="CopyrightFilled" iconSize="0.9" class="" />
+      <span v-if="timeText">
+        {{ timeText }}
+      </span>
+      <RouterLink :to="nameLink" class="ml5">{{ userName }}</RouterLink>
+    </div>
+  </div>
 </template>

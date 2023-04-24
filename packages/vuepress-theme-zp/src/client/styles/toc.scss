@@ -1,5 +1,6 @@
 @import '_variables';
 @import 'vars';
+@import '_mixins';
 
 .zp-toc {
   position: sticky;
@@ -38,7 +39,7 @@
         position: relative;
         left: -0.2em;
         transition: all 0.1s;
-
+        @include textEllipsis(1);
         &:hover {
           color: var(--c-text-accent);
         }

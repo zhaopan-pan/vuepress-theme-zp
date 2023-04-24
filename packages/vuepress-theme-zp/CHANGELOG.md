@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.11
+
+### Patch Changes
+
+- 1.add footer config
+- Updated dependencies
+  - @vuepress-zp/plugin-toc@0.0.2
+
 ## 1.0.10
 
 ### Patch Changes

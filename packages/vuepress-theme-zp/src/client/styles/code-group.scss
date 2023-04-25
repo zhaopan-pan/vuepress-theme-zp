@@ -5,14 +5,15 @@
  */
 .code-group__nav {
   margin-top: 0.85rem;
-  // 2 * margin + border-radius of <pre> tag
-  margin-bottom: calc(-1.7rem - 6px);
-  padding-bottom: calc(1.7rem - 6px);
-  padding-left: 10px;
-  padding-top: 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   background-color: var(--code-bg-color);
+  border: 1px solid var(--code-hl-bg-color);
+  border-bottom: none;
+  z-index: 1;
+  position: relative;
+  background-color: aquamarine;
+  transition: background var($animation-time);
 }
 
 .code-group__ul {
@@ -20,17 +21,59 @@
   padding-left: 0;
   display: inline-flex;
   list-style: none;
+  height: 100%;
+  background: transparent;
 }
 
-.code-group__nav-tab {
-  border: 0;
-  padding: 5px;
-  cursor: pointer;
-  background-color: transparent;
-  font-size: 0.85em;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
+.code-group__li {
+  &:first-child {
+    .code-group__nav-tab.active {
+      border-top-left-radius: 0;
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .code-group__nav-tab {
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 0.85em;
+    line-height: 1.4;
+    color: var(--c-theme);
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    transition: background $animation-time, color $animation-time;
+
+    &::after,
+    &::before {
+      content: ' ';
+      position: absolute;
+      z-index: 1;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &.active {
+      background-color: var(--code-bg-color);
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+
+      &::before {
+        right: 100%;
+        bottom: 0;
+        background: radial-gradient(2rem at left top, transparent 50%, var(--code-bg-color) 50%);
+      }
+      &::after {
+        left: 100%;
+        bottom: 0;
+        background: radial-gradient(2rem at right top, transparent 50%, var(--code-bg-color) 50%);
+      }
+    }
+  }
 }
 
 .code-group__nav-tab:focus {
@@ -39,10 +82,6 @@
 
 .code-group__nav-tab:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.9);
-}
-
-.code-group__nav-tab-active {
-  border-bottom: var(--c-theme) 1px solid;
 }
 
 @media (max-width: $MQMobileNarrow) {
@@ -58,6 +97,11 @@
  */
 .code-group-item {
   display: none;
+  div[class*='language-'] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+  }
 }
 
 .code-group-item__active {

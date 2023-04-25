@@ -1,6 +1,5 @@
 import { defineComponent, h, onBeforeUpdate, ref } from 'vue'
 import type { Component, VNode } from 'vue'
-import ZpIcons from './ZpIcons.js'
 
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',
@@ -101,11 +100,15 @@ export const CodeGroup = defineComponent({
             'ul',
             { class: 'code-group__ul' },
             items.map((vnode, i) => {
-              const isActive = i === activeIndex.value
+              const curActive = i === activeIndex.value
 
               return h(
                 'li',
-                { class: 'code-group__li' },
+                {
+                  class: {
+                    'code-group__li': true,
+                  },
+                },
                 h(
                   'button',
                   {
@@ -114,21 +117,13 @@ export const CodeGroup = defineComponent({
                         tabRefs.value[i] = element as HTMLButtonElement
                       }
                     },
-                    class: {
-                      'code-group__nav-tab': true,
-                      'code-group__nav-tab-active': isActive,
-                    },
-                    ariaPressed: isActive,
-                    ariaExpanded: isActive,
+                    class: ['code-group__nav-tab', { active: curActive }],
+                    ariaPressed: curActive,
+                    ariaExpanded: curActive,
                     onClick: () => (activeIndex.value = i),
                     onKeydown: (e) => keyboardHandler(e, i),
                   },
-                  // 标题前的icon
-                  h(ZpIcons, {
-                    'icon': 'FileCode',
-                    'text': vnode.props.title,
-                    'text-size': 12,
-                  })
+                  vnode.props.title
                 )
               )
             })

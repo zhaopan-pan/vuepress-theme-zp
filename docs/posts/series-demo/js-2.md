@@ -8,25 +8,32 @@ date: 2022-11-30
 ---
 
 # js-21
-:::: code-group
 
-::: code-group-item pnpm
+<CodeGroup>
 
-```bash
-pnpm create vuepress-theme-hope [dir]
+<CodeGroupItem title="PNPM">
+
+```bash:no-line-numbers
+pnpm install
 ```
+</CodeGroupItem>
 
-:::
+<CodeGroupItem title="YARN">
 
-::: code-group-item npm:active
-
-```bash
-npm init vuepress-theme-hope [dir]
+```bash:no-line-numbers
+yarn install
 ```
+</CodeGroupItem>
 
-:::
+<CodeGroupItem title="NPM" active>
 
-::::
+```bash:no-line-numbers
+npm install
+```
+</CodeGroupItem>
+
+</CodeGroup>
+
 
 
 ## js-2-1

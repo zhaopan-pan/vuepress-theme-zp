@@ -1,5 +1,9 @@
 @import '_variables';
 
+// Safari only support integer pixel value for line-height
+// the original font-size is 16px, 1.375 will make line-height be 22px
+$line-height: 1.375;
+
 // ===============================
 // Forked and modified from prismjs/themes/prism-tomorrow.css
 
@@ -28,8 +32,8 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  // padding: 1em;
-  // margin: 0.5em 0;
+  padding: 1em;
+  margin: 0;
   overflow: auto;
 }
 
@@ -124,7 +128,10 @@ pre[class*='language-'] {
 .theme-default-content {
   pre,
   pre[class*='language-'] {
-    line-height: 1.5;
+    line-height: $line-height;
+    // padding: 1.3rem 1.5rem;
+    // margin: 0.85rem 0;
+    border-radius: 0.5rem;
     overflow: auto;
 
     code {
@@ -145,14 +152,14 @@ pre[class*='language-'] {
 div[class*='language-'] {
   position: relative;
   background-color: var(--code-bg-color);
-  border-radius: 6px;
+  border-radius: 0.5rem;
   border: 1px solid var(--code-hl-bg-color);
 
   &::before {
     content: attr(data-ext);
     position: absolute;
     z-index: 3;
-    top: 0.65em;
+    top: 0.8em;
     right: 1em;
     font-size: 0.75rem;
     color: var(--code-ln-color);
@@ -173,7 +180,7 @@ div[class*='language-'] {
     top: 0;
     left: 0;
     width: 100%;
-    line-height: 1.5;
+    line-height: $line-height;
 
     .highlight-line {
       background-color: var(--code-hl-bg-color);
@@ -203,11 +210,9 @@ div[class*='language-'] {
     }
 
     pre {
-      padding-top: 1rem;
-      padding-left: var(--code-ln-wrapper-width);
-      margin: 2rem 0 1rem 0;
+      margin-left: var(--code-ln-wrapper-width);
+      padding-left: 1rem;
       vertical-align: middle;
-      border-top: 1px solid var(--code-hl-bg-color);
     }
 
     .line-numbers {
@@ -216,16 +221,16 @@ div[class*='language-'] {
       width: var(--code-ln-wrapper-width);
       text-align: center;
       color: var(--code-ln-color);
-      padding-top: 3rem;
-      line-height: 1.9rem;
+      padding-top: 1.25rem;
+      line-height: $line-height;
       counter-reset: line-number;
 
       .line-number {
         position: relative;
         z-index: 3;
         user-select: none;
-        height: 1.5em;
-        text-align: center;
+        height: #{$line-height}em;
+
         &::before {
           counter-increment: line-number;
           content: counter(line-number);
@@ -234,18 +239,16 @@ div[class*='language-'] {
       }
     }
 
-    // &::after {
-    //   content: '';
-    //   position: absolute;
-    //   top: 0.775rem;
-    //   left: 1rem;
-    //   height: 0.625rem;
-    //   width: 0.625rem;
-    //   border-radius: 9999px;
-    //   content: '';
-    //   background: #f95c5b;
-    //   box-shadow: 0 0 0 1px #da3d42, 22px 0 0 0 #fabe3b, 22px 0 0 1px #ecb03e, 44px 0 0 0 #38cd46, 44px 0 0 1px #2eae32;
-    // }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--code-ln-wrapper-width);
+      height: 100%;
+      border-radius: 6px 0 0 6px;
+      // border-right: 1px solid var(--code-hl-bg-color);
+    }
   }
 }
 

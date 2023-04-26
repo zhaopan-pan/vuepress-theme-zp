@@ -1,5 +1,15 @@
 # vuepress-theme-zp
 
+## 1.0.12
+
+### Patch Changes
+
+- feat:
+  1、优化目录结构
+  2、优化侧边栏样式
+  3、nav 支持 icon
+  4、优化 codeGroup 样式
+
 ## 1.0.11
 
 ### Patch Changes

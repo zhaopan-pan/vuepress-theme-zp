@@ -93,6 +93,12 @@ const isActive = computed(() => {
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
   >
+    <ZpIcons
+      v-if="item.icon"
+      :icon="item.icon.name"
+      :iconSize="item.icon.size"
+      :iconColor="item.icon.color"
+    />
     <slot name="before" />
     {{ item.text }}
     <slot name="after" />

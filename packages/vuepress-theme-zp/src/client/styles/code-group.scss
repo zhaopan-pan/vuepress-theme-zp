@@ -3,50 +3,48 @@
 /**
  * code-group
  */
-.code-group__nav {
+.code-group-nav {
   margin-top: 0.85rem;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background-color: var(--code-bg-color);
+  background-color: var(--code-nav-bg-color);
   border: 1px solid var(--code-hl-bg-color);
   border-bottom: none;
   z-index: 1;
   position: relative;
-  background-color: aquamarine;
-  transition: background var($animation-time);
+  transition: background var(--t-color);
+
+  .dark & {
+    border-left: none;
+    border-right: none;
+  }
 }
 
-.code-group__ul {
+.code-group-tabs {
   margin: auto 0;
   padding-left: 0;
   display: inline-flex;
   list-style: none;
   height: 100%;
   background: transparent;
-}
 
-.code-group__li {
-  &:first-child {
-    .code-group__nav-tab.active {
-      border-top-left-radius: 0;
-      &::before {
-        display: none;
-      }
-    }
-  }
-
-  .code-group__nav-tab {
+  .code-group-nav-tab {
     border: 0;
     padding: 8px;
     cursor: pointer;
-    background-color: transparent;
+    background: transparent;
     font-size: 0.85em;
     line-height: 1.4;
-    color: var(--c-theme);
+    color: var(--c-text);
     font-weight: 600;
     position: relative;
     display: flex;
-    transition: background $animation-time, color $animation-time;
+    transition: background var(--t-color), color var(--t-color);
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    &:hover {
+      background: var(--code-tab-hover-bg-color);
+    }
 
     &::after,
     &::before {
@@ -55,39 +53,46 @@
       z-index: 1;
       width: 1rem;
       height: 1rem;
+      bottom: 0;
     }
 
     &.active {
       background-color: var(--code-bg-color);
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
-
+      transition: none;
       &::before {
         right: 100%;
-        bottom: 0;
         background: radial-gradient(2rem at left top, transparent 50%, var(--code-bg-color) 50%);
       }
       &::after {
         left: 100%;
-        bottom: 0;
         background: radial-gradient(2rem at right top, transparent 50%, var(--code-bg-color) 50%);
+      }
+    }
+
+    &:first-child {
+      border-top-left-radius: 0 !important;
+      &::before {
+        display: none;
       }
     }
   }
 }
 
-.code-group__nav-tab:focus {
+.code-group-nav-tab:focus {
   outline: none;
 }
 
-.code-group__nav-tab:focus-visible {
+.code-group-nav-tab:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: $MQMobileNarrow) {
-  .code-group__nav {
+  .code-group-nav {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
+    margin-bottom: -1rem;
     border-radius: 0;
   }
 }

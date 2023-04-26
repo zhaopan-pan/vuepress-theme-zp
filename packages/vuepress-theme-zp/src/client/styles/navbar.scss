@@ -1,4 +1,5 @@
 @import '_variables';
+@import '_mixins';
 
 .navbar {
   --navbar-line-height: calc(var(--navbar-height) - 2 * var(--navbar-padding-v));
@@ -59,7 +60,7 @@
  * navbar-items
  */
 .navbar-items {
-  display: inline-block;
+  @include flexCenter;
 
   a {
     display: inline-block;
@@ -68,7 +69,7 @@
 
     &:hover,
     &.router-link-active {
-      color: var(--c-text);
+      color: var(--c-theme);
     }
   }
 

@@ -2,7 +2,7 @@ import { ZpThemeOptions } from 'vuepress-theme-zp'
 import { sidebarZh } from '../sidebar/index.js'
 import { navbarZh } from '../navbar/index.js'
 import { blogPlugin, commentPlugin, docsearchPlugin } from '../plugin/index.js'
-import cssStr from '../../styles/cssVar'
+import cssStr from '../../styles/cssVar.js'
 import path from 'path'
 
 export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
@@ -23,7 +23,16 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
       // sidebar
       sidebar: sidebarZh,
       // page meta
-      editLinkText: 'Edit this page on GitHub',
+      editLinkText: '编辑此页面',
+      lastUpdatedText: '最近更新时间',
+      // 不展示提交者信息
+      contributors: false,
+      // 展示可编辑跳转
+      editLink: true,
+      // 仓库信息
+      docsRepo: 'https://github.com/zhaopan-pan/vuepress-theme-zp',
+      docsBranch: 'master',
+      docsDir: 'demo',
     },
   },
   themePlugins: {

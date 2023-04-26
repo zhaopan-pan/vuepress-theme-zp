@@ -3,6 +3,7 @@
 
 .navbar-dropdown-wrapper {
   cursor: pointer;
+  // @include flexCenter;
 
   .navbar-dropdown-title {
     display: block;
@@ -10,20 +11,25 @@
     font-family: inherit;
     cursor: inherit;
     padding: inherit;
+    height: inherit;
     line-height: 1.4rem;
     background: transparent;
     border: none;
     font-weight: 500;
     color: var(--c-text);
 
-    &:hover {
-      border-color: transparent;
-    }
-
     .arrow {
+      transition: all var(--t-transform);
+      transform: rotate(0deg);
       vertical-align: middle;
       margin-top: -1px;
-      margin-left: 0.4rem;
+    }
+
+    &:hover {
+      border-color: transparent;
+      .arrow {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -32,6 +38,13 @@
     display: none;
     font-weight: 600;
     font-size: inherit;
+    .arrow {
+      transition: all var(--t-transform);
+      transform: rotate(0deg) !important;
+    }
+    .arrow-open {
+      transform: rotate(180deg) !important;
+    }
     &:hover {
       color: var(--c-text-accent);
     }
@@ -87,17 +100,18 @@
         &.router-link-active {
           color: var(--c-text-accent);
 
-          &::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 5px solid var(--c-text-accent);
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-            position: absolute;
-            top: calc(50% - 2px);
-            left: 9px;
-          }
+          // 箭头
+          // &::after {
+          //   content: '';
+          //   width: 0;
+          //   height: 0;
+          //   border-left: 5px solid var(--c-text-accent);
+          //   border-top: 3px solid transparent;
+          //   border-bottom: 3px solid transparent;
+          //   position: absolute;
+          //   top: calc(50% - 2px);
+          //   left: 9px;
+          // }
         }
       }
 

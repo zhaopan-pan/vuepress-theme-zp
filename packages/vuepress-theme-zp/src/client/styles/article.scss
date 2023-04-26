@@ -6,6 +6,10 @@
   flex: 1;
   max-width: 780px;
 
+  @media (max-width: $MQMobile) {
+    padding: 0 0.5rem;
+  }
+
   .article-item {
     @include mixins.card_item;
     border-radius: var(--card-radius);
@@ -76,10 +80,5 @@
         margin-left: 0.4rem !important;
       }
     }
-    // @media (max-width: $MQMobile) {
-    //   .article-info-tag {
-    //     display: none;
-    //   }
-    // }
   }
 }

@@ -4,13 +4,18 @@ export const navbarZh: NavbarConfig = [
   {
     text: '首页',
     link: '/',
+    icon: { name: 'HomeOutlined', size: '1' },
   },
   {
-    text: 'Category',
+    text: '分类',
     link: '/category/',
     children: [
-      { text: 'back-end', link: '/category/back-end/' },
+      {
+        text: 'back-end',
+        link: '/category/back-end/',
+      },
       { text: 'front', link: '/category/front/' },
+      { text: 'language', link: '/category/language/' },
       { text: '源码', link: '/category/源码/' },
     ],
   },
@@ -22,8 +27,4 @@ export const navbarZh: NavbarConfig = [
     text: 'about',
     link: '/about',
   },
-  // {
-  //   text: 'series',
-  //   link: '/posts/series-demo',
-  // },
 ]

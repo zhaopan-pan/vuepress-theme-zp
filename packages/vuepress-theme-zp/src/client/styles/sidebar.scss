@@ -40,10 +40,7 @@
     .navbar-items {
       display: block;
 
-      .navbar-dropdown-wrapper
-        .navbar-dropdown
-        .navbar-dropdown-item
-        a.router-link-active::after {
+      .navbar-dropdown-wrapper .navbar-dropdown .navbar-dropdown-item a.router-link-active::after {
         top: calc(1rem - 2px);
       }
     }
@@ -56,22 +53,22 @@
 
 .sidebar-item {
   cursor: default;
-  border-left: 0.25rem solid transparent;
   color: var(--c-text);
+  border: none;
+  background-color: transparent;
 
   &:focus-visible {
     outline-width: 1px;
     outline-offset: -1px;
   }
 
-  &.active:not(p.sidebar-heading) {
-    font-weight: 600;
+  &.active:not(button.sidebar-heading) {
     color: var(--c-text-accent);
-    border-left-color: var(--c-text-accent);
+    background-color: rgba($color: var(--c-theme-rgb), $alpha: 0.2);
   }
 
   &.sidebar-heading {
-    transition: color 0.15s ease;
+    transition: color var(--t-color) ease;
     font-size: 1.1em;
     font-weight: bold;
     padding: 0.35rem 1.5rem 0.35rem 1.25rem;
@@ -86,11 +83,14 @@
 
     &.collapsible {
       cursor: pointer;
+      @include flexBetween();
 
       .arrow {
-        position: relative;
-        top: -0.12em;
-        left: 0.5em;
+        transition: all var(--t-transform);
+        transform: rotate(0deg);
+      }
+      .arrow-open {
+        transform: rotate(90deg);
       }
     }
   }

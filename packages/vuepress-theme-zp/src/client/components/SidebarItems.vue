@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import SidebarItem from '@theme-zp-client/components/SidebarItem.vue'
-import { onMounted, watch } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSidebarItems } from '../composables/index.js'
+import { getFirstLayerSideBarData } from '../utils/index.js'
 
 const route = useRoute()
 const sidebarItems = useSidebarItems()
-
 onMounted(() => {
   watch(
     () => route.hash,
@@ -44,12 +44,14 @@ onMounted(() => {
     }
   )
 })
+// 从sidebarItems这个树结构数据中只保留前两层数据
+const sidebarData = computed(() => getFirstLayerSideBarData(sidebarItems.value))
 </script>
 
 <template>
-  <ul v-if="sidebarItems.length" class="sidebar-items">
+  <ul v-if="sidebarData.length" class="sidebar-items">
     <SidebarItem
-      v-for="item in sidebarItems"
+      v-for="item in sidebarData"
       :key="`${item.text}${item.link}`"
       :item="item"
     />

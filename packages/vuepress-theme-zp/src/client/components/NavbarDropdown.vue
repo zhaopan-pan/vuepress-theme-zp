@@ -58,7 +58,8 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       @click="handleDropdown"
     >
       <span class="title">{{ item.text }}</span>
-      <span class="arrow down" />
+      <!-- <span class="arrow down" /> -->
+      <ZpIcons icon="KeyboardArrowDownRound" iconSize="1" class="arrow" />
     </button>
 
     <button
@@ -68,7 +69,11 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       @click="open = !open"
     >
       <span class="title">{{ item.text }}</span>
-      <span class="arrow" :class="open ? 'down' : 'right'" />
+      <ZpIcons
+        icon="KeyboardArrowDownRound"
+        iconSize="1"
+        :class="open ? 'arrow arrow-open' : 'arrow'"
+      />
     </button>
 
     <DropdownTransition>

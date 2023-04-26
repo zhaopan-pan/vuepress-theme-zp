@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
 <template>
   <li>
     <AutoLink v-if="item.link" :class="itemClass" :item="item" />
-    <p
+    <button
       v-else
       tabindex="0"
       :class="itemClass"
@@ -66,12 +66,14 @@ onBeforeUnmount(() => {
       @keydown.enter="onClick"
     >
       {{ item.text }}
-      <span
+      <ZpIcons
+        icon="ArrowForwardIosOutlined"
         v-if="item.collapsible"
         class="arrow"
-        :class="isOpen ? 'down' : 'right'"
+        iconSize="1"
+        :class="isOpen ? 'arrow-open' : 'arrow'"
       />
-    </p>
+    </button>
 
     <DropdownTransition v-if="item.children?.length">
       <ul v-show="isOpen" class="sidebar-item-children">

@@ -35,6 +35,12 @@
   justify-content: center;
 }
 
+@mixin flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /**
 * css 文本省略
 * @param $line 几行省略

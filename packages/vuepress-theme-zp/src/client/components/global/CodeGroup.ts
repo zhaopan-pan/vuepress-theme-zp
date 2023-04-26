@@ -95,36 +95,28 @@ export const CodeGroup = defineComponent({
       return h('div', { class: 'code-group' }, [
         h(
           'div',
-          { class: 'code-group__nav' },
+          { class: 'code-group-nav' },
           h(
-            'ul',
-            { class: 'code-group__ul' },
+            'div',
+            { class: 'code-group-tabs' },
             items.map((vnode, i) => {
               const curActive = i === activeIndex.value
 
               return h(
-                'li',
+                'button',
                 {
-                  class: {
-                    'code-group__li': true,
+                  ref: (element) => {
+                    if (element) {
+                      tabRefs.value[i] = element as HTMLButtonElement
+                    }
                   },
+                  class: ['code-group-nav-tab', { active: curActive }],
+                  ariaPressed: curActive,
+                  ariaExpanded: curActive,
+                  onClick: () => (activeIndex.value = i),
+                  onKeydown: (e) => keyboardHandler(e, i),
                 },
-                h(
-                  'button',
-                  {
-                    ref: (element) => {
-                      if (element) {
-                        tabRefs.value[i] = element as HTMLButtonElement
-                      }
-                    },
-                    class: ['code-group__nav-tab', { active: curActive }],
-                    ariaPressed: curActive,
-                    ariaExpanded: curActive,
-                    onClick: () => (activeIndex.value = i),
-                    onKeydown: (e) => keyboardHandler(e, i),
-                  },
-                  vnode.props.title
-                )
+                vnode.props.title
               )
             })
           )

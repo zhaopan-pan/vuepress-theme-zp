@@ -12,7 +12,11 @@ import type {
   ResolvedNavbarItem,
 } from '../../shared/index.js'
 import { useNavLink, useThemeLocaleData } from '../composables/index.js'
-import { resolveRepoType } from '../utils/index.js'
+import {
+  DeviceType,
+  resolveRepoType,
+  updateDeviceType,
+} from '../utils/index.js'
 
 /**
  * Get navbar config of select language dropdown
@@ -152,24 +156,14 @@ const navbarLinks = computed(() => [
   ...navbarSelectLanguage.value,
   ...navbarRepo.value,
 ])
-
-// avoid overlapping of long title and long navbar links
-onMounted(() => {
-  // TODO: migrate to css var
-  // refer to _variables.scss
-  const MOBILE_DESKTOP_BREAKPOINT = 719
-
-  const handleMobile = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
-      isMobile.value = true
-    } else {
-      isMobile.value = false
-    }
+const handleMobile = (width: number): void => {
+  if (window.innerWidth < width) {
+    isMobile.value = true
+  } else {
+    isMobile.value = false
   }
-  handleMobile()
-  window.addEventListener('resize', handleMobile, false)
-  window.addEventListener('orientationchange', handleMobile, false)
-})
+}
+updateDeviceType(DeviceType.MOBILE, handleMobile)
 </script>
 
 <template>

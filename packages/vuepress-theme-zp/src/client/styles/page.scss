@@ -1,5 +1,6 @@
 @import '_mixins';
 @import '_variables';
+@import 'article';
 
 .page {
   padding-bottom: 2rem;
@@ -8,6 +9,16 @@
   .theme-default-content {
     @include content_wrapper;
     padding-top: 0;
+
+    .content-header {
+      margin-top: 3rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--c-border);
+      .content-header-title {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+    }
   }
 }
 

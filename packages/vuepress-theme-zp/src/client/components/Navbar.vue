@@ -3,8 +3,9 @@ import NavbarBrand from '@theme-zp-client/components/NavbarBrand.vue'
 import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
 import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme-zp-client/components/ToggleSidebarButton.vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useThemeLocaleData } from '../composables/index.js'
+import { DeviceType, updateDeviceType } from '../utils/index.js'
 
 defineEmits(['toggle-sidebar'])
 
@@ -23,29 +24,6 @@ const linksWrapperStyle = computed(() => {
   }
 })
 
-// avoid overlapping of long title and long navbar links
-onMounted(() => {
-  // TODO: migrate to css var
-  // refer to _variables.scss
-  const MOBILE_DESKTOP_BREAKPOINT = 719
-  const navbarHorizontalPadding =
-    getCssValue(navbar.value, 'paddingLeft') +
-    getCssValue(navbar.value, 'paddingRight')
-  const handleLinksWrapWidth = (): void => {
-    if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
-      linksWrapperMaxWidth.value = 0
-    } else {
-      linksWrapperMaxWidth.value =
-        navbar.value!.offsetWidth -
-        navbarHorizontalPadding -
-        (navbarBrand.value?.offsetWidth || 0)
-    }
-  }
-  handleLinksWrapWidth()
-  window.addEventListener('resize', handleLinksWrapWidth, false)
-  window.addEventListener('orientationchange', handleLinksWrapWidth, false)
-})
-
 function getCssValue(el: HTMLElement | null, property: string): number {
   // NOTE: Known bug, will return 'auto' if style value is 'auto'
   const val = el?.ownerDocument?.defaultView?.getComputedStyle(el, null)?.[
@@ -54,6 +32,21 @@ function getCssValue(el: HTMLElement | null, property: string): number {
   const num = Number.parseInt(val, 10)
   return Number.isNaN(num) ? 0 : num
 }
+
+const handleLinksWrapWidth = (width: number): void => {
+  const navbarHorizontalPadding =
+    getCssValue(navbar.value, 'paddingLeft') +
+    getCssValue(navbar.value, 'paddingRight')
+  if (window.innerWidth < width) {
+    linksWrapperMaxWidth.value = 0
+  } else {
+    linksWrapperMaxWidth.value =
+      navbar.value!.offsetWidth -
+      navbarHorizontalPadding -
+      (navbarBrand.value?.offsetWidth || 0)
+  }
+}
+updateDeviceType(DeviceType.MOBILE, handleLinksWrapWidth)
 </script>
 
 <template>

@@ -9,76 +9,75 @@
   @media (max-width: $MQMobile) {
     padding: 0 0.5rem;
   }
+}
+.article-item {
+  @include mixins.card_item;
+  border-radius: var(--card-radius);
+  padding: 1rem;
+  background-color: var(--c-bg-light);
 
-  .article-item {
-    @include mixins.card_item;
-    border-radius: var(--card-radius);
-    padding: 1rem;
-    background-color: var(--c-bg-light);
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
 
-    &:not(:first-child) {
-      margin-top: 2rem;
+  .article-name {
+    display: inline-block;
+    line-height: 2rem;
+    font-size: 1.1rem;
+    position: relative;
+    max-width: max-content;
+
+    &::after {
+      transition: width 0.2s;
+      content: '';
+      width: 0%;
+      height: 0.15rem;
+      background-color: var(--c-theme);
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
-
-    .article-name {
-      display: inline-block;
-      line-height: 2rem;
-      font-size: 1.1rem;
-      position: relative;
-      max-width: max-content;
-
+    &:hover {
       &::after {
-        transition: width 0.2s;
-        content: '';
-        width: 0%;
-        height: 0.15rem;
-        background-color: var(--c-theme);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-      }
-      &:hover {
-        &::after {
-          width: 100%;
-        }
+        width: 100%;
       }
     }
   }
+}
 
-  .article-info-wrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 1rem;
+.article-info-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
 
-    .category-text {
-      color: inherit;
-      font-size: inherit;
-      font-weight: normal;
-      &:not(&:first-child) {
-        &::before {
-          content: '/';
-          margin: 0 0.5rem;
-        }
+  .category-text {
+    color: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    &:not(&:first-child) {
+      &::before {
+        content: '/';
+        margin: 0 0.5rem;
       }
-      // 屏幕过小不展示
-      // @media (max-width: $MQMobile) {
-      //   &:not(&:first-child) {
-      //     display: none;
-      //     &::before {
-      //       content: '';
-      //     }
-      //   }
-      // }
     }
-    .article-info-items {
-      line-height: 1.2rem !important;
-      .icon-text {
-        margin-left: 0.4rem !important;
-      }
+    // 屏幕过小不展示
+    // @media (max-width: $MQMobile) {
+    //   &:not(&:first-child) {
+    //     display: none;
+    //     &::before {
+    //       content: '';
+    //     }
+    //   }
+    // }
+  }
+  .article-info-items {
+    line-height: 1.2rem !important;
+    .icon-text {
+      margin-left: 0.4rem !important;
     }
   }
 }

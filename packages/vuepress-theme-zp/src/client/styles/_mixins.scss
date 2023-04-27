@@ -35,6 +35,12 @@
   justify-content: center;
 }
 
+@mixin flexStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 @mixin flexBetween {
   display: flex;
   align-items: center;

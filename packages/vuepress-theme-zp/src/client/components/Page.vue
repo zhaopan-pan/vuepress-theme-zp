@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/page.js'
-import { usePageFrontmatter } from '@vuepress/client'
+import MyToc from '@theme-zp-client/components/MyToc.vue'
 import PageMeta from '@theme-zp-client/components/PageMeta.vue'
 import PageNav from '@theme-zp-client/components/PageNav.vue'
-import MyToc from '@theme-zp-client/components/MyToc.vue'
+import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/page.js'
+import { usePageFrontmatter } from '@vuepress/client'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useThemeLocaleData } from '../composables/index.js'
 import ArticleInfo from './article/ArticleInfo.vue'
 
-import { computed } from 'vue'
-import { useThemeLocaleData } from '../composables/index.js'
-
+const route = useRoute()
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 const themeLocale = useThemeLocaleData()
+
+// 文章详情页才展示文章信息
+const showArticleInfo = computed(() => route.path.startsWith('/posts'))
+
 // toc
 const shouldShowToc = computed(
   () => frontmatter.value.toc !== false && themeLocale.value.toc !== false
@@ -23,7 +28,7 @@ const shouldShowToc = computed(
     <MyToc v-if="shouldShowToc" />
 
     <div class="theme-default-content">
-      <div class="content-header">
+      <div v-if="showArticleInfo" class="content-header">
         <span class="content-header-title">{{ frontmatter.title }}</span>
         <ArticleInfo :info="frontmatter" />
       </div>

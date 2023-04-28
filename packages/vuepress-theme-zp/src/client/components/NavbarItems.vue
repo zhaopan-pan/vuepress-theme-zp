@@ -3,7 +3,7 @@ import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import NavbarDropdown from '@theme-zp-client/components/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import type {
@@ -15,7 +15,7 @@ import { useNavLink, useThemeLocaleData } from '../composables/index.js'
 import {
   DeviceType,
   resolveRepoType,
-  updateDeviceType,
+  updateDeviceStatus,
 } from '../utils/index.js'
 
 /**
@@ -163,7 +163,7 @@ const handleMobile = (width: number): void => {
     isMobile.value = false
   }
 }
-updateDeviceType(DeviceType.MOBILE, handleMobile)
+updateDeviceStatus(DeviceType.MOBILE, handleMobile)
 </script>
 
 <template>

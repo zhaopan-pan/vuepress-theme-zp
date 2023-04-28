@@ -8,7 +8,7 @@ const tempDirName = '.temp'
  * @param filePath filePath
  * @returns
  */
-const getTempPath = (filePath: string) => {
+const getTempPath = (filePath: string): string => {
   const pathItems = filePath.split('/')
   pathItems.splice(pathItems.length - 1, 0, tempDirName)
   return pathItems.join('/')
@@ -20,8 +20,8 @@ const getTempPath = (filePath: string) => {
 export const injectCssVarToTemplatesFile = (
   templatePaths: Record<string, string>,
   cssStr?: string
-) => {
-  if (!templatePaths || !Object.keys(templatePaths).length) return
+): object | null => {
+  if (!templatePaths || !Object.keys(templatePaths).length) return {}
   if (!cssStr) {
     cssStr = ':root {--c-theme: #3eaf7c !important;}'
   }

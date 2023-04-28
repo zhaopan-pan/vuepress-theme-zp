@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
 import SidebarItems from '@theme-zp-client/components/SidebarItems.vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSidebarItems } from '../composables/index.js'
 import {
-  getFirstLayerSideBarData,
-  updateDeviceType,
   DeviceType,
+  getFirstLayerSideBarData,
+  updateDeviceStatus,
 } from '../utils/index.js'
 
 const route = useRoute()
@@ -21,7 +21,7 @@ const handleMobile = (width: number): void => {
     isMobile.value = false
   }
 }
-updateDeviceType(DeviceType.MOBILE, handleMobile)
+updateDeviceStatus(DeviceType.MOBILE, handleMobile)
 
 // 只有在sidebar中配置了的md才会展示 侧边栏
 const showSideBar = computed(() =>
@@ -38,7 +38,7 @@ const showSideBar = computed(() =>
 </script>
 
 <template>
-  <aside class="sidebar" v-if="showSideBar || isMobile">
+  <aside v-if="showSideBar || isMobile" class="sidebar">
     <NavbarItems />
     <slot name="top" />
     <SidebarItems />

@@ -58,4 +58,4 @@ export const blogPlugin = {
       },
     },
   ],
-} as {}
+} as object

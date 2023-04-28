@@ -1,64 +1,4 @@
-<template>
-  <div
-    class="theme-container"
-    :class="containerClass"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <slot name="navbar">
-      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
-        <template #before>
-          <slot name="navbar-before" />
-        </template>
-        <template #after>
-          <slot name="navbar-after" />
-        </template>
-      </Navbar>
-    </slot>
-
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
-
-    <slot name="sidebar">
-      <Sidebar>
-        <template #top>
-          <slot name="sidebar-top" />
-        </template>
-        <template #bottom>
-          <slot name="sidebar-bottom" />
-        </template>
-      </Sidebar>
-    </slot>
-
-    <slot name="page">
-      <Home v-if="frontmatter.home" />
-
-      <Transition
-        v-else
-        name="fade-slide-y"
-        mode="out-in"
-        @before-enter="onBeforeEnter"
-        @before-leave="onBeforeLeave"
-      >
-        <Page :key="page.path">
-          <template #top>
-            <slot name="page-top" />
-          </template>
-          <template #content-top>
-            <slot name="page-content-top" />
-          </template>
-          <template #content-bottom>
-            <slot name="page-content-bottom" />
-          </template>
-          <template #bottom>
-            <slot name="page-bottom" />
-          </template>
-        </Page>
-      </Transition>
-    </slot>
-  </div>
-</template>
 <script setup lang="ts">
-import Home from '../components/home/index.vue'
 import Navbar from '@theme-zp-client/components/Navbar.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
@@ -66,6 +6,7 @@ import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
+import Home from '../components/home/index.vue'
 import {
   useScrollPromise,
   useSidebarItems,
@@ -131,3 +72,62 @@ const scrollPromise = useScrollPromise()
 const onBeforeEnter = scrollPromise.resolve
 const onBeforeLeave = scrollPromise.pending
 </script>
+<template>
+  <div
+    class="theme-container"
+    :class="containerClass"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
+    <slot name="navbar">
+      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+        <template #before>
+          <slot name="navbar-before" />
+        </template>
+        <template #after>
+          <slot name="navbar-after" />
+        </template>
+      </Navbar>
+    </slot>
+
+    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+
+    <slot name="sidebar">
+      <Sidebar>
+        <template #top>
+          <slot name="sidebar-top" />
+        </template>
+        <template #bottom>
+          <slot name="sidebar-bottom" />
+        </template>
+      </Sidebar>
+    </slot>
+
+    <slot name="page">
+      <Home v-if="frontmatter.home" />
+
+      <Transition
+        v-else
+        name="fade-slide-y"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+        @before-leave="onBeforeLeave"
+      >
+        <Page :key="page.path">
+          <template #top>
+            <slot name="page-top" />
+          </template>
+          <template #content-top>
+            <slot name="page-content-top" />
+          </template>
+          <template #content-bottom>
+            <slot name="page-content-bottom" />
+          </template>
+          <template #bottom>
+            <slot name="page-bottom" />
+          </template>
+        </Page>
+      </Transition>
+    </slot>
+  </div>
+</template>

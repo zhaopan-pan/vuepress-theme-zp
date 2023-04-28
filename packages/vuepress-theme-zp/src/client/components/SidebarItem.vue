@@ -67,8 +67,8 @@ onBeforeUnmount(() => {
     >
       {{ item.text }}
       <ZpIcons
-        icon="ArrowForwardIosOutlined"
         v-if="item.collapsible"
+        icon="ArrowForwardIosOutlined"
         class="arrow"
         iconSize="1"
         :class="isOpen ? 'arrow-open' : 'arrow'"

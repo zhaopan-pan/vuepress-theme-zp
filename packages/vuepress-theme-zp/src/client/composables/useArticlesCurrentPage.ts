@@ -13,8 +13,8 @@ export const useArticlesCurrentPage = (
   if (!list?.length) return []
 
   // 减1意思是从当前页开始截取
-  let start = (pageNum - 1) * pageSize
-  let end = pageNum * pageSize
+  const start = (pageNum - 1) * pageSize
+  const end = pageNum * pageSize
 
   return list.slice(start, end)
 }

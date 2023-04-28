@@ -5,7 +5,7 @@ import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeBu
 import ToggleSidebarButton from '@theme-zp-client/components/ToggleSidebarButton.vue'
 import { computed, ref } from 'vue'
 import { useThemeLocaleData } from '../composables/index.js'
-import { DeviceType, updateDeviceType } from '../utils/index.js'
+import { DeviceType, updateDeviceStatus } from '../utils/index.js'
 
 defineEmits(['toggle-sidebar'])
 
@@ -46,7 +46,7 @@ const handleLinksWrapWidth = (width: number): void => {
       (navbarBrand.value?.offsetWidth || 0)
   }
 }
-updateDeviceType(DeviceType.MOBILE, handleLinksWrapWidth)
+updateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
 </script>
 
 <template>

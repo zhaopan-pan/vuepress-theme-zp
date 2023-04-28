@@ -6,7 +6,6 @@ declare module '*.vue' {
 declare module '*.module.scss' {
   type Variables = {
     [className: string]: string
-    MQMobile: string
   }
   const cssVar: Variables
   export default cssVar

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
+import type { DefaultThemeHomePageFrontmatter } from '@theme-zp-src/shared/index.js'
 import {
   ClientOnly,
   usePageFrontmatter,
@@ -9,7 +10,6 @@ import {
 import { isArray } from '@vuepress/shared'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import type { DefaultThemeHomePageFrontmatter } from '@theme-zp-src/shared/index.js'
 import { useDarkMode } from '../../composables/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()

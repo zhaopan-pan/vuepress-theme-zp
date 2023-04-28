@@ -1,12 +1,12 @@
 import type { Page, Theme } from '@vuepress/core'
 import { getDirname, path } from '@vuepress/utils'
 import type { DefaultThemePageData, ZpThemeOptions } from '../shared/index.js'
-import { assignDefaultLocaleOptions, isDev } from './utils/index.js'
 import {
-  injectCssVarToTemplatesFile,
   createAlias,
   getPlugins,
+  injectCssVarToTemplatesFile,
 } from './config/index.js'
+import { assignDefaultLocaleOptions } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
 

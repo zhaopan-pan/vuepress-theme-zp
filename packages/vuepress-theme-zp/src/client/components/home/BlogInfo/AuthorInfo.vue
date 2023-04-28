@@ -1,33 +1,10 @@
-<template>
-  <div class="author-info" v-if="blogInfo">
-    <img
-      class="author-logo"
-      :src="blogInfo.avatar || ''"
-      alt="logo"
-      srcset=""
-    />
-    <div class="author-name">{{ blogInfo.name || '' }}</div>
-    <div class="blog-overview">
-      <div
-        class="blog-overview-item cp"
-        v-for="(item, index) in blogOverviewData"
-        :key="index"
-        @click="toPage(item.link)"
-      >
-        <div class="blog-overview-count">{{ item.value }}</div>
-        <div class="blog-overview-name">{{ item.name }}</div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import {
-  useThemeData,
   useArticles,
   useCategory,
   useTag,
+  useThemeData,
 } from '../../../composables/index.js'
 
 const themeData = useThemeData()
@@ -39,7 +16,7 @@ const blogInfo = themeData.value?.blog || null
 const categoryKeys = Object.keys(useCategory().value.map)
 const tagKeys = Object.keys(useTag().value.map)
 
-const toPage = (link: string) => link && router.push(link)
+const toPage = (link: string): unknown => link && router.push(link)
 
 const blogOverviewData = [
   {
@@ -59,5 +36,28 @@ const blogOverviewData = [
   },
 ]
 </script>
+
+<template>
+  <div v-if="blogInfo" class="author-info">
+    <img
+      class="author-logo"
+      :src="blogInfo.avatar || ''"
+      alt="logo"
+      srcset=""
+    />
+    <div class="author-name">{{ blogInfo.name || '' }}</div>
+    <div class="blog-overview">
+      <div
+        v-for="(item, index) in blogOverviewData"
+        :key="index"
+        class="blog-overview-item cp"
+        @click="toPage(item.link)"
+      >
+        <div class="blog-overview-count">{{ item.value }}</div>
+        <div class="blog-overview-name">{{ item.name }}</div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss"></style>

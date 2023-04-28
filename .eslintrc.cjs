@@ -15,10 +15,11 @@ module.exports = {
         project: ['tsconfig.eslint.json'],
       },
       rules: {
-        '@typescript-eslint/ban-ts-comment': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/ban-ts-comment': 0,
+        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-non-null-assertion': 0,
+        '@typescript-eslint/no-var-requires': 0,
+        '@typescript-eslint/dot-notation': 0,
         'vue/match-component-file-name': [
           'error',
           {
@@ -26,6 +27,16 @@ module.exports = {
             shouldMatchCase: false,
           },
         ],
+        // 要求组件名称始终为多字拼写
+        'vue/multi-word-component-names': 0,
+        // 属性必须是连字
+        'vue/attribute-hyphenation': 0,
+        // 自定义组件上强制实施 V-on/on-change的 事件命名样式
+        'vue/v-on-event-hyphenation': 0,
+        // 报告传递的解构导致值失去反应性
+        'vue/no-setup-props-destructure': 0,
+        // 禁止使用 V-HTML 来防止 XSS 攻击
+        'vue/no-v-html': 0,
       },
     },
     {
@@ -38,7 +49,5 @@ module.exports = {
       },
     },
   ],
-  rules: {
-    'no-undef': [1, { defineEmits: true, defineProps: true }],
-  },
+  rules: {},
 }

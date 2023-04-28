@@ -1,62 +1,3 @@
-<template>
-  <div class="pagination" v-if="showComponent">
-    <div class="pagination-list">
-      <button
-        :disabled="currentPage === 1"
-        class="operation-btn"
-        @click="goPrev"
-      >
-        <ZpIcons icon="ChevronLeftFilled" iconSize="1.3" />
-      </button>
-      <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
-        1
-      </span>
-      <span
-        class="ellipsis"
-        v-show="showStartFakePageNum && pageNumbers[0] > 2"
-      >
-        ...
-      </span>
-      <span
-        class="jump"
-        v-for="num in pageNumbers"
-        :key="num"
-        :class="{ curJumpItem: currentPage == num }"
-        @click="jumpPage(num)"
-        >{{ num }}</span
-      >
-      <span
-        class="ellipsis"
-        v-show="showLastFakePageNum && pages - (pageNumbers.at(-1) as number) > 1"
-      >
-        ...
-      </span>
-      <span
-        v-show="showLastFakePageNum"
-        class="jump"
-        @click="jumpPage(pages)"
-        >{{ pages }}</span
-      >
-      <button
-        class="operation-btn"
-        @click="goNext"
-        :disabled="currentPage >= pages"
-      >
-        <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
-      </button>
-      <span v-show="pages > 3">
-        <span class="jumpPoint">跳转到：</span>
-        <span class="jumping">
-          <input type="text" v-model="changePage" @keypress="keypress" />
-        </span>
-        <span class="jump go-page" @click="jumpPage(Number(changePage))"
-          >GO</span
-        >
-      </span>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 const emit = defineEmits<{
@@ -68,16 +9,15 @@ const props = defineProps({
   pageSize: { type: Number, default: 10 },
   currentPage: { type: Number, default: 1 },
 })
-const { pageSize } = props
 
 // 跳转指定页码
 const changePage = ref<number>()
 
 const pages = computed(() => {
-  return Math.ceil(props.total / pageSize)
+  return Math.ceil(props.total / props.pageSize)
 })
 const showComponent = computed(() => {
-  return props.total > pageSize && pages.value > 1
+  return props.total > props.pageSize && pages.value > 1
 })
 const showStartFakePageNum = computed(() => {
   return isMany.value && !pageNumbers.value.includes(1)
@@ -92,7 +32,7 @@ const isMany = computed(() => {
 const pageNumbers = computed(() => {
   let left = 1
   let right = pages.value
-  let ar: number[] = []
+  const ar: number[] = []
   if (pages.value >= 7) {
     if (props.currentPage > 5 && props.currentPage + 4 < pages.value) {
       left = Number(props.currentPage) - 3
@@ -115,27 +55,27 @@ const pageNumbers = computed(() => {
   return ar
 })
 
-const keypress = (e: KeyboardEvent) => {
+const keypress = (e: KeyboardEvent): void => {
   if (e.key === 'Enter' && e?.target && e.target['value']) {
     jumpPage(Number(e.target['value']))
   }
 }
 
-const goPrev = () => {
+const goPrev = (): void => {
   let cp = props.currentPage
   if (props.currentPage > 1) {
     change(--cp)
   }
 }
 
-const goNext = () => {
+const goNext = (): void => {
   let cp = props.currentPage
   if (props.currentPage < pages.value) {
     change(++cp)
   }
 }
 
-const jumpPage = (num?: number) => {
+const jumpPage = (num?: number): void => {
   if (!num || !String(num).trim()) {
     alert(`请输入页码！`)
     return
@@ -147,7 +87,66 @@ const jumpPage = (num?: number) => {
   alert(`请输入小于${pages.value}的页码！`)
 }
 
-const change = (num: number) => {
-  emit('onChange', num, pageSize)
+const change = (num: number): void => {
+  emit('onChange', num, props.pageSize)
 }
 </script>
+
+<template>
+  <div v-if="showComponent" class="pagination">
+    <div class="pagination-list">
+      <button
+        :disabled="currentPage === 1"
+        class="operation-btn"
+        @click="goPrev"
+      >
+        <ZpIcons icon="ChevronLeftFilled" iconSize="1.3" />
+      </button>
+      <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
+        1
+      </span>
+      <span
+        v-show="showStartFakePageNum && pageNumbers[0] > 2"
+        class="ellipsis"
+      >
+        ...
+      </span>
+      <span
+        v-for="num in pageNumbers"
+        :key="num"
+        class="jump"
+        :class="{ curJumpItem: currentPage == num }"
+        @click="jumpPage(num)"
+        >{{ num }}</span
+      >
+      <span
+        v-show="showLastFakePageNum && pages - (pageNumbers.at(-1) as number) > 1"
+        class="ellipsis"
+      >
+        ...
+      </span>
+      <span
+        v-show="showLastFakePageNum"
+        class="jump"
+        @click="jumpPage(pages)"
+        >{{ pages }}</span
+      >
+      <button
+        :disabled="currentPage >= pages"
+        class="operation-btn"
+        @click="goNext"
+      >
+        <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
+      </button>
+      <span v-show="pages > 3">
+        <span class="jumpPoint">跳转到：</span>
+        <span class="jumping">
+          <input v-model="changePage" type="text" @keypress="keypress" />
+        </span>
+        <span class="jump go-page" @click="jumpPage(Number(changePage))"
+          >GO</span
+        >
+      </span>
+    </div>
+  </div>
+</template>

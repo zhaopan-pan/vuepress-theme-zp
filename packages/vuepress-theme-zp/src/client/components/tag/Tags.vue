@@ -1,22 +1,7 @@
-<template>
-  <RouterLink
-    v-for="({ items, path }, name) in tagMap.map"
-    :key="name"
-    :to="path"
-    :class="!isCategory ? `${blogKey}-${createRandomNum(0, 4)}` : blogKey"
-  >
-    {{ name }}
-    <span :class="`${blogKey}-num`">
-      {{ items.length }}
-    </span>
-  </RouterLink>
-</template>
-
 <script setup lang="ts">
 import { createRandomNum } from '../../utils/index.js'
 
-const { blogKey, tagMap } = defineProps({
-  isCategory: {},
+const props = defineProps({
   blogKey: {
     type: String,
     required: false,
@@ -25,10 +10,24 @@ const { blogKey, tagMap } = defineProps({
   tagMap: {
     type: Object,
     required: true,
-    default: { map: [] },
+    default: Object,
   },
 })
-const isCategory = blogKey === 'category'
+const isCategory = props.blogKey === 'category'
 </script>
+
+<template>
+  <RouterLink
+    v-for="({ items, path }, name) in tagMap.map"
+    :key="name"
+    :to="path"
+    :class="!isCategory ? `${props.blogKey}-${createRandomNum(0, 4)}` : blogKey"
+  >
+    {{ name }}
+    <span :class="`${blogKey}-num`">
+      {{ items.length }}
+    </span>
+  </RouterLink>
+</template>
 
 <style scoped></style>

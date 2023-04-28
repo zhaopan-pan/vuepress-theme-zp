@@ -10,12 +10,12 @@ import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
 import type {
-  ZpThemeOptions,
   DefaultThemeNormalPageFrontmatter,
   ResolvedSidebarItem,
   SidebarConfigArray,
   SidebarConfigObject,
   SidebarItem,
+  ZpThemeOptions,
 } from '../../shared/index.js'
 import { useNavLink } from './useNavLink.js'
 import { useThemeLocaleData } from './useThemeData.js'

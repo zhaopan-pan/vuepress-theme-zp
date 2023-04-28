@@ -1,4 +1,5 @@
-import tocPlugin from '@vuepress-zp/plugin-toc'
+import { tocPlugin } from '@vuepress-zp/plugin-toc'
+import type { PluginConfig } from '@vuepress/core'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { containerPlugin } from '@vuepress/plugin-container'
@@ -9,16 +10,16 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
-import type { ZpThemeOptions } from '../../../shared/index.js'
-import { resolveContainerPluginOptions } from '../../utils/index.js'
 import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
+import type { ZpThemeOptions } from '../../../shared/index.js'
+import { resolveContainerPluginOptions } from '../../utils/index.js'
 import docsearch from './docsearch.js'
 
 export const getPlugins = ({
   themePlugins = {},
   ...localeOptions
-}: ZpThemeOptions) => {
+}: ZpThemeOptions): PluginConfig => {
   const { blog = {}, comment = {}, search } = themePlugins
   return [
     blogPlugin(blog),

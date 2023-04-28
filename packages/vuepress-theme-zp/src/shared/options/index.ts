@@ -1,9 +1,9 @@
 import type { DefaultThemePluginsOptions } from './plugin/index.js'
 import type {
-  DefaultThemeLocaleOptions,
+  BlogLocaleInfo,
   DefaultThemeData,
   DefaultThemeLocaleData,
-  BlogLocaleInfo,
+  DefaultThemeLocaleOptions,
 } from './theme/index.js'
 
 export interface ZpThemeOptions extends DefaultThemeLocaleOptions {

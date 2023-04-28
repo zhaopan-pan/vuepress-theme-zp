@@ -1,7 +1,7 @@
-import { computed, defineComponent, h, toRefs, withModifiers } from 'vue'
-import * as materialIcons from '@vicons/material'
 import * as faIcons from '@vicons/fa'
+import * as materialIcons from '@vicons/material'
 import * as tablerIcons from '@vicons/tabler'
+import { computed, defineComponent, h, toRefs, withModifiers } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -77,7 +77,7 @@ export default defineComponent({
       }
     })
 
-    const toPage = () => {
+    const toPage = (): void => {
       link.value && router.push(link.value)
     }
 

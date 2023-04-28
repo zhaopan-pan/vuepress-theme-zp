@@ -1,9 +1,9 @@
-import { ZpThemeOptions } from 'vuepress-theme-zp'
-import { sidebarZh } from '../sidebar/index.js'
+import path from 'path'
+import type { ZpThemeOptions } from 'vuepress-theme-zp'
+import cssStr from '../../styles/cssVar.js'
 import { navbarZh } from '../navbar/index.js'
 import { blogPlugin, commentPlugin, docsearchPlugin } from '../plugin/index.js'
-import cssStr from '../../styles/cssVar.js'
-import path from 'path'
+import { sidebarZh } from '../sidebar/index.js'
 
 export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
   ...options,

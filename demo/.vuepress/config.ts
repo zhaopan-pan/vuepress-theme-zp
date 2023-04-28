@@ -1,6 +1,6 @@
 import { defineUserConfig } from 'vuepress'
-import { themeConfig } from './config/index.js'
 import ZpTheme from 'vuepress-theme-zp'
+import { themeConfig } from './config/index.js'
 
 export default defineUserConfig({
   lang: 'zh-CN',

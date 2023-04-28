@@ -7,7 +7,7 @@ import type { ResolvedSidebarItem } from '../index.js'
  */
 export const getFirstLayerSideBarData = (
   sidebarItems: ResolvedSidebarItem[]
-) => {
+): ResolvedSidebarItem[] => {
   if (!sidebarItems.length) return []
   const list: ResolvedSidebarItem[] = []
   sidebarItems.forEach((ele) => {

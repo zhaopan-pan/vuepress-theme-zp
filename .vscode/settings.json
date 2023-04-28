@@ -1,6 +1,8 @@
 {
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
+  // 默认格式化工具
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.encoding": "utf8",
   "files.eol": "\n",
   "files.trimFinalNewlines": true,

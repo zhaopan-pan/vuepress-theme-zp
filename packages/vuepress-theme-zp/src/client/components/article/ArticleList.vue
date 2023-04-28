@@ -1,33 +1,15 @@
-<template>
-  <div class="article-list-wrapper">
-    <DropTransition :delay="0.1" type="group">
-      <ArticleItem
-        v-for="item in currentPageArticles"
-        :key="item.path"
-        :article="item"
-        :showTag="showTag"
-      />
-    </DropTransition>
-    <Pagination
-      v-show="showPagination"
-      :total="articleDataList?.length"
-      :currentPage="currentPageNum"
-      :pageSize="pageSize"
-      @onChange="paginationOnChange"
-    ></Pagination>
-  </div>
-</template>
 <script setup lang="ts">
 import ArticleItem from '@theme-zp-client/components/article/ArticleItem.vue'
-import type { IArticleItem } from '@theme-zp-src/shared/article.js'
 import Pagination from '@theme-zp-client/components/Pagination.vue'
-import { computed, PropType, ref, watch } from 'vue'
 import { useArticlesCurrentPage } from '@theme-zp-client/composables/index.js'
-import { useRoute } from 'vue-router'
 import { scrollToTop } from '@theme-zp-client/utils/index.js'
+import type { IArticleItem } from '@theme-zp-src/shared/article.js'
+import type { PropType } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
-  pageSize: { type: Number },
+  pageSize: { type: Number, default: 10 },
   showPagination: { type: Boolean, default: true },
   showTag: { type: Boolean, default: true },
   dataList: {
@@ -35,8 +17,8 @@ const props = defineProps({
     default: undefined,
   },
 })
-const { pageSize, showPagination, showTag } = props
-const curPageSize = pageSize || 10
+const { pageSize, showPagination, showTag } = toRefs(props)
+const curPageSize = pageSize.value || 10
 const currentPageNum = ref(1)
 
 const articleDataList = computed(() =>
@@ -59,8 +41,27 @@ watch(
   }
 )
 
-const paginationOnChange = (c: number) => {
+const paginationOnChange = (c: number): void => {
   currentPageNum.value = c
   scrollToTop()
 }
 </script>
+<template>
+  <div class="article-list-wrapper">
+    <DropTransition :delay="0.1" type="group">
+      <ArticleItem
+        v-for="item in currentPageArticles"
+        :key="item.path"
+        :article="item"
+        :showTag="showTag"
+      />
+    </DropTransition>
+    <Pagination
+      v-show="showPagination"
+      :total="articleDataList?.length"
+      :currentPage="currentPageNum"
+      :pageSize="pageSize"
+      @onChange="paginationOnChange"
+    ></Pagination>
+  </div>
+</template>

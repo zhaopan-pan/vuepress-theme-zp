@@ -1,5 +1,4 @@
-import { Transition, TransitionGroup, defineComponent, h } from 'vue'
-
+import { defineComponent, h, Transition, TransitionGroup } from 'vue'
 import type { PropType, VNode } from 'vue'
 
 export default defineComponent({
@@ -40,7 +39,7 @@ export default defineComponent({
     }
 
     // group情况下需要
-    const onLeave = (_ele: HTMLElement, done: () => void) => {
+    const onLeave = (_ele: HTMLElement, done: () => void): void => {
       done()
     }
 

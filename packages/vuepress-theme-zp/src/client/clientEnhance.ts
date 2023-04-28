@@ -2,7 +2,7 @@ import { h } from 'vue'
 import { useScrollPromise } from './composables/index.js'
 import { registerGlobalComponents } from './utils/index.js'
 
-export default ({ app, router }) => {
+export default ({ app, router }): void => {
   // 注册全局组件
   registerGlobalComponents(app)
 

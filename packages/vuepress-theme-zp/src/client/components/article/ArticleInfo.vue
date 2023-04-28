@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { useCategory, useTag } from '@theme-zp-client/composables/index.js'
+import type { IArticleItem } from '@theme-zp-src/shared/index.js'
+import type { PropType } from 'vue'
+import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
+const { info } = defineProps({
+  info: {
+    type: Object as PropType<IArticleItem['info']>,
+    required: true,
+  },
+  showTag: { type: Boolean, default: true },
+})
+const { date, author, tag, category = [] } = info
+
+const categoryList = useCategory()
+const tags = useTag()
+// 分类和标签放在一起 方便取值 {分类1:{},标签1:{}}
+const categoryTagsObj = computed(() => ({
+  ...categoryList.value.map,
+  ...tags.value.map,
+}))
+
+const yearMouthDay = (date: string): string => {
+  const d = new Date(date)
+  return `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`
+}
+</script>
 <template>
   <div class="article-info-wrapper">
     <ZpIcons
@@ -21,9 +49,9 @@
       {{ tag[0] }}
     </ZpIcons>
     <ZpIcons
+      v-if="category.length"
       icon="FolderRegular"
       iconSize="1"
-      v-if="category.length"
       class="article-info-items"
     >
       <RouterLink
@@ -37,31 +65,4 @@
     </ZpIcons>
   </div>
 </template>
-<script setup lang="ts">
-import { computed, PropType } from 'vue'
-import type { IArticleItem } from '@theme-zp-src/shared/index.js'
-import { RouterLink } from 'vue-router'
-import { useCategory, useTag } from '@theme-zp-client/composables/index.js'
-const { info } = defineProps({
-  info: {
-    type: Object as PropType<IArticleItem['info']>,
-    required: true,
-  },
-  showTag: { type: Boolean, default: true },
-})
-const { date, author, tag, category = [] } = info
-
-const categoryList = useCategory()
-const tags = useTag()
-// 分类和标签放在一起 方便取值 {分类1:{},标签1:{}}
-const categoryTagsObj = computed(() => ({
-  ...categoryList.value.map,
-  ...tags.value.map,
-}))
-
-const yearMouthDay = (date: string) => {
-  const d = new Date(date)
-  return `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`
-}
-</script>
 <style lang="scss"></style>

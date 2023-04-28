@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.13
+
+### Patch Changes
+
+- 1.优化文章头部信息展示 2.修复若干问题
+
 ## 1.0.12
 
 ### Patch Changes

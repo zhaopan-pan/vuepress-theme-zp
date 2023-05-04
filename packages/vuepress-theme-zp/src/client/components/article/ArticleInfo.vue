@@ -4,6 +4,8 @@ import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import type { PropType } from 'vue'
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
+import { formatDate } from '../../utils/index.js'
+
 const { info } = defineProps({
   info: {
     type: Object as PropType<IArticleItem['info']>,
@@ -20,11 +22,6 @@ const categoryTagsObj = computed(() => ({
   ...categoryList.value.map,
   ...tags.value.map,
 }))
-
-const yearMouthDay = (date: string): string => {
-  const d = new Date(date)
-  return `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`
-}
 </script>
 <template>
   <div class="article-info-wrapper">
@@ -37,7 +34,7 @@ const yearMouthDay = (date: string): string => {
       class="article-info-items"
     />
     <ZpIcons icon="AccessTimeFilled" iconSize="1" link="#">
-      {{ yearMouthDay(date) }}
+      {{ formatDate(date) }}
     </ZpIcons>
     <ZpIcons
       v-if="tag && tag.length"

@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.15
+
+### Patch Changes
+
+- fix: fix time conversion
+
 ## 1.0.14
 
 ### Patch Changes

@@ -65,8 +65,8 @@
     "vue-router": "^4.1.6",
     "@vuepress/plugin-docsearch": "2.0.0-beta.61",
     "@vuepress/plugin-palette": "2.0.0-beta.61",
-    "vuepress-plugin-blog2": "2.0.0-beta.184",
-    "vuepress-plugin-comment2": "2.0.0-beta.184"
+    "vuepress-plugin-blog2": "2.0.0-beta.207",
+    "vuepress-plugin-comment2": "2.0.0-beta.207"
   },
   "peerDependencies": {
     "sass-loader": "^13.2.0"

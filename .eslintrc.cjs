@@ -20,6 +20,7 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 0,
         '@typescript-eslint/no-var-requires': 0,
         '@typescript-eslint/dot-notation': 0,
+        '@typescript-eslint/consistent-type-imports': 0,
         'vue/match-component-file-name': [
           'error',
           {

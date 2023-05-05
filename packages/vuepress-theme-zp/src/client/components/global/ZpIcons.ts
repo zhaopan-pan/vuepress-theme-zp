@@ -73,7 +73,6 @@ export default defineComponent({
       return {
         color: textColor.value,
         fontSize: `${textSize.value}rem`,
-        lineHeight: '',
       }
     })
 

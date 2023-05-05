@@ -1,3 +1,5 @@
+@import '_mixins';
+
 .text-overflow-ellipsis {
   overflow: hidden;
   white-space: nowrap;
@@ -10,4 +12,16 @@
 
 .ml5 {
   margin-left: 5px;
+}
+
+.article-excerpt {
+  margin-top: 1rem;
+  font-size: 1em;
+}
+
+.waline-wrapper {
+  @include content_wrapper();
+  .wl-panel {
+    margin: 0 !important;
+  }
 }

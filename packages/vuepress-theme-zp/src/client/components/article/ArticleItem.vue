@@ -21,7 +21,11 @@ const toDetail = (): unknown => router.push(path)
       <div class="article-name">
         {{ info.title }}
       </div>
-      <div v-html="info.excerpt"></div>
+      <div
+        v-if="info.excerpt"
+        class="article-excerpt"
+        v-html="info.excerpt"
+      ></div>
     </article>
     <ArticleInfo :info="info" :showTag="showTag" />
   </div>

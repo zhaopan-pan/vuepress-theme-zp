@@ -14,7 +14,9 @@ const frontmatter = usePageFrontmatter<IArticleInfo>()
 const themeLocale = useThemeLocaleData()
 
 // 文章详情页才展示文章信息
-const showArticleInfo = computed(() => route.path.startsWith('/posts'))
+const showArticleInfo = computed(
+  () => route.path.startsWith('/posts') && frontmatter.value.title
+)
 
 // toc
 const shouldShowToc = computed(

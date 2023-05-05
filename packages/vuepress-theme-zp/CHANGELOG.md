@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.17
+
+### Patch Changes
+
+- feat: 不配置 title 不展示文章信息
+
 ## 1.0.16
 
 ### Patch Changes

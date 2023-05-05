@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.16
+
+### Patch Changes
+
+- feat:优化样式
+
 ## 1.0.15
 
 ### Patch Changes

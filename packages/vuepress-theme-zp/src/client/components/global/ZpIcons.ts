@@ -23,6 +23,10 @@ export default defineComponent({
       type: String,
       default: 'inherit',
     },
+    iconProps: {
+      type: Object,
+      default: () => ({}),
+    },
     text: {
       type: String,
       default: '',
@@ -52,6 +56,7 @@ export default defineComponent({
       iconPosition,
       iconSize,
       iconColor,
+      iconProps,
       textColor,
       textSize,
       text,
@@ -73,6 +78,7 @@ export default defineComponent({
       return {
         color: textColor.value,
         fontSize: `${textSize.value}rem`,
+        // lineHeight: `${textSize.value}rem`,
       }
     })
 
@@ -91,13 +97,16 @@ export default defineComponent({
           {
             class: ['icon-container', iconPosition.value],
             style: {
-              lineHeight: `${iconSize.value}rem`,
+              lineHeight: `${Number(iconSize.value) + 0.5}rem`,
               cursor: link.value ? 'pointer' : '',
             },
             onClick: withModifiers(toPage, ['stop', 'prevent']),
           },
           [
-            h(icons[`${icon.value}`], { style: iconStyle.value }),
+            h(icons[`${icon.value}`], {
+              style: iconStyle.value,
+              ...iconProps.value,
+            }),
             curText.value &&
               h(
                 'span',

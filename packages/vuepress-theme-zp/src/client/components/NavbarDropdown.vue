@@ -72,7 +72,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       <ZpIcons
         icon="KeyboardArrowDownRound"
         iconSize="1"
-        :class="open ? 'arrow arrow-open' : 'arrow'"
+        :class="open ? 'arrow-mobile-open' : 'arrow-mobile'"
       />
     </button>
 

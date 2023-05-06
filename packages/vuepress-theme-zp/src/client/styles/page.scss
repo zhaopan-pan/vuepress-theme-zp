@@ -13,7 +13,8 @@
     .content-header {
       margin-top: 3rem;
       margin-bottom: 1.5rem;
-      // border-bottom: 1px solid var(--c-border);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--c-border);
       .content-header-title {
         font-size: 2rem;
         font-weight: 600;

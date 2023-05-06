@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.19
+
+### Patch Changes
+
+- feat: optimization style
+
 ## 1.0.18
 
 ### Patch Changes

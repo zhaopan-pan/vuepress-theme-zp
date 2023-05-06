@@ -5,6 +5,12 @@
   cursor: pointer;
   // @include flexCenter;
 
+  .arrow {
+    transition: all var(--t-transform);
+    transform: rotate(0deg);
+    vertical-align: middle;
+    margin-top: -1px;
+  }
   .navbar-dropdown-title {
     display: block;
     font-size: 0.9rem;
@@ -17,20 +23,6 @@
     border: none;
     font-weight: 500;
     color: var(--c-text);
-
-    .arrow {
-      transition: all var(--t-transform);
-      transform: rotate(0deg);
-      vertical-align: middle;
-      margin-top: -1px;
-    }
-
-    &:hover {
-      border-color: transparent;
-      .arrow {
-        transform: rotate(180deg);
-      }
-    }
   }
 
   .navbar-dropdown-title-mobile {
@@ -38,12 +30,12 @@
     display: none;
     font-weight: 600;
     font-size: inherit;
-    .arrow {
+    .arrow-mobile-open {
       transition: all var(--t-transform);
-      transform: rotate(0deg) !important;
     }
-    .arrow-open {
-      transform: rotate(180deg) !important;
+    .arrow-mobile {
+      transition: all var(--t-transform);
+      transform: rotate(-90deg) !important;
     }
     &:hover {
       color: var(--c-text-accent);
@@ -133,7 +125,7 @@
     }
 
     .navbar-dropdown-title-mobile {
-      display: block;
+      @include flexStart;
     }
 
     .navbar-dropdown {
@@ -164,10 +156,15 @@
   &:not(.mobile) {
     height: 1.8rem;
 
-    &:hover .navbar-dropdown,
-    &.open .navbar-dropdown {
-      // override the inline style.
-      display: block !important;
+    &:hover {
+      .navbar-dropdown,
+      &.open .navbar-dropdown {
+        // override the inline style.
+        display: block !important;
+      }
+      .arrow {
+        transform: rotate(180deg);
+      }
     }
 
     &.open:blur {
@@ -176,7 +173,7 @@
 
     .navbar-dropdown {
       display: none;
-      // Avoid height shaked by clicking
+      // Avoid height shaded by clicking
       height: auto !important;
       box-sizing: border-box;
       max-height: calc(100vh - 2.7rem);

@@ -27,19 +27,25 @@ const categoryTagsObj = computed(() => ({
   <div class="article-info-wrapper">
     <ZpIcons
       v-if="author"
-      icon="PersonOutlineFilled"
-      iconSize="1"
-      link="#"
+      icon="PersonOutlineRound"
+      iconSize="1.1"
+      :iconProps="{ viewBox: '2 2 20 20' }"
+      link="#12"
       :text="author"
       class="article-info-items"
     />
-    <ZpIcons icon="AccessTimeFilled" iconSize="1" link="#">
+    <ZpIcons
+      icon="AccessTimeFilled"
+      iconSize="1"
+      :iconProps="{ viewBox: '1 1 22 22' }"
+      link="#"
+    >
       {{ formatDate(date) }}
     </ZpIcons>
     <ZpIcons
       v-if="tag && tag.length"
       icon="Tag"
-      iconSize="1"
+      iconSize="1.1"
       :link="`${categoryTagsObj[tag[0]]?.path}`"
       class="article-info-items"
     >
@@ -48,7 +54,8 @@ const categoryTagsObj = computed(() => ({
     <ZpIcons
       v-if="category.length"
       icon="FolderRegular"
-      iconSize="1"
+      :iconProps="{ viewBox: '-30 -30 600 600' }"
+      iconSize="1.1"
       class="article-info-items"
     >
       <RouterLink

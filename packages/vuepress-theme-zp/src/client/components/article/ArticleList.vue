@@ -22,7 +22,7 @@ const curPageSize = pageSize.value || 10
 const currentPageNum = ref(1)
 
 const articleDataList = computed(() =>
-  props.dataList?.filter((d) => !d.info.readme)
+  props.dataList?.filter((d) => !d.info?.readme)
 )
 
 const currentPageArticles = computed(() => {

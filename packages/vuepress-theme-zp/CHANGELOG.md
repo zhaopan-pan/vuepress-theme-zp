@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.18
+
+### Patch Changes
+
+- fix: 修复 date 样式
+
 ## 1.0.17
 
 ### Patch Changes

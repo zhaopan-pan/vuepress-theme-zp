@@ -17,9 +17,10 @@ const getTimeToSecond = (date: string): number => {
 const formatDate = (date: string): string => {
   if (!date || !date.includes('-')) return ''
   const d = new Date(date)
-  return `${d.getFullYear()}-
-  ${String(d.getMonth() + 1).padStart(2, '0')}-
-  ${String(d.getDate()).padStart(2, '0')}`
+  const year = d.getFullYear()
+  const mouth = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${year}-${mouth}-${day}`
 }
 
 /**

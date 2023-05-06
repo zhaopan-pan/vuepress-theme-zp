@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.20
+
+### Patch Changes
+
+- feat:
+  1.add pwa
+  2.optimization codeGroup style
+
 ## 1.0.19
 
 ### Patch Changes

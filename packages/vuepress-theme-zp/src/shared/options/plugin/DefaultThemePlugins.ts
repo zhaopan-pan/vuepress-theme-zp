@@ -1,4 +1,5 @@
 import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
+import type { PwaPluginOptions } from '@vuepress/plugin-pwa'
 import type { BlogOptions } from 'vuepress-plugin-blog2'
 import type { CommentOptions } from 'vuepress-plugin-comment2'
 
@@ -65,4 +66,9 @@ export interface DefaultThemePluginsOptions {
    * 搜索插件配置
    */
   search?: DocsearchPluginOptions
+
+  /**
+   * pwa插件配置 https://v2.vuepress.vuejs.org/zh/reference/plugin/pwa.html
+   */
+  pwa?: PwaPluginOptions
 }

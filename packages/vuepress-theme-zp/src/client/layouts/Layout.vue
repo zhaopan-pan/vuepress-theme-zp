@@ -12,6 +12,7 @@ import {
   useSidebarItems,
   useThemeLocaleData,
 } from '../composables/index.js'
+import { removeLoading } from '../utils/index.js'
 
 const page = usePageData()
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
@@ -57,7 +58,7 @@ const containerClass = computed(() => [
 // close sidebar after navigation
 let unregisterRouterHook
 onMounted(() => {
-  document.querySelector('#loading-wrapper')?.remove()
+  removeLoading()
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)

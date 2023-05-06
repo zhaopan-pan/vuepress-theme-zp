@@ -15,17 +15,19 @@ import { commentPlugin } from 'vuepress-plugin-comment2'
 import type { ZpThemeOptions } from '../../../shared/index.js'
 import { resolveContainerPluginOptions } from '../../utils/index.js'
 import docsearch from './docsearch.js'
+import createPwa from './pwa.js'
 
 export const getPlugins = ({
   themePlugins = {},
   ...localeOptions
 }: ZpThemeOptions): PluginConfig => {
-  const { blog = {}, comment = {}, search } = themePlugins
+  const { blog = {}, comment = {}, search, pwa = {} } = themePlugins
   return [
     blogPlugin(blog),
     tocPlugin({}),
     comment ? commentPlugin(comment) : [],
     search ? docsearch(search) : [],
+    pwa ? createPwa(pwa) : [],
     // @vuepress/plugin-active-header-link
     themePlugins.activeHeaderLinks !== false
       ? activeHeaderLinksPlugin({

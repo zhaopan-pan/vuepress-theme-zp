@@ -37,6 +37,9 @@
     color: var(--c-tip-text);
     background-color: rgba(var(--c-tip-rgb), 0.1);
 
+    p {
+      margin: inherit !important;
+    }
     .custom-container-title {
       color: var(--c-tip-title);
       &::before {

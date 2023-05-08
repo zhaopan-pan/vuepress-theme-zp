@@ -8,9 +8,10 @@ excerpt: true
 cover: https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45e1faa1340f428c9f83d5a51f0677ac~tplv-k3u1fbpfcp-zoom-crop-mark:1512:1512:1512:851.awebp?
 ---
 
-fsfafsfsgagadsagagsdfgfsfafsfsgagadsagagsdfgfsfafsfsgagadsagagsdfgfsfafsfsgagadsagagsdfg
-
-<!-- more -->
+::: tip GitHub Pages
+vuerepss项目部署到github后的两种访问方式
+:::
+ <!-- more -->
 
 # level-1
 

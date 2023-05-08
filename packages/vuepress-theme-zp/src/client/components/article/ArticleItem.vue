@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
-import type { PropType } from 'vue'
+import { computed, PropType } from 'vue'
 import { useRouter } from 'vue-router'
 import ArticleInfo from './ArticleInfo.vue'
 
@@ -12,21 +12,37 @@ const { article, showTag } = defineProps({
   },
   showTag: { type: Boolean, default: true },
 })
+
 const { path, info } = article
+
+// 图片、描述、摘要有一个即展示
+const showCoverInfo = computed(
+  () => info.cover || info.description || info.excerpt
+)
+
+// 优先取描述，没有描述取摘要
+const excerptContent = computed(() => info.description || info.excerpt)
+
 const toDetail = (): unknown => router.push(path)
 </script>
 <template>
-  <div class="article-item cp" @click="toDetail">
-    <article>
-      <div class="article-name">
-        {{ info.title }}
-      </div>
+  <article class="article-item cp" @click="toDetail">
+    <div class="article-name">
+      {{ info.title }}
+    </div>
+    <div class="cover-info">
       <div
-        v-if="info.excerpt"
-        class="article-excerpt"
-        v-html="info.excerpt"
-      ></div>
-    </article>
+        v-if="showCoverInfo"
+        class="cover-info-text"
+        v-html="excerptContent"
+      />
+      <img
+        v-if="info.cover"
+        class="article-cover"
+        :src="info.cover"
+        alt="article-cover"
+      />
+    </div>
     <ArticleInfo :info="info" :showTag="showTag" />
-  </div>
+  </article>
 </template>

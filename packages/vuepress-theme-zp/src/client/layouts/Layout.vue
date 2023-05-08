@@ -3,7 +3,7 @@ import Navbar from '@theme-zp-client/components/Navbar.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
 import Home from '../components/home/index.vue'
@@ -64,8 +64,14 @@ onMounted(() => {
     toggleSidebar(false)
   })
 })
+
 onUnmounted(() => {
   unregisterRouterHook()
+})
+
+onErrorCaptured((_err, _ins, info) => {
+  console.error('err-info:', info)
+  removeLoading()
 })
 
 // handle scrollBehavior with transition

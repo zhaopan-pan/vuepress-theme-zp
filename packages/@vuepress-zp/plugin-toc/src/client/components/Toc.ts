@@ -1,6 +1,15 @@
 import { usePageData } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
-import { computed, defineComponent, h, toRefs } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  nextTick,
+  onMounted,
+  ref,
+  toRefs,
+  watch,
+} from 'vue'
 import type { PropType, VNode } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
@@ -16,7 +25,8 @@ export interface TocProps {
 const renderLink = (
   header: PageHeader,
   options: TocPropsOptions,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
+  onClickLink: (e: Event) => void
 ): VNode => {
   const hash = `#${header.slug}`
   const linkClass = [options.linkClass]
@@ -42,6 +52,7 @@ const renderLink = (
         class: linkClass,
         ariaLabel: header.title,
         title: header.title,
+        onClick: onClickLink,
       },
       () => header.title
     )
@@ -62,7 +73,8 @@ const renderLink = (
 const renderHeaders = (
   headers: PageHeader[],
   options: TocPropsOptions,
-  route: RouteLocationNormalizedLoaded
+  route: RouteLocationNormalizedLoaded,
+  onClickLink: (e: Event) => void
 ): VNode[] => {
   if (headers.length === 0) {
     return []
@@ -81,8 +93,8 @@ const renderHeaders = (
             class: options.itemClass,
           },
           [
-            renderLink(header, options, route),
-            renderHeaders(header.children, options, route),
+            renderLink(header, options, route, onClickLink),
+            renderHeaders(header.children, options, route, onClickLink),
           ]
         )
       )
@@ -109,6 +121,7 @@ export const Toc = defineComponent({
 
   setup(props) {
     const { headers: propsHeaders, options: propsOptions } = toRefs(props)
+    const markerOffsetTop = ref(0)
 
     const route = useRoute()
     const page = usePageData()
@@ -123,6 +136,7 @@ export const Toc = defineComponent({
     const options = computed<TocPropsOptions>(() => ({
       containerTag: 'nav',
       containerClass: 'vuepress-toc',
+      markerClass: 'zp-toc-marker',
       listClass: 'vuepress-toc-list',
       itemClass: 'vuepress-toc-item',
       linkTag: 'RouterLink',
@@ -132,8 +146,39 @@ export const Toc = defineComponent({
       ...propsOptions.value,
     }))
 
+    const updateMarkerOffsetTop = (hash: string): void => {
+      const activeLink = document.querySelector(
+        `a.zp-link-active-class[href="${route.path}${hash}"]`
+      ) as unknown as { offsetTop: number } | null
+      markerOffsetTop.value = activeLink ? activeLink.offsetTop : 0
+    }
+
+    // 页面渲染后更新marker位置
+    onMounted(() => {
+      updateMarkerOffsetTop(route.hash)
+    })
+
+    // 检测hash变化更新marker位置
+    watch(
+      () => route.hash,
+      (hash) => {
+        nextTick(() => updateMarkerOffsetTop(hash))
+      }
+    )
+
+    // 链接点击事件
+    const onClickLink = (e: Event): void => {
+      const target = e.target as unknown as { offsetTop: number }
+      markerOffsetTop.value = target.offsetTop
+    }
+
     return () => {
-      const renderedHeaders = renderHeaders(headers.value, options.value, route)
+      const renderedHeaders = renderHeaders(
+        headers.value,
+        options.value,
+        route,
+        onClickLink
+      )
 
       if (options.value.containerTag) {
         return h(
@@ -141,7 +186,17 @@ export const Toc = defineComponent({
           {
             class: options.value.containerClass,
           },
-          renderedHeaders
+          [
+            renderedHeaders,
+            h(
+              'div',
+              {
+                class: options.value.markerClass,
+                style: { top: `${markerOffsetTop.value}px` },
+              },
+              ''
+            ),
+          ]
         )
       }
 

@@ -1,5 +1,5 @@
 @use 'vars.scss';
-@use 'mixins';
+@import '_mixins';
 @import '_variables';
 
 .article-list-wrapper {
@@ -8,12 +8,13 @@
 
   @media (max-width: $MQMobile) {
     padding: 0 0.5rem;
+    width: calc(100% - 1rem);
   }
 }
 .article-item {
-  @include mixins.card_item;
+  @include card_item;
   border-radius: var(--card-radius);
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   background-color: var(--c-bg-light);
 
   &:not(:first-child) {
@@ -23,10 +24,10 @@
   .article-name {
     display: inline-block;
     line-height: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     position: relative;
     max-width: max-content;
-
     &::after {
       transition: width 0.2s;
       content: '';
@@ -43,6 +44,30 @@
       }
     }
   }
+
+  .cover-info {
+    @include flexBetween();
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+    width: 100%;
+    .cover-info-text {
+      flex-grow: 1;
+      margin-right: 0.5rem;
+      font-size: 0.87rem;
+      padding: 0.2rem 0;
+      @include textEllipsis(4);
+      p {
+        margin: 0;
+        line-height: 1.6;
+      }
+    }
+    .article-cover {
+      flex: 0 0 auto;
+      width: 10rem;
+      height: 6rem;
+      border-radius: 10px;
+    }
+  }
 }
 
 .article-info-wrapper {
@@ -52,7 +77,6 @@
   align-content: stretch;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 1rem;
 
   .category-text {
     color: inherit;

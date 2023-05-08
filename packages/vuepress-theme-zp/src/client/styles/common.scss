@@ -14,10 +14,19 @@
   margin-left: 5px;
 }
 
-.article-excerpt {
-  margin-top: 1rem;
-  font-size: 1em;
-}
+// .cover-info {
+//   margin: 0.5rem 0;
+//   font-size: 1em;
+//   @include flexBetween();
+//   .article-cover {
+//     width: 10rem;
+//     height: 6rem;
+//     border-radius: 10px;
+//   }
+//   p {
+//     margin: 0;
+//   }
+// }
 
 .waline-wrapper {
   @include content_wrapper();

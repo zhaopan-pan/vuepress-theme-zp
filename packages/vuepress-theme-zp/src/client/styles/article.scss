@@ -54,7 +54,8 @@
       flex-grow: 1;
       margin-right: 0.5rem;
       font-size: 0.87rem;
-      padding: 0.2rem 0;
+      // padding: 0.3rem 0;
+      line-height: 1.7;
       @include textEllipsis(4);
       p {
         margin: 0;

@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.24
+
+### Patch Changes
+
+- feat: optimization Image component
+
 ## 1.0.23
 
 ### Patch Changes

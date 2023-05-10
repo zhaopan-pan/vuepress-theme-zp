@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.23
+
+### Patch Changes
+
+- feat:
+  1、添加图片组件
+  2、优化 code 样式
+
 ## 1.0.22
 
 ### Patch Changes

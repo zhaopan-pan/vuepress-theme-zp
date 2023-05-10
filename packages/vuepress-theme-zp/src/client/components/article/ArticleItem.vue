@@ -39,7 +39,7 @@ const toDetail = (): unknown => router.push(path)
       <Image
         v-if="info.cover"
         class="article-cover"
-        src="i-dont-exist"
+        :src="info.cover"
         alt="article-cover"
       />
     </div>

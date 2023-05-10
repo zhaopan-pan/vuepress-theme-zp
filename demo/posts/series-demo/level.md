@@ -5,7 +5,7 @@ tag:
  - c#
 date: 2023-03-30
 excerpt: true
-cover: https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45e1faa1340f428c9f83d5a51f0677ac~tplv-k3u1fbpfcp-zoom-crop-mark:1512:1512:1512:851.awebp?
+cover: https://picsum.photos/id/17/740/300
 ---
 
 ::: tip GitHub Pages

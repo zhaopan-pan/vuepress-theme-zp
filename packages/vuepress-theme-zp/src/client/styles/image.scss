@@ -4,12 +4,17 @@
 
 .zp-img-container {
   @include flexCenter;
-  @include skeleton();
+  border-radius: 0.6rem;
   background-color: var(--c-bg-darker);
+}
+
+.zp-img-skeleton {
+  @include skeleton();
 }
 
 .zp-img {
   transition: all var(--t-show-img);
+  border-radius: 0.6rem;
 }
 
 .img-loading {

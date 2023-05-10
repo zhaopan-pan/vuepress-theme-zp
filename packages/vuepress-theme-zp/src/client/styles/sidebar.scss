@@ -65,7 +65,6 @@
 
   &.active:not(button.sidebar-heading) {
     color: var(--c-text-accent);
-    background-color: rgba($color: var(--c-theme-rgb), $alpha: 0.2);
   }
 
   &.sidebar-heading {

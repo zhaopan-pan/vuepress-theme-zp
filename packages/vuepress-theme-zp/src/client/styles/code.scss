@@ -152,6 +152,8 @@ div[class*='language-'] {
   position: relative;
   background-color: var(--code-bg-color);
   border-radius: 0.5rem;
+  box-shadow: var(--code-shadow);
+
   // margin: 1rem 0;
   // .dark & {
   //   border: none;
@@ -256,8 +258,8 @@ div[class*='language-'] {
 @media (max-width: $MQMobileNarrow) {
   .theme-default-content {
     div[class*='language-'] {
-      margin: 0.85rem -1.5rem;
-      border-radius: 0;
+      margin: 0.85rem 0rem;
+      // border-radius: 0;
     }
   }
 }

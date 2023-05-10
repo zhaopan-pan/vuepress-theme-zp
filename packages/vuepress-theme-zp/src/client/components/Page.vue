@@ -35,7 +35,11 @@ const shouldShowToc = computed(
         <ArticleInfo :info="(frontmatter as IArticleInfo)" />
       </div>
 
-      <img :src="frontmatter.cover" class="content-cover" />
+      <Image
+        v-if="frontmatter.cover"
+        :src="frontmatter.cover"
+        class="content-cover"
+      />
       <slot name="content-top" />
 
       <Content />

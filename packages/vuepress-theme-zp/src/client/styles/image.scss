@@ -1,0 +1,20 @@
+@import '_variables';
+@import 'vars';
+@import '_mixins';
+
+.zp-img-container {
+  @include flexCenter;
+  @include skeleton();
+  background-color: var(--c-bg-darker);
+}
+
+.zp-img {
+  transition: all var(--t-show-img);
+}
+
+.img-loading {
+  transform: scale(0);
+}
+.img-loaded {
+  transform: scale(1);
+}

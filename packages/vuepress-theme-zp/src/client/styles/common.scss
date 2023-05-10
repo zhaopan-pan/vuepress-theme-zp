@@ -30,6 +30,7 @@
 
 .waline-wrapper {
   @include content_wrapper();
+
   .wl-panel {
     margin: 0 !important;
   }

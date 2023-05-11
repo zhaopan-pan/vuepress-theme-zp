@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.27
+
+### Patch Changes
+
+- fix: 修复缓存情况下 img 的 onload 不触发问题
+
 ## 1.0.26
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, onBeforeMount, ref, useAttrs } from 'vue'
+import { computed, onBeforeMount, ref, useAttrs, watch } from 'vue'
 export default {
   // 禁用属性透传
   inheritAttrs: false,
@@ -30,6 +30,18 @@ onBeforeMount(() => {
     hasCache.value = true
   }
 })
+
+watch(
+  () => [imgRef?.value?.complete],
+  () => {
+    // 如果加载完成,且没有加载失败,但是却没有触发onload修改loadingDone
+    // 这种情况是从缓存中获取的img，需手动调用onload刷新状态
+    if (imgRef?.value?.complete && !loadingDone.value && !loadFailed.value) {
+      console.log('--------------')
+      onLoaded()
+    }
+  }
+)
 
 const setLoadedCache = (): void => {
   sessionStorage.setItem(attrs?.src as string, CACHE_STATE)

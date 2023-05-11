@@ -21,3 +21,17 @@
     margin: 0 !important;
   }
 }
+
+.custom-article-name {
+  line-height: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.custom-article-excerpt {
+  display: flex;
+  // narrow mobile
+  img {
+    max-width: initial !important;
+  }
+}

@@ -4,6 +4,12 @@ export default {
   // 禁用属性透传
   inheritAttrs: false,
 }
+type IAttrs = {
+  class?: string
+  src?: string
+  height?: string
+  width?: string
+}
 </script>
 <script setup lang="ts">
 // TODO 通过配置项来设置默认图
@@ -12,7 +18,7 @@ const defaultImg = 'https://picsum.photos/id/48/740/300'
 const CACHE_STATE = '1'
 
 const imgRef = ref<HTMLImageElement | null>(null)
-const attrs = useAttrs()
+const attrs: IAttrs = useAttrs()
 const loadingDone = ref(false)
 const loadFailed = ref(false)
 // 图片是否有缓存
@@ -30,18 +36,29 @@ const setLoadedCache = (): void => {
 }
 
 const isLoaded = computed(
-  () => sessionStorage.getItem(attrs?.src as string) === CACHE_STATE
+  () => sessionStorage.getItem(attrs?.src || '') === CACHE_STATE
 )
 
 const finallyUrl = computed(() => {
-  return loadFailed.value ? defaultImg : (attrs.src as string) || defaultImg
+  return loadFailed.value ? defaultImg : attrs.src || defaultImg
 })
 
 // container class
 const loadingContainerClass = computed(() => {
-  return `${attrs.class}
+  return `${attrs.class || ''}
   zp-img-container
   ${!loadingDone.value ? 'zp-img-skeleton' : ''}`
+})
+
+// custom inline style
+const loadingContainerStyle = computed(() => {
+  return attrs.height && attrs.width
+    ? {
+        height: `${attrs.height}px`,
+        width: `${attrs.width}px`,
+        minHeight: `${attrs.height}px !important`,
+      }
+    : undefined
 })
 
 // img class
@@ -65,7 +82,7 @@ const onErr = (_err: Event): void => {
 </script>
 
 <template>
-  <div :class="loadingContainerClass">
+  <div :class="loadingContainerClass" :style="loadingContainerStyle">
     <img
       ref="imgRef"
       alt="img"

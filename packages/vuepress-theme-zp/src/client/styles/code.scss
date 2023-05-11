@@ -128,7 +128,7 @@ pre[class*='language-'] {
   pre,
   pre[class*='language-'] {
     line-height: $line-height;
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
     margin: 0.85rem 0;
     border-radius: 0.5rem;
     overflow: auto;
@@ -224,7 +224,7 @@ div[class*='language-'] {
       width: var(--code-ln-wrapper-width);
       text-align: center;
       color: var(--code-ln-color);
-      padding-top: 1.1rem;
+      padding-top: 1.25rem;
       line-height: $line-height;
       counter-reset: line-number;
 

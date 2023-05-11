@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.25
+
+### Patch Changes
+
+- feat:
+  1、Image 初次加载成功时才展示动画
+  2、add useUpdateDeviceStatus
+
 ## 1.0.24
 
 ### Patch Changes

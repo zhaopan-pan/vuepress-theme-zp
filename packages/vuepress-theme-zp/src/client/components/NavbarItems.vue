@@ -9,14 +9,17 @@ import { useRouter } from 'vue-router'
 import type {
   NavbarGroup,
   NavbarItem,
+  NavGroup,
+  NavLink,
   ResolvedNavbarItem,
 } from '../../shared/index.js'
-import { useNavLink, useThemeLocaleData } from '../composables/index.js'
 import {
   DeviceType,
-  resolveRepoType,
-  updateDeviceStatus,
-} from '../utils/index.js'
+  useNavLink,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../composables/index.js'
+import { resolveRepoType } from '../utils/index.js'
 
 /**
  * Get navbar config of select language dropdown
@@ -163,18 +166,18 @@ const handleMobile = (width: number): void => {
     isMobile.value = false
   }
 }
-updateDeviceStatus(DeviceType.MOBILE, handleMobile)
+useUpdateDeviceStatus(DeviceType.MOBILE, handleMobile)
 </script>
 
 <template>
   <nav v-if="navbarLinks.length" class="navbar-items">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
       <NavbarDropdown
-        v-if="item?.children"
-        :item="item"
+        v-if="item['children']"
+        :item="item as NavGroup<ResolvedNavbarItem>"
         :class="isMobile ? 'mobile' : ''"
       />
-      <AutoLink v-else :item="item" />
+      <AutoLink v-else :item="(item as NavLink)" />
     </div>
   </nav>
 </template>

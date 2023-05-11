@@ -24,7 +24,10 @@
 
     .content-cover {
       width: 100%;
-      min-height: 18.75rem;
+      max-height: 18.75rem;
+    }
+    .zp-img-skeleton {
+      min-height: 10rem;
     }
   }
 }

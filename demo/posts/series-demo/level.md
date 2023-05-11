@@ -1,6 +1,6 @@
 ---
 lang: zh-CN
-title: level
+title:
 tag: 
  - c#
 date: 2023-03-30
@@ -8,12 +8,10 @@ excerpt: true
 cover: https://picsum.photos/id/17/740/300
 ---
 
-::: tip GitHub Pages
-vuerepss项目部署到github后的两种访问方式
-:::
+但是对方水电费所发生的发撒
  <!-- more -->
 
-# level-1
+## level-1
 
 jsjsjsjsjs
 

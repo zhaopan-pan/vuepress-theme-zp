@@ -5,7 +5,6 @@
 .zp-img-container {
   @include flexCenter;
   border-radius: 0.6rem;
-  background-color: var(--c-bg-darker);
 }
 
 .zp-img-skeleton {
@@ -17,9 +16,9 @@
   border-radius: 0.6rem;
 }
 
-.img-loading {
+.img-loading-animation {
   transform: scale(0);
 }
-.img-loaded {
+.img-loaded-animation {
   transform: scale(1);
 }

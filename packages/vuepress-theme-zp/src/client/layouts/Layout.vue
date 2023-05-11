@@ -63,6 +63,10 @@ onMounted(() => {
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)
   })
+  // clear sessionStorage before page reload
+  window.addEventListener('beforeunload', (_e: Event): void => {
+    sessionStorage.clear()
+  })
 })
 
 onUnmounted(() => {

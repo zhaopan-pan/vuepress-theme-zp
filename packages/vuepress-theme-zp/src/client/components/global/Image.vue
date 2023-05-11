@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, ref, useAttrs } from 'vue'
+import { computed, onBeforeMount, ref, useAttrs } from 'vue'
 export default {
   // 禁用属性透传
   inheritAttrs: false,
@@ -8,23 +8,52 @@ export default {
 <script setup lang="ts">
 // TODO 通过配置项来设置默认图
 const defaultImg = 'https://picsum.photos/id/48/740/300'
+// cache state
+const CACHE_STATE = '1'
 
+const imgRef = ref<HTMLImageElement | null>(null)
 const attrs = useAttrs()
 const loadingDone = ref(false)
 const loadFailed = ref(false)
+// 图片是否有缓存
+const hasCache = ref(false)
 
-const finallyUrl = computed(() =>
-  loadFailed.value ? defaultImg : (attrs.src as string) || defaultImg
+onBeforeMount(() => {
+  // is there cache
+  if (attrs.src && isLoaded.value) {
+    hasCache.value = true
+  }
+})
+
+const setLoadedCache = (): void => {
+  sessionStorage.setItem(attrs?.src as string, CACHE_STATE)
+}
+
+const isLoaded = computed(
+  () => sessionStorage.getItem(attrs?.src as string) === CACHE_STATE
 )
 
+const finallyUrl = computed(() => {
+  return loadFailed.value ? defaultImg : (attrs.src as string) || defaultImg
+})
+
+// container class
 const loadingContainerClass = computed(() => {
   return `${attrs.class}
   zp-img-container
   ${!loadingDone.value ? 'zp-img-skeleton' : ''}`
 })
 
+// img class
+const imgClass = computed(() => {
+  // 如果已经加载且成功过，会取缓存，所以不展示动画
+  if (hasCache.value) return ''
+  return loadingDone.value ? 'img-loaded-animation' : 'img-loading-animation'
+})
+
 const onLoaded = (): void => {
   loadingDone.value = true
+  setLoadedCache()
 }
 
 const onErr = (_err: Event): void => {
@@ -38,14 +67,15 @@ const onErr = (_err: Event): void => {
 <template>
   <div :class="loadingContainerClass">
     <img
+      ref="imgRef"
       alt="img"
       :onload="onLoaded"
       :onerror="onErr"
-      :src="finallyUrl"
       loading="lazy"
       class="zp-img"
       v-bind="$attrs"
-      :class="loadingDone ? 'img-loaded' : 'img-loading'"
+      :src="finallyUrl"
+      :class="imgClass"
     />
   </div>
 </template>

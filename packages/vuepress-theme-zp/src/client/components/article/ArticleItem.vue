@@ -27,7 +27,7 @@ const toDetail = (): unknown => router.push(path)
 </script>
 <template>
   <article class="article-item cp" @click="toDetail">
-    <div class="article-name">
+    <div v-show="info.title" class="article-name">
       {{ info.title }}
     </div>
     <div class="cover-info">

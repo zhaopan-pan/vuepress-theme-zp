@@ -1,10 +1,14 @@
 import { h } from 'vue'
 import { useScrollPromise } from './composables/index.js'
+import tooltip from './directive/tooltip.js'
 import { registerGlobalComponents } from './utils/index.js'
 
 export default ({ app, router }): void => {
   // 注册全局组件
   registerGlobalComponents(app)
+  // app.directive's first argument is the directive's name you will use
+  // it can be whatever you wish
+  app.directive('tooltip', tooltip)
 
   // compat with @vuepress/plugin-external-link-icon
   app.component('AutoLinkExternalIcon', () => {

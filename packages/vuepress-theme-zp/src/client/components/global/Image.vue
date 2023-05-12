@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, onBeforeMount, ref, useAttrs, watch } from 'vue'
+import { computed, onBeforeMount, onMounted, ref, useAttrs } from 'vue'
 export default {
   // 禁用属性透传
   inheritAttrs: false,
@@ -21,28 +21,29 @@ const imgRef = ref<HTMLImageElement | null>(null)
 const attrs: IAttrs = useAttrs()
 const loadingDone = ref(false)
 const loadFailed = ref(false)
-// 图片是否有缓存
-const hasCache = ref(false)
 
 onBeforeMount(() => {
   // is there cache
   if (attrs.src && isLoaded.value) {
-    hasCache.value = true
+    loadingDone.value = true
   }
 })
 
-watch(
-  () => [imgRef?.value?.complete],
-  () => {
-    // 如果加载完成,且没有加载失败,但是却没有触发onload修改loadingDone
-    // 这种情况是从缓存中获取的img，需手动调用onload刷新状态
-    if (imgRef?.value?.complete && !loadingDone.value && !loadFailed.value) {
-      console.log('--------------')
-      onLoaded()
-    }
-  }
-)
+onMounted(() => {
+  // 说明图片已完成解码（onload不执行，所以用这个api）
+  imgRef.value
+    ?.decode()
+    .then(() => {
+      loadingDone.value = true
+    })
+    .catch((encodingError) => {
+      console.error(encodingError)
+      loadingDone.value = true
+      loadFailed.value = true
+    })
+})
 
+// 设置缓存主要是为了记录初次加载成功，只有初次才显示淡入的效果，后面有缓存就直接展示
 const setLoadedCache = (): void => {
   sessionStorage.setItem(attrs?.src as string, CACHE_STATE)
 }
@@ -76,10 +77,10 @@ const loadingContainerStyle = computed(() => {
 // img class
 const imgClass = computed(() => {
   // 如果已经加载且成功过，会取缓存，所以不展示动画
-  if (hasCache.value) return ''
   return loadingDone.value ? 'img-loaded-animation' : 'img-loading-animation'
 })
 
+// ⚡️ 浏览器缓存图片的情况下不会执行
 const onLoaded = (): void => {
   loadingDone.value = true
   setLoadedCache()
@@ -98,12 +99,12 @@ const onErr = (_err: Event): void => {
     <img
       ref="imgRef"
       alt="img"
-      :onload="onLoaded"
-      :onerror="onErr"
       loading="lazy"
       class="zp-img"
       v-bind="$attrs"
       :src="finallyUrl"
+      :onload="onLoaded"
+      :onerror="onErr"
       :class="imgClass"
     />
   </div>

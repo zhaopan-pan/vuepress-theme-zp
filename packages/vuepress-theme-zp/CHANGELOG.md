@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.28
+
+### Patch Changes
+
+- feat: 优化图片展示
+
 ## 1.0.27
 
 ### Patch Changes

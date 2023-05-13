@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.29
+
+### Patch Changes
+
+- feat:
+  1、添加图床代理
+  2、添加文章封面默认配置项
+  2、优化样式
+
 ## 1.0.28
 
 ### Patch Changes

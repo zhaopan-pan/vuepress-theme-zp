@@ -41,7 +41,7 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
     search: docsearchPlugin,
   },
   cssVariableStr: cssStr,
-  defaultArticleCover: '/picture-beb/2023/05/13/p96w2rR.jpg',
+  defaultArticleCover: 'https://s1.ax1x.com/2023/05/13/p96w2rR.jpg',
   templateBuild: path.resolve(__dirname, '../../templates/build.html'),
   footer: {
     nameLink: '/about',

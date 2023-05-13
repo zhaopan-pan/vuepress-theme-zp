@@ -22,18 +22,4 @@ export default defineUserConfig({
       level: [2, 3, 4],
     },
   },
-  bundler: viteBundler({
-    viteOptions: {
-      server: {
-        // 图床代理
-        proxy: {
-          '/picture-beb': {
-            target: 'https://s1.ax1x.com',
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/picture-beb/, ''),
-          },
-        },
-      },
-    },
-  }),
 })

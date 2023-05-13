@@ -60,7 +60,7 @@
 
 // 骨架屏动画
 @mixin skeleton() {
-  background-image: linear-gradient(130deg, var(--c-bg-light) 25%, var(--c-bg-darker) 40%, var(--c-bg-light) 45%);
+  background-image: linear-gradient(130deg, var(--c-bg-dark) 25%, var(--c-bg) 35%, var(--c-bg-dark) 40%);
   background-size: 550% 100%;
   background-position: 10% 10%;
   animation: skeleton-loading var(--t-skeleton) infinite;

@@ -34,6 +34,10 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
     nameLink?: string
     startYear?: number
   }
+  /**
+   * 默认文章封面图片地址
+   */
+  defaultArticleCover?: string
 }
 
 export {

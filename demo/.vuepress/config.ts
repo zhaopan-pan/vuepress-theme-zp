@@ -1,4 +1,4 @@
-import { defineUserConfig } from 'vuepress'
+import { defineUserConfig, viteBundler } from 'vuepress'
 import ZpTheme from 'vuepress-theme-zp'
 import { themeConfig } from './config/index.js'
 
@@ -22,4 +22,18 @@ export default defineUserConfig({
       level: [2, 3, 4],
     },
   },
+  bundler: viteBundler({
+    viteOptions: {
+      server: {
+        // 图床代理
+        proxy: {
+          '/picture-beb': {
+            target: 'https://s1.ax1x.com',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/picture-beb/, ''),
+          },
+        },
+      },
+    },
+  }),
 })

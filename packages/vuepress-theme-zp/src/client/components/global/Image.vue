@@ -1,5 +1,6 @@
 <script lang="ts">
 import { computed, onBeforeMount, onMounted, ref, useAttrs } from 'vue'
+import { useThemeData } from '../../composables/index.js'
 export default {
   // 禁用属性透传
   inheritAttrs: false,
@@ -12,16 +13,17 @@ type IAttrs = {
 }
 </script>
 <script setup lang="ts">
-// TODO 通过配置项来设置默认图
-const defaultImg = 'https://picsum.photos/id/48/740/300'
-// cache state
+// cache state value
 const CACHE_STATE = '1'
 
-const imgRef = ref<HTMLImageElement | null>(null)
 const attrs: IAttrs = useAttrs()
+const themeData = useThemeData()
+
+const imgRef = ref<HTMLImageElement | null>(null)
 const loadingDone = ref(false)
 const loadFailed = ref(false)
 
+const defaultArticleCover = themeData.value?.defaultArticleCover || ''
 onBeforeMount(() => {
   // is there cache
   if (attrs.src && isLoaded.value) {
@@ -53,7 +55,9 @@ const isLoaded = computed(
 )
 
 const finallyUrl = computed(() => {
-  return loadFailed.value ? defaultImg : attrs.src || defaultImg
+  return loadFailed.value
+    ? defaultArticleCover
+    : attrs.src || defaultArticleCover
 })
 
 // container class
@@ -101,6 +105,7 @@ const onErr = (_err: Event): void => {
       alt="img"
       loading="lazy"
       class="zp-img"
+      crossOrigin="Anonymous"
       v-bind="$attrs"
       :src="finallyUrl"
       :onload="onLoaded"

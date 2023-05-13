@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.30
+
+### Patch Changes
+
+- fix: 修复跨域问题
+
 ## 1.0.29
 
 ### Patch Changes

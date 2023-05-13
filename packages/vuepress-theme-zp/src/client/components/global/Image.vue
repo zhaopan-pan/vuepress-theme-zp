@@ -105,7 +105,6 @@ const onErr = (_err: Event): void => {
       alt="img"
       loading="lazy"
       class="zp-img"
-      crossOrigin="Anonymous"
       v-bind="$attrs"
       :src="finallyUrl"
       :onload="onLoaded"

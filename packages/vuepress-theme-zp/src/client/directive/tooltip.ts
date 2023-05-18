@@ -1,5 +1,7 @@
+import type { ToolDirectiveBinding } from './type.js'
+
 export default {
-  updateTooltip(el, { value, modifiers }) {
+  updateTooltip(el, { value, modifiers }: ToolDirectiveBinding) {
     if (typeof value === 'string') {
       // we can pass either a string
       el.setAttribute('data-v-tooltip', value)
@@ -141,7 +143,7 @@ export default {
     }
   },
   // hooks
-  mounted(el, { value, dir, modifiers }) {
+  mounted(el: HTMLElement, { value, dir, modifiers }: ToolDirectiveBinding) {
     // v-tooltips with global prop won't show the tooltip
     // also object notation without text prop won't show neither
     if (typeof value === 'object' && !value.global && value.text) {
@@ -149,9 +151,8 @@ export default {
     } else if (typeof value === 'string') {
       el.classList.add('data-v-tooltip')
     }
-
     // to use functions in Vue's directives which are inside this object, we can't use this, we have to use dir, which is the directive object
-    dir.updateTooltip(el, { value, modifiers })
+    dir?.updateTooltip?.(el, { value, modifiers })
   },
   updated(el, { value, dir, modifiers }) {
     dir.updateTooltip(el, { value, modifiers })

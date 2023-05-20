@@ -1,6 +1,6 @@
 {
   "name": "@vuepress-zp/plugin-toc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",
@@ -36,11 +36,11 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,svg,js}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.61",
-    "@vuepress/core": "2.0.0-beta.61",
-    "@vuepress/utils": "2.0.0-beta.61",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "@vuepress/client": "2.0.0-beta.62",
+    "@vuepress/core": "2.0.0-beta.62",
+    "@vuepress/utils": "2.0.0-beta.62",
+    "vue": "^3.3.1",
+    "vue-router": "^4.2.0"
   },
   "publishConfig": {
     "access": "public"

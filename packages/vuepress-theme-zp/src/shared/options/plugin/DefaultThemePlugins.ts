@@ -1,7 +1,7 @@
 import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
 import type { PwaPluginOptions } from '@vuepress/plugin-pwa'
 import type { BlogOptions } from 'vuepress-plugin-blog2'
-import type { CommentOptions } from 'vuepress-plugin-comment2'
+import type { CommentPluginOptions } from 'vuepress-plugin-comment2'
 
 export interface DefaultThemePluginsOptions {
   /**
@@ -60,7 +60,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * 评论插件配置
    */
-  comment?: CommentOptions
+  comment?: CommentPluginOptions
 
   /**
    * 搜索插件配置

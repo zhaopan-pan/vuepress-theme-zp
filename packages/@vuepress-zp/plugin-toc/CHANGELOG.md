@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-toc
 
+## 0.0.4
+
+### Patch Changes
+
+- chore: 升级 vuepress 以及相关依赖版本到最新
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.31
+
+### Patch Changes
+
+- chore: 升级 vuepress 以及相关依赖版本到最新
+- Updated dependencies
+  - @vuepress-zp/plugin-toc@0.0.4
+
 ## 1.0.30
 
 ### Patch Changes

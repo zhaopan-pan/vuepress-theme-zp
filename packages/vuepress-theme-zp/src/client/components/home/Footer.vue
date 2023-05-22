@@ -6,9 +6,7 @@ const themeData = useThemeData()
 const { startYear, nameLink = '' } = themeData.value?.footer || {}
 const userName = themeData.value?.blog.name || {}
 const endYear = new Date().getFullYear()
-const timeText = computed(() =>
-  startYear && endYear > startYear ? `${startYear}-${endYear}` : endYear
-)
+const timeText = computed(() => (startYear ? `${startYear}-present` : endYear))
 </script>
 
 <template>

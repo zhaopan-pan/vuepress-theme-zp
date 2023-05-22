@@ -1,5 +1,21 @@
 import type { ToolDirectiveBinding } from './type.js'
 
+/**
+ * tooltip
+ * @示例
+ *    <span v-tooltip.arrow="'示例1'">示例1</span>
+ *    <span
+ *      v-tooltip="{
+ *        displayArrow: true,
+ *        text: '示例2',
+ *        theme:{
+ *          placement: 'left',
+ *        }
+ *      }"
+ *    >
+ *     示例2
+ *   </span>
+ */
 export default {
   updateTooltip(el, { value, modifiers }: ToolDirectiveBinding) {
     if (typeof value === 'string') {
@@ -15,16 +31,13 @@ export default {
       if (value.text) {
         el.setAttribute('data-v-tooltip', value.text)
       }
+      // if there is a prop global: true then mutate the :root css variables
+      // otherwise it adds given variables to the element, which makes it possible to be different than others
+      const targetEl: HTMLElement = value.global ? document.documentElement : el
       if (value.displayArrow || modifiers.arrow) {
-        // if there is a prop global: true then mutate the :root css variables
-        // otherwise it adds given variables to the element, which makes it possible to be different than others
-        const targetEl = value.global ? document.documentElement : el
         targetEl.style.setProperty('--v-tooltip-arrow-display', 'inline')
       }
       if (value.theme) {
-        // if there is a prop global: true then mutate the :root css variables
-        // otherwise it adds given variables to the element, which makes it possible to be different than others
-        const targetEl = value.global ? document.documentElement : el
         for (const [key, val] of Object.entries(value.theme)) {
           if (key === 'placement') {
             switch (val) {
@@ -38,11 +51,11 @@ export default {
                 if (value.displayArrow || modifiers.arrow) {
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-border-color',
-                    'var(--v-tooltip-background-color) transparent transparent transparent'
+                    'var(--c-tooltip-background-color) transparent transparent transparent'
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-top',
-                    'calc(var(--v-tooltip-top) - var(--v-tooltip-top-offset) + 8px)'
+                    'calc(var(--v-tooltip-top) - var(--v-tooltip-top-offset) + 7px)'
                   )
                 }
                 break
@@ -56,7 +69,7 @@ export default {
                 if (value.displayArrow || modifiers.arrow) {
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-border-color',
-                    'transparent transparent var(--v-tooltip-background-color) transparent'
+                    'transparent transparent var(--c-tooltip-background-color) transparent'
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-top',
@@ -74,7 +87,7 @@ export default {
                 if (value.displayArrow || modifiers.arrow) {
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-border-color',
-                    'transparent transparent transparent var(--v-tooltip-background-color)'
+                    'transparent transparent transparent var(--c-tooltip-background-color)'
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-top',
@@ -82,7 +95,7 @@ export default {
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-left',
-                    'calc( var(--v-tooltip-left) - var(--v-tooltip-left-offset) + 1.5px)'
+                    'calc( var(--v-tooltip-left) - var(--v-tooltip-left-offset) + 5px)'
                   )
                 }
                 break
@@ -96,7 +109,7 @@ export default {
                 if (value.displayArrow || modifiers.arrow) {
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-border-color',
-                    'transparent var(--v-tooltip-background-color) transparent  transparent'
+                    'transparent var(--c-tooltip-background-color) transparent  transparent'
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-top',
@@ -104,7 +117,7 @@ export default {
                   )
                   targetEl.style.setProperty(
                     '--v-tooltip-arrow-left',
-                    'calc( var(--v-tooltip-left) - var(--v-tooltip-left-offset) - 2px)'
+                    'calc(var(--v-tooltip-left) - var(--v-tooltip-left-offset) - 5px)'
                   )
                 }
                 break
@@ -154,7 +167,7 @@ export default {
     // to use functions in Vue's directives which are inside this object, we can't use this, we have to use dir, which is the directive object
     dir?.updateTooltip?.(el, { value, modifiers })
   },
-  updated(el, { value, dir, modifiers }) {
+  updated(el: HTMLElement, { value, dir, modifiers }: ToolDirectiveBinding) {
     dir.updateTooltip(el, { value, modifiers })
   },
 }

@@ -42,5 +42,8 @@
     "vueuse",
     "zoomable"
   ],
-  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 }

@@ -42,7 +42,7 @@ npm install
 
 jsjsjsjsjs
 ```js
-console.log('----')
+console.log('----')console.log('----')console.log('----')console.log('----')console.log('----')
 console.log('----')
 console.log('----')
 console.log('----')

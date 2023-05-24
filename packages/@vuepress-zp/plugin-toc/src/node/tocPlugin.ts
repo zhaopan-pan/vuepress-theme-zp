@@ -5,7 +5,7 @@ import type { TocPropsOptions } from '../shared/index.js'
 const __dirname = getDirname(import.meta.url)
 
 /**
- * Options for @vuepress/plugin-toc
+ * Options for @vuepress-zp/plugin-toc
  */
 export interface TocPluginOptions {
   /**
@@ -25,7 +25,7 @@ export const tocPlugin = ({
   componentName = 'Toc',
   defaultPropsOptions = {},
 }: TocPluginOptions = {}): Plugin => ({
-  name: '@vuepress/plugin-toc',
+  name: '@vuepress-zp/plugin-toc',
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 

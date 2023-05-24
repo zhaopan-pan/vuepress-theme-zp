@@ -9,6 +9,7 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
+import { codeCopyPlugin } from '@vuepress-zp/plugin-code-copy'
 import { tocPlugin } from '@vuepress-zp/plugin-toc'
 import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
@@ -25,6 +26,7 @@ export const getPlugins = ({
   return [
     blogPlugin(blog),
     tocPlugin({}),
+    codeCopyPlugin({}),
     comment ? commentPlugin(comment) : [],
     search ? docsearch(search) : [],
     pwa ? createPwa(pwa) : [],

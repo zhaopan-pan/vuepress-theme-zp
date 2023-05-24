@@ -22,7 +22,9 @@ export const useCategory = (): CategoryRef => {
 }
 
 export const setupCategory = (): void => {
-  const articles = useBlogCategory<IArticleInfo>('category')
+  const articles = useBlogCategory<IArticleInfo>(
+    'category'
+  ) as unknown as CategoryRef
 
   provide(categorySymbol, articles)
 }

@@ -6,14 +6,14 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { formatDate } from '../../utils/index.js'
 
-const { info } = defineProps({
+const props = defineProps({
   info: {
     type: Object as PropType<IArticleItem['info']>,
     required: true,
   },
   showTag: { type: Boolean, default: true },
 })
-const { date, author, tag, category = [] } = info
+const { date, author, tag, category = [] } = props.info
 
 const categoryList = useCategory()
 const tags = useTag()
@@ -39,6 +39,7 @@ const categoryTagsObj = computed(() => ({
       iconSize="1"
       :iconProps="{ viewBox: '1 1 22 22' }"
       link="#"
+      class="article-info-items"
     >
       {{ formatDate(date) }}
     </ZpIcons>

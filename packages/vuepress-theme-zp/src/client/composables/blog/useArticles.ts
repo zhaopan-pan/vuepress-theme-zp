@@ -22,7 +22,7 @@ export const useArticles = (): ArticlesRef => {
 }
 
 export const setupArticles = (): void => {
-  const articles = useBlogType<IArticleInfo>('home')
+  const articles = useBlogType<IArticleInfo>('home') as unknown as ArticlesRef
 
   provide(articlesSymbol, articles)
 }

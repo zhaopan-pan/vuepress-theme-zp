@@ -22,7 +22,7 @@ export const useTag = (key?: string): TagRef => {
 }
 
 export const setupTag = (): void => {
-  const tag = useBlogCategory<IArticleInfo>('tag')
+  const tag = useBlogCategory<IArticleInfo>('tag') as unknown as TagRef
 
   provide(tagSymbol, tag)
 }

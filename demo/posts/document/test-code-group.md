@@ -6,7 +6,7 @@ tag:
 description: js
 date: 2022-11-30
 author: huanwu
-editLink: /posts/series-demo/test-code-group
+editLink: /posts/sidebar/test-code-group
 ---
 
 # js-21

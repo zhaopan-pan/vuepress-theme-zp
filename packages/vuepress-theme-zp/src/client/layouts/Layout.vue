@@ -11,6 +11,7 @@ import {
   useScrollPromise,
   useSidebarItems,
   useThemeLocaleData,
+  useCodeCopy,
 } from '../composables/index.js'
 import { removeLoading } from '../utils/index.js'
 
@@ -73,6 +74,7 @@ const containerClass = computed(() => [
 let unregisterRouterHook
 onMounted(() => {
   removeLoading()
+  useCodeCopy()
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)

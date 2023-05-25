@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 import ArticleInfo from './ArticleInfo.vue'
 
 const router = useRouter()
-const { article, showTag } = defineProps({
+const props = defineProps({
   article: {
     type: Object as PropType<IArticleItem>,
     required: true,
@@ -13,7 +13,7 @@ const { article, showTag } = defineProps({
   showTag: { type: Boolean, default: true },
 })
 
-const { path, info } = article
+const { path, info } = props.article
 
 // 图片、描述、摘要有一个即展示
 const showCoverInfo = computed(

@@ -26,7 +26,7 @@ export const getPlugins = ({
   return [
     blogPlugin(blog),
     tocPlugin({}),
-    codeCopyPlugin({}),
+    codeCopyPlugin(),
     comment ? commentPlugin(comment) : [],
     search ? docsearch(search) : [],
     pwa ? createPwa(pwa) : [],

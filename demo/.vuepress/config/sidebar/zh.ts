@@ -6,8 +6,8 @@ export const sidebarZh: SidebarConfig = {
       text: 'js',
       collapsible: true,
       children: [
-        '/posts/series-demo/sidebar.md',
-        '/posts/series-demo/test-code-group.md',
+        '/posts/document/sidebar.md',
+        '/posts/document/test-code-group.md',
       ],
     },
   ],

@@ -9,28 +9,13 @@ const __dirname = getDirname(import.meta.url)
  */
 export interface CodeCopyPluginOptions {
   /**
-   * Specify the name of the Copy component
-   *
-   * @default 'CodeCopy'
-   */
-  componentName?: string
-
-  /**
    * Override the default values of the `options` prop of the Copy component
    */
   defaultPropsOptions?: Partial<CodeCopyPropsOptions>
 }
 
-export const codeCopyPlugin = ({
-  componentName = 'CodeCopy',
-  defaultPropsOptions = {},
-}: CodeCopyPluginOptions = {}): Plugin => ({
+export const codeCopyPlugin = (): Plugin => ({
   name: '@vuepress-zp/plugin-code-copy',
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
-
-  define: {
-    __CODE_COPY_COMPONENT_NAME__: componentName,
-    __CODE_COPY_DEFAULT_PROPS_OPTIONS__: defaultPropsOptions,
-  },
 })

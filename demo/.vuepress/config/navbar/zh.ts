@@ -24,6 +24,19 @@ export const navbarZh: NavbarConfig = [
     link: '/tag/',
   },
   {
+    text: '文档',
+    children: [
+      {
+        text: 'sidebar',
+        link: '/posts/document/sidebar',
+      },
+      {
+        text: 'test',
+        link: '/posts/document/test-code-group',
+      },
+    ],
+  },
+  {
     text: 'about',
     link: '/about',
   },

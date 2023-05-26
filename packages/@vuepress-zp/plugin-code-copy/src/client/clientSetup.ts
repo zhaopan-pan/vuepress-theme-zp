@@ -6,6 +6,6 @@ export default function clientSetup(): void {
   onMounted(() => {
     setTimeout(() => {
       initCopyBtn()
-    }, 500)
+    }, 1000)
   })
 }

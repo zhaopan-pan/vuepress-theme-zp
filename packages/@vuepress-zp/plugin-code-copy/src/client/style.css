@@ -29,24 +29,23 @@ html.dark {
   cursor: pointer;
   transition: all 0.3s;
   opacity: 0;
-
-  &:hover {
-    background: var(--c-copy-btn-bg-hover);
-  }
-  .copy-icon {
-    display: inline-block;
-    fill: var(--c-copy-icon-color);
-  }
-  .copy-icon-hidden {
-    display: none;
-  }
-  .copy-success-icon {
-    fill: var(--c-copy-success-icon-color);
-    display: none;
-  }
-  .copy-success-icon-show {
-    display: inline-block !important;
-  }
+}
+.copy-code-btn:hover {
+  background: var(--c-copy-btn-bg-hover);
+}
+.copy-icon {
+  display: inline-block;
+  fill: var(--c-copy-icon-color);
+}
+.copy-icon-hidden {
+  display: none;
+}
+.copy-success-icon {
+  fill: var(--c-copy-success-icon-color);
+  display: none;
+}
+.copy-success-icon-show {
+  display: inline-block !important;
 }
 
 .copy-code-btn-show {

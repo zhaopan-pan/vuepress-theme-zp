@@ -13,7 +13,7 @@ export function useCodeCopy(): void {
     () => {
       setTimeout(() => {
         initCopyBtn()
-      }, 500)
+      }, 1000)
     }
   )
 }

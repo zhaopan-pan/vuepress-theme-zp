@@ -22,12 +22,9 @@ const toExternal = (link: string): unknown => link && window.open(link)
         v-for="(item, index) in blogInfo?.externalLinkList || []"
         :key="index"
         v-tooltip.arrow="item.text"
+        class="blog-external-icon"
       >
-        <img
-          :src="item.icon"
-          class="blog-external-icon"
-          @click="toExternal(item.url)"
-        />
+        <img :src="item.icon" @click="toExternal(item.url)" />
       </span>
     </div>
   </div>

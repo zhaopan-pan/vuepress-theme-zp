@@ -8,10 +8,10 @@ import { useRouter } from 'vue-router'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
 import Home from '../components/home/index.vue'
 import {
+  useCodeCopy,
   useScrollPromise,
   useSidebarItems,
   useThemeLocaleData,
-  useCodeCopy,
 } from '../composables/index.js'
 import { removeLoading } from '../utils/index.js'
 

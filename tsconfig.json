@@ -3,6 +3,7 @@
   "compilerOptions": {},
   "references": [
     { "path": "./packages/vuepress-theme-zp/tsconfig.build.json" },
-    { "path": "./packages/@vuepress-zp/plugin-toc/tsconfig.build.json" }
+    { "path": "./packages/@vuepress-zp/plugin-toc/tsconfig.build.json" },
+    { "path": "./packages/@vuepress-zp/plugin-code-copy/tsconfig.build.json" }
   ]
 }

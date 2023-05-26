@@ -1,15 +1,19 @@
-import { useCopyBtn } from '@vuepress-zp/plugin-code-copy/lib/client/composables/useCopyBtn'
-import { toRefs, watch } from 'vue'
+import { initCopyBtn } from '@vuepress-zp/plugin-code-copy/client'
+import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+/**
+ * invokeTheCodePastePlugin
+ */
 export function useCodeCopy(): void {
   const route = useRoute()
-  const { path } = toRefs(route)
-  const { initCopyBtn } = useCopyBtn()
 
-  watch(path, () => {
-    setTimeout(() => {
-      initCopyBtn()
-    }, 500)
-  })
+  watch(
+    () => route.path,
+    () => {
+      setTimeout(() => {
+        initCopyBtn()
+      }, 500)
+    }
+  )
 }

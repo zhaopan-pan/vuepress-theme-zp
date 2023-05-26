@@ -23,4 +23,9 @@ export interface BlogLocaleInfo {
    * Home top background img
    */
   homeTopBg?: string
+
+  /**
+   * external link list
+   */
+  externalLinkList?: { icon: string; text: string; url: string }[]
 }

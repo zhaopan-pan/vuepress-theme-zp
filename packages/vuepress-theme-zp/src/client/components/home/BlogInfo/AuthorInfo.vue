@@ -1,40 +1,11 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import {
-  useArticles,
-  useCategory,
-  useTag,
-  useThemeData,
-} from '../../../composables/index.js'
+import { useThemeData } from '../../../composables/index.js'
 
 const themeData = useThemeData()
-const articles = useArticles()
-const router = useRouter()
 
 const blogInfo = themeData.value?.blog || null
 
-const categoryKeys = Object.keys(useCategory().value.map)
-const tagKeys = Object.keys(useTag().value.map)
-
-const toPage = (link: string): unknown => link && router.push(link)
-
-const blogOverviewData = [
-  {
-    name: '文章',
-    value: articles.value.items.length,
-    link: '',
-  },
-  {
-    name: '分类',
-    value: categoryKeys.length,
-    link: `/category/${categoryKeys[0]}/`,
-  },
-  {
-    name: '标签',
-    value: tagKeys.length,
-    link: `/tag/${tagKeys[0]}/`,
-  },
-]
+const toExternal = (link: string): unknown => link && window.open(link)
 </script>
 
 <template>
@@ -46,16 +17,18 @@ const blogOverviewData = [
       srcset=""
     />
     <div class="author-name">{{ blogInfo.name || '' }}</div>
-    <div class="blog-overview">
-      <div
-        v-for="(item, index) in blogOverviewData"
+    <div class="blog-external">
+      <span
+        v-for="(item, index) in blogInfo?.externalLinkList || []"
         :key="index"
-        class="blog-overview-item cp"
-        @click="toPage(item.link)"
+        v-tooltip.arrow="item.text"
       >
-        <div class="blog-overview-count">{{ item.value }}</div>
-        <div class="blog-overview-name">{{ item.name }}</div>
-      </div>
+        <img
+          :src="item.icon"
+          class="blog-external-icon"
+          @click="toExternal(item.url)"
+        />
+      </span>
     </div>
   </div>
 </template>

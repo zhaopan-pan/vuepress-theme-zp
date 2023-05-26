@@ -1,4 +1,4 @@
-import { defineUserConfig, viteBundler } from 'vuepress'
+import { defineUserConfig } from 'vuepress'
 import ZpTheme from 'vuepress-theme-zp'
 import { themeConfig } from './config/index.js'
 

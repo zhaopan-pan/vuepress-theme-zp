@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-toc
 
+## 0.0.5
+
+### Patch Changes
+
+- style: 修复样式兼容问题
+
 ## 0.0.4
 
 ### Patch Changes

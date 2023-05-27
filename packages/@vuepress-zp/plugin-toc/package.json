@@ -1,6 +1,6 @@
 {
   "name": "@vuepress-zp/plugin-toc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",

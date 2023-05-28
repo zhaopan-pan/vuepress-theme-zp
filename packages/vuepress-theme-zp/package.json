@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-zp",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "custom theme of vuepress2.x",
   "keywords": [
     "vuepress-theme-zp",
@@ -45,7 +45,7 @@
     "@vicons/fa": "^0.12.0",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
-    "@vuepress-zp/plugin-code-copy": "workspace:0.0.3",
+    "@vuepress-zp/plugin-code-copy": "workspace:0.0.4",
     "@vuepress-zp/plugin-toc": "workspace:0.0.6",
     "@vuepress/client": "2.0.0-beta.62",
     "@vuepress/core": "2.0.0-beta.62",

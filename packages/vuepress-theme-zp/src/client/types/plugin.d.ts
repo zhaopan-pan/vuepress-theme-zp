@@ -1,1 +1,1 @@
-declare module '@vuepress-zp/plugin-code-copy/client'
+declare module '@vuepress-zp/plugin-code-copy/client/index.js'

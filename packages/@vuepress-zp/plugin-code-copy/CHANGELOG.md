@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-code-copy
 
+## 0.0.4
+
+### Patch Changes
+
+- fix: fix dependent reference
+
 ## 0.0.3
 
 ### Patch Changes

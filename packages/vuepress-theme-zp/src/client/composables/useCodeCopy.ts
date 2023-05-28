@@ -1,4 +1,4 @@
-import { initCopyBtn } from '@vuepress-zp/plugin-code-copy/client'
+import { initCopyBtn } from '@vuepress-zp/plugin-code-copy/client/index.js'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 

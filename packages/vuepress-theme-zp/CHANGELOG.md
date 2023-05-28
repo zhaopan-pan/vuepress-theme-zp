@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.36
+
+### Patch Changes
+
+- fix: fix dependent reference
+- Updated dependencies
+  - @vuepress-zp/plugin-code-copy@0.0.4
+
 ## 1.0.35
 
 ### Patch Changes

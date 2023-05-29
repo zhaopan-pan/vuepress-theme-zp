@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.37
+
+### Patch Changes
+
+- feat: optimization narrow mobile cover
+
 ## 1.0.36
 
 ### Patch Changes

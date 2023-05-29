@@ -3,10 +3,15 @@ import cssVars from '../styles/_variables.module.scss?module'
 
 export enum DeviceType {
   MOBILE = 'mobile',
+  MOBILE_NARROW = 'mobileNarrow',
 }
 
+const getIntNum = (varStr: string): number =>
+  Number.parseInt(varStr?.replace('px', ''), 10)
+
 const DeviceTypeMap = {
-  [DeviceType.MOBILE]: Number.parseInt(cssVars.mobile?.replace('px', ''), 10),
+  [DeviceType.MOBILE]: getIntNum(cssVars.mobile),
+  [DeviceType.MOBILE_NARROW]: getIntNum(cssVars.mobileNarrow),
 }
 
 /**

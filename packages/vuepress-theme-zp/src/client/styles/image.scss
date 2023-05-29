@@ -4,7 +4,8 @@
 
 .zp-img-container {
   @include flexCenter;
-  border-radius: 0.6rem;
+  border-radius: var(--image-radius);
+  overflow: hidden;
 }
 
 .zp-img-skeleton {
@@ -13,7 +14,6 @@
 
 .zp-img {
   transition: all var(--t-show-img);
-  border-radius: 0.6rem;
   margin: 0 !important;
 }
 

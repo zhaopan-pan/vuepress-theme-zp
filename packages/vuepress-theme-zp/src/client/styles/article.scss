@@ -11,65 +11,80 @@
     width: calc(100% - 1rem);
   }
 }
-.article-item {
-  @include card_item;
+
+.article-item-container {
   border-radius: var(--card-radius);
-  padding: 0.6rem 1.2rem;
   background-color: var(--c-bg-light);
+  overflow: hidden;
 
   &:not(:first-child) {
     margin-top: 2rem;
   }
 
-  .article-name {
-    display: inline-block;
-    line-height: 2rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    position: relative;
-    max-width: max-content;
-    &::after {
-      transition: width 0.2s;
-      content: '';
-      width: 0%;
-      height: 0.15rem;
-      background-color: var(--c-theme);
-      position: absolute;
-      bottom: 0;
-      left: 0;
+  .article-item {
+    @include card_item;
+    padding: 0.5rem 1.2rem;
+
+    @media (max-width: $MQMobileNarrow) {
+      padding: 0.2rem 0.5rem;
     }
-    &:hover {
+
+    .article-name {
+      display: inline-block;
+      line-height: 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      position: relative;
+      max-width: max-content;
       &::after {
-        width: 100%;
+        transition: width 0.2s;
+        content: '';
+        width: 0%;
+        height: 0.15rem;
+        background-color: var(--c-theme);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .cover-info {
+      @include flexBetween();
+      align-items: flex-start;
+      margin-bottom: 0.3rem;
+      width: 100%;
+      .cover-info-text {
+        flex-grow: 1;
+        margin-right: 0.5rem;
+        font-size: 0.87rem;
+        // padding: 0.3rem 0;
+        line-height: 1.7;
+        @include textEllipsis(4);
+        p {
+          margin: 0;
+          line-height: 1.6;
+        }
+        .custom-article-excerpt {
+          margin-top: 0rem !important;
+        }
+      }
+      .article-cover {
+        flex: 0 0 auto;
+        width: 10rem;
+        height: 6rem;
       }
     }
   }
-
-  .cover-info {
-    @include flexBetween();
-    align-items: flex-start;
-    margin-bottom: 0.3rem;
-    width: 100%;
-    .cover-info-text {
-      flex-grow: 1;
-      margin-right: 0.5rem;
-      font-size: 0.87rem;
-      // padding: 0.3rem 0;
-      line-height: 1.7;
-      @include textEllipsis(4);
-      p {
-        margin: 0;
-        line-height: 1.6;
-      }
-      .custom-article-excerpt {
-        margin-top: 0rem !important;
-      }
-    }
-    .article-cover {
-      flex: 0 0 auto;
-      width: 10rem;
-      height: 6rem;
-    }
+  .mobile-article-cover {
+    margin-top: -0.6rem;
+    height: 11rem;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 }
 

@@ -7,6 +7,7 @@ tag:
 category: 
  - frontEnd
 title: real-test
+cover: https://picsum.photos/id/17/740/300
 ---
 
 real-test

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import NavbarBrand from '@theme-zp-client/components/NavbarBrand.vue'
 import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
-import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
+// import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme-zp-client/components/ToggleSidebarButton.vue'
 import { computed, ref } from 'vue'
 import {
   DeviceType,
-  useThemeLocaleData,
+  // useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 
 defineEmits(['toggle-sidebar'])
 
-const themeLocale = useThemeLocaleData()
+// const themeLocale = useThemeLocaleData()
 
 const navbar = ref<HTMLElement | null>(null)
 const navbarBrand = ref<HTMLElement | null>(null)
@@ -54,8 +54,6 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
 
 <template>
   <header ref="navbar" class="navbar">
-    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
-
     <span ref="navbarBrand">
       <NavbarBrand />
     </span>
@@ -64,8 +62,9 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
       <slot name="before" />
       <NavbarItems class="can-hide" />
       <slot name="after" />
-      <ToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
+      <!-- <ToggleColorModeButton v-if="themeLocale.colorModeSwitch" /> -->
       <NavbarSearch />
+      <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
     </div>
   </header>
 </template>

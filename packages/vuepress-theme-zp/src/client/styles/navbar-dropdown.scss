@@ -125,7 +125,8 @@
     }
 
     .navbar-dropdown-title-mobile {
-      @include flexStart;
+      width: 100%;
+      @include flexBetween;
     }
 
     .navbar-dropdown {

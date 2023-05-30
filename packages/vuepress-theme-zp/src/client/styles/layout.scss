@@ -160,7 +160,7 @@
 @media (max-width: $MQNarrow) {
   .sidebar {
     font-size: 15px;
-    width: var(--sidebar-width-mobile);
+    width: 100%;
   }
 
   .page {
@@ -173,7 +173,7 @@
   .sidebar {
     top: 0;
     padding-top: var(--navbar-height);
-    transform: translateX(-100%);
+    transform: translateY(-100%);
   }
 
   .page {
@@ -183,7 +183,7 @@
   .theme-container {
     &.sidebar-open {
       .sidebar {
-        transform: translateX(0);
+        transform: translateY(0);
       }
     }
 

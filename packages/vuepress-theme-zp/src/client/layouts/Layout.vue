@@ -2,6 +2,7 @@
 import Navbar from '@theme-zp-client/components/Navbar.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
+import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -126,6 +127,7 @@ const onBeforeLeave = scrollPromise.pending
         </template>
         <template #bottom>
           <slot name="sidebar-bottom" />
+          <ToggleColorModeButton />
         </template>
       </Sidebar>
     </slot>

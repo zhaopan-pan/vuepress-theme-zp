@@ -3,7 +3,6 @@ lang: zh-CN
 title: sidebar
 tag: 
  - go
-description: sidebar
 toc: true
 excerpt: true
 date: 2022-12-21

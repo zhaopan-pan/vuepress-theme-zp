@@ -5,7 +5,7 @@ tag:
  - c#
 date: 2023-03-30
 excerpt: true
-cover: https://picsum.photos/536/354
+cover: https://picsum.photos/id/57/536/354
 ---
 
 但是对方水电费所发生的发撒

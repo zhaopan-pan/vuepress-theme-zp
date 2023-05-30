@@ -32,7 +32,7 @@ onBeforeMount(() => {
 })
 
 onMounted(() => {
-  // 说明图片已完成解码（onload不执行，所以用这个api）
+  // 说明图片已完成解码（图片已缓存onload不执行，所以用这个api）
   imgRef.value
     ?.decode()
     .then(() => {

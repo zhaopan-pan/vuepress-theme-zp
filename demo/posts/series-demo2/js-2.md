@@ -3,7 +3,6 @@ lang: zh-CN
 title: js-23
 tag: 
  - js
-description: js
 category: 
  - front
 date: 2022-11-31

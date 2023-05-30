@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
-import { computed, PropType, ref } from 'vue'
+import { computed, CSSProperties, PropType, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { DeviceType, useUpdateDeviceStatus } from '../../composables/index.js'
 import ArticleInfo from './ArticleInfo.vue'
@@ -35,7 +35,7 @@ useUpdateDeviceStatus(DeviceType.MOBILE_NARROW, (width: number) => {
   showMobileNarrowCover.value = window.innerWidth < width
 })
 
-const imgSize = computed(() => {
+const pcImgSize = computed(() => {
   if (!articleContainer.value || !info.cover) return undefined
 
   const originSize = info.cover ? info.cover.split('/') : null
@@ -68,10 +68,28 @@ const imgSize = computed(() => {
     height: `${articleSize.height}px`,
   }
 })
+
+// pc-end cover
+const isPcCover = computed(
+  () => info.cover && !showMobileNarrowCover.value && pcImgSize.value
+)
+const articleContainerStyle = computed<CSSProperties>(() =>
+  !isPcCover.value ? {} : {}
+)
+
+const articleTextStyle = computed<CSSProperties>(() =>
+  isPcCover.value
+    ? {
+        height: `calc(${pcImgSize?.value?.height} - 1rem)`,
+        paddingRight: '0.5rem',
+      }
+    : {}
+)
 </script>
 <template>
   <article
     ref="articleContainer"
+    :style="articleContainerStyle"
     class="article-item-container cp"
     @click="toDetail"
   >
@@ -85,12 +103,7 @@ const imgSize = computed(() => {
       class="article-item"
       :class="showMobileNarrowCover ? 'article-item-mobile-narrow ' : ''"
     >
-      <div
-        class="article-text"
-        :style="{
-          height: imgSize?.height ? `calc(${imgSize?.height} - 1rem)` : '100%',
-        }"
-      >
+      <div class="article-text" :style="articleTextStyle">
         <div v-show="info.title" class="article-name">
           {{ info.title }}
         </div>
@@ -101,17 +114,12 @@ const imgSize = computed(() => {
         />
         <ArticleInfo :info="info" :showTag="showTag" />
       </div>
-      <div
-        v-if="info.cover && !showMobileNarrowCover && imgSize"
-        class="transition-zone"
-        :style="{ backgroundImage: `url(${info.cover})` }"
-      />
       <Image
-        v-if="info.cover && !showMobileNarrowCover && imgSize"
+        v-if="isPcCover"
         class="article-cover"
         :src="info.cover"
         alt="article-cover"
-        :style="imgSize"
+        :style="pcImgSize"
       />
     </div>
   </article>

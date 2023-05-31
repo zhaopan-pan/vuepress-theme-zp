@@ -10,7 +10,12 @@ import {
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 
-defineEmits(['toggle-sidebar'])
+defineSlots<{
+  before?: (props: Record<never, never>) => any
+  after?: (props: Record<never, never>) => any
+}>()
+
+defineEmits(['toggle-menu'])
 
 // const themeLocale = useThemeLocaleData()
 
@@ -64,7 +69,7 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
       <slot name="after" />
       <!-- <ToggleColorModeButton v-if="themeLocale.colorModeSwitch" /> -->
       <NavbarSearch />
-      <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+      <ToggleSidebarButton @toggle="$emit('toggle-menu')" />
     </div>
   </header>
 </template>

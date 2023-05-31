@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
 import SidebarItems from '@theme-zp-client/components/SidebarItems.vue'
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import {
-  DeviceType,
-  useSidebarItems,
-  useUpdateDeviceStatus,
-} from '../composables/index.js'
-import { getFirstLayerSideBarData } from '../utils/index.js'
+import { DeviceType, useUpdateDeviceStatus } from '../composables/index.js'
+import { showSideBar } from '../utils/index.js'
 
-const route = useRoute()
-const sidebarItems = useSidebarItems()
+defineSlots<{
+  top?: (props: Record<never, never>) => any
+  bottom?: (props: Record<never, never>) => any
+}>()
+
 const isMobile = ref(false)
 
 const handleMobile = (width: number): void => {
@@ -23,23 +20,11 @@ const handleMobile = (width: number): void => {
 }
 useUpdateDeviceStatus(DeviceType.MOBILE, handleMobile)
 
-// 只有在sidebar中配置了的md才会展示 侧边栏
-const showSideBar = computed(() =>
-  getFirstLayerSideBarData(sidebarItems.value)?.some((item) => {
-    if (item.link === route.path) {
-      return true
-    }
-    if (item?.children) {
-      return item.children.some((c) => c.link === route.path)
-    }
-    return false
-  })
-)
+const sidebarVisible = computed(() => showSideBar())
 </script>
 
 <template>
-  <aside v-if="showSideBar || isMobile" class="sidebar">
-    <NavbarItems />
+  <aside v-if="sidebarVisible || isMobile" class="sidebar">
     <slot name="top" />
     <SidebarItems />
     <slot name="bottom" />

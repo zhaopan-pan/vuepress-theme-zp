@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import Menu from '@theme-zp-client/components/Menu.vue'
+import MobileNav from '@theme-zp-client/components/MobileNav.vue'
 import Navbar from '@theme-zp-client/components/Navbar.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
-import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -41,7 +42,12 @@ const shouldShowNavbar = computed(
 // sidebar
 const sidebarItems = useSidebarItems()
 const isSidebarOpen = ref(false)
+const isMenuOpen = ref(false)
+const toggleMenu = (to?: boolean): void => {
+  isMenuOpen.value = typeof to === 'boolean' ? to : !isMenuOpen.value
+}
 const toggleSidebar = (to?: boolean): void => {
+  console.log(to)
   isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
 }
 const touchStart = { x: 0, y: 0 }
@@ -66,6 +72,7 @@ const containerClass = computed(() => [
   {
     'no-navbar': !shouldShowNavbar.value,
     'no-sidebar': !sidebarItems.value.length,
+    'menu-open': isMenuOpen.value,
     'sidebar-open': isSidebarOpen.value,
   },
   frontmatter.value.pageClass,
@@ -108,7 +115,7 @@ const onBeforeLeave = scrollPromise.pending
     @touchend="onTouchEnd"
   >
     <slot name="navbar">
-      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+      <Navbar v-if="shouldShowNavbar" @toggle-menu="toggleMenu">
         <template #before>
           <slot name="navbar-before" />
         </template>
@@ -117,8 +124,12 @@ const onBeforeLeave = scrollPromise.pending
         </template>
       </Navbar>
     </slot>
-
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
+
+    <Menu />
+
+    <!-- 移动端导航 -->
+    <MobileNav @toggle-sidebar="toggleSidebar" />
 
     <slot name="sidebar">
       <Sidebar>
@@ -127,7 +138,6 @@ const onBeforeLeave = scrollPromise.pending
         </template>
         <template #bottom>
           <slot name="sidebar-bottom" />
-          <ToggleColorModeButton />
         </template>
       </Sidebar>
     </slot>

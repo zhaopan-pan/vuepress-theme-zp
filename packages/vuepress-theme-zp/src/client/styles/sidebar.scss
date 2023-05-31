@@ -12,27 +12,6 @@
     display: inline-block;
   }
 
-  .navbar-items {
-    display: none;
-    // border-bottom: 1px solid var(--c-border);
-    transition: border-color var(--t-color);
-    padding: 0.5rem 0 0.75rem 0;
-
-    a {
-      font-weight: 600;
-      @include flexStart;
-    }
-
-    .navbar-item {
-      display: block;
-      line-height: 1.25rem;
-      font-size: 1.1em;
-      padding: 1rem 0rem;
-      margin: 0rem 2.5rem;
-      border-bottom: 1px solid var(--c-border);
-    }
-  }
-
   .sidebar-items {
     padding: 1.5rem 0;
   }
@@ -40,14 +19,6 @@
 
 @media (max-width: $MQMobile) {
   .sidebar {
-    .navbar-items {
-      display: block;
-
-      .navbar-dropdown-wrapper .navbar-dropdown .navbar-dropdown-item a.router-link-active::after {
-        top: calc(1rem - 2px);
-      }
-    }
-
     .sidebar-items {
       padding: 1rem 0;
     }

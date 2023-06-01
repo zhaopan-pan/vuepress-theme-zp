@@ -6,7 +6,7 @@
 
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
   line-height: var(--navbar-line-height);
-  box-shadow: 0 2px 7px 0px var(--nav-shadow);
+  box-shadow: var(--nav-shadow);
 
   .logo {
     height: var(--navbar-line-height);

@@ -47,7 +47,6 @@ const toggleMenu = (to?: boolean): void => {
   isMenuOpen.value = typeof to === 'boolean' ? to : !isMenuOpen.value
 }
 const toggleSidebar = (to?: boolean): void => {
-  console.log(to)
   isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
 }
 const touchStart = { x: 0, y: 0 }

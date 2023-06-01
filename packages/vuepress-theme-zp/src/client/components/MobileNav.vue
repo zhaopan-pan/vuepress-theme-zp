@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import MyToc from '@theme-zp-client/components/MyToc.vue'
-import { usePageFrontmatter } from '@vuepress/client'
-import { computed, ref } from 'vue'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import {
   DeviceType,
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 import { IArticleInfo } from '../index.js'
-import { showSideBar } from '../utils/index.js'
+import { isArticleContent, showSideBar } from '../utils/index.js'
 
 defineEmits(['toggle-sidebar'])
-
+const route = useRoute()
+const page = usePageData()
 const isMobile = ref(false)
-const showToc = ref(false)
+const showTocModal = ref(false)
+const shouldShowTocBtn = ref(false)
+
 const frontmatter = usePageFrontmatter<IArticleInfo>()
 const themeLocale = useThemeLocaleData()
 
@@ -24,17 +27,39 @@ useUpdateDeviceStatus(DeviceType.MOBILE, (width: number): void => {
 const sidebarVisible = computed(() => showSideBar())
 
 const showPageToc = (): void => {
-  showToc.value = !showToc.value
+  showTocModal.value = !showTocModal.value
 }
 
+// mobile - nav
+const showMobileNav = computed(
+  () =>
+    isMobile.value &&
+    isArticleContent() &&
+    (sidebarVisible.value || shouldShowTocBtn.value)
+)
+
 // toc
-const shouldShowToc = computed(
-  () => frontmatter.value.toc !== false && themeLocale.value.toc !== false
+const refreshTocStatus = (): void => {
+  shouldShowTocBtn.value =
+    frontmatter.value.toc !== false &&
+    themeLocale.value.toc !== false &&
+    !!page.value.headers.length
+}
+
+onMounted(refreshTocStatus)
+
+watch(
+  () => route.path,
+  () => {
+    showTocModal.value = false
+    refreshTocStatus()
+  }
 )
 </script>
 
 <template>
-  <nav v-if="isMobile" class="mobile-nav">
+  <div v-if="showMobileNav" class="block" />
+  <nav v-if="showMobileNav" class="mobile-nav">
     <div
       v-if="sidebarVisible"
       class="page-menu"
@@ -47,19 +72,32 @@ const shouldShowToc = computed(
         <span>菜单</span>
       </button>
     </div>
-    <div v-if="shouldShowToc" class="page-toc" @click="showPageToc">
+    <div v-else class="page-menu" />
+
+    <div v-if="shouldShowTocBtn" class="page-toc" @click="showPageToc">
       <button class="page-nav-btn">
         <span>本页目录</span>
         <ZpIcons
           icon="KeyboardArrowDownRound"
           iconSize="1"
-          :class="showToc ? 'toc-arrow-open' : 'toc-arrow'"
+          :class="showTocModal ? 'toc-arrow-open' : 'toc-arrow'"
         />
       </button>
     </div>
-    <div v-show="showToc" class="nav-toc">
-      <MyToc />
-    </div>
+    <div v-else class="page-toc" />
+
+    <DropTransition v-show="showTocModal" :duration="0.2">
+      <div class="nav-toc" @click="showPageToc">
+        <Toc
+          :options="{
+            containerClass: 'table-of-contents',
+            listClass: 'zp-toc-list',
+            linkClass: 'zp-toc-link',
+            linkActiveClass: 'zp-link-active-class',
+          }"
+        />
+      </div>
+    </DropTransition>
   </nav>
 </template>
 

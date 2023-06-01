@@ -43,6 +43,11 @@
   }
 
   .navbar-dropdown {
+    transition: all var(--t-transform);
+    visibility: hidden;
+    transform: translateY(-10%);
+    opacity: 0;
+    height: 0;
     .navbar-dropdown-item {
       color: inherit;
       line-height: 1.7rem;
@@ -119,6 +124,13 @@
     &.open .navbar-dropdown-title {
       margin-bottom: 0.5rem;
     }
+    &.open .open-navbar-dropdown {
+      transition: all var(--t-transform);
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0%);
+      height: max-content;
+    }
 
     .navbar-dropdown-title {
       display: none;
@@ -130,6 +142,7 @@
     }
 
     .navbar-dropdown {
+      transition: all var(--t-transform);
       @include dropdown_wrapper;
 
       .navbar-dropdown-item {
@@ -159,9 +172,12 @@
 
     &:hover {
       .navbar-dropdown,
-      &.open .navbar-dropdown {
-        // override the inline style.
-        display: block !important;
+      &.open .open-navbar-dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0%);
+        height: max-content;
+        transition: all var(--t-transform);
       }
       .arrow {
         transform: rotate(180deg);
@@ -173,7 +189,7 @@
     }
 
     .navbar-dropdown {
-      display: none;
+      transition: all var(--t-transform);
       // Avoid height shaded by clicking
       height: auto !important;
       box-sizing: border-box;

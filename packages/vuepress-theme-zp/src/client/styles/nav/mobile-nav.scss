@@ -1,12 +1,15 @@
 @import '../_variables';
 @import '../_mixins';
 
+.block {
+  height: 2.5rem;
+}
 .mobile-nav {
-  @include flexEnd;
+  @include flexStart;
   width: 100%;
   height: 2.5rem;
-  z-index: 1;
-  position: sticky;
+  z-index: 2;
+  position: fixed;
   top: 3.5rem;
   padding-top: 0.5rem;
   border-bottom: 1px solid var(--c-border);
@@ -72,7 +75,35 @@
       transition: all var(--t-transform);
     }
   }
-  .zp-toc {
-    display: block;
+  .nav-toc {
+    position: absolute;
+    top: 50px;
+    left: calc(100vw / 2 - ((100vw - 2rem) / 2));
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh * 0.8);
+    overflow-y: scroll;
+    background-color: var(--c-bg);
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+    border: 1px solid var(--c-border-dark);
+    border-radius: var(--navbar-toc-radius);
+    box-shadow: var(--toc-shadow);
+
+    .zp-toc {
+      display: block;
+      height: inherit;
+      width: 100%;
+
+      .zp-toc-container {
+        position: initial;
+        width: 100%;
+        .toc-title {
+          display: none;
+        }
+        .table-of-contents {
+          max-width: inherit;
+        }
+      }
+    }
   }
 }

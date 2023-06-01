@@ -77,7 +77,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     </button>
 
     <DropdownTransition>
-      <ul v-show="open" class="navbar-dropdown">
+      <ul :class="{ 'navbar-dropdown': true, 'open-navbar-dropdown': open }">
         <li
           v-for="child in item.children"
           :key="child.text"

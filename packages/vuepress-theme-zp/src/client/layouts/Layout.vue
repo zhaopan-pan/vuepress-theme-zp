@@ -10,6 +10,7 @@ import { useRouter } from 'vue-router'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
 import Home from '../components/home/index.vue'
 import {
+  setupMenuToggle,
   useCodeCopy,
   useScrollPromise,
   useSidebarItems,
@@ -43,12 +44,17 @@ const shouldShowNavbar = computed(
 const sidebarItems = useSidebarItems()
 const isSidebarOpen = ref(false)
 const isMenuOpen = ref(false)
+
 const toggleMenu = (to?: boolean): void => {
   isMenuOpen.value = typeof to === 'boolean' ? to : !isMenuOpen.value
 }
+
+setupMenuToggle({ toggleMobileMenu: toggleMenu })
+
 const toggleSidebar = (to?: boolean): void => {
   isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
 }
+
 const touchStart = { x: 0, y: 0 }
 const onTouchStart = (e): void => {
   touchStart.x = e.changedTouches[0].clientX
@@ -125,7 +131,7 @@ const onBeforeLeave = scrollPromise.pending
     </slot>
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
-    <Menu />
+    <Menu @toggleMobileMenu="toggleMenu" />
 
     <!-- 移动端导航 -->
     <MobileNav @toggle-sidebar="toggleSidebar" />

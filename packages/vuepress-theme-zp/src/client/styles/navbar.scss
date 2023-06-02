@@ -41,7 +41,7 @@
 
 @media (max-width: $MQMobile) {
   .navbar {
-    padding-left: 4rem;
+    // padding-left: 4rem;
 
     .can-hide {
       display: none;
@@ -76,7 +76,8 @@
   .navbar-item {
     position: relative;
     display: inline-block;
-    margin-left: 1.5rem;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
     line-height: var(--navbar-line-height);
 
     &:first-child {

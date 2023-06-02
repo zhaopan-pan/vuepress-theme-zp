@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useThemeData } from '../../../composables/index.js'
+import Avatar from '../Avatar.vue'
 
 const themeData = useThemeData()
 
@@ -10,12 +11,7 @@ const toExternal = (link: string): unknown => link && window.open(link)
 
 <template>
   <div v-if="blogInfo" class="author-info">
-    <img
-      class="author-logo"
-      :src="blogInfo.avatar || ''"
-      alt="logo"
-      srcset=""
-    />
+    <Avatar />
     <div class="author-name">{{ blogInfo.name || '' }}</div>
     <div class="blog-external">
       <span

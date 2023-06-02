@@ -3,7 +3,6 @@
 
 .navbar-dropdown-wrapper {
   cursor: pointer;
-  // @include flexCenter;
 
   .arrow {
     transition: all var(--t-transform);
@@ -43,11 +42,6 @@
   }
 
   .navbar-dropdown {
-    transition: all var(--t-transform);
-    visibility: hidden;
-    transform: translateY(-10%);
-    opacity: 0;
-    height: 0;
     .navbar-dropdown-item {
       color: inherit;
       line-height: 1.7rem;
@@ -121,17 +115,12 @@
   }
 
   &.mobile {
-    &.open .navbar-dropdown-title {
-      margin-bottom: 0.5rem;
-    }
     &.open .open-navbar-dropdown {
-      transition: all var(--t-transform);
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0%);
-      height: max-content;
+      margin-top: 0.2rem;
+      .navbar-dropdown-item {
+        grid-template-rows: 1fr;
+      }
     }
-
     .navbar-dropdown-title {
       display: none;
     }
@@ -143,9 +132,16 @@
 
     .navbar-dropdown {
       transition: all var(--t-transform);
-      @include dropdown_wrapper;
 
+      .navbar-dropdown-item > * {
+        min-height: 0;
+      }
       .navbar-dropdown-item {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: all var(--t-transform);
+        overflow: hidden;
+
         .navbar-dropdown-subtitle {
           border-top: 0;
           margin-top: 0;
@@ -189,9 +185,12 @@
     }
 
     .navbar-dropdown {
-      transition: all var(--t-transform);
       // Avoid height shaded by clicking
-      height: auto !important;
+      box-shadow: var(--nav-shadow);
+      transition: all var(--t-transform);
+      visibility: hidden;
+      transform: translateY(-10%);
+      opacity: 0;
       box-sizing: border-box;
       max-height: calc(100vh - 2.7rem);
       overflow-y: auto;

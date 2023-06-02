@@ -5,6 +5,7 @@ import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import type { NavbarItem, ResolvedNavbarItem } from '../../shared/index.js'
+import { useMenuToggle } from '../composables/index.js'
 
 const props = defineProps({
   item: {
@@ -15,12 +16,14 @@ const props = defineProps({
 
 const { item } = toRefs(props)
 
+const open = ref(false)
+const route = useRoute()
+const { toggleMobileMenu } = useMenuToggle()
+
 const dropdownAriaLabel = computed(
   () => item.value.ariaLabel || item.value.text
 )
 
-const open = ref(false)
-const route = useRoute()
 watch(
   () => route.path,
   () => {
@@ -88,6 +91,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
               <AutoLink
                 v-if="child.link"
                 :item="child"
+                @click="toggleMobileMenu"
                 @focusout="
                   isLastItemOfArray(child, item.children) &&
                     child.children.length === 0 &&
@@ -106,6 +110,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
               >
                 <AutoLink
                   :item="grandchild"
+                  @click="toggleMobileMenu"
                   @focusout="
                     isLastItemOfArray(grandchild, child.children) &&
                       isLastItemOfArray(child, item.children) &&
@@ -119,6 +124,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
           <template v-else>
             <AutoLink
               :item="child"
+              @click="toggleMobileMenu"
               @focusout="
                 isLastItemOfArray(child, item.children) && (open = false)
               "

@@ -3,7 +3,7 @@ import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import NavbarDropdown from '@theme-zp-client/components/NavbarDropdown.vue'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import type {
@@ -15,11 +15,14 @@ import type {
 } from '../../shared/index.js'
 import {
   DeviceType,
+  useMenuToggle,
   useNavLink,
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
 import { resolveRepoType } from '../utils/index.js'
+
+const { toggleMobileMenu } = useMenuToggle()
 
 /**
  * Get navbar config of select language dropdown
@@ -177,7 +180,7 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleMobile)
         :item="item as NavGroup<ResolvedNavbarItem>"
         :class="isMobile ? 'mobile' : ''"
       />
-      <AutoLink v-else :item="(item as NavLink)" />
+      <AutoLink v-else :item="(item as NavLink)" @click="toggleMobileMenu()" />
     </div>
   </nav>
 </template>

@@ -38,7 +38,7 @@ const showMobileNav = computed(
     (sidebarVisible.value || shouldShowTocBtn.value)
 )
 
-// toc
+// update toc status
 const refreshTocStatus = (): void => {
   shouldShowTocBtn.value =
     frontmatter.value.toc !== false &&
@@ -58,14 +58,10 @@ watch(
 </script>
 
 <template>
-  <div v-if="showMobileNav" class="block" />
+  <div v-if="showMobileNav" class="mobile-nav-block" />
   <nav v-if="showMobileNav" class="mobile-nav">
-    <div
-      v-if="sidebarVisible"
-      class="page-menu"
-      @click="$emit('toggle-sidebar')"
-    >
-      <button class="page-nav-btn">
+    <div v-if="sidebarVisible" class="page-menu">
+      <button class="page-nav-btn" @click="$emit('toggle-sidebar')">
         <div class="mobile-menu-icon" aria-hidden="true">
           <span></span><span></span><span></span><span></span>
         </div>
@@ -74,8 +70,8 @@ watch(
     </div>
     <div v-else class="page-menu" />
 
-    <div v-if="shouldShowTocBtn" class="page-toc" @click="showPageToc">
-      <button class="page-nav-btn">
+    <div v-if="shouldShowTocBtn" class="page-toc">
+      <button class="page-nav-btn" @click="showPageToc">
         <span>本页目录</span>
         <ZpIcons
           icon="KeyboardArrowDownRound"

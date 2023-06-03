@@ -1,0 +1,109 @@
+@import '../_variables';
+@import '../_mixins';
+
+.mobile-nav-block {
+  height: var(--mobile-navbar-height);
+}
+.mobile-nav {
+  @include flexStart;
+  width: 100%;
+  height: var(--mobile-navbar-height);
+  z-index: 2;
+  position: fixed;
+  top: 3.3rem;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid var(--c-border);
+  background-color: var(--c-bg-light);
+
+  .page-nav-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    @include flexBetween;
+    color: var(--c-text);
+    cursor: pointer;
+  }
+  .page-menu {
+    width: 50%;
+    padding-left: 1.5rem;
+    .mobile-menu-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 1.25rem;
+      height: 1.25rem;
+      cursor: inherit;
+
+      span {
+        display: inline-block;
+        width: 80%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: var(--c-text);
+        transition: transform var(--t-transform);
+        margin: 1px 0;
+
+        &:nth-child(2) {
+          width: 60%;
+        }
+        &:nth-child(4) {
+          width: 50%;
+        }
+      }
+    }
+    span {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .page-toc {
+    width: 50%;
+    padding-right: 1.5rem;
+    @include flexEnd;
+    span {
+      margin-right: 0.5rem;
+    }
+
+    .toc-arrow {
+      color: var(--c-text) !important;
+      transform: rotate(-90deg);
+      transition: all var(--t-transform);
+    }
+    .toc-arrow-open {
+      transform: rotate(0deg);
+      transition: all var(--t-transform);
+    }
+  }
+  .nav-toc {
+    position: absolute;
+    top: 50px;
+    left: calc(100vw / 2 - ((100vw - 2rem) / 2));
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh * 0.8);
+    overflow-y: scroll;
+    background-color: var(--c-bg);
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+    border: 1px solid var(--c-border-dark);
+    border-radius: var(--navbar-toc-radius);
+    box-shadow: var(--toc-shadow);
+
+    .zp-toc {
+      display: block;
+      height: inherit;
+      width: 100%;
+
+      .zp-toc-container {
+        position: initial;
+        width: 100%;
+        .toc-title {
+          display: none;
+        }
+        .table-of-contents {
+          max-width: inherit;
+        }
+      }
+    }
+  }
+}

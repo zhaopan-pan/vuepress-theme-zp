@@ -3,7 +3,6 @@
 
 .navbar-dropdown-wrapper {
   cursor: pointer;
-  // @include flexCenter;
 
   .arrow {
     transition: all var(--t-transform);
@@ -116,22 +115,33 @@
   }
 
   &.mobile {
-    &.open .navbar-dropdown-title {
-      margin-bottom: 0.5rem;
+    &.open .open-navbar-dropdown {
+      margin-top: 0.2rem;
+      .navbar-dropdown-item {
+        grid-template-rows: 1fr;
+      }
     }
-
     .navbar-dropdown-title {
       display: none;
     }
 
     .navbar-dropdown-title-mobile {
-      @include flexStart;
+      width: 100%;
+      @include flexBetween;
     }
 
     .navbar-dropdown {
-      @include dropdown_wrapper;
+      transition: all var(--t-transform);
 
+      .navbar-dropdown-item > * {
+        min-height: 0;
+      }
       .navbar-dropdown-item {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: all var(--t-transform);
+        overflow: hidden;
+
         .navbar-dropdown-subtitle {
           border-top: 0;
           margin-top: 0;
@@ -158,9 +168,12 @@
 
     &:hover {
       .navbar-dropdown,
-      &.open .navbar-dropdown {
-        // override the inline style.
-        display: block !important;
+      &.open .open-navbar-dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0%);
+        height: max-content;
+        transition: all var(--t-transform);
       }
       .arrow {
         transform: rotate(180deg);
@@ -172,9 +185,12 @@
     }
 
     .navbar-dropdown {
-      display: none;
       // Avoid height shaded by clicking
-      height: auto !important;
+      box-shadow: var(--nav-shadow);
+      transition: all var(--t-transform);
+      visibility: hidden;
+      transform: translateY(-10%);
+      opacity: 0;
       box-sizing: border-box;
       max-height: calc(100vh - 2.7rem);
       overflow-y: auto;

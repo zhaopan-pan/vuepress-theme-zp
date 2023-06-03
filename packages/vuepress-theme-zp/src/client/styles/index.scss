@@ -23,5 +23,7 @@
 @use 'pagination';
 @use 'image';
 @use 'tooltip';
+@use 'menu';
+@use './nav/mobile-nav';
 
 @use '@vuepress/plugin-palette/style';

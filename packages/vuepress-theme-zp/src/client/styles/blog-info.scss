@@ -3,6 +3,19 @@
 @use 'mixins';
 @import '_variables';
 
+.author-avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5rem;
+  margin: 0 auto;
+  display: inherit;
+
+  animation-duration: 4s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .blog-info {
   max-width: $BIMinWidth;
   margin-left: 1rem;
@@ -24,20 +37,6 @@
       100% {
         transform: rotate(360deg);
       }
-    }
-
-    .author-logo {
-      width: 5rem;
-      height: 5rem;
-      border-radius: 5rem;
-      transform: rotate(360);
-      margin: 0 auto;
-      display: block;
-
-      animation-duration: 4s;
-      animation-name: rotate;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
     }
 
     .author-name {

@@ -161,7 +161,7 @@ div[class*='language-'] {
   &::before {
     content: attr(data-ext);
     position: absolute;
-    z-index: 3;
+    z-index: var(--code-z-index);
     top: 0.8em;
     right: 1em;
     font-size: 0.75rem;
@@ -173,7 +173,7 @@ div[class*='language-'] {
     // force override the background color to be compatible with shiki
     background: transparent !important;
     position: relative;
-    z-index: 1;
+    z-index: var(--code-z-index);
   }
 
   .highlight-lines {
@@ -203,7 +203,7 @@ div[class*='language-'] {
       &::before {
         content: ' ';
         position: absolute;
-        z-index: 2;
+        z-index: var(--code-z-index);
         left: 0;
         top: 0;
         display: block;
@@ -230,7 +230,7 @@ div[class*='language-'] {
 
       .line-number {
         position: relative;
-        z-index: 3;
+        z-index: var(--code-z-index);
         user-select: none;
         height: #{$line-height}em;
 

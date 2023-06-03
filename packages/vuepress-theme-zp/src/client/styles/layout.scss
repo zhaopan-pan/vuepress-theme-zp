@@ -24,6 +24,22 @@
   transition: background-color var(--t-color), border-color var(--t-color);
 }
 
+.menu {
+  font-size: 16px;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-right: 1px solid var(--c-border);
+  overflow-y: auto;
+  background: linear-gradient(var(--c-bg-sidebar) 60%, var(--c-border));
+  transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color);
+}
+
 .sidebar {
   font-size: 16px;
   width: var(--sidebar-width);
@@ -59,6 +75,8 @@
   width: 100vw;
   height: 100vh;
   display: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color var(--t-color);
 }
 
 .theme-container {
@@ -66,8 +84,9 @@
     .sidebar-mask {
       display: block;
     }
-
-    .navbar > .toggle-sidebar-button .icon {
+  }
+  &.menu-open {
+    .navbar .toggle-sidebar-button .icon {
       span {
         &:nth-child(1) {
           transform: rotate(45deg) translate3d(5.5px, 5.5px, 0);
@@ -140,8 +159,8 @@
   h4,
   h5,
   h6 {
-    margin-top: calc(0.5rem - var(--navbar-height));
-    padding-top: calc(1rem + var(--navbar-height));
+    margin-top: calc(0.5rem - var(--navbar-height) - var(--mobile-navbar-height));
+    padding-top: calc(1rem + var(--navbar-height) + var(--mobile-navbar-height));
     margin-bottom: 0;
 
     &:first-child {
@@ -170,6 +189,13 @@
 
 // wide mobile
 @media (max-width: $MQMobile) {
+  .menu {
+    top: 0;
+    padding-top: var(--navbar-height);
+    transform: translateY(-100%);
+    width: 100%;
+  }
+
   .sidebar {
     top: 0;
     padding-top: var(--navbar-height);
@@ -184,6 +210,12 @@
     &.sidebar-open {
       .sidebar {
         transform: translateX(0);
+      }
+    }
+
+    &.menu-open {
+      .menu {
+        transform: translateY(0);
       }
     }
 

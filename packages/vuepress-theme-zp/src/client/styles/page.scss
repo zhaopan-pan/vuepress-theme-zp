@@ -22,9 +22,16 @@
       }
     }
 
+    .content-cover-box {
+      border-radius: var(--image-radius);
+      max-width: 100%;
+      overflow: hidden;
+      @include flexStart;
+    }
     .content-cover {
-      width: 100%;
+      // width: 100%;
       max-height: 18.75rem;
+      // @include flexStart;
       // margin-top: 2rem;
       // @media (max-width: $MQMobileNarrow) {
       //   margin-top: 1rem;

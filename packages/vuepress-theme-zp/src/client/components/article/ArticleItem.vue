@@ -37,59 +37,61 @@ useUpdateDeviceStatus(DeviceType.MOBILE_NARROW, (width: number) => {
 
 const pcImgSize = computed(() => {
   if (!articleContainer.value || !info.cover) return undefined
-
-  const originSize = info.cover ? info.cover.split('/') : null
-  // 原始图片的宽高比
-  const originRatio = originSize
-    ? Number(
-        (
-          Number(originSize[originSize.length - 2]) /
-          Number(originSize[originSize.length - 1])
-        ).toFixed(2)
-      )
-    : 1
-
-  const articleSize = {
-    width: articleContainer.value?.offsetWidth / 2,
-    height: articleContainer.value?.offsetHeight,
-  }
-  // 节点的宽高比
-  const articleNodeRatio = Number(
-    (articleSize.width / articleSize.height).toFixed(2)
-  )
-  // 超出阈值 0.3
-  const exceed = Math.abs(articleNodeRatio - originRatio) - 0.3
-  if (exceed > 0) {
-    // 超出比例后重新计算高度，防止图片变形
-    articleSize['height'] = articleSize.width / (articleNodeRatio - exceed)
-  }
   return {
-    width: `${articleSize.width}px`,
-    height: `${articleSize.height}px`,
+    width: `${articleContainer.value?.offsetWidth * 0.4}px`,
+    height: `${170}px`,
   }
+  // const originSize = info.cover ? info.cover.split('/') : null
+  // 原始图片的宽高比
+  // const originRatio = originSize
+  //   ? Number(
+  //       (
+  //         Number(originSize[originSize.length - 2]) /
+  //         Number(originSize[originSize.length - 1])
+  //       ).toFixed(2)
+  //     )
+  //   : 1
+
+  // // 节点的宽高比
+  // const articleNodeRatio = Number(
+  //   (articleSize.width / articleSize.height).toFixed(2)
+  // )
+  // // 超出阈值 0.3
+  // const exceed = Math.abs(articleNodeRatio - originRatio) - 0.3
+  // if (exceed > 0) {
+  //   // 超出比例后重新计算高度，防止图片变形
+  //   articleSize['height'] = articleSize.width / (articleNodeRatio - exceed)
+  // }
+  // return {
+  //   width: `${articleSize.width}px`,
+  //   height: `${articleSize.height}px`,
+  // }
 })
 
 // pc-end cover
-const isPcCover = computed(
-  () => info.cover && !showMobileNarrowCover.value && pcImgSize.value
+const isPcCover = computed(() => info.cover && !showMobileNarrowCover.value)
+// pc normal article
+const isPcNormalArticle = computed(
+  () => !showMobileNarrowCover.value && !info.cover
 )
 const articleContainerStyle = computed<CSSProperties>(() =>
-  !isPcCover.value ? {} : {}
+  isPcCover.value ? { height: 'calc(170px)' } : {}
 )
 
-const articleTextStyle = computed<CSSProperties>(() =>
-  isPcCover.value
+const articleTextStyle = computed<CSSProperties>(() => {
+  if (isPcNormalArticle.value) return { width: '100%', padding: '0.5rem 1rem' }
+  return isPcCover.value
     ? {
-        height: `calc(${pcImgSize?.value?.height} - 1rem)`,
+        maxWidth: '60%',
         paddingRight: '0.5rem',
+        padding: '0.5rem 1rem',
       }
-    : {}
-)
+    : { width: '100%' }
+})
 </script>
 <template>
   <article
     ref="articleContainer"
-    :style="articleContainerStyle"
     class="article-item-container cp"
     @click="toDetail"
   >
@@ -101,6 +103,7 @@ const articleTextStyle = computed<CSSProperties>(() =>
     />
     <div
       class="article-item"
+      :style="articleContainerStyle"
       :class="showMobileNarrowCover ? 'article-item-mobile-narrow ' : ''"
     >
       <div class="article-text" :style="articleTextStyle">

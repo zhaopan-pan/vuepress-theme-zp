@@ -46,7 +46,13 @@ const refreshTocStatus = (): void => {
     !!page.value.headers.length
 }
 
-onMounted(refreshTocStatus)
+onMounted(() => {
+  refreshTocStatus()
+  if (!showMobileNav.value) {
+    // 没有导航栏的时候 高度重置为0，以免影响锚点定位
+    document.documentElement.style.setProperty('--mobile-navbar-height', '0rem')
+  }
+})
 
 watch(
   () => route.path,

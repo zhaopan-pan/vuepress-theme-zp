@@ -8,7 +8,7 @@ excerpt: true
 cover: https://picsum.photos/id/57/536/354
 ---
 
-但是对方水电费所发生的发撒
+上一篇主要是为了解决热刷新的问题，解决的同时，又引申出了另一个问题，那就是webpack-dev-server是如何和浏览器建立webSocket连接呢？建立连接的时候发生了什么？建立连接之前做了哪些事情呢？
  <!-- more -->
 
 ## level-1

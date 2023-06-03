@@ -11,7 +11,7 @@
   display: inherit;
 
   animation-duration: 4s;
-  animation-name: rotate;
+  // animation-name: rotate;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -29,15 +29,15 @@
     background-color: var(--c-bg-light);
     border-radius: var(--card-radius);
 
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
+    // @keyframes rotate {
+    //   0% {
+    //     transform: rotate(0deg);
+    //   }
 
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+    //   100% {
+    //     transform: rotate(360deg);
+    //   }
+    // }
 
     .author-name {
       text-align: center;

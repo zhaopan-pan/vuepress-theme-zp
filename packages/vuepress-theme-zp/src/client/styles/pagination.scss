@@ -1,10 +1,13 @@
 @use 'vars';
+@import '_mixins';
 
 .pagination {
   font-weight: 500;
   text-align: center;
   color: var(--c-text);
   margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: initial;
 
   .pagination-list {
     font-size: 0;
@@ -12,6 +15,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex: 1;
+    margin-top: 0.5rem;
 
     .operation-btn {
       cursor: pointer;
@@ -33,19 +39,42 @@
         cursor: not-allowed;
       }
     }
-
-    span {
-      font-size: 0.9rem;
-      line-height: normal;
+  }
+  span {
+    font-size: 0.9rem;
+    line-height: normal;
+  }
+  .jump {
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    background-color: transparent;
+    // border: 0.1rem solid var(--c-border-dark);
+    margin: 0 0.25rem;
+    transition: all var(--t-color);
+    &:hover {
+      background-color: var(--c-border-dark);
     }
+  }
+  .curJumpItem {
+    cursor: default;
+    color: var(--c-bg);
+    background-color: var(--c-theme) !important;
+  }
+  .ellipsis {
+    padding-bottom: 0.4rem;
+    @include flexCenter;
+  }
 
-    .jump {
-      padding: 0.3rem 0.4rem;
-      border-radius: 0.2rem;
-      cursor: pointer;
-      border: 0.1rem solid var(--c-border-dark);
-      margin: 0 0.25rem;
-    }
+  .jump-container {
+    font-size: 0.9rem;
+    flex-wrap: nowrap;
+    display: flex;
+    min-width: 11rem;
+    flex: 1;
+    justify-content: center;
+    height: max-content;
+    margin-top: 0.5rem;
 
     .jumping {
       input {
@@ -60,24 +89,13 @@
       }
     }
 
-    .curJumpItem {
-      cursor: default;
-      color: var(--c-bg);
-      background: var(--c-theme);
-      border-color: var(--c-theme);
-    }
-
-    .ellipsis {
-      padding: 0px 8px;
-    }
-
     .jumpPoint {
       margin-left: 15px;
+      @include flexCenter;
     }
-
     .go-page {
       &:hover {
-        background-color: var(--c-bg-light);
+        background-color: var(--c-border-dark);
       }
     }
   }

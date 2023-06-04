@@ -31,7 +31,7 @@ const excerptContent = computed(() => info.description || info.excerpt)
 
 const toDetail = (): unknown => router.push(path)
 
-useUpdateDeviceStatus(DeviceType.MOBILE_NARROW, (width: number) => {
+useUpdateDeviceStatus(DeviceType.MOBILE, (width: number) => {
   showMobileNarrowCover.value = window.innerWidth < width
 })
 

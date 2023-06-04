@@ -16,7 +16,7 @@ import {
   useSidebarItems,
   useThemeLocaleData,
 } from '../composables/index.js'
-import { removeLoading } from '../utils/index.js'
+import { removeLoading, showSideBar } from '../utils/index.js'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any
@@ -129,7 +129,11 @@ const onBeforeLeave = scrollPromise.pending
         </template>
       </Navbar>
     </slot>
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <div
+      v-if="showSideBar()"
+      class="sidebar-mask"
+      @click="toggleSidebar(false)"
+    />
 
     <Menu @toggleMobileMenu="toggleMenu" />
 

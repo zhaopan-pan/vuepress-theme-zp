@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { CSSProperties, computed, ref } from 'vue'
+import { DeviceType, useUpdateDeviceStatus } from '../composables/index.js'
+
 const emit = defineEmits<{
   (e: 'onChange', currentPage: number, pageSize: number): void
 }>()
@@ -12,6 +14,7 @@ const props = defineProps({
 
 // 跳转指定页码
 const changePage = ref<number>()
+const isMobile = ref(false)
 
 const pages = computed(() => {
   return Math.ceil(props.total / props.pageSize)
@@ -55,6 +58,17 @@ const pageNumbers = computed(() => {
   return ar
 })
 
+useUpdateDeviceStatus(DeviceType.MOBILE, (width: number): void => {
+  isMobile.value = window.innerWidth < width
+})
+
+const paginationStyle = computed<CSSProperties>(() => {
+  if (isMobile.value) {
+    return { flexWrap: 'wrap' }
+  }
+  return { flexWrap: 'initial' }
+})
+
 const keypress = (e: KeyboardEvent): void => {
   if (e.key === 'Enter' && e?.target && e.target['value']) {
     jumpPage(Number(e.target['value']))
@@ -93,7 +107,7 @@ const change = (num: number): void => {
 </script>
 
 <template>
-  <div v-if="showComponent" class="pagination">
+  <div v-if="showComponent" class="pagination" :style="paginationStyle">
     <div class="pagination-list">
       <button
         :disabled="currentPage === 1"
@@ -138,15 +152,13 @@ const change = (num: number): void => {
       >
         <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
       </button>
-      <span v-show="pages > 3">
-        <span class="jumpPoint">跳转到：</span>
-        <span class="jumping">
-          <input v-model="changePage" type="text" @keypress="keypress" />
-        </span>
-        <span class="jump go-page" @click="jumpPage(Number(changePage))"
-          >GO</span
-        >
+    </div>
+    <div v-show="pages > 5" class="jump-container">
+      <span class="jumpPoint">跳转到：</span>
+      <span class="jumping">
+        <input v-model="changePage" type="text" @keypress="keypress" />
       </span>
+      <span class="jump go-page" @click="jumpPage(Number(changePage))">GO</span>
     </div>
   </div>
 </template>

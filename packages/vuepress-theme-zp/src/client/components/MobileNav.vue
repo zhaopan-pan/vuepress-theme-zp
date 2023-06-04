@@ -48,17 +48,23 @@ const refreshTocStatus = (): void => {
 
 onMounted(() => {
   refreshTocStatus()
-  if (!showMobileNav.value) {
-    // 没有导航栏的时候 高度重置为0，以免影响锚点定位
-    document.documentElement.style.setProperty('--mobile-navbar-height', '0rem')
-  }
 })
 
 watch(
-  () => route.path,
+  () => [isMobile.value, route.path],
   () => {
     showTocModal.value = false
     refreshTocStatus()
+
+    if (!isMobile.value) {
+      // 没有导航栏的时候 高度重置为0，以免影响锚点定位
+      document.documentElement.style.setProperty(
+        '--mobile-navbar-height',
+        '0rem'
+      )
+    } else {
+      document.documentElement.style.removeProperty('--mobile-navbar-height')
+    }
   }
 )
 </script>
@@ -88,8 +94,8 @@ watch(
     </div>
     <div v-else class="page-toc" />
 
-    <DropTransition v-show="showTocModal" :duration="0.2">
-      <div class="nav-toc" @click="showPageToc">
+    <DropTransition v-show="showTocModal" :duration="0.15">
+      <div class="nav-toc">
         <Toc
           :options="{
             containerClass: 'table-of-contents',

@@ -24,7 +24,7 @@ const sidebarVisible = computed(() => showSideBar())
 </script>
 
 <template>
-  <aside v-if="sidebarVisible || isMobile" class="sidebar">
+  <aside v-if="sidebarVisible" class="sidebar">
     <slot name="top" />
     <SidebarItems />
     <slot name="bottom" />

@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.39
+
+### Patch Changes
+
+- feat:
+  1、完成移动端 nav 下拉交互改造
+  2、适配移动端 toc、sidebar
+  3、pagination 适配移动端
+
 ## 1.0.38
 
 ### Patch Changes

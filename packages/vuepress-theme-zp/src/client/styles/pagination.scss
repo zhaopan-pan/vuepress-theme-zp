@@ -31,9 +31,13 @@
       font-size: 0.9rem;
       color: var(--c-text);
 
-      &:hover:not(&:disabled) {
-        background-color: var(--c-bg-light);
+      // 测试是否有输入机制可以 hover
+      @media (any-hover: hover) {
+        &:hover:not(&:disabled) {
+          background-color: var(--c-bg-light);
+        }
       }
+
       &:disabled {
         opacity: 0.3;
         cursor: not-allowed;

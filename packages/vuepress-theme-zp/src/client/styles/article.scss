@@ -46,6 +46,8 @@
         font-weight: 600;
         position: relative;
         max-width: max-content;
+        @include textEllipsis(1);
+
         &::after {
           transition: width 0.2s;
           content: '';

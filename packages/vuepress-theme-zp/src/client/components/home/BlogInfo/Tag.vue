@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTag } from '../../../composables/index.js'
+import { useTag } from '@theme-zp-client/composables/index.js'
 import Tags from '../../tag/Tags.vue'
 
 const tagMap = useTag()

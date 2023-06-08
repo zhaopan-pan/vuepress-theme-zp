@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import SidebarItems from '@theme-zp-client/components/SidebarItems.vue'
 import { computed, ref } from 'vue'
-import { DeviceType, useUpdateDeviceStatus } from '../composables/index.js'
-import { showSideBar } from '../utils/index.js'
+import { DeviceType, useUpdateDeviceStatus } from '@theme-zp-client/composables/index.js'
+import { showSideBar } from '@theme-zp-client/utils/index.js'
 
 defineSlots<{
   top?: (props: Record<never, never>) => any

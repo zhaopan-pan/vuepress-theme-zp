@@ -5,8 +5,8 @@ import PageNav from '@theme-zp-client/components/PageNav.vue'
 import type { IArticleInfo } from '@theme-zp-src/shared/index.js'
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
-import { useThemeLocaleData } from '../composables/index.js'
-import { isArticleContent } from '../utils/index.js'
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
+import { isArticleContent } from '@theme-zp-client/utils/index.js'
 import ArticleInfo from './article/ArticleInfo.vue'
 
 const frontmatter = usePageFrontmatter<IArticleInfo>()

@@ -1,26 +1,26 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
-import NavbarDropdown from '@theme-zp-client/components/NavbarDropdown.vue'
-import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
-import { isLinkHttp, isString } from '@vuepress/shared'
-import { computed, inject, ref } from 'vue'
-import type { ComputedRef } from 'vue'
-import { useRouter } from 'vue-router'
-import type {
-  NavbarGroup,
-  NavbarItem,
-  NavGroup,
-  NavLink,
-  ResolvedNavbarItem,
-} from '../../shared/index.js'
+import NavbarDropdown from '@theme-zp-client/components/nav/NavbarDropdown.vue'
 import {
   DeviceType,
   useMenuToggle,
   useNavLink,
   useThemeLocaleData,
   useUpdateDeviceStatus,
-} from '../composables/index.js'
-import { resolveRepoType } from '../utils/index.js'
+} from '@theme-zp-client/composables/index.js'
+import { resolveRepoType } from '@theme-zp-client/utils/index.js'
+import type {
+  NavbarGroup,
+  NavbarItem,
+  NavGroup,
+  NavLink,
+  ResolvedNavbarItem,
+} from '@theme-zp-src/shared/index.js'
+import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import { isLinkHttp, isString } from '@vuepress/shared'
+import { computed, ref } from 'vue'
+import type { ComputedRef } from 'vue'
+import { useRouter } from 'vue-router'
 
 const { toggleMobileMenu } = useMenuToggle()
 

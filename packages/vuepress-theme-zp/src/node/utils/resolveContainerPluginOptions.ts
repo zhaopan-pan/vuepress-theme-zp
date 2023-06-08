@@ -1,5 +1,5 @@
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import type { ZpThemeOptions } from '../../shared/index.js'
+import type { ZpThemeOptions } from '@theme-zp-src/shared/index.js'
 
 /**
  * Resolve options for @vuepress/plugin-container

@@ -16,7 +16,7 @@ import type {
   SidebarConfigObject,
   SidebarItem,
   ZpThemeOptions,
-} from '../../shared/index.js'
+} from '@theme-zp-src/shared/index.js'
 import { useNavLink } from './useNavLink.js'
 import { useThemeLocaleData } from './useThemeData.js'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useArticles } from '../../composables/index.js'
+import { useArticles } from '@theme-zp-client/composables/index.js'
 import ArticleList from '../article/ArticleList.vue'
 import BlogInfo from './BlogInfo/index.vue'
 const articles = useArticles()

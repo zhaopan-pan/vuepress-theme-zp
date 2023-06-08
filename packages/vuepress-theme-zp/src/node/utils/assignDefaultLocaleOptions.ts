@@ -1,7 +1,7 @@
 import type {
   DefaultThemeLocaleData,
   DefaultThemeLocaleOptions,
-} from '../../shared/index.js'
+} from '@theme-zp-src/shared/index.js'
 
 export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
   // color mode

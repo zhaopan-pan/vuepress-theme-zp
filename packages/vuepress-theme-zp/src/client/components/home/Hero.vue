@@ -10,7 +10,7 @@ import {
 import { isArray } from '@vuepress/shared'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import { useDarkMode } from '../../composables/index.js'
+import { useDarkMode } from '@theme-zp-client/composables/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()

@@ -7,9 +7,9 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
   NavLink,
-} from '../../shared/index.js'
-import { useThemeLocaleData } from '../composables/index.js'
-import { resolveEditLink } from '../utils/index.js'
+} from '@theme-zp-src/shared/index.js'
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
+import { resolveEditLink } from '@theme-zp-client/utils/index.js'
 
 const useEditNavLink = (): ComputedRef<null | NavLink> => {
   const themeLocale = useThemeLocaleData()

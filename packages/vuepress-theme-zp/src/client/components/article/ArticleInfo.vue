@@ -4,7 +4,7 @@ import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import type { PropType } from 'vue'
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import { formatDate } from '../../utils/index.js'
+import { formatDate } from '@theme-zp-client/utils/index.js'
 
 const props = defineProps({
   info: {

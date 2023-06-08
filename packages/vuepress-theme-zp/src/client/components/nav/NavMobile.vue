@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed, onMounted, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import {
   DeviceType,
   useThemeLocaleData,
   useUpdateDeviceStatus,
-} from '../composables/index.js'
-import { IArticleInfo } from '../index.js'
-import { isArticleContent, showSideBar } from '../utils/index.js'
+} from '@theme-zp-client/composables/index.js'
+import { isArticleContent, showSideBar } from '@theme-zp-client/utils/index.js'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { IArticleInfo } from '../../index.js'
 
 defineEmits(['toggle-sidebar'])
 const route = useRoute()

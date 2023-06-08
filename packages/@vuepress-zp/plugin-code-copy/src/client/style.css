@@ -5,6 +5,7 @@
   --c-copy-success-icon-color: #448d62;
   --c-copy-tooltip-bg: #161616;
   --c-copy-tooltip-color: #ece6e6;
+  --t-transform: 0.2s 0 ease;
 }
 
 html.dark {
@@ -27,7 +28,7 @@ html.dark {
   border-radius: 5px;
   background: var(--c-copy-btn-bg);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--t-transform);
   opacity: 0;
 }
 .copy-code-btn:hover {
@@ -55,7 +56,7 @@ html.dark {
   border: 1px solid var(--c-copy-success-icon-color);
 }
 
-.copy-code-btn-tooltip::before {
+.copy-code-tooltip::before {
   content: attr(data-tooltip-text);
   line-height: 25px;
   width: max-content;
@@ -71,9 +72,10 @@ html.dark {
   border-radius: 5px;
   color: var(--c-copy-tooltip-color);
   background-color: var(--c-copy-tooltip-bg);
-  transition: all 0.3s ease;
+  transition: all var(--t-transform);
+  opacity: 0;
 }
-.copy-code-btn-tooltip::after {
+.copy-code-tooltip::after {
   content: '';
   position: absolute;
   top: 10px;
@@ -81,5 +83,11 @@ html.dark {
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent transparent var(--c-copy-tooltip-bg);
-  transition: all 0.3s 0 ease;
+  transition: all var(--t-transform);
+  opacity: 0;
+}
+
+.copy-code-tooltip-show::after,
+.copy-code-tooltip-show::before {
+  opacity: 1;
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThemeData } from '../../../composables/index.js'
+import { useThemeData } from '@theme-zp-client/composables/index.js'
 import Avatar from '../Avatar.vue'
 
 const themeData = useThemeData()

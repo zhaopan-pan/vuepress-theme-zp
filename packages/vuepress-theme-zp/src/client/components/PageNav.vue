@@ -8,8 +8,8 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink,
   ResolvedSidebarItem,
-} from '../../shared/index.js'
-import { useNavLink, useSidebarItems } from '../composables/index.js'
+} from '@theme-zp-src/shared/index.js'
+import { useNavLink, useSidebarItems } from '@theme-zp-client/composables/index.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter

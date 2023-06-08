@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import NavbarBrand from '@theme-zp-client/components/NavbarBrand.vue'
-import NavbarItems from '@theme-zp-client/components/NavbarItems.vue'
+import NavbarBrand from '@theme-zp-client/components/nav/NavbarBrand.vue'
+import NavbarItems from '@theme-zp-client/components/nav/NavbarItems.vue'
+import ToggleColorModeButton from '@theme-zp-client/components/ToggleColorModeButton.vue'
 import ToggleSidebarButton from '@theme-zp-client/components/ToggleSidebarButton.vue'
+import {
+  DeviceType,
+  useUpdateDeviceStatus,
+} from '@theme-zp-client/composables/index.js'
 import { computed, ref } from 'vue'
-import { DeviceType, useUpdateDeviceStatus } from '../composables/index.js'
 // import Avatar from './home/Avatar.vue'
 
 defineSlots<{
@@ -15,6 +19,7 @@ defineEmits(['toggle-menu'])
 
 const navbar = ref<HTMLElement | null>(null)
 const navbarBrand = ref<HTMLElement | null>(null)
+const isPc = ref(false)
 
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
@@ -36,6 +41,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
 }
 
 const handleLinksWrapWidth = (width: number): void => {
+  isPc.value = window.innerWidth > width
   const navbarHorizontalPadding =
     getCssValue(navbar.value, 'paddingLeft') +
     getCssValue(navbar.value, 'paddingRight')
@@ -63,6 +69,7 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
       <NavbarItems class="can-hide" />
       <slot name="after" />
       <NavbarSearch />
+      <ToggleColorModeButton v-if="isPc" />
       <ToggleSidebarButton @toggle="$emit('toggle-menu')" />
     </div>
   </header>

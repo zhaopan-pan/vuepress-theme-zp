@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import DropdownTransition from '@theme-zp-client/components/DropdownTransition.vue'
+import { useMenuToggle } from '@theme-zp-client/composables/index.js'
+import type {
+  NavbarItem,
+  ResolvedNavbarItem,
+} from '@theme-zp-src/shared/index.js'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
-import type { NavbarItem, ResolvedNavbarItem } from '../../shared/index.js'
-import { useMenuToggle } from '../composables/index.js'
 
 const props = defineProps({
   item: {
@@ -14,6 +17,7 @@ const props = defineProps({
   },
 })
 
+// eslint-disable-next-line vue/no-dupe-keys
 const { item } = toRefs(props)
 
 const open = ref(false)

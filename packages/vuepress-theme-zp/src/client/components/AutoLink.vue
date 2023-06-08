@@ -4,7 +4,7 @@ import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
-import type { NavLink } from '../../shared/index.js'
+import type { NavLink } from '@theme-zp-src/shared/index.js'
 export default {
   inheritAttrs: false,
 }

@@ -1,6 +1,6 @@
 import type { Page, Theme } from '@vuepress/core'
 import { getDirname, path } from '@vuepress/utils'
-import type { DefaultThemePageData, ZpThemeOptions } from '../shared/index.js'
+import type { DefaultThemePageData, ZpThemeOptions } from '@theme-zp-src/shared/index.js'
 import {
   createAlias,
   getPlugins,

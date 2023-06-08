@@ -2,8 +2,8 @@
 import SidebarItem from '@theme-zp-client/components/SidebarItem.vue'
 import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useSidebarItems } from '../composables/index.js'
-import { getFirstLayerSideBarData } from '../utils/index.js'
+import { useSidebarItems } from '@theme-zp-client/composables/index.js'
+import { getFirstLayerSideBarData } from '@theme-zp-client/utils/index.js'
 
 const route = useRoute()
 const sidebarItems = useSidebarItems()

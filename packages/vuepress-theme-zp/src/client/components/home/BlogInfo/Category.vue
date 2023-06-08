@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCategory } from '../../../composables/index.js'
+import { useCategory } from '@theme-zp-client/composables/index.js'
 import Tags from '../../tag/Tags.vue'
 
 const category = useCategory()

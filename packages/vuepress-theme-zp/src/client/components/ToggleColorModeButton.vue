@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { useDarkMode, useThemeLocaleData } from '../composables/index.js'
+import {
+  useDarkMode,
+  useThemeLocaleData,
+} from '@theme-zp-client/composables/index.js'
 
 const themeLocale = useThemeLocaleData()
 const isDarkMode = useDarkMode()

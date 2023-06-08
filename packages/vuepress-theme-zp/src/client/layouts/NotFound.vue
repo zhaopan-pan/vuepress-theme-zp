@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRouteLocale } from '@vuepress/client'
 import { onMounted } from 'vue'
-import { useThemeLocaleData } from '../composables/index.js'
-import { removeLoading } from '../utils/index.js'
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
+import { removeLoading } from '@theme-zp-client/utils/index.js'
 
 const routeLocale = useRouteLocale()
 const themeLocale = useThemeLocaleData()

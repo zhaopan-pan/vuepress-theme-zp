@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useThemeData } from '../../composables/index.js'
+import { useThemeData } from '@theme-zp-client/composables/index.js'
 
-// import { useThemeData } from '../..//useThemeData.js'
 const themeData = useThemeData()
 const url = themeData.value.blog?.homeTopBg
 // ('https://images.pexels.com/photos/3695297/pexels-photo-3695297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')

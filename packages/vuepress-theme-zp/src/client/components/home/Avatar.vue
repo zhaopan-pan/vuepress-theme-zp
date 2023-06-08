@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useThemeData } from '../../composables/index.js'
+import { useThemeData } from '@theme-zp-client/composables/index.js'
 
 const props = defineProps({
   size: { type: Number, default: 5 },

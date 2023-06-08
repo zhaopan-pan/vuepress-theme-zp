@@ -1,22 +1,22 @@
 <script setup lang="ts">
+import Home from '@theme-zp-client/components/home/index.vue'
 import Menu from '@theme-zp-client/components/Menu.vue'
-import MobileNav from '@theme-zp-client/components/MobileNav.vue'
-import Navbar from '@theme-zp-client/components/Navbar.vue'
+import Navbar from '@theme-zp-client/components/nav/Navbar.vue'
+import MobileNav from '@theme-zp-client/components/nav/NavMobile.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
-import Home from '../components/home/index.vue'
 import {
   setupMenuToggle,
   useCodeCopy,
   useScrollPromise,
   useSidebarItems,
   useThemeLocaleData,
-} from '../composables/index.js'
-import { removeLoading, showSideBar } from '../utils/index.js'
+} from '@theme-zp-client/composables/index.js'
+import { removeLoading, showSideBar } from '@theme-zp-client/utils/index.js'
+import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/index.js'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any

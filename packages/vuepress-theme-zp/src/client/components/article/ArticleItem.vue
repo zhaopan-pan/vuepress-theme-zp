@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import {
+  DeviceType,
+  useUpdateDeviceStatus,
+} from '@theme-zp-client/composables/index.js'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import { computed, CSSProperties, PropType, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { DeviceType, useUpdateDeviceStatus } from '@theme-zp-client/composables/index.js'
 import ArticleInfo from './ArticleInfo.vue'
 
 const router = useRouter()
 // show narrow mobile cover image
-const showMobileNarrowCover = ref(false)
+const isMobile = ref(false)
 
 const articleContainer = ref<HTMLElement | null>(null)
 
@@ -32,7 +35,7 @@ const excerptContent = computed(() => info.description || info.excerpt)
 const toDetail = (): unknown => router.push(path)
 
 useUpdateDeviceStatus(DeviceType.MOBILE, (width: number) => {
-  showMobileNarrowCover.value = window.innerWidth < width
+  isMobile.value = window.innerWidth < width
 })
 
 const pcImgSize = computed(() => {
@@ -69,11 +72,10 @@ const pcImgSize = computed(() => {
 })
 
 // pc-end cover
-const isPcCover = computed(() => info.cover && !showMobileNarrowCover.value)
+const isPcCover = computed(() => info.cover && !isMobile.value)
 // pc normal article
-const isPcNormalArticle = computed(
-  () => !showMobileNarrowCover.value && !info.cover
-)
+const isPcNormalArticle = computed(() => !isMobile.value && !info.cover)
+
 const articleContainerStyle = computed<CSSProperties>(() =>
   isPcCover.value ? { height: 'calc(170px)' } : {}
 )
@@ -96,7 +98,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
     @click="toDetail"
   >
     <Image
-      v-if="info.cover && showMobileNarrowCover"
+      v-if="info.cover && isMobile"
       class="mobile-article-cover"
       :src="info.cover"
       alt="article-cover"
@@ -104,10 +106,16 @@ const articleTextStyle = computed<CSSProperties>(() => {
     <div
       class="article-item"
       :style="articleContainerStyle"
-      :class="showMobileNarrowCover ? 'article-item-mobile-narrow ' : ''"
+      :class="{ 'article-item-mobile-narrow': isMobile }"
     >
       <div class="article-text" :style="articleTextStyle">
-        <div v-show="info.title" class="article-name">
+        <div
+          v-show="info.title"
+          :class="{
+            'article-name': true,
+            'article-name-ellipsis': !isMobile,
+          }"
+        >
           {{ info.title }}
         </div>
         <div

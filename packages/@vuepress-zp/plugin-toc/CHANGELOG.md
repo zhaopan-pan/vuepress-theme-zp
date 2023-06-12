@@ -1,5 +1,14 @@
 # @vuepress-zp/plugin-toc
 
+## 0.0.7
+
+### Patch Changes
+
+- feat:
+  1、upd vuepress version
+  2、unlimited length of mobile article names
+  3、support pwa-popup
+
 ## 0.0.6
 
 ### Patch Changes

@@ -57,6 +57,19 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
     blog: blogPlugin,
     comment: commentPlugin,
     search: docsearchPlugin,
+    pwaOption: {
+      pwa: {
+        skipWaiting: false,
+      },
+      pwaPopup: {
+        locales: {
+          '/': {
+            message: '发现新内容可用',
+            buttonText: '刷新',
+          },
+        },
+      },
+    },
   },
   cssVariableStr: cssStr,
   defaultArticleCover: 'https://s1.ax1x.com/2023/05/13/p96w2rR.jpg',

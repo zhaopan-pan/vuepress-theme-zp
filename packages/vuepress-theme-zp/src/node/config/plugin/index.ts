@@ -22,14 +22,14 @@ export const getPlugins = ({
   themePlugins = {},
   ...localeOptions
 }: ZpThemeOptions): PluginConfig => {
-  const { blog = {}, comment = {}, search, pwa = {} } = themePlugins
+  const { blog = {}, comment = {}, search, pwaOption } = themePlugins
   return [
     blogPlugin(blog),
     tocPlugin({}),
     codeCopyPlugin(),
     comment ? commentPlugin(comment) : [],
     search ? docsearch(search) : [],
-    pwa ? createPwa(pwa) : [],
+    pwaOption?.pwa ? createPwa(pwaOption) : [],
     // @vuepress/plugin-active-header-link
     themePlugins.activeHeaderLinks !== false
       ? activeHeaderLinksPlugin({

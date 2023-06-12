@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.42
+
+### Patch Changes
+
+- chore: update vue-router version
+- Updated dependencies
+  - @vuepress-zp/plugin-code-copy@0.0.7
+  - @vuepress-zp/plugin-toc@0.0.8
+
 ## 1.0.41
 
 ### Patch Changes

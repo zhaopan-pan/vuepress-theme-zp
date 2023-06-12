@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-code-copy
 
+## 0.0.7
+
+### Patch Changes
+
+- chore: update vue-router version
+
 ## 0.0.6
 
 ### Patch Changes

@@ -10,11 +10,8 @@
 @use 'custom-container';
 @use 'home';
 @use 'layout';
-@use 'navbar';
-@use 'navbar-dropdown';
 @use 'page';
 @use 'sidebar';
-@use 'toc';
 @use 'transitions';
 @use 'tag';
 @use 'article';
@@ -24,6 +21,12 @@
 @use 'image';
 @use 'tooltip';
 @use 'menu';
+
 @use './nav/mobile-nav';
+@use './nav/navbar-dropdown';
+@use './nav/navbar';
+
+@use './plugins/toc';
+@use './plugins/pwa';
 
 @use '@vuepress/plugin-palette/style';

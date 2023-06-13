@@ -179,3 +179,15 @@
   --search-item-text-color: var(--c-text-lighter);
   --search-item-focus-bg-color: var(--c-bg-light);
 }
+
+// plugin-pwa-popup
+.pwa-popup {
+  --pwa-popup-z-index: 101;
+  --pwa-popup-text-color: var(--c-text);
+  --pwa-popup-bg-color: var(--c-bg);
+  --pwa-popup-border-color: var(--c-theme);
+  --pwa-popup-shadow: 0 4px 10px var(--c-theme);
+  --pwa-popup-btn-text-color: var(--c-bg);
+  --pwa-popup-btn-bg-color: var(--c-theme);
+  --pwa-popup-btn-hover-bg-color: var(--c-theme-light);
+}

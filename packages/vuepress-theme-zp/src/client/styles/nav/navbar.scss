@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_mixins';
+@import '../_variables';
+@import '../_mixins';
 
 .navbar {
   --navbar-line-height: calc(var(--navbar-height) - 2 * var(--navbar-padding-v));
@@ -76,7 +76,7 @@
   .navbar-item {
     position: relative;
     display: inline-block;
-    padding: 0 0.75rem;
+    margin: 0 0.75rem;
     box-sizing: border-box;
     line-height: var(--navbar-line-height);
 

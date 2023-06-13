@@ -1,0 +1,8 @@
+@import '../vars.scss';
+
+.pwa-popup {
+  border-radius: var(--card-radius);
+  button {
+    border-radius: var(--btn-radius);
+  }
+}

@@ -68,8 +68,8 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
       <slot name="before" />
       <NavbarItems class="can-hide" />
       <slot name="after" />
-      <NavbarSearch />
       <ToggleColorModeButton v-if="isPc" />
+      <NavbarSearch />
       <ToggleSidebarButton @toggle="$emit('toggle-menu')" />
     </div>
   </header>

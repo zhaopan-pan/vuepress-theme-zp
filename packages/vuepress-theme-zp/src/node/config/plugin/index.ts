@@ -16,7 +16,7 @@ import { blogPlugin } from 'vuepress-plugin-blog2'
 import { commentPlugin } from 'vuepress-plugin-comment2'
 import { resolveContainerPluginOptions } from '../../utils/index.js'
 import docsearch from './docsearch.js'
-import createPwa from './pwa.js'
+import { pwa, pwaPopup } from './pwa.js'
 
 export const getPlugins = ({
   themePlugins = {},
@@ -29,7 +29,10 @@ export const getPlugins = ({
     codeCopyPlugin(),
     comment ? commentPlugin(comment) : [],
     search ? docsearch(search) : [],
-    pwaOption?.pwa ? createPwa(pwaOption) : [],
+    pwaOption?.pwa ? pwa(pwaOption.pwa, !pwaOption?.pwaPopup) : [],
+    !pwaOption?.pwa.skipWaiting && pwaOption?.pwaPopup
+      ? pwaPopup(pwaOption?.pwaPopup)
+      : [],
     // @vuepress/plugin-active-header-link
     themePlugins.activeHeaderLinks !== false
       ? activeHeaderLinksPlugin({

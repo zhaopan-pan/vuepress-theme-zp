@@ -1,6 +1,6 @@
 # vue-theme-zp
 
-基于[vuepress2](https://v2.vuepress.vuejs.org/zh/)编写的主题，以及其生态用到的相关插件
+基于[vuepress2](https://v2.vuepress.vuejs.org/zh/)编写的`blog`主题，以及其生态用到的相关插件
 
 ## 示例 
 
@@ -36,6 +36,6 @@ pnpm dev
 
 - [TypeScript](https://www.typescriptlang.org/) 作为开发语言
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) 用于代码检查和格式化
-- [pnpm + monorepo](https://pnpm.io/zh) 包管理、组织工具
+- [pnpm + monorepo](https://pnpm.io/zh) 包组织、管理
 
-欢迎大家提出问题，如果能提pr那就更好了
+欢迎大家提出问题，如果能提`pr`那就更好啦~

@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.43
+
+### Patch Changes
+
+- feat:
+  1、优化 pwa 配置
+  2、调整颜色模式位置
+  3、优化 navbar hover 样式
+
 ## 1.0.42
 
 ### Patch Changes

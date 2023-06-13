@@ -1,12 +1,23 @@
-import { DefaultThemePluginsOptions } from '@theme-zp-src/shared/options/plugin/index.js'
 import type { Plugin } from '@vuepress/core'
-import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
+import { pwaPlugin, type PwaPluginOptions } from '@vuepress/plugin-pwa'
+import {
+  pwaPopupPlugin,
+  type PwaPopupPluginOptions,
+} from '@vuepress/plugin-pwa-popup'
 
-export default (options: DefaultThemePluginsOptions['pwaOption']): Plugin[] =>
-  [
-    pwaPlugin({ ...(options?.pwa || {}), skipWaiting: !options?.pwaPopup }),
-  ].concat(
-    // 该插件必须和 pwa 插件 一起使用，并且 skipWaiting 配置项不能设置为 true
-    !options?.pwa.skipWaiting ? pwaPopupPlugin(options?.pwaPopup) : []
-  )
+/**
+ * 创建pwa应用
+ * https://v2.vuepress.vuejs.org/zh/reference/plugin/pwa.html
+ * @returns Plugin
+ */
+export const pwa = (options: PwaPluginOptions, skipWaiting: boolean): Plugin =>
+  pwaPlugin({ ...(options || {}), skipWaiting })
+
+/**
+ * 弹出手动刷新弹窗
+ * https://v2.vuepress.vuejs.org/zh/reference/plugin/pwa-popup.html
+ * 该插件必须和 pwa 插件 一起使用，并且 skipWaiting 配置项不能设置为 true
+ * @returns Plugin
+ */
+export const pwaPopup = (options: PwaPopupPluginOptions): Plugin | [] =>
+  pwaPopupPlugin(options)

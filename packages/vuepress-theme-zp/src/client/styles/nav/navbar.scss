@@ -5,7 +5,7 @@
   --navbar-line-height: calc(var(--navbar-height) - 2 * var(--navbar-padding-v));
 
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
-  line-height: var(--navbar-line-height);
+  // line-height: var(--navbar-line-height);
   box-shadow: var(--nav-shadow);
 
   .logo {
@@ -30,7 +30,6 @@
     height: var(--navbar-line-height);
     padding-left: var(--navbar-padding-h);
     white-space: nowrap;
-    font-size: 0.9rem;
 
     .search-box {
       flex: 0 0 auto;
@@ -61,11 +60,11 @@
  */
 .navbar-items {
   @include flexCenter;
+  font-size: 0.875rem;
 
   a {
-    display: inline-block;
-    line-height: 1.4rem;
     color: inherit;
+    // font-weight: normal;
 
     &:hover,
     &.router-link-active {
@@ -76,13 +75,9 @@
   .navbar-item {
     position: relative;
     display: inline-block;
-    margin: 0 0.75rem;
+    margin: 0rem 0.75rem;
     box-sizing: border-box;
-    line-height: var(--navbar-line-height);
-
-    &:first-child {
-      margin-left: 0;
-    }
+    // line-height: var(--navbar-line-height);
 
     > a {
       display: flex;
@@ -96,7 +91,7 @@
         height: 2px;
         background-color: var(--c-theme);
         position: absolute;
-        bottom: -0.2rem;
+        bottom: -0.4rem;
       }
       &:hover,
       &.router-link-active {
@@ -114,7 +109,8 @@
       margin-left: 0;
 
       > a {
-        display: inline-block;
+        display: flex;
+        justify-content: flex-start;
         &:hover,
         &.router-link-active {
           &::after {
@@ -141,8 +137,6 @@
  */
 .toggle-color-mode-button {
   @include flexCenter;
-  // margin: auto;
-  // margin-left: 1rem;
   border: 0;
   background: none;
   color: var(--c-text);

@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.44
+
+### Patch Changes
+
+- style: 优化 navbar 动画
+
 ## 1.0.43
 
 ### Patch Changes

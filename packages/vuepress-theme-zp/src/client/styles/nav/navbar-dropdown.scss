@@ -12,7 +12,8 @@
   }
   .navbar-dropdown-title {
     display: block;
-    font-size: 0.9rem;
+    // font-size: 0.875rem;
+    font-size: inherit;
     font-family: inherit;
     cursor: inherit;
     padding: inherit;
@@ -171,9 +172,7 @@
       &.open .open-navbar-dropdown {
         visibility: visible;
         opacity: 1;
-        transform: translateY(0%);
-        height: max-content;
-        transition: all var(--t-transform);
+        transform: none;
       }
       .arrow {
         transform: rotate(180deg);
@@ -189,8 +188,8 @@
       box-shadow: var(--nav-shadow);
       transition: all var(--t-transform);
       visibility: hidden;
-      transform: translateY(-10%);
       opacity: 0;
+      transform: scale(0.9);
       box-sizing: border-box;
       max-height: calc(100vh - 2.7rem);
       overflow-y: auto;
@@ -198,11 +197,11 @@
       top: 100%;
       right: 0;
       background-color: var(--c-bg-navbar);
-      padding: 0.6rem 0;
+      padding: 0.5rem 0rem;
       border: 1px solid var(--c-border);
       border-bottom-color: var(--c-border-dark);
       text-align: left;
-      border-radius: 0.25rem;
+      border-radius: var(--card-radius);
       white-space: nowrap;
       margin: 0;
     }

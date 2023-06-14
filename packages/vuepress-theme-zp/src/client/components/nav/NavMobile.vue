@@ -70,7 +70,6 @@ watch(
 </script>
 
 <template>
-  <div :data-showMobileNav="showMobileNav">test</div>
   <div v-if="showMobileNav" class="mobile-nav-block" />
   <nav v-if="showMobileNav" class="mobile-nav">
     <div v-if="sidebarVisible" class="page-menu">

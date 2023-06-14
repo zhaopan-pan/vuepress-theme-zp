@@ -4,7 +4,7 @@ import {
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '@theme-zp-client/composables/index.js'
-import { isArticleContent, showSideBar } from '@theme-zp-client/utils/index.js'
+import { isFormPosts, showSideBar } from '@theme-zp-client/utils/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -34,7 +34,7 @@ const showPageToc = (): void => {
 const showMobileNav = computed(
   () =>
     isMobile.value &&
-    isArticleContent() &&
+    isFormPosts() &&
     (sidebarVisible.value || shouldShowTocBtn.value)
 )
 
@@ -70,6 +70,7 @@ watch(
 </script>
 
 <template>
+  <div :data-showMobileNav="showMobileNav">test</div>
   <div v-if="showMobileNav" class="mobile-nav-block" />
   <nav v-if="showMobileNav" class="mobile-nav">
     <div v-if="sidebarVisible" class="page-menu">

@@ -3,11 +3,19 @@ import { usePageFrontmatter } from '@vuepress/client'
 import { useRoute } from 'vue-router'
 
 /**
+ * 是否来自posts
+ * @returns boolean
+ */
+export const isFormPosts = (): boolean => {
+  const route = useRoute()
+  return !!route.path.startsWith('/posts')
+}
+
+/**
  * 是否是文章页
  * @returns boolean
  */
 export const isArticleContent = (): boolean => {
-  const route = useRoute()
   const frontmatter = usePageFrontmatter<IArticleInfo>()
-  return !!(route.path.startsWith('/posts') && frontmatter.value.title)
+  return !!(isFormPosts() && frontmatter.value.title)
 }

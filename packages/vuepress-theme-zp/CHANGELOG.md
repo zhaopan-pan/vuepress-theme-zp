@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.46
+
+### Patch Changes
+
+- fix: 修复无 title 时 mobile-nav 组件显示异常问题
+
 ## 1.0.45
 
 ### Patch Changes

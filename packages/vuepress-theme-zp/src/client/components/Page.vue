@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import SideToc from '@theme-zp-client/components/SideToc.vue'
 import PageMeta from '@theme-zp-client/components/PageMeta.vue'
 import PageNav from '@theme-zp-client/components/PageNav.vue'
+import SideToc from '@theme-zp-client/components/SideToc.vue'
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
+import { isArticleContent } from '@theme-zp-client/utils/index.js'
 import type { IArticleInfo } from '@theme-zp-src/shared/index.js'
 import { usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
-import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
-import { isArticleContent } from '@theme-zp-client/utils/index.js'
 import ArticleInfo from './article/ArticleInfo.vue'
 
 const frontmatter = usePageFrontmatter<IArticleInfo>()
 const themeLocale = useThemeLocaleData()
 
 // 文章详情页才展示文章信息
-const showArticleInfo = computed(isArticleContent)
+const showArticleInfo = computed(
+  () => isArticleContent() && frontmatter.value.title
+)
 
 // toc
 const shouldShowToc = computed(

@@ -2,8 +2,6 @@
 @import '../_variables';
 
 .navbar-dropdown-wrapper {
-  cursor: pointer;
-
   .arrow {
     transition: all var(--t-transform);
     transform: rotate(0deg);
@@ -12,7 +10,6 @@
   }
   .navbar-dropdown-title {
     display: block;
-    // font-size: 0.875rem;
     font-size: inherit;
     font-family: inherit;
     cursor: inherit;
@@ -23,6 +20,7 @@
     border: none;
     font-weight: 500;
     color: var(--c-text);
+    cursor: pointer;
   }
 
   .navbar-dropdown-title-mobile {
@@ -172,7 +170,7 @@
       &.open .open-navbar-dropdown {
         visibility: visible;
         opacity: 1;
-        transform: none;
+        transform: translateY(0%);
       }
       .arrow {
         transform: rotate(180deg);
@@ -187,9 +185,9 @@
       // Avoid height shaded by clicking
       box-shadow: var(--nav-shadow);
       transition: all var(--t-transform);
+      transform: translateY(-5%);
       visibility: hidden;
       opacity: 0;
-      transform: scale(0.9);
       box-sizing: border-box;
       max-height: calc(100vh - 2.7rem);
       overflow-y: auto;

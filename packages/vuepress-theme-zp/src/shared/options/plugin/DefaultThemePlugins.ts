@@ -1,6 +1,5 @@
 import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
 import type { PwaPluginOptions } from '@vuepress/plugin-pwa'
-import { PwaPopupPluginOptions } from '@vuepress/plugin-pwa-popup'
 import type { BlogOptions } from 'vuepress-plugin-blog2'
 import type { CommentPluginOptions } from 'vuepress-plugin-comment2'
 
@@ -73,8 +72,5 @@ export interface DefaultThemePluginsOptions {
    * pwa: https://v2.vuepress.vuejs.org/zh/reference/plugin/pwa.html
    * pwaPopup: https://v2.vuepress.vuejs.org/zh/reference/plugin/pwa-popup.html
    */
-  pwaOption?: {
-    pwa: PwaPluginOptions
-    pwaPopup?: PwaPopupPluginOptions
-  }
+  pwa?: PwaPluginOptions
 }

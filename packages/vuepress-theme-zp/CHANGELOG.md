@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.47
+
+### Patch Changes
+
+- feat: add pwa-popup
+
 ## 1.0.46
 
 ### Patch Changes

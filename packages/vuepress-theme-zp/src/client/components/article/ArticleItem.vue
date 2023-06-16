@@ -111,6 +111,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
       <div class="article-text" :style="articleTextStyle">
         <div
           v-show="info.title"
+          :title="info.title"
           :class="{
             'article-name': true,
             'article-name-ellipsis': !isMobile,

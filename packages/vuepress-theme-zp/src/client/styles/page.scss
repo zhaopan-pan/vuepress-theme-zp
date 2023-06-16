@@ -3,8 +3,8 @@
 @import 'article';
 
 .page {
-  padding-bottom: 2rem;
   display: block;
+  min-height: calc(100% - var(--navbar-height) - var(--footer-height) - 2rem);
 
   .theme-default-content {
     @include content_wrapper;

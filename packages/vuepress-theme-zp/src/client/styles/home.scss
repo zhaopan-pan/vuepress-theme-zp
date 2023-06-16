@@ -62,24 +62,6 @@
     padding: 0;
     margin: 0;
   }
-
-  .footer {
-    margin-top: 2rem;
-    padding: 1rem;
-    font-size: 0.85rem;
-    border-top: 1px solid var(--c-border);
-    text-align: center;
-    color: var(--c-text);
-    transition: border-color var(--t-color);
-    a {
-      font-weight: 500;
-    }
-    .info {
-      line-height: 1rem;
-      margin-top: 0.3rem;
-      @include flexCenter;
-    }
-  }
 }
 
 @media (max-width: $MQMobile) {

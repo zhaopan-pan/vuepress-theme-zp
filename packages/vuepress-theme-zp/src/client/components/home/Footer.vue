@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useThemeData } from '@theme-zp-client/composables/index.js'
+import { computed } from 'vue'
 
 const themeData = useThemeData()
 const { startYear, nameLink = '' } = themeData.value?.footer || {}

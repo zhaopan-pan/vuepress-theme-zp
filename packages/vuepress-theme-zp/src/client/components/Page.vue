@@ -50,7 +50,7 @@ const shouldShowToc = computed(
 
     <PageMeta />
     <PageNav />
-    <CommentService />
     <slot name="bottom" />
+    <CommentService />
   </main>
 </template>

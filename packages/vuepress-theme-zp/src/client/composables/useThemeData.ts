@@ -1,3 +1,4 @@
+import type { ZpThemeOptions } from '@theme-zp-src/shared/index.js'
 import {
   useThemeData as _useThemeData,
   useThemeLocaleData as _useThemeLocaleData,
@@ -6,7 +7,6 @@ import type {
   ThemeDataRef,
   ThemeLocaleDataRef,
 } from '@vuepress/plugin-theme-data/client'
-import type { ZpThemeOptions } from '@theme-zp-src/shared/index.js'
 
 export const useThemeData = (): ThemeDataRef<ZpThemeOptions> =>
   _useThemeData<ZpThemeOptions>()

@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.48
+
+### Patch Changes
+
+- feat: 优化 footer 展示
+
 ## 1.0.47
 
 ### Patch Changes

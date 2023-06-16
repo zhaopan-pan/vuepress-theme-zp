@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Home from '@theme-zp-client/components/home/index.vue'
+import Footer from '@theme-zp-client/components/home/Footer.vue'
 import Menu from '@theme-zp-client/components/Menu.vue'
 import Navbar from '@theme-zp-client/components/nav/Navbar.vue'
 import MobileNav from '@theme-zp-client/components/nav/NavMobile.vue'
@@ -16,7 +17,7 @@ import { removeLoading, showSideBar } from '@theme-zp-client/utils/index.js'
 import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any
@@ -32,6 +33,7 @@ defineSlots<{
   'page-content-bottom'?: (props: Record<never, never>) => any
 }>()
 
+const route = useRoute()
 const page = usePageData()
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 const themeLocale = useThemeLocaleData()
@@ -39,6 +41,9 @@ const themeLocale = useThemeLocaleData()
 const shouldShowNavbar = computed(
   () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
 )
+
+// home page
+const isHomePage = computed(() => route.path === '/')
 
 // sidebar
 const sidebarItems = useSidebarItems()
@@ -111,6 +116,8 @@ onErrorCaptured((_err, _ins, info) => {
 const scrollPromise = useScrollPromise()
 const onBeforeEnter = scrollPromise.resolve
 const onBeforeLeave = scrollPromise.pending
+
+console.log(isHomePage.value)
 </script>
 <template>
   <div
@@ -152,7 +159,7 @@ const onBeforeLeave = scrollPromise.pending
     </slot>
 
     <slot name="page">
-      <Home v-if="frontmatter.home" />
+      <Home v-if="isHomePage" />
 
       <Transition
         v-else
@@ -177,5 +184,6 @@ const onBeforeLeave = scrollPromise.pending
         </Page>
       </Transition>
     </slot>
+    <Footer />
   </div>
 </template>

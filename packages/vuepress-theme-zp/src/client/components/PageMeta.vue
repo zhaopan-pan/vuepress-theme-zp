@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
+import { resolveEditLink } from '@theme-zp-client/utils/index.js'
 import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
   NavLink,
 } from '@theme-zp-src/shared/index.js'
-import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
-import { resolveEditLink } from '@theme-zp-client/utils/index.js'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 
 const useEditNavLink = (): ComputedRef<null | NavLink> => {
   const themeLocale = useThemeLocaleData()

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useThemeData } from '@theme-zp-client/composables/index.js'
+import { showSideBar } from '@theme-zp-client/utils/index.js'
 import { computed } from 'vue'
 
 const themeData = useThemeData()
@@ -7,10 +8,11 @@ const { startYear, nameLink = '' } = themeData.value?.footer || {}
 const userName = themeData.value?.blog.name || {}
 const endYear = new Date().getFullYear()
 const timeText = computed(() => (startYear ? `${startYear}-present` : endYear))
+const hasSidebar = computed(() => showSideBar())
 </script>
 
 <template>
-  <div class="footer">
+  <div class="footer" :class="{ 'footer-has-sidebar': hasSidebar }">
     <div>
       theme from
       <a

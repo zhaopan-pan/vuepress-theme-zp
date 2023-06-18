@@ -1,10 +1,10 @@
 <script lang="ts">
+import type { NavLink } from '@theme-zp-src/shared/index.js'
 import { useSiteData } from '@vuepress/client'
 import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
-import type { NavLink } from '@theme-zp-src/shared/index.js'
 export default {
   inheritAttrs: false,
 }
@@ -65,7 +65,9 @@ const isActiveInSubpath = computed(() => {
   if (!shouldBeActiveInSubpath.value) {
     return false
   }
-  return route.path.startsWith(encodeURI(item.value.link))
+  return route.path.startsWith(
+    encodeURI(item.value.link).replaceAll('.html', '')
+  )
 })
 
 // if this link is active

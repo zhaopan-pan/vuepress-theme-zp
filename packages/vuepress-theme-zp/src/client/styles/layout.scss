@@ -12,7 +12,7 @@
 
 .navbar {
   position: fixed;
-  z-index: 20;
+  z-index: var(--navbar-z-index);
   top: 0;
   left: 0;
   right: 0;
@@ -27,7 +27,7 @@
 .menu {
   font-size: 16px;
   width: 100%;
-  z-index: 10;
+  z-index: var(--sidebar-z-index);
   position: fixed;
   top: var(--navbar-height);
   left: 0;
@@ -44,7 +44,7 @@
   font-size: 16px;
   width: var(--sidebar-width);
   position: fixed;
-  z-index: 10;
+  z-index: var(--sidebar-z-index);
   margin: 0;
   top: var(--navbar-height);
   left: 0;
@@ -69,7 +69,7 @@
 
 .sidebar-mask {
   position: fixed;
-  z-index: 9;
+  z-index: calc(var(--sidebar-z-index) - 1);
   top: 0;
   left: 0;
   width: 100vw;
@@ -180,12 +180,13 @@
   height: var(--footer-height);
   box-sizing: border-box;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1rem 0;
   font-size: 0.85rem;
   border-top: 1px solid var(--c-border);
   text-align: center;
   color: var(--c-text);
   transition: border-color var(--t-color);
+  background: var(--c-bg);
 
   a {
     font-weight: 500;
@@ -196,7 +197,9 @@
     @include flexCenter;
   }
 }
-
+.footer-has-sidebar {
+  padding-left: var(--sidebar-width);
+}
 // narrow desktop / iPad
 @media (max-width: $MQNarrow) {
   .sidebar {

@@ -21,7 +21,7 @@ export const navbarZh: NavbarConfig = [
   },
   {
     text: 'Tag',
-    link: '/tag/',
+    link: '/tag',
   },
   {
     text: '文档',
@@ -38,6 +38,6 @@ export const navbarZh: NavbarConfig = [
   },
   {
     text: 'about',
-    link: '/about',
+    link: '/about.html',
   },
 ]

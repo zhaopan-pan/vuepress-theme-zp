@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.49
+
+### Patch Changes
+
+- feat:
+  1、修复 nav 刷新后 active 问题
+  2、loading 添加过渡动画
+
 ## 1.0.48
 
 ### Patch Changes

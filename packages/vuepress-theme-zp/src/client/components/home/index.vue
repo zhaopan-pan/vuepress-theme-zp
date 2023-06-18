@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import BgImg from './BgImg.vue'
 import Center from './Center.vue'
-import Content from './Content.vue'
 import Features from './Features.vue'
-// import Hero from './Hero.vue'
+import Footer from './Footer.vue'
+import HomeContent from './HomeContent.vue'
 </script>
 
 <template>
-  <main class="home">
+  <div class="home">
     <BgImg />
     <Center />
     <Features />
-    <Content />
-  </main>
+    <HomeContent />
+    <Footer />
+  </div>
 </template>

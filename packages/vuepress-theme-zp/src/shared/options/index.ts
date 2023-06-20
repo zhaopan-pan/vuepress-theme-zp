@@ -33,6 +33,10 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
   footer?: {
     nameLink?: string
     startYear?: number
+    beian?: {
+      text: string
+      link: string
+    }
   }
   /**
    * 默认文章封面图片地址

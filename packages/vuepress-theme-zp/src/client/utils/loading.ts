@@ -4,5 +4,5 @@ export const removeLoading = (): void => {
   loadingDom.style.opacity = '0'
   setTimeout(() => {
     loadingDom.style.zIndex = '-1'
-  }, 700)
+  }, 500)
 }

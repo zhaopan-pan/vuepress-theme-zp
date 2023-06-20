@@ -4,7 +4,7 @@ import { showSideBar } from '@theme-zp-client/utils/index.js'
 import { computed } from 'vue'
 
 const themeData = useThemeData()
-const { startYear, nameLink = '' } = themeData.value?.footer || {}
+const { startYear, nameLink = '', beian } = themeData.value?.footer || {}
 const userName = themeData.value?.blog.name || {}
 const endYear = new Date().getFullYear()
 const timeText = computed(() => (startYear ? `${startYear}-present` : endYear))
@@ -29,6 +29,9 @@ const hasSidebar = computed(() => showSideBar())
         {{ timeText }}
       </span>
       <RouterLink :to="nameLink" class="ml5">{{ userName }}</RouterLink>
+      <a v-if="beian" target="_blank" :href="beian?.link" class="beian ml10">
+        {{ beian?.text }}
+      </a>
     </div>
   </div>
 </template>

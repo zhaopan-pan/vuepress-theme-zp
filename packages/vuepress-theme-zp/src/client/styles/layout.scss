@@ -180,7 +180,7 @@
   height: var(--footer-height);
   box-sizing: border-box;
   margin-top: 2rem;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   font-size: 0.85rem;
   border-top: 1px solid var(--c-border);
   text-align: center;
@@ -195,6 +195,10 @@
     line-height: 1rem;
     margin-top: 0.3rem;
     @include flexCenter;
+  }
+  .beian {
+    color: inherit;
+    font-size: 0.75rem;
   }
 }
 .footer-has-sidebar {

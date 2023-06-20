@@ -1,6 +1,6 @@
 <script lang="ts">
-import { computed, onBeforeMount, onMounted, ref, useAttrs } from 'vue'
 import { useThemeData } from '@theme-zp-client/composables/index.js'
+import { computed, onBeforeMount, onMounted, ref, useAttrs } from 'vue'
 export default {
   // 禁用属性透传
   inheritAttrs: false,

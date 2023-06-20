@@ -15,7 +15,14 @@ import {
 import { removeLoading, showSideBar } from '@theme-zp-client/utils/index.js'
 import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
+import {
+  computed,
+  onErrorCaptured,
+  onMounted,
+  onUnmounted,
+  ref,
+  Suspense,
+} from 'vue'
 import { useRouter } from 'vue-router'
 
 defineSlots<{
@@ -113,69 +120,71 @@ const onBeforeEnter = scrollPromise.resolve
 const onBeforeLeave = scrollPromise.pending
 </script>
 <template>
-  <div
-    class="theme-container"
-    :class="containerClass"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <slot name="navbar">
-      <Navbar v-if="shouldShowNavbar" @toggle-menu="toggleMenu">
-        <template #before>
-          <slot name="navbar-before" />
-        </template>
-        <template #after>
-          <slot name="navbar-after" />
-        </template>
-      </Navbar>
-    </slot>
+  <Suspense>
     <div
-      v-if="showSideBar()"
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    />
+      class="theme-container"
+      :class="containerClass"
+      @touchstart="onTouchStart"
+      @touchend="onTouchEnd"
+    >
+      <slot name="navbar">
+        <Navbar v-if="shouldShowNavbar" @toggle-menu="toggleMenu">
+          <template #before>
+            <slot name="navbar-before" />
+          </template>
+          <template #after>
+            <slot name="navbar-after" />
+          </template>
+        </Navbar>
+      </slot>
+      <div
+        v-if="showSideBar()"
+        class="sidebar-mask"
+        @click="toggleSidebar(false)"
+      />
 
-    <Menu @toggleMobileMenu="toggleMenu" />
+      <Menu @toggleMobileMenu="toggleMenu" />
 
-    <!-- 移动端导航 -->
-    <MobileNav @toggle-sidebar="toggleSidebar" />
+      <!-- 移动端导航 -->
+      <MobileNav @toggle-sidebar="toggleSidebar" />
 
-    <slot name="sidebar">
-      <Sidebar>
-        <template #top>
-          <slot name="sidebar-top" />
-        </template>
-        <template #bottom>
-          <slot name="sidebar-bottom" />
-        </template>
-      </Sidebar>
-    </slot>
-
-    <slot name="page">
-      <Home v-if="frontmatter.home" />
-
-      <Transition
-        v-else
-        name="fade-slide-y"
-        mode="out-in"
-        @before-enter="onBeforeEnter"
-        @before-leave="onBeforeLeave"
-      >
-        <Page :key="page.path">
+      <slot name="sidebar">
+        <Sidebar>
           <template #top>
-            <slot name="page-top" />
-          </template>
-          <template #content-top>
-            <slot name="page-content-top" />
-          </template>
-          <template #content-bottom>
-            <slot name="page-content-bottom" />
+            <slot name="sidebar-top" />
           </template>
           <template #bottom>
-            <slot name="page-bottom" />
+            <slot name="sidebar-bottom" />
           </template>
-        </Page>
-      </Transition>
-    </slot>
-  </div>
+        </Sidebar>
+      </slot>
+
+      <slot name="page">
+        <Home v-if="frontmatter.home" />
+
+        <Transition
+          v-else
+          name="fade-slide-y"
+          mode="out-in"
+          @before-enter="onBeforeEnter"
+          @before-leave="onBeforeLeave"
+        >
+          <Page :key="page.path">
+            <template #top>
+              <slot name="page-top" />
+            </template>
+            <template #content-top>
+              <slot name="page-content-top" />
+            </template>
+            <template #content-bottom>
+              <slot name="page-content-bottom" />
+            </template>
+            <template #bottom>
+              <slot name="page-bottom" />
+            </template>
+          </Page>
+        </Transition>
+      </slot>
+    </div>
+  </Suspense>
 </template>

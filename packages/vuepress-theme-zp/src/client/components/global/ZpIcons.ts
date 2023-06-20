@@ -1,6 +1,4 @@
-import * as faIcons from '@vicons/fa'
-import * as materialIcons from '@vicons/material'
-import * as tablerIcons from '@vicons/tabler'
+// import materialIcons from '@vicons/material/HomeOutlined.js'
 import { computed, defineComponent, h, toRefs, withModifiers } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -49,7 +47,7 @@ export default defineComponent({
     },
   },
 
-  setup(props, { slots }) {
+  async setup(props, { slots }) {
     const {
       icon,
       link,
@@ -71,7 +69,25 @@ export default defineComponent({
         fontSize: `${iconSize.value}rem`,
       }
     })
-    const icons = { ...faIcons, ...materialIcons, ...tablerIcons }
+    // const iconsNode = (materialIcons as object)[icon.value] || ''
+    const getIcons = async (): Promise<unknown> => {
+      try {
+        // const res = await import(`@vicons/material/${icon.value}.js`)
+        const res = import.meta.glob(
+          `/node_modules/@vicons/material/HomeOutlined.js`
+        )
+        console.log('------------------------')
+        console.log(res)
+        return res
+      } catch (error) {
+        console.log(error)
+        return null
+      }
+    }
+    const iconsNode = await getIcons()
+    console.log(iconsNode)
+
+    // { ...faIcons, ...materialIcons, ...tablerIcons }
     const curText = computed(() => text.value || slots.default?.())
 
     const textStyle = computed(() => {
@@ -103,10 +119,12 @@ export default defineComponent({
             onClick: withModifiers(toPage, ['stop', 'prevent']),
           },
           [
-            h(icons[`${icon.value}`], {
-              style: iconStyle.value,
-              ...iconProps.value,
-            }),
+            iconsNode
+              ? h(iconsNode, {
+                  style: iconStyle.value,
+                  ...iconProps.value,
+                })
+              : null,
             curText.value &&
               h(
                 'span',
@@ -117,7 +135,11 @@ export default defineComponent({
         )
       }
 
-      return h(icons[`${icon.value}`], { style: iconStyle.value })
+      return iconsNode
+        ? h(iconsNode, {
+            style: iconStyle.value,
+          })
+        : null
     }
   },
 })

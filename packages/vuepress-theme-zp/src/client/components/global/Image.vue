@@ -103,7 +103,6 @@ const onErr = (_err: Event): void => {
     <img
       ref="imgRef"
       alt="img"
-      loading="lazy"
       class="zp-img"
       v-bind="$attrs"
       :src="finallyUrl"

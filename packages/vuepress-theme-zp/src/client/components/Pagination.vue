@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { CSSProperties, computed, ref } from 'vue'
-import { DeviceType, useUpdateDeviceStatus } from '@theme-zp-client/composables/index.js'
+import {
+  DeviceType,
+  useUpdateDeviceStatus,
+} from '@theme-zp-client/composables/index.js'
+import { computed, CSSProperties, ref } from 'vue'
 
 const emit = defineEmits<{
   (e: 'onChange', currentPage: number, pageSize: number): void
@@ -114,7 +117,7 @@ const change = (num: number): void => {
         class="operation-btn"
         @click="goPrev"
       >
-        <ZpIcons icon="ChevronLeftFilled" iconSize="1.3" />
+        <ZpIcons icon="ChevronBack" iconSize="1.3" />
       </button>
       <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
         1
@@ -150,11 +153,15 @@ const change = (num: number): void => {
         class="operation-btn"
         @click="goNext"
       >
-        <ZpIcons icon="KeyboardArrowRightFilled" iconSize="1.3" />
+        <ZpIcons icon="ChevronForward" iconSize="1.3" />
       </button>
     </div>
-    <div v-show="pages > 5" class="jump-container">
-      <span class="jumpPoint">跳转到：</span>
+    <div
+      v-show="pages > 5"
+      class="jump-container"
+      :style="{ flex: isMobile ? '1' : 'none' }"
+    >
+      <!-- <span class="jumpPoint">跳转到：</span> -->
       <span class="jumping">
         <input v-model="changePage" type="text" @keypress="keypress" />
       </span>

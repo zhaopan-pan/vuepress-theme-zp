@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.50
+
+### Patch Changes
+
+- feat:
+  1、更换图标库
+  2、优化打包体积
+
 ## 1.0.49
 
 ### Patch Changes

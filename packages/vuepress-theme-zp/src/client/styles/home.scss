@@ -26,6 +26,7 @@
     justify-content: center;
     width: 100%;
     padding: 1.5rem 0;
+    min-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 5rem);
   }
 
   .features {

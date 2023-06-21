@@ -5,6 +5,8 @@ import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
+import cssVars from '../styles/_variables.module.scss?module'
+
 export default {
   inheritAttrs: false,
 }
@@ -93,11 +95,13 @@ const isActive = computed(() => {
     <ZpIcons
       v-if="item.icon"
       :icon="item.icon.name"
-      :iconSize="item.icon.size"
+      :iconSize="item.icon.size || cssVars.navIconSize"
       :iconColor="item.icon.color"
     />
     <slot name="before" />
-    {{ item.text }}
+    <span :style="{ marginLeft: '0.1rem' }">
+      {{ item.text }}
+    </span>
     <slot name="after" />
   </RouterLink>
   <a

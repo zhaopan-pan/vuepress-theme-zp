@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useCategory, useTag } from '@theme-zp-client/composables/index.js'
+import { formatDate } from '@theme-zp-client/utils/index.js'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import type { PropType } from 'vue'
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import { formatDate } from '@theme-zp-client/utils/index.js'
 
 const props = defineProps({
   info: {
@@ -27,17 +27,15 @@ const categoryTagsObj = computed(() => ({
   <div class="article-info-wrapper">
     <ZpIcons
       v-if="author"
-      icon="PersonOutlineRound"
+      icon="PersonOutline"
       iconSize="1.1"
-      :iconProps="{ viewBox: '2 2 20 20' }"
       link="#12"
       :text="author"
       class="article-info-items"
     />
     <ZpIcons
-      icon="AccessTimeFilled"
-      iconSize="1"
-      :iconProps="{ viewBox: '1 1 22 22' }"
+      icon="TimeOutline"
+      iconSize="1.1"
       link="#"
       class="article-info-items"
     >
@@ -45,7 +43,7 @@ const categoryTagsObj = computed(() => ({
     </ZpIcons>
     <ZpIcons
       v-if="tag && tag.length"
-      icon="Tag"
+      icon="PricetagOutline"
       iconSize="1.1"
       :link="`${categoryTagsObj[tag[0]]?.path}`"
       class="article-info-items"
@@ -54,7 +52,7 @@ const categoryTagsObj = computed(() => ({
     </ZpIcons>
     <ZpIcons
       v-if="category.length"
-      icon="FolderRegular"
+      icon="FolderOpenOutline"
       :iconProps="{ viewBox: '-30 -30 600 600' }"
       iconSize="1.1"
       class="article-info-items"

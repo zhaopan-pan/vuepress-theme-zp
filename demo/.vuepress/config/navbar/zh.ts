@@ -4,7 +4,7 @@ export const navbarZh: NavbarConfig = [
   {
     text: '首页',
     link: '/',
-    icon: { name: 'HomeOutlined', size: '1' },
+    icon: { name: 'HomeOutline' },
   },
   {
     text: '分类',

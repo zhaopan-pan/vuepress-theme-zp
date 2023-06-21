@@ -86,7 +86,7 @@ watch(
       <button class="page-nav-btn" @click="showPageToc">
         <span>本页目录</span>
         <ZpIcons
-          icon="KeyboardArrowDownRound"
+          icon="ChevronDownOutline"
           iconSize="1"
           :class="showTocModal ? 'toc-arrow-open' : 'toc-arrow'"
         />

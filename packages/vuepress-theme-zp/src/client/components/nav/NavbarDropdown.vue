@@ -9,6 +9,7 @@ import type {
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
+import cssVars from '../../styles/_variables.module.scss?module'
 
 const props = defineProps({
   item: {
@@ -66,7 +67,11 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     >
       <span class="title">{{ item.text }}</span>
       <!-- <span class="arrow down" /> -->
-      <ZpIcons icon="KeyboardArrowDownRound" iconSize="1" class="arrow" />
+      <ZpIcons
+        icon="ChevronDownOutline"
+        :iconSize="cssVars.navIconSize"
+        class="arrow"
+      />
     </button>
 
     <button
@@ -77,8 +82,8 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     >
       <span class="title">{{ item.text }}</span>
       <ZpIcons
-        icon="KeyboardArrowDownRound"
-        iconSize="1"
+        icon="ChevronDownOutline"
+        :iconSize="cssVars.navIconSize"
         :class="open ? 'arrow-mobile-open' : 'arrow-mobile'"
       />
     </button>

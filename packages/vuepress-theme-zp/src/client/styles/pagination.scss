@@ -8,7 +8,7 @@
   margin: 2rem auto 0;
   display: flex;
   flex-wrap: initial;
-
+  @include flexStart();
   .pagination-list {
     font-size: 0;
     line-height: 3.5rem;
@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    flex: 1;
+    // flex: 1;
     margin-top: 0.5rem;
 
     .operation-btn {
@@ -74,8 +74,7 @@
     font-size: 0.9rem;
     flex-wrap: nowrap;
     display: flex;
-    min-width: 11rem;
-    flex: 1;
+    // min-width: 11rem;
     justify-content: center;
     height: max-content;
     margin-top: 0.5rem;

@@ -1,12 +1,24 @@
-// import materialIcons from '@vicons/material/HomeOutlined.js'
-import { computed, defineComponent, h, toRefs, withModifiers } from 'vue'
+import type ionicons5Icons from '@vicons/ionicons5'
+import {
+  Component,
+  computed,
+  defineComponent,
+  h,
+  markRaw,
+  onMounted,
+  PropType,
+  reactive,
+  toRefs,
+  withModifiers,
+} from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'ZpIcons',
+  components: {},
   props: {
     icon: {
-      type: String,
+      type: String as PropType<keyof typeof ionicons5Icons>,
       default: '',
     },
     iconPosition: {
@@ -47,7 +59,7 @@ export default defineComponent({
     },
   },
 
-  async setup(props, { slots }) {
+  setup(props, { slots }) {
     const {
       icon,
       link,
@@ -60,6 +72,9 @@ export default defineComponent({
       text,
     } = toRefs(props)
 
+    const state = reactive<{ iconNode: Component | null }>({
+      iconNode: null,
+    })
     const router = useRouter()
     const iconStyle = computed(() => {
       return {
@@ -69,25 +84,7 @@ export default defineComponent({
         fontSize: `${iconSize.value}rem`,
       }
     })
-    // const iconsNode = (materialIcons as object)[icon.value] || ''
-    const getIcons = async (): Promise<unknown> => {
-      try {
-        // const res = await import(`@vicons/material/${icon.value}.js`)
-        const res = import.meta.glob(
-          `/node_modules/@vicons/material/HomeOutlined.js`
-        )
-        console.log('------------------------')
-        console.log(res)
-        return res
-      } catch (error) {
-        console.log(error)
-        return null
-      }
-    }
-    const iconsNode = await getIcons()
-    console.log(iconsNode)
 
-    // { ...faIcons, ...materialIcons, ...tablerIcons }
     const curText = computed(() => text.value || slots.default?.())
 
     const textStyle = computed(() => {
@@ -98,15 +95,32 @@ export default defineComponent({
       }
     })
 
+    onMounted(() => {
+      initIcon()
+    })
+
+    const initIcon = async (): Promise<void> => {
+      if (!icon.value) return
+      try {
+        const { [icon.value]: iconCom } = await import('@vicons/ionicons5')
+        if (iconCom) {
+          // markRaw 将一个对象标记为不可被转为代理。返回该对象本身。
+          state.iconNode = markRaw(iconCom)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     const toPage = (): void => {
       link.value && router.push(link.value)
     }
 
     const containerTag = 'div'
 
-    if (!icon.value) return null
-
     return () => {
+      if (!state.iconNode) return null
+
       if (link.value || curText.value) {
         return h(
           containerTag,
@@ -119,12 +133,10 @@ export default defineComponent({
             onClick: withModifiers(toPage, ['stop', 'prevent']),
           },
           [
-            iconsNode
-              ? h(iconsNode, {
-                  style: iconStyle.value,
-                  ...iconProps.value,
-                })
-              : null,
+            h(state.iconNode, {
+              style: iconStyle.value,
+              ...iconProps.value,
+            }),
             curText.value &&
               h(
                 'span',
@@ -135,11 +147,9 @@ export default defineComponent({
         )
       }
 
-      return iconsNode
-        ? h(iconsNode, {
-            style: iconStyle.value,
-          })
-        : null
+      return h(state.iconNode, {
+        style: iconStyle.value,
+      })
     }
   },
 })

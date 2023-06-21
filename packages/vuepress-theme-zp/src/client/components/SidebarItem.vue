@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import DropdownTransition from '@theme-zp-client/components/DropdownTransition.vue'
+import { isActiveSidebarItem } from '@theme-zp-client/utils/index.js'
+import type { ResolvedSidebarItem } from '@theme-zp-src/shared/index.js'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { ResolvedSidebarItem } from '@theme-zp-src/shared/index.js'
-import { isActiveSidebarItem } from '@theme-zp-client/utils/index.js'
 
 const props = defineProps({
   item: {
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
       {{ item.text }}
       <ZpIcons
         v-if="item.collapsible"
-        icon="ArrowForwardIosOutlined"
+        icon="ChevronForward"
         class="arrow"
         iconSize="1"
         :class="isOpen ? 'arrow-open' : 'arrow'"

@@ -71,6 +71,7 @@ const paginationStyle = computed<CSSProperties>(() => {
   }
   return { flexWrap: 'initial' }
 })
+const showJump = pages.value > 5
 
 const keypress = (e: KeyboardEvent): void => {
   if (e.key === 'Enter' && e?.target && e.target['value']) {
@@ -111,7 +112,7 @@ const change = (num: number): void => {
 
 <template>
   <div v-if="showComponent" class="pagination" :style="paginationStyle">
-    <div class="pagination-list">
+    <div class="pagination-list" :style="{ flex: !showJump ? '1' : 'none' }">
       <button
         :disabled="currentPage === 1"
         class="operation-btn"
@@ -157,7 +158,7 @@ const change = (num: number): void => {
       </button>
     </div>
     <div
-      v-show="pages > 5"
+      v-show="showJump"
       class="jump-container"
       :style="{ flex: isMobile ? '1' : 'none' }"
     >

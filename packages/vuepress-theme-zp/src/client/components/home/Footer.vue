@@ -23,10 +23,9 @@ const hasSidebar = computed(() => showSideBar())
       </a>
     </div>
     <div class="info">
-      Copyright
-      <ZpIcons icon="CopyrightFilled" iconSize="0.9" class="" />
+      Copyright ©
       <span v-if="timeText">
-        {{ timeText }}
+        {{ `&nbsp;${timeText}` }}
       </span>
       <RouterLink :to="nameLink" class="ml5">{{ userName }}</RouterLink>
       <a v-if="beian" target="_blank" :href="beian?.link" class="beian ml10">

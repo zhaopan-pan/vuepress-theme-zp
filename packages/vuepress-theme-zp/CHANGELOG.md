@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.51
+
+### Patch Changes
+
+- style:
+
+  1. 优化翻页器样式
+  2. footer 添加图标
+
 ## 1.0.50
 
 ### Patch Changes

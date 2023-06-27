@@ -5,18 +5,18 @@ import Navbar from '@theme-zp-client/components/nav/Navbar.vue'
 import MobileNav from '@theme-zp-client/components/nav/NavMobile.vue'
 import Page from '@theme-zp-client/components/Page.vue'
 import Sidebar from '@theme-zp-client/components/Sidebar.vue'
+import { removeLoading, showSideBar } from '@theme-zp-client/utils/index.js'
+import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/index.js'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import {
   setupMenuToggle,
   useCodeCopy,
   useScrollPromise,
   useSidebarItems,
   useThemeLocaleData,
-} from '@theme-zp-client/composables/index.js'
-import { removeLoading, showSideBar } from '@theme-zp-client/utils/index.js'
-import type { DefaultThemePageFrontmatter } from '@theme-zp-src/shared/index.js'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import { computed, onErrorCaptured, onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+} from '../composables/index.js'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any
@@ -35,15 +35,17 @@ defineSlots<{
 const page = usePageData()
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 const themeLocale = useThemeLocaleData()
-// navbar
-const shouldShowNavbar = computed(
-  () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
-)
 
 // sidebar
 const sidebarItems = useSidebarItems()
 const isSidebarOpen = ref(false)
 const isMenuOpen = ref(false)
+const hasSidebar = computed(() => showSideBar(sidebarItems.value))
+
+// navbar
+const shouldShowNavbar = computed(
+  () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
+)
 
 const toggleMenu = (to?: boolean): void => {
   isMenuOpen.value = typeof to === 'boolean' ? to : !isMenuOpen.value
@@ -129,11 +131,7 @@ const onBeforeLeave = scrollPromise.pending
         </template>
       </Navbar>
     </slot>
-    <div
-      v-if="showSideBar()"
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    />
+    <div v-if="hasSidebar" class="sidebar-mask" @click="toggleSidebar(false)" />
 
     <Menu @toggleMobileMenu="toggleMenu" />
 

@@ -62,6 +62,6 @@ const paginationOnChange = (c: number): void => {
       :currentPage="currentPageNum"
       :pageSize="pageSize"
       @onChange="paginationOnChange"
-    ></Pagination>
+    />
   </div>
 </template>

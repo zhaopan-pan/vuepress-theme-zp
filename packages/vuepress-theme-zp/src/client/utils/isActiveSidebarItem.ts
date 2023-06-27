@@ -1,5 +1,5 @@
-import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '@theme-zp-src/shared/index.js'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 const normalizePath = (path: string): string =>
   decodeURI(path)

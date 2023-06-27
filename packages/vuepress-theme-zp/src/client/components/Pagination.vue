@@ -13,6 +13,7 @@ const props = defineProps({
   total: { type: Number, default: 10 },
   pageSize: { type: Number, default: 10 },
   currentPage: { type: Number, default: 1 },
+  className: { type: String, default: '' },
 })
 
 // 跳转指定页码
@@ -111,7 +112,12 @@ const change = (num: number): void => {
 </script>
 
 <template>
-  <div v-if="showComponent" class="pagination" :style="paginationStyle">
+  <div
+    v-if="showComponent"
+    class="pagination"
+    :class="props.className"
+    :style="paginationStyle"
+  >
     <div class="pagination-list" :style="{ flex: !showJump ? '1' : 'none' }">
       <button
         :disabled="currentPage === 1"

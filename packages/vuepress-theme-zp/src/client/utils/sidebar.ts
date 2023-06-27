@@ -1,5 +1,5 @@
 import { useRoute } from 'vue-router'
-import { ResolvedSidebarItem, useSidebarItems } from '../index.js'
+import { ResolvedSidebarItem } from '../index.js'
 
 /**
  * 获取表层侧边栏数据
@@ -32,11 +32,10 @@ export const getFirstLayerSideBarData = (
  * 只有在md中中配置了sidebar: true 才会展示侧边栏
  * @returns boolean
  */
-export const showSideBar = (): boolean => {
-  const sidebarItems = useSidebarItems()
+export const showSideBar = (sidebarItems: ResolvedSidebarItem[]): boolean => {
   const route = useRoute()
 
-  return getFirstLayerSideBarData(sidebarItems.value)?.some((item) => {
+  return getFirstLayerSideBarData(sidebarItems)?.some((item) => {
     if (item.link === route.path) {
       return true
     }

@@ -1,3 +1,11 @@
+import type {
+  DefaultThemeNormalPageFrontmatter,
+  ResolvedSidebarItem,
+  SidebarConfigArray,
+  SidebarConfigObject,
+  SidebarItem,
+  ZpThemeOptions,
+} from '@theme-zp-src/shared/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import {
@@ -9,14 +17,6 @@ import {
 import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
-import type {
-  DefaultThemeNormalPageFrontmatter,
-  ResolvedSidebarItem,
-  SidebarConfigArray,
-  SidebarConfigObject,
-  SidebarItem,
-  ZpThemeOptions,
-} from '@theme-zp-src/shared/index.js'
 import { useNavLink } from './useNavLink.js'
 import { useThemeLocaleData } from './useThemeData.js'
 

@@ -5,7 +5,9 @@
 .article-list-wrapper {
   flex: 1;
   max-width: 780px;
-  margin-bottom: 5vh;
+  min-height: inherit;
+  position: relative;
+  // margin-bottom: 5vh;
 
   @media (max-width: $MQMobile) {
     padding: 0 1.2rem;

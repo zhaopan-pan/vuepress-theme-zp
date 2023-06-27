@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { useThemeData } from '@theme-zp-client/composables/index.js'
 import { showSideBar } from '@theme-zp-client/utils/index.js'
 import { computed } from 'vue'
+import { useSidebarItems, useThemeData } from '../../composables/index.js'
 
 const themeData = useThemeData()
+const sidebarItems = useSidebarItems()
+
 const { startYear, nameLink = '', beian } = themeData.value?.footer || {}
 const userName = themeData.value?.blog.name || {}
 const endYear = new Date().getFullYear()
 const timeText = computed(() => (startYear ? `${startYear}-present` : endYear))
-const hasSidebar = computed(() => showSideBar())
+const hasSidebar = computed(() => showSideBar(sidebarItems.value))
 </script>
 
 <template>

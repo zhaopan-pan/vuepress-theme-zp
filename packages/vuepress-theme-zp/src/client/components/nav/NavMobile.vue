@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import {
-  DeviceType,
-  useThemeLocaleData,
-  useUpdateDeviceStatus,
-} from '@theme-zp-client/composables/index.js'
 import { isFormPosts, showSideBar } from '@theme-zp-client/utils/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import {
+  DeviceType,
+  useSidebarItems,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '../../composables/index.js'
 import { IArticleInfo } from '../../index.js'
 
 defineEmits(['toggle-sidebar'])
@@ -17,6 +18,7 @@ const isMobile = ref(false)
 const showTocModal = ref(false)
 const shouldShowTocBtn = ref(false)
 
+const sidebarItems = useSidebarItems()
 const frontmatter = usePageFrontmatter<IArticleInfo>()
 const themeLocale = useThemeLocaleData()
 
@@ -24,7 +26,7 @@ useUpdateDeviceStatus(DeviceType.MOBILE, (width: number): void => {
   isMobile.value = window.innerWidth < width
 })
 
-const sidebarVisible = computed(() => showSideBar())
+const sidebarVisible = computed(() => showSideBar(sidebarItems.value))
 
 const showPageToc = (): void => {
   showTocModal.value = !showTocModal.value

@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.52
+
+### Patch Changes
+
+- fix:
+  1、修复依赖报错问题
+  2、优化样式
+
 ## 1.0.51
 
 ### Patch Changes

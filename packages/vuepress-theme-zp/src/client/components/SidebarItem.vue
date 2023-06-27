@@ -7,6 +7,7 @@ import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import cssVars from '../styles/_variables.module.scss?module'
 
 const props = defineProps({
   item: {
@@ -70,7 +71,7 @@ onBeforeUnmount(() => {
         v-if="item.collapsible"
         icon="ChevronForward"
         class="arrow"
-        iconSize="1"
+        :iconSize="cssVars.sidebarIconSize"
         :class="isOpen ? 'arrow-open' : 'arrow'"
       />
     </button>

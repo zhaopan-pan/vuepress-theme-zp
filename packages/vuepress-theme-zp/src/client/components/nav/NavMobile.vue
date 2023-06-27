@@ -10,6 +10,7 @@ import {
   useUpdateDeviceStatus,
 } from '../../composables/index.js'
 import { IArticleInfo } from '../../index.js'
+import cssVars from '../../styles/_variables.module.scss?module'
 
 defineEmits(['toggle-sidebar'])
 const route = useRoute()
@@ -89,7 +90,7 @@ watch(
         <span>本页目录</span>
         <ZpIcons
           icon="ChevronDownOutline"
-          iconSize="1"
+          :iconSize="cssVars.navIconSize"
           :class="showTocModal ? 'toc-arrow-open' : 'toc-arrow'"
         />
       </button>

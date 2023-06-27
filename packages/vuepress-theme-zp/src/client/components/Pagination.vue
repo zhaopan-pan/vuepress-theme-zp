@@ -124,7 +124,7 @@ const change = (num: number): void => {
         class="operation-btn"
         @click="goPrev"
       >
-        <ZpIcons icon="ChevronBack" iconSize="1.3" />
+        <ZpIcons icon="ChevronBack" iconSize="0.9" />
       </button>
       <span v-show="showStartFakePageNum" class="jump" @click="jumpPage(1)">
         1
@@ -160,7 +160,7 @@ const change = (num: number): void => {
         class="operation-btn"
         @click="goNext"
       >
-        <ZpIcons icon="ChevronForward" iconSize="1.3" />
+        <ZpIcons icon="ChevronForward" iconSize="0.9" />
       </button>
     </div>
     <div

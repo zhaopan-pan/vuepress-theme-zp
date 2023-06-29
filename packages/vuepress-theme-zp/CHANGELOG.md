@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.53
+
+### Patch Changes
+
+- feat:
+  1、切换主题添加动画
+  2、搜索靠左展示
+  3、修复 nav 点击闪烁问题(icon)
+
 ## 1.0.52
 
 ### Patch Changes

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
-import { usePageFrontmatter } from '@vuepress/client'
-import { isPlainObject, isString } from '@vuepress/shared'
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink,
   ResolvedSidebarItem,
 } from '@theme-zp-src/shared/index.js'
-import { useNavLink, useSidebarItems } from '@theme-zp-client/composables/index.js'
+import { usePageFrontmatter } from '@vuepress/client'
+import { isPlainObject, isString } from '@vuepress/shared'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useNavLink, useSidebarItems } from '../composables/index.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter

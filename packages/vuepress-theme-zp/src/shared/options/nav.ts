@@ -3,6 +3,7 @@
  */
 export interface NavItem {
   text: string
+  link?: string
   ariaLabel?: string
 }
 
@@ -20,7 +21,7 @@ export interface NavLink extends NavItem {
   link: string
   icon?: {
     name: string
-    size: string
+    size?: string
     color?: string
   }
   rel?: string

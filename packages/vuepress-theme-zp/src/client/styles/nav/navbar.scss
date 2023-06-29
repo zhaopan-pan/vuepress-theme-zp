@@ -3,15 +3,21 @@
 
 .navbar {
   --navbar-line-height: calc(var(--navbar-height) - 2 * var(--navbar-padding-v));
-
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
   // line-height: var(--navbar-line-height);
   box-shadow: var(--nav-shadow);
 
-  .logo {
-    height: var(--navbar-line-height);
-    margin-right: var(--navbar-padding-v);
-    vertical-align: top;
+  .navbar-brand {
+    @include flexStart;
+
+    a {
+      display: flex;
+      .logo {
+        height: var(--navbar-line-height);
+        margin-right: var(--navbar-padding-v);
+        vertical-align: top;
+      }
+    }
   }
 
   .site-name {
@@ -40,14 +46,12 @@
 
 @media (max-width: $MQMobile) {
   .navbar {
-    // padding-left: 4rem;
-
     .can-hide {
       display: none;
     }
 
     .site-name {
-      width: calc(100vw - 9.4rem);
+      width: calc(100vw - 12rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -64,7 +68,7 @@
 
   a {
     color: inherit;
-    // font-weight: normal;
+    transition: color var(--t-color);
 
     &:hover,
     &.router-link-active {
@@ -84,21 +88,21 @@
       justify-content: center;
       align-items: center;
 
-      &::after {
-        transition: width 0.2s;
-        content: '';
-        width: 0%;
-        height: 2px;
-        background-color: var(--c-theme);
-        position: absolute;
-        bottom: -0.4rem;
-      }
-      &:hover,
-      &.router-link-active {
-        &::after {
-          width: 100%;
-        }
-      }
+      // &::after {
+      //   transition: width 0.2s;
+      //   content: '';
+      //   width: 0%;
+      //   height: 2px;
+      //   background-color: var(--c-theme);
+      //   position: absolute;
+      //   bottom: -0.4rem;
+      // }
+      // &:hover,
+      // &.router-link-active {
+      //   &::after {
+      //     width: 100%;
+      //   }
+      // }
     }
   }
 }

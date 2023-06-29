@@ -8,7 +8,6 @@ import {
   useUpdateDeviceStatus,
 } from '@theme-zp-client/composables/index.js'
 import { computed, ref } from 'vue'
-// import Avatar from './home/Avatar.vue'
 
 defineSlots<{
   before?: (props: Record<never, never>) => any
@@ -49,7 +48,7 @@ const handleLinksWrapWidth = (width: number): void => {
     linksWrapperMaxWidth.value = 0
   } else {
     linksWrapperMaxWidth.value =
-      navbar.value!.offsetWidth -
+      (navbar.value?.offsetWidth || 0) -
       navbarHorizontalPadding -
       (navbarBrand.value?.offsetWidth || 0)
   }
@@ -59,17 +58,15 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleLinksWrapWidth)
 
 <template>
   <header ref="navbar" class="navbar">
-    <!-- <Avatar :size="2" /> -->
-    <span ref="navbarBrand">
+    <span ref="navbarBrand" class="navbar-brand">
       <NavbarBrand />
+      <NavbarSearch />
     </span>
-
     <div class="navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
       <NavbarItems class="can-hide" />
       <slot name="after" />
       <ToggleColorModeButton v-if="isPc" />
-      <NavbarSearch />
       <ToggleSidebarButton @toggle="$emit('toggle-menu')" />
     </div>
   </header>

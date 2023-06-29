@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import DropdownTransition from '@theme-zp-client/components/DropdownTransition.vue'
-import { useMenuToggle } from '@theme-zp-client/composables/index.js'
-import type {
-  NavbarItem,
-  ResolvedNavbarItem,
-} from '@theme-zp-src/shared/index.js'
+import { useToggleMenu } from '@theme-zp-client/composables/index.js'
+import type { NavbarItem, NavGroup } from '@theme-zp-src/shared/index.js'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
@@ -13,7 +10,7 @@ import cssVars from '../../styles/_variables.module.scss?module'
 
 const props = defineProps({
   item: {
-    type: Object as PropType<Exclude<ResolvedNavbarItem, NavbarItem>>,
+    type: Object as PropType<NavGroup<NavGroup<NavbarItem>>>,
     required: true,
   },
 })
@@ -23,7 +20,7 @@ const { item } = toRefs(props)
 
 const open = ref(false)
 const route = useRoute()
-const { toggleMobileMenu } = useMenuToggle()
+const { toggleMobileMenu } = useToggleMenu()
 
 const dropdownAriaLabel = computed(
   () => item.value.ariaLabel || item.value.text

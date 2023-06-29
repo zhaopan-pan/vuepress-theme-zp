@@ -3,9 +3,9 @@ import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import NavbarDropdown from '@theme-zp-client/components/nav/NavbarDropdown.vue'
 import {
   DeviceType,
-  useMenuToggle,
   useNavLink,
   useThemeLocaleData,
+  useToggleMenu,
   useUpdateDeviceStatus,
 } from '@theme-zp-client/composables/index.js'
 import { resolveRepoType } from '@theme-zp-client/utils/index.js'
@@ -22,7 +22,7 @@ import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 
-const { toggleMobileMenu } = useMenuToggle()
+const { toggleMobileMenu } = useToggleMenu()
 
 /**
  * Get navbar config of select language dropdown
@@ -157,6 +157,7 @@ const isMobile = ref(false)
 const navbarConfig = useNavbarConfig()
 const navbarSelectLanguage = useNavbarSelectLanguage()
 const navbarRepo = useNavbarRepo()
+
 const navbarLinks = computed(() => [
   ...navbarConfig.value,
   ...navbarSelectLanguage.value,

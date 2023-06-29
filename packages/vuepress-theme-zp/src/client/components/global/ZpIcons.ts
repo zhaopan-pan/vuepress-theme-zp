@@ -1,4 +1,4 @@
-import type ionicons5Icons from '@vicons/ionicons5'
+import * as icons from '@vicons/ionicons5'
 import {
   Component,
   computed,
@@ -18,7 +18,7 @@ export default defineComponent({
   components: {},
   props: {
     icon: {
-      type: String as PropType<keyof typeof ionicons5Icons>,
+      type: String as PropType<keyof typeof icons>,
       default: '',
     },
     iconPosition: {
@@ -95,18 +95,15 @@ export default defineComponent({
       }
     })
 
-    onMounted(() => {
-      initIcon()
+    onMounted(async () => {
+      await initIcon()
     })
 
     const initIcon = async (): Promise<void> => {
       if (!icon.value) return
       try {
-        const { [icon.value]: iconCom } = await import('@vicons/ionicons5')
-        if (iconCom) {
-          // markRaw 将一个对象标记为不可被转为代理。返回该对象本身。
-          state.iconNode = markRaw(iconCom)
-        }
+        // markRaw 将一个对象标记为不可被转为代理。返回该对象本身。
+        state.iconNode = markRaw(Reflect.get(icons, icon.value))
       } catch (error) {
         console.log(error)
       }

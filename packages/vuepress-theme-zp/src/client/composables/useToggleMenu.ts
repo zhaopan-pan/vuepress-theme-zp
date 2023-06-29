@@ -9,11 +9,11 @@ export const MenuToggleSymbol: InjectionKey<IMenu> =
 /**
  * Inject data
  */
-export const useMenuToggle = (key?: string): IMenu => {
+export const useToggleMenu = (key?: string): IMenu => {
   const menuFn = inject(MenuToggleSymbol)
 
   if (!menuFn) {
-    throw new Error('useMenuToggle() is called without provider.')
+    throw new Error('useToggleMenu() is called without provider.')
   }
 
   return key ? menuFn[key] : menuFn

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { computed } from 'vue'
-import { useThemeLocaleData } from '@theme-zp-client/composables/index.js'
 import Avatar from '../home/Avatar.vue'
 
 const routeLocale = useRouteLocale()

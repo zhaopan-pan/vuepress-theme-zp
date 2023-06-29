@@ -1,4 +1,4 @@
-@import '_mixins';
+@use '_mixins';
 @import '_variables';
 
 .page {
@@ -193,7 +193,7 @@
   .info {
     line-height: 1rem;
     margin-top: 0.3rem;
-    @include flexCenter;
+    @include mixins.flexCenter;
   }
   .beian {
     color: inherit;

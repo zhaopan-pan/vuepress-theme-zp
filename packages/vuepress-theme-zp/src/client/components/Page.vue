@@ -30,7 +30,7 @@ const shouldShowToc = computed(
 
     <div class="theme-default-content">
       <div v-if="showArticleInfo" class="content-header">
-        <div class="content-header-title">{{ frontmatter.title }}</div>
+        <h1 class="content-header-title">{{ frontmatter.title }}</h1>
         <ArticleInfo :info="(frontmatter as IArticleInfo)" />
       </div>
 

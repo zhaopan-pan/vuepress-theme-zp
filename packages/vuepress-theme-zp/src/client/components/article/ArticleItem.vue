@@ -109,7 +109,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
       :class="{ 'article-item-mobile-narrow': isMobile }"
     >
       <div class="article-text" :style="articleTextStyle">
-        <div
+        <h1
           v-show="info.title"
           :title="info.title"
           :class="{
@@ -118,7 +118,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
           }"
         >
           {{ info.title }}
-        </div>
+        </h1>
         <div
           v-if="showCoverInfo"
           class="cover-info-text"

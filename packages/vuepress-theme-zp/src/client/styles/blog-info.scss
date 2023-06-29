@@ -21,6 +21,7 @@
   margin-left: 1rem;
   position: sticky;
   top: calc(var(--navbar-height) + 1rem);
+  padding-bottom: 1rem;
   .author-info {
     @include mixins.card_item;
     width: 100%;

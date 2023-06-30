@@ -10,7 +10,7 @@ import cssVars from '../../styles/_variables.module.scss?module'
 
 const props = defineProps({
   item: {
-    type: Object as PropType<NavGroup<NavGroup<NavbarItem>>>,
+    type: Object as PropType<NavGroup<NavGroup<NavbarItem> & NavbarItem>>,
     required: true,
   },
 })

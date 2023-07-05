@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCategory, useTag } from '@theme-zp-client/composables/index.js'
-import { formatDate } from '@theme-zp-client/utils/index.js'
+import { formatDate, IconNameMap } from '@theme-zp-client/utils/index.js'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import type { PropType } from 'vue'
 import { computed } from 'vue'
@@ -27,15 +27,15 @@ const categoryTagsObj = computed(() => ({
   <div class="article-info-wrapper">
     <ZpIcons
       v-if="author"
-      icon="PersonOutline"
-      iconSize="1.1"
+      :icon="IconNameMap['author']"
+      iconSize="1"
       link="#12"
       :text="author"
       class="article-info-items"
     />
     <ZpIcons
-      icon="TimeOutline"
-      iconSize="1.1"
+      :icon="IconNameMap['date']"
+      iconSize="1"
       link="#"
       class="article-info-items"
     >
@@ -43,8 +43,8 @@ const categoryTagsObj = computed(() => ({
     </ZpIcons>
     <ZpIcons
       v-if="tag && tag.length"
-      icon="PricetagOutline"
-      iconSize="1.1"
+      :icon="IconNameMap['tag']"
+      iconSize="1"
       :link="`${categoryTagsObj[tag[0]]?.path}`"
       class="article-info-items"
     >
@@ -52,9 +52,8 @@ const categoryTagsObj = computed(() => ({
     </ZpIcons>
     <ZpIcons
       v-if="category.length"
-      icon="FolderOpenOutline"
-      :iconProps="{ viewBox: '-30 -30 600 600' }"
-      iconSize="1.1"
+      :icon="IconNameMap['category']"
+      iconSize="1"
       class="article-info-items"
     >
       <RouterLink

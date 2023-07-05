@@ -38,6 +38,10 @@ module.exports = {
         'vue/no-setup-props-destructure': 0,
         // 禁止使用 V-HTML 来防止 XSS 攻击
         'vue/no-v-html': 0,
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
       },
     },
     {

@@ -7,7 +7,7 @@ const tagMap = useTag()
 
 <template>
   <div class="tag-info">
-    <ZpIcons icon="PricetagOutline" iconSize="1">标签</ZpIcons>
+    <ZpIcons icon="akar-icons:tag" iconSize="1">标签</ZpIcons>
     <Tags :tagMap="tagMap" blog-key="tag" />
   </div>
 </template>

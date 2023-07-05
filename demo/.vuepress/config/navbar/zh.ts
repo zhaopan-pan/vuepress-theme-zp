@@ -4,11 +4,12 @@ export const navbarZh: NavbarConfig = [
   {
     text: '首页',
     link: '/',
-    icon: { name: 'HomeOutline' },
+    icon: { name: 'home-outline' },
   },
   {
     text: '分类',
     link: '/category/',
+    icon: { name: 'iconamoon:category-light' },
     children: [
       {
         text: 'back-end',
@@ -22,9 +23,11 @@ export const navbarZh: NavbarConfig = [
   {
     text: 'Tag',
     link: '/tag',
+    icon: { name: 'akar-icons:tag' },
   },
   {
     text: '文档',
+    icon: { name: 'solar:document-outline' },
     children: [
       {
         text: 'sidebar',
@@ -39,5 +42,6 @@ export const navbarZh: NavbarConfig = [
   {
     text: 'about',
     link: '/about.html',
+    icon: { name: 'mdi:about-circle-outline' },
   },
 ]

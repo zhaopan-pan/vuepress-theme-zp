@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { isFormPosts, showSideBar } from '@theme-zp-client/utils/index.js'
+import {
+  IconNameMap,
+  isFormPosts,
+  showSideBar,
+} from '@theme-zp-client/utils/index.js'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -89,7 +93,7 @@ watch(
       <button class="page-nav-btn" @click="showPageToc">
         <span>本页目录</span>
         <ZpIcons
-          icon="ChevronDownOutline"
+          :icon="IconNameMap['arrowDown']"
           :iconSize="cssVars.navIconSize"
           :class="showTocModal ? 'toc-arrow-open' : 'toc-arrow'"
         />

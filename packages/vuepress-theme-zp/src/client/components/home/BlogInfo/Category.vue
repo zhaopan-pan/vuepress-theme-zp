@@ -7,7 +7,7 @@ const category = useCategory()
 
 <template>
   <div class="category-info">
-    <ZpIcons icon="FolderOpenOutline" iconSize="1">分类</ZpIcons>
+    <ZpIcons icon="iconamoon:category-light" iconSize="1">分类</ZpIcons>
     <Tags :tagMap="category" blog-key="category" />
   </div>
 </template>

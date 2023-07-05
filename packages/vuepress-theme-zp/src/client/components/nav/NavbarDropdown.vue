@@ -2,6 +2,7 @@
 import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import DropdownTransition from '@theme-zp-client/components/DropdownTransition.vue'
 import { useToggleMenu } from '@theme-zp-client/composables/index.js'
+import { IconNameMap } from '@theme-zp-client/utils/index.js'
 import type { NavbarItem, NavGroup } from '@theme-zp-src/shared/index.js'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
@@ -62,10 +63,16 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
     >
+      <ZpIcons
+        v-if="item.icon"
+        :icon="item.icon?.name"
+        :iconSize="item.icon.size || cssVars.navIconSize"
+        :iconColor="item.icon.color"
+      />
       <span class="title">{{ item.text }}</span>
       <!-- <span class="arrow down" /> -->
       <ZpIcons
-        icon="ChevronDownOutline"
+        :icon="IconNameMap['arrowDown']"
         :iconSize="cssVars.navIconSize"
         class="arrow"
       />
@@ -79,7 +86,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
     >
       <span class="title">{{ item.text }}</span>
       <ZpIcons
-        icon="ChevronDownOutline"
+        :icon="IconNameMap['arrowDown']"
         :iconSize="cssVars.navIconSize"
         :class="open ? 'arrow-mobile-open' : 'arrow-mobile'"
       />

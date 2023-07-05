@@ -1,14 +1,12 @@
-import * as icons from '@vicons/ionicons5'
+import { Icon, iconExists, loadIcons } from '@iconify/vue'
 import {
-  Component,
   computed,
   defineComponent,
   h,
-  markRaw,
-  onMounted,
-  PropType,
-  reactive,
+  onUnmounted,
+  ref,
   toRefs,
+  watch,
   withModifiers,
 } from 'vue'
 import { useRouter } from 'vue-router'
@@ -18,7 +16,7 @@ export default defineComponent({
   components: {},
   props: {
     icon: {
-      type: String as PropType<keyof typeof icons>,
+      type: String,
       default: '',
     },
     iconPosition: {
@@ -72,10 +70,18 @@ export default defineComponent({
       text,
     } = toRefs(props)
 
-    const state = reactive<{ iconNode: Component | null }>({
-      iconNode: null,
-    })
+    const containerTag = 'div'
+    // https://icon-sets.iconify.design/mdi
+    // Material Design Icons 的前缀
+    const ICON_PREFIX = 'mdi:'
+
+    // Variable to store function to cancel loading
+    const loaderAbort = ref()
+    // Icon status
+    const loaded = ref()
+
     const router = useRouter()
+
     const iconStyle = computed(() => {
       return {
         color: iconColor.value,
@@ -84,6 +90,10 @@ export default defineComponent({
         fontSize: `${iconSize.value}rem`,
       }
     })
+
+    const iconName = computed(() =>
+      icon.value.includes(':') ? icon.value : `${ICON_PREFIX}${icon.value}`
+    )
 
     const curText = computed(() => text.value || slots.default?.())
 
@@ -95,28 +105,46 @@ export default defineComponent({
       }
     })
 
-    onMounted(async () => {
-      await initIcon()
-    })
-
-    const initIcon = async (): Promise<void> => {
-      if (!icon.value) return
-      try {
-        // markRaw 将一个对象标记为不可被转为代理。返回该对象本身。
-        state.iconNode = markRaw(Reflect.get(icons, icon.value))
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
     const toPage = (): void => {
       link.value && router.push(link.value)
     }
 
-    const containerTag = 'div'
+    // Function to check if icon data is available
+    const check = (icon: string): void => {
+      const isLoaded = (loaded.value = iconExists(icon))
+
+      // Cancel old loader
+      if (loaderAbort.value) {
+        loaderAbort.value()
+        loaderAbort.value = null
+      }
+
+      if (!isLoaded) {
+        // 保存取消方法
+        loaderAbort.value = loadIcons([icon], () => {
+          loaded.value = iconExists(icon)
+        })
+      }
+    }
+
+    watch(
+      () => iconName.value,
+      (value) => {
+        check(value)
+      },
+      { immediate: true }
+    )
+
+    // Stop loading
+    onUnmounted(() => {
+      const loaderAbortFn = loaderAbort.value
+      if (loaderAbortFn) {
+        loaderAbortFn()
+      }
+    })
 
     return () => {
-      if (!state.iconNode) return null
+      if (!loaded.value) return null
 
       if (link.value || curText.value) {
         return h(
@@ -130,7 +158,8 @@ export default defineComponent({
             onClick: withModifiers(toPage, ['stop', 'prevent']),
           },
           [
-            h(state.iconNode, {
+            h(Icon, {
+              icon: iconName.value,
               style: iconStyle.value,
               ...iconProps.value,
             }),
@@ -144,9 +173,7 @@ export default defineComponent({
         )
       }
 
-      return h(state.iconNode, {
-        style: iconStyle.value,
-      })
+      return h(Icon, { icon: iconName.value, style: iconStyle.value })
     }
   },
 })

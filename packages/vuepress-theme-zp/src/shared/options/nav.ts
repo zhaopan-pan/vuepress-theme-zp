@@ -4,6 +4,11 @@
 export interface NavItem {
   text: string
   ariaLabel?: string
+  icon?: {
+    name: string
+    size?: string
+    color?: string
+  }
 }
 
 /**
@@ -18,11 +23,6 @@ export interface NavGroup<T> extends NavItem {
  */
 export interface NavLink extends NavItem {
   link: string
-  icon?: {
-    name: string
-    size?: string
-    color?: string
-  }
   rel?: string
   target?: string
   activeMatch?: string

@@ -60,10 +60,10 @@
 
       .arrow {
         transition: all var(--t-transform);
-        transform: rotate(0deg);
+        transform: rotate(-90deg);
       }
       .arrow-open {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
       }
     }
   }

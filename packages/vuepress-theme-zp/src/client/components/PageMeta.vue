@@ -99,10 +99,11 @@ const contributors = useContributors()
       <AutoLink class="meta-item-label" :item="editNavLink" />
     </div>
 
-    <div v-if="lastUpdated" class="meta-item last-updated">
-      <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
+    <div v-if="lastUpdated" class="meta-item last-updated flex-center">
+      <ZpIcons icon="lucide:calendar" class="mr5" iconSize="0.9" />
+      <span> {{ themeLocale.lastUpdatedText }}: </span>
       <ClientOnly>
-        <span class="meta-item-info">{{ lastUpdated }}</span>
+        <span>{{ lastUpdated }}</span>
       </ClientOnly>
     </div>
 

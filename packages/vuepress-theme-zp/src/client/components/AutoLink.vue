@@ -106,7 +106,7 @@ const isActive = computed(() => {
   </RouterLink>
   <a
     v-else
-    class="external-link"
+    class="external-link flex-center"
     :href="item.link"
     :rel="linkRel"
     :target="linkTarget"
@@ -114,8 +114,13 @@ const isActive = computed(() => {
     v-bind="$attrs"
   >
     <slot name="before" />
+    <ZpIcons
+      v-if="isBlankTarget"
+      icon="lucide:edit"
+      class="mr5"
+      iconSize="0.9"
+    />
     {{ item.text }}
-    <AutoLinkExternalIcon v-if="isBlankTarget" />
     <slot name="after" />
   </a>
 </template>

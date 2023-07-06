@@ -47,7 +47,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow: auto;
-  font-size: 0.9rem;
+  font-size: 14px;
 
   .meta-item {
     cursor: default;
@@ -71,6 +71,7 @@
 
   .last-updated {
     float: right;
+    color: var(--c-text-quote);
   }
 }
 
@@ -98,17 +99,52 @@
     transition: border-color var(--t-color);
     padding-top: 1rem;
     overflow: auto;
+    @include flexBetween();
   }
+  .pager {
+    width: 40%;
+    padding: 1rem 0.8rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--btn-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all var(--t-color);
+    cursor: pointer;
+    font-weight: 500;
+    visibility: hidden;
 
-  .prev {
-    a:before {
-      content: '←';
+    .pre-page {
+      width: 100%;
+      text-align: left;
+      font-size: 12px;
+      color: var(--c-text-quote);
+      line-height: 20px;
+    }
+    .pre-page-target {
+      font-size: 14px;
+      width: 100%;
+      line-height: 20px;
+      @include textEllipsis(1);
+    }
+    a {
+      font-size: 14px;
+    }
+
+    &:hover {
+      border-color: var(--c-theme);
     }
   }
-  .next {
-    float: right;
-    a:after {
-      content: '→';
+
+  .pager-show {
+    visibility: visible;
+  }
+
+  .hasNext {
+    align-items: flex-end;
+    .pre-page,
+    .pre-page-target {
+      text-align: right;
     }
   }
 }

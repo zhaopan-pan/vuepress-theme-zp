@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AutoLink from '@theme-zp-client/components/AutoLink.vue'
 import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink,
@@ -90,14 +89,22 @@ const nextNavLink = computed(() => {
 
 <template>
   <nav v-if="prevNavLink || nextNavLink" class="page-nav">
-    <p class="inner">
-      <span v-if="prevNavLink" class="prev">
-        <AutoLink :item="prevNavLink" />
-      </span>
+    <div class="inner">
+      <RouterLink
+        :to="prevNavLink?.link || ''"
+        :class="{ 'pager': true, 'pager-show': prevNavLink }"
+      >
+        <span class="pre-page">Previous page</span>
+        <span class="pre-page-target">{{ prevNavLink?.text }}</span>
+      </RouterLink>
 
-      <span v-if="nextNavLink" class="next">
-        <AutoLink :item="nextNavLink" />
-      </span>
-    </p>
+      <RouterLink
+        :to="nextNavLink?.link || ''"
+        :class="{ 'pager': true, 'hasNext': true, 'pager-show': nextNavLink }"
+      >
+        <span class="pre-page">Next page</span>
+        <span class="pre-page-target">{{ nextNavLink?.text }}</span>
+      </RouterLink>
+    </div>
   </nav>
 </template>

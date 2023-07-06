@@ -56,12 +56,9 @@ html.dark {
   border: 1px solid var(--c-copy-success-icon-color);
 }
 
-.copy-code-tooltip::before {
+.tooltip-text::before {
   content: attr(data-tooltip-text);
-  line-height: 25px;
-  width: max-content;
   font-size: smaller;
-  padding: 0 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,22 +69,27 @@ html.dark {
   border-radius: 5px;
   color: var(--c-copy-tooltip-color);
   background-color: var(--c-copy-tooltip-bg);
-  transition: all var(--t-transform);
+  transition: opacity var(--t-transform);
   opacity: 0;
+  line-height: 25px;
+  width: max-content;
+  padding: 0 5px;
 }
-.copy-code-tooltip::after {
+.tooltip-text::after {
   content: '';
   position: absolute;
   top: 10px;
   right: 26px;
-  border-width: 5px;
   border-style: solid;
   border-color: transparent transparent transparent var(--c-copy-tooltip-bg);
-  transition: all var(--t-transform);
+  transition: opacity var(--t-transform);
   opacity: 0;
+  border-width: 5px;
 }
 
-.copy-code-tooltip-show::after,
-.copy-code-tooltip-show::before {
+.tooltip-text-show::after {
+  opacity: 1;
+}
+.tooltip-text-show::before {
   opacity: 1;
 }

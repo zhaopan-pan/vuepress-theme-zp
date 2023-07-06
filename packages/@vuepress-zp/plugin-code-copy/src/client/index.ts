@@ -10,6 +10,9 @@ const addListener = (node: Element, index: number): void => {
       node.lastElementChild?.classList.add('copy-code-btn-show')
     } else {
       createBtn(node, index)
+      setTimeout(() => {
+        node.lastElementChild?.classList.add('copy-code-btn-show')
+      }, 100)
     }
   })
 
@@ -34,42 +37,61 @@ const createBtn = (node: Element, index: number): void => {
 
   // show copy result
   const displayCopyResult = (text: string): void => {
+    const isMQMobile = window.innerWidth < 719
     const copyIcon = document.querySelector(`.copy-icon-${index}`)
-    copyBtn?.setAttribute('data-tooltip-text', text)
     const copySuccessIcon = document.querySelector(
       `.copy-success-icon-${index}`
     )
+
     copyIcon?.classList.add('copy-icon-hidden')
     copySuccessIcon?.classList.add('copy-success-icon-show')
-    copyBtn?.classList.add('copy-code-btn-active', 'copy-code-tooltip-show')
+
+    const copyBtnClassNames = ['copy-code-btn-active']
+    if (!isMQMobile) copyBtnClassNames.push('tooltip-text')
+    copyBtn?.classList.add(...copyBtnClassNames)
+    // 延迟展示动画
     setTimeout(() => {
-      copyIcon?.classList.remove('copy-icon-hidden')
-      copySuccessIcon?.classList.remove('copy-success-icon-show')
-      copyBtn?.classList.remove(
-        'copy-code-btn-active',
-        'copy-code-tooltip-show'
-      )
+      copyBtn?.classList.add('tooltip-text-show')
+    }, 50)
+    copyBtn?.setAttribute('data-tooltip-text', text)
+
+    setTimeout(() => {
+      if (hasCopied) {
+        copyIcon?.classList.remove('copy-icon-hidden')
+        copySuccessIcon?.classList.remove('copy-success-icon-show')
+        copyBtn?.classList.remove('tooltip-text-show', 'copy-code-btn-active')
+        // 等动画结束再移除伪类
+        setTimeout(() => {
+          copyBtn?.classList.remove('tooltip-text')
+        }, 210)
+      }
       hasCopied = false
     }, 2000)
   }
+
   // copyBtn’s click event
-  copyBtn.addEventListener('click', async () => {
-    // prevent repeat click
-    if (hasCopied && copyBtn?.classList.contains('opy-code-btn-active')) return
-    // pre tag
-    const preNode = Array.from(node.children).find((n) =>
-      n.classList.value.includes('language-')
-    )
-    const codeText = preNode?.textContent || ''
-    const res = await setClipboard(codeText)
-    if (res?.err) {
-      hasCopied = false
-      displayCopyResult('copy failed!')
-      return
-    }
-    hasCopied = true
-    displayCopyResult('Copied!')
-  })
+  copyBtn.addEventListener(
+    'click',
+    async (e) => {
+      // prevent repeat click
+      if (hasCopied || copyBtn?.classList.contains('opy-code-btn-active'))
+        return
+      // pre tag
+      const preNode = Array.from(node.children).find((n) =>
+        n.classList.value.includes('language-')
+      )
+      const codeText = preNode?.textContent || ''
+      const res = await setClipboard(codeText)
+      if (res?.err) {
+        hasCopied = false
+        displayCopyResult('copy failed!')
+        return
+      }
+      hasCopied = true
+      displayCopyResult('Copied!')
+    },
+    false
+  )
 }
 
 /**

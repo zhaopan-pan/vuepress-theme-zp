@@ -18,6 +18,18 @@
   margin-left: 10px;
 }
 
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.flex-center {
+  @include flexCenter();
+}
+
 .waline-wrapper {
   @include content_wrapper();
 

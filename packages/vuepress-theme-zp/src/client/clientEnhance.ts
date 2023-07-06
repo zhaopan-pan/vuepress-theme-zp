@@ -10,15 +10,6 @@ export default ({ app, router }): void => {
   // it can be whatever you wish
   app.directive('tooltip', tooltip)
 
-  // compat with @vuepress/plugin-external-link-icon
-  app.component('AutoLinkExternalIcon', () => {
-    const ExternalLinkIcon = app.component('ExternalLinkIcon')
-    if (ExternalLinkIcon) {
-      return h(ExternalLinkIcon)
-    }
-    return null
-  })
-
   // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
   app.component('NavbarSearch', () => {
     const SearchComponent =

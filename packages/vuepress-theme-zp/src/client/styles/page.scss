@@ -48,10 +48,18 @@
   padding-bottom: 1rem;
   overflow: auto;
   font-size: 14px;
+  @include flexBetween();
+
+  @media (max-width: $MQMobileNarrow) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .meta-item {
     cursor: default;
     margin-top: 0.8rem;
+    @include flexStart();
 
     .meta-item-label {
       font-weight: 500;
@@ -65,7 +73,7 @@
   }
 
   .edit-link {
-    display: inline-block;
+    // display: inline-block;
     margin-right: 0.25rem;
   }
 
@@ -98,17 +106,32 @@
     border-top: 1px solid var(--c-border);
     transition: border-color var(--t-color);
     padding-top: 1rem;
-    overflow: auto;
+    overflow: hidden;
     @include flexBetween();
   }
+  @media (max-width: $MQMobile) {
+    .inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .pager {
+      width: 100% !important;
+      &:not(&:first-child) {
+        margin-top: 10px;
+      }
+    }
+  }
   .pager {
-    width: 40%;
+    box-sizing: border-box;
+    width: 43%;
     padding: 1rem 0.8rem;
     border: 1px solid var(--c-border);
     border-radius: var(--btn-radius);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    // flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     transition: all var(--t-color);
     cursor: pointer;
     font-weight: 500;
@@ -131,8 +154,20 @@
       font-size: 14px;
     }
 
+    .pre-icon {
+      transition: all var(--t-transform);
+      transform: rotate(180deg) translateX(250%);
+      visibility: hidden;
+      margin-right: -0.9rem !important;
+    }
+
     &:hover {
       border-color: var(--c-theme);
+      .pre-icon {
+        visibility: visible;
+        margin-right: 0.3rem !important;
+        transform: rotate(180deg) translateX(20%);
+      }
     }
   }
 
@@ -140,11 +175,32 @@
     visibility: visible;
   }
 
-  .hasNext {
-    align-items: flex-end;
+  .has-next {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .next-texts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
     .pre-page,
     .pre-page-target {
       text-align: right;
+    }
+
+    .pre-icon {
+      visibility: hidden;
+      transition: all var(--t-transform);
+      transform: translateX(250%);
+    }
+    &:hover {
+      .pre-icon {
+        visibility: visible;
+        margin: 0 !important;
+        margin-left: 0.5rem !important;
+        transform: translateX(20%);
+      }
     }
   }
 }

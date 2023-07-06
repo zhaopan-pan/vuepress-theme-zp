@@ -130,9 +130,6 @@ importers:
       '@vuepress/plugin-docsearch':
         specifier: 2.0.0-beta.63
         version: 2.0.0-beta.63(search-insights@2.6.0)
-      '@vuepress/plugin-external-link-icon':
-        specifier: 2.0.0-beta.63
-        version: 2.0.0-beta.63
       '@vuepress/plugin-git':
         specifier: 2.0.0-beta.63
         version: 2.0.0-beta.63

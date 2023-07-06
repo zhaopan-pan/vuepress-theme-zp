@@ -116,7 +116,7 @@ const isActive = computed(() => {
     <slot name="before" />
     <ZpIcons
       v-if="isBlankTarget"
-      icon="lucide:edit"
+      icon="lucide:external-link"
       class="mr5"
       iconSize="0.9"
     />

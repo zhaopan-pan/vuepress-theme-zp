@@ -28,11 +28,6 @@ export interface DefaultThemePluginsOptions {
   }
 
   /**
-   * Enable @vuepress/plugin-external-link-icon or not
-   */
-  externalLinkIcon?: boolean
-
-  /**
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean

@@ -94,16 +94,30 @@ const nextNavLink = computed(() => {
         :to="prevNavLink?.link || ''"
         :class="{ 'pager': true, 'pager-show': prevNavLink }"
       >
-        <span class="pre-page">Previous page</span>
-        <span class="pre-page-target">{{ prevNavLink?.text }}</span>
+        <ZpIcons
+          icon="grommet-icons:next"
+          class="pre-icon mr5"
+          iconSize="0.9"
+        />
+        <div>
+          <span class="pre-page">Previous page</span>
+          <span class="pre-page-target">{{ prevNavLink?.text }}</span>
+        </div>
       </RouterLink>
 
       <RouterLink
         :to="nextNavLink?.link || ''"
-        :class="{ 'pager': true, 'hasNext': true, 'pager-show': nextNavLink }"
+        :class="{ 'pager': true, 'has-next': true, 'pager-show': nextNavLink }"
       >
-        <span class="pre-page">Next page</span>
-        <span class="pre-page-target">{{ nextNavLink?.text }}</span>
+        <div class="next-texts">
+          <span class="pre-page">Next page</span>
+          <span class="pre-page-target">{{ nextNavLink?.text }}</span>
+        </div>
+        <ZpIcons
+          icon="grommet-icons:next"
+          class="pre-icon ml5"
+          iconSize="0.9"
+        />
       </RouterLink>
     </div>
   </nav>

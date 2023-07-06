@@ -34,7 +34,11 @@ export const navbarZh: NavbarConfig = [
         link: '/posts/document/sidebar',
       },
       {
-        text: 'test',
+        text: 'doc-center',
+        link: '/posts/document/doc-center',
+      },
+      {
+        text: 'test-code-group',
         link: '/posts/document/test-code-group',
       },
     ],
@@ -43,5 +47,9 @@ export const navbarZh: NavbarConfig = [
     text: 'about',
     link: '/about.html',
     icon: { name: 'mdi:about-circle-outline' },
+  },
+  {
+    text: '主题源码',
+    link: 'https://github.com/zhaopan-pan/vuepress-theme-zp',
   },
 ]

@@ -7,6 +7,7 @@ export const sidebarZh: SidebarConfig = {
       collapsible: true,
       children: [
         '/posts/document/sidebar.md',
+        '/posts/document/doc-center.md',
         '/posts/document/test-code-group.md',
       ],
     },

@@ -28,5 +28,6 @@
 
 @use './plugins/toc';
 @use './plugins/pwa';
+@use './plugins/docsearch';
 
 @use '@vuepress/plugin-palette/style';

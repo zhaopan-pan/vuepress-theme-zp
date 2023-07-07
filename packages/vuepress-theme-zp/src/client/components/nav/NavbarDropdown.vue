@@ -64,13 +64,12 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       @click="handleDropdown"
     >
       <ZpIcons
-        v-if="item.icon"
         :icon="item.icon?.name"
-        :iconSize="item.icon.size || cssVars.navIconSize"
-        :iconColor="item.icon.color"
-      />
-      <span class="title">{{ item.text }}</span>
-      <!-- <span class="arrow down" /> -->
+        :iconSize="item?.icon?.size || cssVars.navIconSize"
+        :iconColor="item?.icon?.color"
+      >
+        {{ item.text }}
+      </ZpIcons>
       <ZpIcons
         :icon="IconNameMap['arrowDown']"
         :iconSize="cssVars.navIconSize"
@@ -84,7 +83,13 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       :aria-label="dropdownAriaLabel"
       @click="open = !open"
     >
-      <span class="title">{{ item.text }}</span>
+      <ZpIcons
+        :icon="item.icon?.name"
+        :iconSize="item?.icon?.size || cssVars.navIconSize"
+        :iconColor="item?.icon?.color"
+      >
+        {{ item.text }}
+      </ZpIcons>
       <ZpIcons
         :icon="IconNameMap['arrowDown']"
         :iconSize="cssVars.navIconSize"

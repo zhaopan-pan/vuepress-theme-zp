@@ -23,10 +23,6 @@
     font-weight: 500;
     color: var(--c-text);
     cursor: pointer;
-
-    .title {
-      margin-left: 0.2rem;
-    }
   }
 
   .navbar-dropdown-title-mobile {
@@ -87,10 +83,13 @@
         border-bottom: none;
         font-weight: 400;
         margin-bottom: 0;
-        padding: 0 1.5rem 0 1.25rem;
+        padding: 0 1rem 0 0.75rem;
+        border-radius: var(--card-radius);
+        transition: background-color var(--t-color), color var(--t-color);
 
         &:hover {
           color: var(--c-text-accent);
+          background-color: var(--c-border);
         }
 
         &.router-link-active {
@@ -115,6 +114,10 @@
         margin-top: 0;
         padding-top: 0;
         border-top: 0;
+      }
+
+      .icon-container {
+        line-height: 2em !important;
       }
     }
   }
@@ -201,13 +204,14 @@
       top: 100%;
       right: 0;
       background-color: var(--c-bg-navbar);
-      padding: 0.5rem 0rem;
+      padding: 0.75rem;
       border: 1px solid var(--c-border);
       border-bottom-color: var(--c-border-dark);
       text-align: left;
       border-radius: var(--card-radius);
       white-space: nowrap;
       margin: 0;
+      list-style: none;
     }
   }
 }

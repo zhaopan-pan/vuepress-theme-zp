@@ -4,12 +4,12 @@ export const navbarZh: NavbarConfig = [
   {
     text: '首页',
     link: '/',
-    icon: { name: 'home-outline' },
+    // icon: { name: 'ion:home-outline' },
   },
   {
     text: '分类',
     link: '/category/',
-    icon: { name: 'iconamoon:category-light' },
+    // icon: { name: 'iconamoon:category-light' },
     children: [
       {
         text: 'back-end',
@@ -17,7 +17,12 @@ export const navbarZh: NavbarConfig = [
       },
       { text: 'front', link: '/category/front/' },
       { text: 'language', link: '/category/language/' },
-      { text: '源码', link: '/category/源码/' },
+      {
+        text: '源码',
+        link: '/category/源码/',
+        icon: { name: 'iconamoon:category-light' },
+      },
+      { text: 'blog', link: 'https://zhaopanpan.com' },
     ],
   },
   {

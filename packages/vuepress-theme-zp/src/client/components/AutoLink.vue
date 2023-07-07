@@ -93,15 +93,13 @@ const isActive = computed(() => {
     v-bind="$attrs"
   >
     <ZpIcons
-      v-if="item.icon"
-      :icon="item.icon.name"
-      :iconSize="item.icon.size || cssVars.navIconSize"
-      :iconColor="item.icon.color"
-    />
-    <slot name="before" />
-    <span :style="{ marginLeft: '0.1rem' }">
+      :icon="item?.icon?.name"
+      :iconSize="item?.icon?.size || cssVars.navIconSize"
+      :iconColor="item?.icon?.color"
+    >
       {{ item.text }}
-    </span>
+    </ZpIcons>
+    <slot name="before" />
     <slot name="after" />
   </RouterLink>
   <a
@@ -119,8 +117,10 @@ const isActive = computed(() => {
       icon="lucide:external-link"
       class="mr5"
       iconSize="0.9"
-    />
-    {{ item.text }}
+      iconPosition="right"
+    >
+      {{ item.text }}
+    </ZpIcons>
     <slot name="after" />
   </a>
 </template>

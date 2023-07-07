@@ -1,6 +1,7 @@
 import { Icon, iconExists, loadIcons } from '@iconify/vue'
 import {
   computed,
+  CSSProperties,
   defineComponent,
   h,
   onUnmounted,
@@ -97,12 +98,15 @@ export default defineComponent({
 
     const curText = computed(() => text.value || slots.default?.())
 
-    const textStyle = computed(() => {
-      return {
+    const textStyle = computed<CSSProperties>(() => {
+      const cssObj = {
         color: textColor.value,
         fontSize: `${textSize.value}rem`,
-        // lineHeight: `${textSize.value}rem`,
       }
+      if (!loaded.value) {
+        cssObj['marginLeft'] = '0 !important'
+      }
+      return cssObj
     })
 
     const toPage = (): void => {
@@ -144,7 +148,7 @@ export default defineComponent({
     })
 
     return () => {
-      if (!loaded.value) return null
+      if (!loaded.value && !curText.value) return null
 
       if (link.value || curText.value) {
         return h(
@@ -155,20 +159,23 @@ export default defineComponent({
               lineHeight: `${Number(iconSize.value) + 0.5}rem`,
               cursor: link.value ? 'pointer' : '',
             },
-            onClick: withModifiers(toPage, ['stop', 'prevent']),
+            onClick: link.value
+              ? withModifiers(toPage, ['stop', 'prevent'])
+              : {},
           },
           [
-            h(Icon, {
-              icon: iconName.value,
-              style: iconStyle.value,
-              ...iconProps.value,
-            }),
-            curText.value &&
-              h(
-                'span',
-                { style: textStyle.value, class: 'icon-text' },
-                curText.value
-              ),
+            loaded.value
+              ? h(Icon, {
+                  icon: iconName.value,
+                  style: iconStyle.value,
+                  ...iconProps.value,
+                })
+              : null,
+            h(
+              'span',
+              { style: textStyle.value, class: 'icon-text' },
+              curText.value
+            ),
           ]
         )
       }

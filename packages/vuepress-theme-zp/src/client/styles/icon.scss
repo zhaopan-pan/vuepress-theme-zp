@@ -8,17 +8,18 @@
     align-items: center;
 
     > .icon-text {
-      margin-left: 0.5rem;
+      margin-left: 0.2rem;
     }
   }
 
   &.right {
     display: flex;
     flex-direction: row-reverse;
-    align-content: center;
+    align-items: center;
+    justify-content: flex-end;
 
     > .icon-text {
-      margin-right: 15px;
+      margin-right: 0.2rem;
     }
   }
 
@@ -28,7 +29,7 @@
     align-items: center;
 
     > .icon-text {
-      margin-top: 15px;
+      margin-top: 0.2rem;
     }
   }
 
@@ -38,7 +39,7 @@
     align-items: center;
 
     > .icon-text {
-      margin-bottom: 15px;
+      margin-bottom: 0.2rem;
     }
   }
 }

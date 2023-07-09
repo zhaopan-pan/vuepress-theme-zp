@@ -3,7 +3,7 @@ import ZpTheme from 'vuepress-theme-zp'
 import { themeConfig } from './config/index.js'
 
 export default defineUserConfig({
-  lang: 'zh-CN',
+  lang: ' ',
   title: 'vp ！',
   description: '这是我的第一个 vp 站点',
   theme: ZpTheme(themeConfig()),

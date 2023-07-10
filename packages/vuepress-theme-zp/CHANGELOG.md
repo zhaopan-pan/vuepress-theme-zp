@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.55
+
+### Patch Changes
+
+- chore: update dep config
+
 ## 1.0.54
 
 ### Patch Changes

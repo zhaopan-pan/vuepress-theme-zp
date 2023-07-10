@@ -1,5 +1,13 @@
 # @vuepress-zp/plugin-code-copy
 
+## 1.0.0
+
+### Major Changes
+
+- refactor:
+  1、重构 icon 组件，按需加载，减少小包体积
+  2、修复若干 bug
+
 ## 0.0.7
 
 ### Patch Changes

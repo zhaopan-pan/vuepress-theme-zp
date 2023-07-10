@@ -1,5 +1,13 @@
 # vuepress-theme-zp
 
+## 1.0.54
+
+### Patch Changes
+
+- refactor:
+  1、重构 icon 组件，按需加载，减小打包体积
+  2、修复若干 bug
+
 ## 1.0.53
 
 ### Patch Changes

@@ -42,6 +42,7 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
   },
   "dependencies": {
+    "@iconify/vue": "^4.1.1",
     "@vuepress-zp/plugin-code-copy": "workspace:1.0.0",
     "@vuepress-zp/plugin-toc": "workspace:0.0.8",
     "@vuepress/client": "2.0.0-beta.63",
@@ -77,8 +78,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@iconify/vue": "^4.1.1"
   }
 }

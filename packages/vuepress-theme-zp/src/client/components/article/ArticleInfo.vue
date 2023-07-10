@@ -4,7 +4,7 @@ import { formatDate, IconNameMap } from '@theme-zp-client/utils/index.js'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
 import type { PropType } from 'vue'
 import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   info: {
@@ -15,6 +15,7 @@ const props = defineProps({
 })
 const { date, author, tag, category = [] } = props.info
 
+const router = useRouter()
 const categoryList = useCategory()
 const tags = useTag()
 // 分类和标签放在一起 方便取值 {分类1:{},标签1:{}}
@@ -22,6 +23,10 @@ const categoryTagsObj = computed(() => ({
   ...categoryList.value.map,
   ...tags.value.map,
 }))
+
+const toCategory = (link: string): void => {
+  link && router.push(link)
+}
 </script>
 <template>
   <div class="article-info-wrapper">
@@ -56,14 +61,14 @@ const categoryTagsObj = computed(() => ({
       iconSize="1"
       class="article-info-items"
     >
-      <RouterLink
+      <span
         v-for="(item, index) in category"
         :key="index"
-        :to="`${categoryTagsObj[item]?.path}`"
         class="category-text"
+        @click.stop.prevent="toCategory(`${categoryTagsObj[item]?.path}`)"
       >
         {{ item }}
-      </RouterLink>
+      </span>
     </ZpIcons>
   </div>
 </template>

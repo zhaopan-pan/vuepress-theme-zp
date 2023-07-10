@@ -1,4 +1,5 @@
 import { Icon, iconExists, loadIcons } from '@iconify/vue'
+import { ClientOnly } from '@vuepress/client'
 import {
   computed,
   CSSProperties,
@@ -21,7 +22,8 @@ export default defineComponent({
       default: '',
     },
     iconPosition: {
-      type: String, // ['left', 'right', 'top', 'bottom',]
+      type: String,
+      // ['left', 'right', 'top', 'bottom',]
       default: 'left',
     },
     iconSize: {
@@ -58,7 +60,7 @@ export default defineComponent({
     },
   },
 
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const {
       icon,
       link,
@@ -105,6 +107,8 @@ export default defineComponent({
       }
       if (!loaded.value) {
         cssObj['marginLeft'] = '0 !important'
+      } else {
+        delete cssObj['marginLeft']
       }
       return cssObj
     })
@@ -154,6 +158,7 @@ export default defineComponent({
         return h(
           containerTag,
           {
+            ...attrs,
             class: ['icon-container', iconPosition.value],
             style: {
               lineHeight: `${Number(iconSize.value) + 0.5}rem`,
@@ -165,11 +170,13 @@ export default defineComponent({
           },
           [
             loaded.value
-              ? h(Icon, {
-                  icon: iconName.value,
-                  style: iconStyle.value,
-                  ...iconProps.value,
-                })
+              ? h(ClientOnly, null, () =>
+                  h(Icon, {
+                    icon: iconName.value,
+                    style: iconStyle.value,
+                    ...iconProps.value,
+                  })
+                )
               : null,
             h(
               'span',
@@ -180,7 +187,13 @@ export default defineComponent({
         )
       }
 
-      return h(Icon, { icon: iconName.value, style: iconStyle.value })
+      return h(ClientOnly, null, () =>
+        h(Icon, {
+          ...attrs,
+          icon: iconName.value,
+          style: iconStyle.value,
+        })
+      )
     }
   },
 })

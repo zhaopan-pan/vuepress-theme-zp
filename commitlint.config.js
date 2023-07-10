@@ -1,6 +1,10 @@
 // https://cz-git.qbb.sh/zh/config/
 /** @type {import('cz-git').UserConfig} */
+const fs = require('fs')
+const path = require('path')
+const packages = fs.readdirSync(path.resolve(__dirname, 'packages'))
 
+console.log(packages)
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   prompt: {
@@ -73,11 +77,18 @@ module.exports = {
         name: 'chore:    🔨 其他修改 | Other changes that do not modify src or test files',
         emoji: ':hammer:',
       },
+      {
+        value: 'demo',
+        name: 'demo:    👔 其他修改 | Other changes that do not modify src or test files',
+        emoji: ':necktie:',
+      },
     ],
     useEmoji: true,
     emojiAlign: 'center',
     themeColorCode: '',
-    scopes: [],
+    scopes: [...packages],
+    enableMultipleScopes: true,
+    scopeEnumSeparator: ',',
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: 'bottom',

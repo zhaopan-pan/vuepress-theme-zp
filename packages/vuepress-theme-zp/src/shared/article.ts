@@ -8,6 +8,7 @@ export interface IArticleInfo extends Record<string, unknown> {
   readme?: boolean
   excerpt?: string
   cover?: string
+  mobileCover?: string
   title?: string
   description?: string
 }

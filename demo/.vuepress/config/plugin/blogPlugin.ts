@@ -10,6 +10,7 @@ export const blogPlugin = {
     date: frontmatter.date || null,
     category: frontmatter.category || [],
     cover: frontmatter.cover || '',
+    mobileCover: frontmatter.mobileCover || '',
     tag: frontmatter.tag || [],
     readme: frontmatter.readme,
     description: frontmatter.description || '',

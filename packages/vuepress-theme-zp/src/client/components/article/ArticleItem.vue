@@ -70,9 +70,10 @@ const pcImgSize = computed(() => {
   //   height: `${articleSize.height}px`,
   // }
 })
-console.log(info)
 // mobile-end cover
-const isMobileCover = computed(() => info.mobileCover && isMobile.value)
+const isMobileCover = computed(
+  () => (info.mobileCover || info.cover) && isMobile.value
+)
 // pc-end cover
 const isPcCover = computed(() => info.cover && !isMobile.value)
 
@@ -81,10 +82,10 @@ const hasCover = computed(() => isPcCover.value || isMobileCover.value)
 const isPcNormalArticle = computed(() => !isMobile.value && !isPcCover.value)
 
 // cover url，take priority mobileCover
-const coverUrl = computed(() => info.mobileCover && info.cover)
+const coverUrl = computed(() => info.mobileCover || info.cover)
 
 const articleContainerStyle = computed<CSSProperties>(() =>
-  hasCover.value ? { height: 'calc(170px)' } : {}
+  isPcCover.value ? { height: 'calc(170px)' } : {}
 )
 
 const articleTextStyle = computed<CSSProperties>(() => {
@@ -105,9 +106,9 @@ const articleTextStyle = computed<CSSProperties>(() => {
     @click="toDetail"
   >
     <Image
-      v-if="info.cover && isMobile"
+      v-if="hasCover && isMobile"
       class="mobile-article-cover"
-      :src="info.cover"
+      :src="coverUrl"
       alt="article-cover"
     />
     <div
@@ -134,9 +135,9 @@ const articleTextStyle = computed<CSSProperties>(() => {
         <ArticleInfo :info="info" :showTag="showTag" />
       </div>
       <Image
-        v-if="hasCover"
+        v-if="isPcCover"
         class="article-cover"
-        :src="coverUrl"
+        :src="info.cover"
         alt="article-cover"
         :style="pcImgSize"
       />

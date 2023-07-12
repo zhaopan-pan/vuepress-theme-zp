@@ -55,21 +55,29 @@ const toCategory = (link: string): void => {
     >
       {{ tag[0] }}
     </ZpIcons>
-    <ZpIcons
-      v-if="category.length"
-      :icon="IconNameMap['category']"
-      iconSize="1"
-      class="article-info-items"
-    >
+    <div class="flex-center">
       <span
         v-for="(item, index) in category"
         :key="index"
-        class="category-text"
-        @click.stop.prevent="toCategory(`${categoryTagsObj[item]?.path}`)"
+        class="category-text cp"
       >
-        {{ item }}
+        <ZpIcons
+          v-if="index === 0"
+          :icon="IconNameMap['category']"
+          iconSize="1"
+          :link="`${categoryTagsObj[item]?.path}`"
+          class="article-info-items"
+        >
+          {{ item }}
+        </ZpIcons>
+        <span
+          v-else
+          @click.stop.prevent="toCategory(`${categoryTagsObj[item]?.path}`)"
+        >
+          {{ `${item}` }}
+        </span>
       </span>
-    </ZpIcons>
+    </div>
   </div>
 </template>
 <style lang="scss"></style>

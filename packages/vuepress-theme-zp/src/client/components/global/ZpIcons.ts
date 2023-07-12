@@ -168,22 +168,20 @@ export default defineComponent({
               ? withModifiers(toPage, ['stop', 'prevent'])
               : {},
           },
-          [
+          h(ClientOnly, null, () => [
             loaded.value
-              ? h(ClientOnly, null, () =>
-                  h(Icon, {
-                    icon: iconName.value,
-                    style: iconStyle.value,
-                    ...iconProps.value,
-                  })
-                )
+              ? h(Icon, {
+                  icon: iconName.value,
+                  style: iconStyle.value,
+                  ...iconProps.value,
+                })
               : null,
             h(
               'span',
               { style: textStyle.value, class: 'icon-text' },
               curText.value
             ),
-          ]
+          ])
         )
       }
 

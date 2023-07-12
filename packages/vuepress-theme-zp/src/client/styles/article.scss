@@ -86,6 +86,7 @@
         flex-grow: 1;
         font-size: 0.87rem;
         line-height: 1.7;
+        margin: 5px 0;
         @include textEllipsis(4);
 
         @media (max-width: $MQMobileNarrow) {
@@ -150,15 +151,10 @@
         margin: 0 0.3rem;
       }
     }
-    // 屏幕过小不展示
-    // @media (max-width: $MQMobile) {
-    //   &:not(&:first-child) {
-    //     display: none;
-    //     &::before {
-    //       content: '';
-    //     }
-    //   }
-    // }
+
+    .icon-container {
+      margin-right: 0;
+    }
   }
   .article-info-items {
     .icon-text {

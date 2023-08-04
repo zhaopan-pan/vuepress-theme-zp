@@ -17,10 +17,12 @@
     border-radius: 0.4rem;
     border: 0.15rem solid var(--c-theme);
     cursor: pointer;
-    transition: all 0.3s, color 0.3s;
+    transition:
+      all 0.3s,
+      color 0.3s;
 
     position: relative;
-    @media (max-width: 419px) {
+    @media (max-width: $MQMobileNarrow) {
       font-size: 0.9rem;
     }
 
@@ -65,7 +67,9 @@
       border-radius: 0.4rem;
       background-color: color.scale($color, $lightness: 85%);
       cursor: pointer;
-      transition: all 0.3s, color 0.3s;
+      transition:
+        all 0.3s,
+        color 0.3s;
       position: relative;
       color: $color;
       box-shadow: 0 3px 1px 3px var(--card-shadow-color);
@@ -74,7 +78,7 @@
         background-color: color.scale($color, $lightness: -70%);
       }
 
-      @media (max-width: 419px) {
+      @media (max-width: $MQMobileNarrow) {
         font-size: 0.9rem;
       }
 
@@ -101,7 +105,7 @@
       }
 
       &:hover {
-        padding: 0.4rem 0.9rem;
+        // padding: 0.4rem 0.9rem;
         background-color: $color;
         color: darken($color, 40%);
         box-shadow: 0 2px 1px 2px var(--card-shadow-color);
@@ -136,6 +140,13 @@
   @include mixins.content_wrapper;
   @include tag_wrapper;
   padding: 1rem 0rem !important;
+
+  @media (max-width: $MQMobileNarrow) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 .tag-article-list {

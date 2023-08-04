@@ -38,38 +38,6 @@ useUpdateDeviceStatus(DeviceType.MOBILE, (width: number) => {
   isMobile.value = window.innerWidth < width
 })
 
-const pcImgSize = computed(() => {
-  if (!articleContainer.value || !hasCover.value) return undefined
-  return {
-    width: `${articleContainer.value?.offsetWidth * 0.4}px`,
-    height: `${170}px`,
-  }
-  // const originSize = info.cover ? info.cover.split('/') : null
-  // 原始图片的宽高比
-  // const originRatio = originSize
-  //   ? Number(
-  //       (
-  //         Number(originSize[originSize.length - 2]) /
-  //         Number(originSize[originSize.length - 1])
-  //       ).toFixed(2)
-  //     )
-  //   : 1
-
-  // // 节点的宽高比
-  // const articleNodeRatio = Number(
-  //   (articleSize.width / articleSize.height).toFixed(2)
-  // )
-  // // 超出阈值 0.3
-  // const exceed = Math.abs(articleNodeRatio - originRatio) - 0.3
-  // if (exceed > 0) {
-  //   // 超出比例后重新计算高度，防止图片变形
-  //   articleSize['height'] = articleSize.width / (articleNodeRatio - exceed)
-  // }
-  // return {
-  //   width: `${articleSize.width}px`,
-  //   height: `${articleSize.height}px`,
-  // }
-})
 // mobile-end cover
 const isMobileCover = computed(
   () => (info.mobileCover || info.cover) && isMobile.value
@@ -84,15 +52,11 @@ const isPcNormalArticle = computed(() => !isMobile.value && !isPcCover.value)
 // cover url，take priority mobileCover
 const coverUrl = computed(() => info.mobileCover || info.cover)
 
-const articleContainerStyle = computed<CSSProperties>(() =>
-  isPcCover.value ? { height: 'calc(170px)' } : {}
-)
-
 const articleTextStyle = computed<CSSProperties>(() => {
   if (isPcNormalArticle.value) return { width: '100%', padding: '0.5rem 1rem' }
   return isPcCover.value
     ? {
-        maxWidth: '60%',
+        // maxWidth: '60%',
         paddingRight: '0.5rem',
         padding: '0.5rem 1rem',
       }
@@ -105,15 +69,16 @@ const articleTextStyle = computed<CSSProperties>(() => {
     class="article-item-container cp"
     @click="toDetail"
   >
-    <Image
-      v-if="hasCover && isMobile"
-      class="mobile-article-cover"
-      :src="coverUrl"
-      alt="article-cover"
-    />
+    <div class="mobile-article-cover-box">
+      <Image
+        v-if="hasCover"
+        class="mobile-article-cover"
+        :src="coverUrl"
+        alt="article-cover"
+      />
+    </div>
     <div
       class="article-item"
-      :style="articleContainerStyle"
       :class="{ 'article-item-mobile-narrow': isMobile }"
     >
       <div class="article-text" :style="articleTextStyle">
@@ -134,13 +99,6 @@ const articleTextStyle = computed<CSSProperties>(() => {
         />
         <ArticleInfo :info="info" :showTag="showTag" />
       </div>
-      <Image
-        v-if="isPcCover"
-        class="article-cover"
-        :src="info.cover"
-        alt="article-cover"
-        :style="pcImgSize"
-      />
     </div>
   </article>
 </template>

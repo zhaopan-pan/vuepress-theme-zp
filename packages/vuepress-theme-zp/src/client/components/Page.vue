@@ -21,6 +21,10 @@ const showArticleInfo = computed(
 const shouldShowToc = computed(
   () => frontmatter.value.toc !== false && themeLocale.value.toc !== false
 )
+
+const coverUrl = computed(
+  () => frontmatter.value.mobileCover || frontmatter.value.cover
+)
 </script>
 
 <template>
@@ -34,8 +38,8 @@ const shouldShowToc = computed(
         <ArticleInfo :info="(frontmatter as IArticleInfo)" />
       </div>
 
-      <div v-if="frontmatter.cover" class="content-cover-box">
-        <Image :src="frontmatter.cover" class="content-cover" />
+      <div v-if="coverUrl" class="content-cover-box">
+        <Image :src="coverUrl" class="content-cover" />
       </div>
       <slot name="content-top" />
 

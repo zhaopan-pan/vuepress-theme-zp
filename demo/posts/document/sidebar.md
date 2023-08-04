@@ -7,6 +7,7 @@ toc: true
 excerpt: true
 date: 2022-12-21
 editLink: /posts/document/sidebar
+cover: https://picsum.photos/id/57/536/354
 ---
 
 ::: tip GitHub Pages

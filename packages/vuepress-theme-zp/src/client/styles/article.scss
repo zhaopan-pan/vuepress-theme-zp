@@ -25,6 +25,12 @@
   &:not(:first-child) {
     margin-top: 2rem;
   }
+  &:hover {
+    // img[alt='article-cover'] {}
+    .zp-img-container {
+      transform: scale(1.1);
+    }
+  }
 
   .article-item-mobile-narrow {
     padding: 0.5rem !important;
@@ -38,6 +44,7 @@
 
     .article-text {
       height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -86,7 +93,7 @@
         flex-grow: 1;
         font-size: 0.87rem;
         line-height: 1.7;
-        margin: 5px 0;
+        padding: 5px 0;
         @include textEllipsis(4);
 
         @media (max-width: $MQMobileNarrow) {
@@ -117,15 +124,21 @@
       border-bottom-left-radius: 0;
     }
   }
-  .mobile-article-cover {
-    // margin-bottom: -0.5rem;
-    width: 100%;
-    height: 11rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    object-fit: cover;
+  .mobile-article-cover-box {
+    overflow: hidden;
+    .zp-img-container {
+      transition: transform var(--t-scale-img);
+    }
+    .mobile-article-cover {
+      // margin-bottom: -0.5rem;
+      width: 100%;
+      height: 11rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      object-fit: cover;
+    }
   }
 }
 

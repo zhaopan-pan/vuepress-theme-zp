@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.56
+
+### Patch Changes
+
+- refactor: ♻️ 重构封面样式
+
 ## 1.0.55
 
 ### Patch Changes

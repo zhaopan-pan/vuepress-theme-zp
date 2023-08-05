@@ -4,11 +4,11 @@ html.dark {
   --c-theme-light: #349469;
 
   // background colors
-  --c-bg: #22272e;
+  --c-bg: #000;
   --c-bg-light: #2b313a;
   --c-bg-lighter: #262c34;
   --c-bg-dark: #343b44;
-  --c-bg-darker: #37404c;
+  --c-bg-darker: #1a1e23;
   --c-bg-navbar-custom: transparent;
 
   // text colors
@@ -60,8 +60,7 @@ html.dark {
   --code-tab-hover-bg-color: #57646d;
 
   // nav
-  --nav-shadow: 0 2px 7px 0px rgba(0, 0, 0, 0.3);
-
+  --nav-shadow: 0 2px 7px 0px rgb(131 131 131 / 30%);
   //  tooltip
   --c-tooltip-background-color: #ccc;
 }

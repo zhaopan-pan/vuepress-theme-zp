@@ -9,12 +9,7 @@ const url = themeData.value.blog?.homeTopBg
 </script>
 
 <template>
-  <div
-    :class="url ? 'home-bg' : ''"
-    :style="{
-      backgroundImage: `url(${url})`,
-    }"
-  ></div>
+  <Image v-if="url" class="home-bg" :src="url" />
 </template>
 
 <style scoped lang="scss"></style>

@@ -10,10 +10,9 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
   blog: {
     name: '幻无',
     description: '',
-    avatar:
-      'http://p2.music.126.net/s-RX4DnzNQdcOM0pRNrVxQ==/109951166556851964.jpg?param=177y177',
-    // homeTopBg:
-    // 'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    avatar: 'https://zhaopanpan.com/image/logo.png',
+    homeTopBg:
+      'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
     // 'https://images.pexels.com/photos/3695297/pexels-photo-3695297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     // homeText: '你可以回头,但不可以往回走,逆行是全责',
     externalLinkList: [

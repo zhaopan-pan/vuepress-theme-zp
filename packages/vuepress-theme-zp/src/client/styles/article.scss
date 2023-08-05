@@ -18,7 +18,6 @@
 
 .article-item-container {
   border-radius: var(--card-radius);
-  background-color: var(--c-bg-light);
   overflow: hidden;
   @include card_item;
 

@@ -38,6 +38,7 @@
 
   &.active:not(button.sidebar-heading) {
     color: var(--c-text-accent);
+    background-color: var(--btn-active-bg);
   }
 
   &.sidebar-heading {
@@ -72,11 +73,12 @@
     font-size: 1em;
     font-weight: 400;
     display: inline-block;
-    margin: 0;
-    padding: 0.35rem 1rem 0.35rem 2rem;
+    margin-left: 2rem;
+    padding: 0.35rem 2rem 0.35rem 1rem;
     line-height: 1.4;
-    width: 100%;
+    width: 77%;
     box-sizing: border-box;
+    border-radius: var(--btn-radius);
 
     & + .sidebar-item-children {
       padding-left: 1rem;
@@ -100,8 +102,11 @@
 
 a.sidebar-item {
   cursor: pointer;
-
+  transition:
+    color var(--t-color),
+    background-color var(--t-color);
   &:hover {
     color: var(--c-text-accent);
+    background-color: var(--c-bg-dark);
   }
 }

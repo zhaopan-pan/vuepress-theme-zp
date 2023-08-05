@@ -14,7 +14,7 @@ export default defineUserConfig({
       'link',
       {
         rel: 'icon',
-        href: 'http://p2.music.126.net/s-RX4DnzNQdcOM0pRNrVxQ==/109951166556851964.jpg?param=177y177',
+        href: '/favicon-32x32.png',
       },
     ],
   ],

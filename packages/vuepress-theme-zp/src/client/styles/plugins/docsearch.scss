@@ -2,6 +2,11 @@
 @import '../_variables';
 
 .DocSearch-Button {
+  border: 1px solid var(--c-bg-lighter) !important;
+  &:hover {
+    transition: box-shadow var(--t-color);
+  }
+
   @media (max-width: $MQPcNarrow) {
     .DocSearch-Button-Keys,
     .DocSearch-Button-Placeholder {

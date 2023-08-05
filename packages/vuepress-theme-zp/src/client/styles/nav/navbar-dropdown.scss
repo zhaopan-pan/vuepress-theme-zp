@@ -85,15 +85,18 @@
         margin-bottom: 0;
         padding: 0 1rem 0 0.75rem;
         border-radius: var(--card-radius);
-        transition: background-color var(--t-color), color var(--t-color);
+        transition:
+          background-color var(--t-color),
+          color var(--t-color);
 
         &:hover {
           color: var(--c-text-accent);
-          background-color: var(--c-border);
+          background-color: var(--c-bg-darker);
         }
 
         &.router-link-active {
           color: var(--c-text-accent);
+          background-color: var(--btn-active-bg);
 
           // 箭头
           // &::after {

@@ -4,7 +4,7 @@
 
 .zp-img-container {
   @include flexCenter;
-  border-radius: var(--image-radius);
+  // border-radius: var(--image-radius);
   overflow: hidden;
 }
 

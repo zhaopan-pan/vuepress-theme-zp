@@ -8,6 +8,9 @@
 
 .page-has-toc {
   padding-right: 16rem;
+  .zp-toc {
+    z-index: var(--navbar-z-index-1) !important;
+  }
 }
 
 .navbar {
@@ -21,7 +24,9 @@
   background-color: var(--c-bg-navbar-custom);
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-  transition: background-color var(--t-color), border-color var(--t-color);
+  transition:
+    background-color var(--t-color),
+    border-color var(--t-color);
 }
 
 .menu {
@@ -37,7 +42,10 @@
   border-right: 1px solid var(--c-border);
   overflow-y: auto;
   background: linear-gradient(var(--c-bg-sidebar) 60%, var(--c-border));
-  transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color);
+  transition:
+    transform var(--t-transform),
+    background-color var(--t-color),
+    border-color var(--t-color);
 }
 
 .sidebar {
@@ -55,7 +63,10 @@
   scrollbar-width: thin;
   scrollbar-color: var(--c-theme) var(--c-border);
   background-color: var(--c-bg-sidebar);
-  transition: transform var(--t-transform), background-color var(--t-color), border-color var(--t-color);
+  transition:
+    transform var(--t-transform),
+    background-color var(--t-color),
+    border-color var(--t-color);
   &::-webkit-scrollbar {
     width: 7px;
   }

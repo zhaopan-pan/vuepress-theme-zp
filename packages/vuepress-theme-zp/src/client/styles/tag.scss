@@ -140,13 +140,18 @@
   @include mixins.content_wrapper;
   @include tag_wrapper;
   padding: 1rem 0rem !important;
-
   @media (max-width: $MQMobileNarrow) {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
   }
+}
+
+.category-wrapper {
+  padding: 1rem 0rem !important;
+  @include mixins.content_wrapper;
+  @include tag_wrapper;
 }
 
 .tag-article-list {

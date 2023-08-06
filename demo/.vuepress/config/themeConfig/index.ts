@@ -11,8 +11,8 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
     name: '幻无',
     description: '',
     avatar: 'https://zhaopanpan.com/image/logo.png',
-    homeTopBg:
-      'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    // homeTopBg:
+    //   'https://images.pexels.com/photos/1764702/pexels-photo-1764702.jpeg?auto=compress&cs=tinysrgb&w=1600',
     // 'https://images.pexels.com/photos/3695297/pexels-photo-3695297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     // homeText: '你可以回头,但不可以往回走,逆行是全责',
     externalLinkList: [

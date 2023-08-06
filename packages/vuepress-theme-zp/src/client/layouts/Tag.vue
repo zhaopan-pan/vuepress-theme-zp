@@ -38,7 +38,7 @@ watch(
   <ParentLayout>
     <template #page>
       <main class="page">
-        <div v-once class="tag-wrapper">
+        <div v-once :class="isCategory ? 'category-wrapper' : 'tag-wrapper'">
           <Tags :blog-key="blogKey" :tag-map="tagMap" />
         </div>
         <div class="tag-article-list">

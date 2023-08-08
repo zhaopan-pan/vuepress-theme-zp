@@ -1,6 +1,6 @@
 {
   "name": "@vuepress-zp/plugin-code-copy",
-  "version": "1.0.1",
+  "version": "1.0.58",
   "description": "VuePress plugin - code copy",
   "keywords": [
     "vuepress-plugin",

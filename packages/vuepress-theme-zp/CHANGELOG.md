@@ -1,5 +1,14 @@
 # vuepress-theme-zp
 
+## 1.0.58
+
+### Patch Changes
+
+- chore: 统一版本
+- Updated dependencies
+  - @vuepress-zp/plugin-code-copy@1.0.58
+  - @vuepress-zp/plugin-toc@1.0.58
+
 ## 1.0.57
 
 ### Patch Changes

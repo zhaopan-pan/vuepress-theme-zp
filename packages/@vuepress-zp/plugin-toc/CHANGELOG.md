@@ -1,6 +1,12 @@
 # @vuepress-zp/plugin-toc
 
-## 0.0.9
+## 1.0.58
+
+### Patch Changes
+
+- chore: 统一版本
+
+## 1.0.57
 
 ### Patch Changes
 

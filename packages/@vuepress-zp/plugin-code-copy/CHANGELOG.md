@@ -1,6 +1,12 @@
 # @vuepress-zp/plugin-code-copy
 
-## 1.0.1
+## 1.0.58
+
+### Patch Changes
+
+- chore: 统一版本
+
+## 1.0.57
 
 ### Patch Changes
 
@@ -8,14 +14,6 @@
   1、update vuepress
   2、cover在文章顶部展示
   3、优化样式
-
-## 1.0.0
-
-### Major Changes
-
-- refactor:
-  1、重构 icon 组件，按需加载，减少小包体积
-  2、修复若干 bug
 
 ## 0.0.7
 

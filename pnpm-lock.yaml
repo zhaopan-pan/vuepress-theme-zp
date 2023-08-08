@@ -65,7 +65,7 @@ importers:
         specifier: 2.0.0-beta.66
         version: 2.0.0-beta.66(@types/node@20.4.5)(@vuepress/client@2.0.0-beta.66)(ts-node@10.9.1)(vue@3.3.4)
       vuepress-theme-zp:
-        specifier: workspace:1.0.56
+        specifier: workspace:1.0.57
         version: link:packages/vuepress-theme-zp
 
   packages/@vuepress-zp/plugin-code-copy:
@@ -110,10 +110,10 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1(vue@3.3.4)
       '@vuepress-zp/plugin-code-copy':
-        specifier: workspace:1.0.0
+        specifier: workspace:1.0.57
         version: link:../@vuepress-zp/plugin-code-copy
       '@vuepress-zp/plugin-toc':
-        specifier: workspace:0.0.8
+        specifier: workspace:1.0.57
         version: link:../@vuepress-zp/plugin-toc
       '@vuepress/client':
         specifier: 2.0.0-beta.66

@@ -1,5 +1,17 @@
 # vuepress-theme-zp
 
+## 1.0.57
+
+### Patch Changes
+
+- feat:
+  1、update vuepress
+  2、cover在文章顶部展示
+  3、优化样式
+- Updated dependencies
+  - @vuepress-zp/plugin-code-copy@1.0.1
+  - @vuepress-zp/plugin-toc@0.0.9
+
 ## 1.0.56
 
 ### Patch Changes

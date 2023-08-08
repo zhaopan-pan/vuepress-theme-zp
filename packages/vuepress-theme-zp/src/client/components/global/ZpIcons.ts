@@ -2,7 +2,7 @@ import { Icon, iconExists, loadIcons } from '@iconify/vue'
 import { ClientOnly } from '@vuepress/client'
 import {
   computed,
-  CSSProperties,
+  type CSSProperties,
   defineComponent,
   h,
   onUnmounted,

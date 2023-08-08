@@ -1,4 +1,4 @@
-import { nextTick, Ref } from 'vue'
+import { nextTick, type Ref } from 'vue'
 
 /**
  * Credit to [@hooray](https://github.com/hooray)

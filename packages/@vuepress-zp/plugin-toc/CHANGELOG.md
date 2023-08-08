@@ -1,5 +1,14 @@
 # @vuepress-zp/plugin-toc
 
+## 0.0.9
+
+### Patch Changes
+
+- feat:
+  1、update vuepress
+  2、cover在文章顶部展示
+  3、优化样式
+
 ## 0.0.8
 
 ### Patch Changes

@@ -44,7 +44,7 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
   defaultArticleCover?: string
 }
 
-export {
+export type {
   DefaultThemeLocaleOptions,
   DefaultThemePluginsOptions,
   DefaultThemeData,

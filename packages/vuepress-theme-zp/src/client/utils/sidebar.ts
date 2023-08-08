@@ -1,5 +1,5 @@
 import { useRoute } from 'vue-router'
-import { ResolvedSidebarItem } from '../index.js'
+import { type ResolvedSidebarItem } from '../index.js'
 
 /**
  * 获取表层侧边栏数据

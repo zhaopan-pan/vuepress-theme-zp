@@ -13,7 +13,7 @@ import {
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../../composables/index.js'
-import { IArticleInfo } from '../../index.js'
+import { type IArticleInfo } from '../../index.js'
 import cssVars from '../../styles/_variables.module.scss?module'
 
 defineEmits(['toggle-sidebar'])

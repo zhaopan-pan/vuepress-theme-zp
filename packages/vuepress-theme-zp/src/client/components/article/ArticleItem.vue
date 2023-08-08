@@ -4,7 +4,7 @@ import {
   useUpdateDeviceStatus,
 } from '@theme-zp-client/composables/index.js'
 import type { IArticleItem } from '@theme-zp-src/shared/index.js'
-import { computed, CSSProperties, PropType, ref } from 'vue'
+import { computed, type CSSProperties, type PropType, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import ArticleInfo from './ArticleInfo.vue'
 

@@ -3,7 +3,7 @@ import {
   DeviceType,
   useUpdateDeviceStatus,
 } from '@theme-zp-client/composables/index.js'
-import { computed, CSSProperties, ref } from 'vue'
+import { computed, type CSSProperties, ref } from 'vue'
 
 const emit = defineEmits<{
   (e: 'onChange', currentPage: number, pageSize: number): void

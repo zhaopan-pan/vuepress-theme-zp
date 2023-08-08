@@ -6,7 +6,11 @@
     "vuepress-theme-zp",
     "vuepress-theme",
     "vuepress",
-    "theme"
+    "theme",
+    "markdown",
+    "vue",
+    "vite",
+    "webpack"
   ],
   "homepage": "https://github.com/zhaopan-pan/vuepress-theme-zp",
   "bugs": {

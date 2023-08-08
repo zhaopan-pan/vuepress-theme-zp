@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.59
+
+### Patch Changes
+
+- fix: 解决循环依赖问题
+
 ## 1.0.58
 
 ### Patch Changes

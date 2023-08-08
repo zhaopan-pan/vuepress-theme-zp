@@ -1,5 +1,6 @@
 import { useRoute } from 'vue-router'
-import { type ResolvedSidebarItem } from '../index.js'
+import type { ResolvedSidebarItem } from '@theme-zp-src/shared/index.js'
+
 
 /**
  * 获取表层侧边栏数据

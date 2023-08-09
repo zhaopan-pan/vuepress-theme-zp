@@ -70,7 +70,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           // or fallback to homepage
           const targetLocalePage = currentPath.replace(
             routeLocale.value,
-            targetLocalePath
+            targetLocalePath,
           )
           if (
             router.getRoutes().some((item) => item.path === targetLocalePage)
@@ -101,7 +101,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 
   const repo = computed(() => themeLocale.value.repo)
   const repoType = computed(() =>
-    repo.value ? resolveRepoType(repo.value) : null
+    repo.value ? resolveRepoType(repo.value) : null,
   )
 
   const repoLink = computed(() => {
@@ -134,7 +134,7 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 }
 
 const resolveNavbarItem = (
-  item: NavbarItem | NavbarGroup | string
+  item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
     return useNavLink(item)
@@ -178,10 +178,10 @@ useUpdateDeviceStatus(DeviceType.MOBILE, handleMobile)
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
       <NavbarDropdown
         v-if="item['children']"
-        :item="item as NavGroup<ResolvedNavbarItem>"
+        :item="item as NavGroup<NavGroup<NavLink> & NavLink>"
         :class="isMobile ? 'mobile' : ''"
       />
-      <AutoLink v-else :item="(item as NavLink)" @click="toggleMobileMenu()" />
+      <AutoLink v-else :item="item as NavLink" @click="toggleMobileMenu()" />
     </div>
   </nav>
 </template>

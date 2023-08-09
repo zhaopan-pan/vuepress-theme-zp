@@ -4,20 +4,19 @@ export const blogPlugin = {
   // only files under posts are articles
   filter: ({ filePathRelative }) =>
     (filePathRelative || '').startsWith('posts/'),
-  getInfo: ({ frontmatter, title, data }) => ({
-    title,
-    author: frontmatter.author || '',
-    date: frontmatter.date || null,
-    category: frontmatter.category || [],
-    cover: frontmatter.cover || '',
-    mobileCover: frontmatter.mobileCover || '',
-    tag: frontmatter.tag || [],
-    readme: frontmatter.readme,
-    description: frontmatter.description || '',
-    excerpt: data.excerpt || '',
-  }),
-  // 展示excerpt为true的文章
+      // 可以使用此函数来跳过你不需要生成摘要的页面
   excerptFilter: ({ frontmatter }) => frontmatter.excerpt,
+  getInfo: ({ frontmatter, title, data }) => ({
+      title,
+      author: frontmatter.author || '',
+      date: frontmatter.date || null,
+      category: frontmatter.category || [],
+      cover: frontmatter.cover || '',
+      mobileCover: frontmatter.mobileCover || '',
+      tag: frontmatter.tag || [],
+      readme: frontmatter.readme,
+      excerpt: data.excerpt || '',
+  }),
   category: [
     {
       key: 'category',

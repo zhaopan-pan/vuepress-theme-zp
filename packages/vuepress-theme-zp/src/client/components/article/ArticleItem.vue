@@ -26,11 +26,8 @@ const { path, info } = props.article
 
 // 图片、描述、摘要有一个即展示
 const showCoverInfo = computed(
-  () => info.cover || info.description || info.excerpt
+  () => info.cover || info.excerpt
 )
-
-// 优先取描述，没有描述取摘要
-const excerptContent = computed(() => info.description || info.excerpt)
 
 const toDetail = (): unknown => router.push(path)
 
@@ -95,7 +92,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
         <div
           v-if="showCoverInfo"
           class="cover-info-text"
-          v-html="excerptContent"
+          v-html="info.excerpt"
         />
         <ArticleInfo :info="info" :showTag="showTag" />
       </div>

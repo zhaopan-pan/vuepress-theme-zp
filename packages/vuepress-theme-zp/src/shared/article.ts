@@ -15,13 +15,31 @@ export interface IArticleInfo extends Record<string, unknown> {
    * @example ['vue', 'vite']
    */
   tag: string[]
+  /**
+   * 分类
+   * @example ['vue', 'vite']
+   */
   category: string[]
+  /**
+   * 是否是readme
+   */
   readme?: boolean
+  /**
+   * 是否显示摘要
+   */
   excerpt?: string
+  /**
+   * 文章封面
+   */
   cover?: string
+  /**
+   * 只在移动端显示的文章封面
+   */
   mobileCover?: string
+  /**
+   * 文章名称
+   */
   title?: string
-  description?: string
 }
 
 export type IArticleItem = Article<IArticleInfo>

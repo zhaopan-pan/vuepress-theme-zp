@@ -38,7 +38,7 @@
     box-sizing: border-box;
     padding: 1rem;
     margin: 0.5rem 2.5rem;
-    background-color: var(--c-bg-darker);
+    background-color: var(--c-bg-lighter);
     border-radius: var(--btn-radius);
     @include flexBetween;
   }

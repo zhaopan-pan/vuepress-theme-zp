@@ -24,11 +24,6 @@ const props = defineProps({
 
 const { path, info } = props.article
 
-// 图片、描述、摘要有一个即展示
-const showCoverInfo = computed(
-  () => info.cover || info.excerpt
-)
-
 const toDetail = (): unknown => router.push(path)
 
 useUpdateDeviceStatus(DeviceType.MOBILE, (width: number) => {
@@ -90,7 +85,7 @@ const articleTextStyle = computed<CSSProperties>(() => {
           {{ info.title }}
         </h1>
         <div
-          v-if="showCoverInfo"
+          v-if="info.excerpt"
           class="cover-info-text"
           v-html="info.excerpt"
         />

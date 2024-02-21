@@ -80,5 +80,6 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
       text: '备案号',
       link: 'https://beian.miit.gov.cn',
     },
+    copyrightInfo:'Copyright ©'
   },
 })

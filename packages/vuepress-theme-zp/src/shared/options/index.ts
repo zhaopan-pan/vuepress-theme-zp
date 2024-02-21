@@ -37,6 +37,7 @@ export interface ZpThemeOptions extends DefaultThemeLocaleOptions {
       text: string
       link: string
     }
+    copyrightInfo: string
   }
   /**
    * 默认文章封面图片地址

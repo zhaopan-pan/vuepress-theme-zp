@@ -1,5 +1,11 @@
 # vuepress-theme-zp
 
+## 1.0.60
+
+### Patch Changes
+
+- feat: 支持自定义版权
+
 ## 1.0.59
 
 ### Patch Changes

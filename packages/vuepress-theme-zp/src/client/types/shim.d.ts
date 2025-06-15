@@ -11,6 +11,8 @@ declare module '*.module.scss?module' {
   export default cssVars
 }
 
+declare module '*.scss';
+
 interface ImportMeta {
   readonly glob: (
     pattern: string,

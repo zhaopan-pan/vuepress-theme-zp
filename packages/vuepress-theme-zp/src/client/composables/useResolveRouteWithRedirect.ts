@@ -22,7 +22,7 @@ export const useResolveRouteWithRedirect = (
   return useResolveRouteWithRedirect({
     hash: route.hash,
     query: route.query,
-    params: route.params,
+    // params: route.params,
     ...resolvedRedirectObj,
   })
 }

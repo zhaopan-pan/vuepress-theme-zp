@@ -11,8 +11,8 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import { codeCopyPlugin } from '@vuepress-zp/plugin-code-copy'
 import { tocPlugin } from '@vuepress-zp/plugin-toc'
-import { blogPlugin } from 'vuepress-plugin-blog2'
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { blogPlugin } from '@vuepress/plugin-blog'
+import { commentPlugin } from '@vuepress/plugin-comment'
 import { resolveContainerPluginOptions } from '../../utils/index.js'
 import docsearch from './docsearch.js'
 import { createPwa, pwaPopup } from './pwa.js'
@@ -30,7 +30,7 @@ export const getPlugins = ({
     search ? docsearch(search) : [],
 
     pwaOption ? createPwa(pwaOption?.pwa) : [],
-    pwaOption && !pwaOption?.pwa.skipWaiting
+    pwaOption
       ? pwaPopup(pwaOption?.pwaPopup)
       : [],
 
@@ -97,7 +97,7 @@ export const getPlugins = ({
             '.theme-default-content > img, .theme-default-content :not(a) > img',
           zoomOptions: {},
           // should greater than page transition duration
-          delay: 300,
+          // delay: 300,
         })
       : [],
 

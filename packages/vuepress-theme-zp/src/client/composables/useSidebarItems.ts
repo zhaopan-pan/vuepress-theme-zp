@@ -1,26 +1,139 @@
-import type {
-  DefaultThemeNormalPageFrontmatter,
-  ResolvedSidebarItem,
-  SidebarConfigArray,
-  SidebarConfigObject,
-  SidebarItem,
-  ZpThemeOptions,
-} from '@theme-zp-src/shared/index.js'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import type { PageHeader } from '@vuepress/client'
-import {
-  isArray,
-  isPlainObject,
-  isString,
-  resolveLocalePath,
-} from '@vuepress/shared'
-import { computed, inject, provide } from 'vue'
+import { resolveAutoLink } from '../utils/resolveAutoLink.js'
+// import { useData } from '@vuepress/useData'
+// import { useHeaders } from '@vuepress/useHeaders'
+// import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { useRoute } from 'vue-router'
-import { useNavLink } from './useNavLink.js'
-import { useThemeLocaleData } from './useThemeData.js'
+import { computed, inject, provide } from 'vue'
+import type { PageData, PageHeader } from 'vuepress/client'
+import { useRoutePath } from 'vuepress/client'
+import { isPlainObject, isString } from 'vuepress/shared'
+import type {
+  DefaultThemeHomePageFrontmatter,
+  DefaultThemeNormalPageFrontmatter,
+  // SidebarItemOptions,
+  // SidebarObjectOptions,
+  // SidebarOptions,
+} from '../../shared/index.js'
+import { resolvePrefix } from '../utils/resolvePrefix.js'
+import { startsWith } from '../../shared/helper.js'
+import type { SidebarArrayOptions, SidebarItemOptions, SidebarObjectOptions, SidebarOptions } from '@theme-zp-src/shared/sidebar.js'
+import { useHeaders } from './useHeaders.js'
+import { useData } from './useData.js'
+import type { SidebarHeaderItem, SidebarItem } from '../types/typings.js'
+import { isLinkRelative } from '@vuepress/helper'
 
-export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
+/**
+ * Util to transform page header to sidebar item
+ */
+export const resolveSidebarPageHeader = (
+  header: PageHeader,
+): SidebarHeaderItem => ({
+  text: header.title,
+  link: header.link,
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  children: resolveSidebarPageHeaders(header.children),
+})
+
+export const resolveSidebarPageHeaders = (
+  headers?: PageHeader[],
+): SidebarHeaderItem[] =>
+  headers ? headers.map((header) => resolveSidebarPageHeader(header)) : []
+
+/**
+ * Resolve current page and its header to sidebar items if the config is `heading`
+ */
+export const resolveSidebarHeadingItem = (
+  page: PageData,
+  headers: PageHeader[],
+): SidebarItem[] => [
+  {
+    text: page.title,
+    children: resolveSidebarPageHeaders(headers),
+  },
+]
+
+/**
+ * Resolve sidebar items if the config is an array
+ */
+export const resolveArraySidebarItems = (
+  sidebarConfig: SidebarArrayOptions,
+  headers: PageHeader[],
+  path: string,
+  prefix = '',
+): SidebarItem[] => {
+  const handleChildItem = (
+    item: SidebarItemOptions,
+    pathPrefix: string,
+  ): SidebarItem => {
+    const childItem: SidebarItemOptions = isString(item)
+      ? resolveAutoLink(resolvePrefix(pathPrefix, item))
+      : isString(item.link)
+        ? {
+            ...item,
+            link: isLinkRelative(item.link)
+              ? resolveAutoLink(resolvePrefix(pathPrefix, item.link)).link
+              : item.link,
+          }
+        : item
+
+    if ('children' in childItem) {
+      return {
+        ...childItem,
+        children: childItem.children.map((child) =>
+          handleChildItem(child, resolvePrefix(pathPrefix, childItem.prefix)),
+        ),
+      }
+    }
+
+    // if the sidebar item is current page and children is not set
+    // use headers of current page as children
+    if (childItem.link === path) {
+      // skip h1 header
+      const currentHeaders =
+        headers[0]?.level === 1 ? headers[0].children : headers
+
+      return {
+        ...childItem,
+        children: resolveSidebarPageHeaders(currentHeaders),
+      }
+    }
+
+    return childItem
+  }
+
+  return sidebarConfig.map((item) => handleChildItem(item, prefix))
+}
+
+/**
+ * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
+ */
+export const resolveMultiSidebarItems = (
+  sidebarConfig: SidebarObjectOptions,
+  page: PageData,
+  headers: PageHeader[],
+  path: string,
+): SidebarItem[] => {
+  const sidebarRoutes = Object.keys(sidebarConfig).sort((x, y) => y.length - x.length)
+
+  // Find matching config
+  for (const base of sidebarRoutes)
+    if (startsWith(decodeURI(path), base)) {
+      const matched = sidebarConfig[base]
+
+      return matched
+        ? matched === 'heading'
+          ? resolveSidebarHeadingItem(page, headers)
+          : resolveArraySidebarItems(matched, headers, path, base)
+        : []
+    }
+
+  // eslint-disable-next-line no-console
+  console.warn(`${decodeURI(path)} is missing sidebar config.`)
+
+  return []
+}
+
+export type SidebarItemsRef = ComputedRef<SidebarItem[]>
 
 export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
   Symbol('sidebarItems')
@@ -37,143 +150,64 @@ export const useSidebarItems = (): SidebarItemsRef => {
 }
 
 /**
- * Create sidebar items ref and provide as global computed in setup
- */
-export const setupSidebarItems = (): void => {
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const sidebarItems = computed(() =>
-    resolveSidebarItems(frontmatter.value, themeLocale.value)
-  )
-  provide(sidebarItemsSymbol, sidebarItems)
-}
-
-/**
  * Resolve sidebar items global computed
  *
  * It should only be resolved and provided once
  */
 export const resolveSidebarItems = (
-  frontmatter: DefaultThemeNormalPageFrontmatter,
-  themeLocale: ZpThemeOptions
-): ResolvedSidebarItem[] => {
-  // get sidebar config from frontmatter > theme data
-  const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'
-  const sidebarDepth = frontmatter.sidebarDepth ?? themeLocale.sidebarDepth ?? 2
-
+  sidebarConfig: SidebarOptions | false,
+  page: PageData,
+  path: string,
+  routeLocale: string,
+  headers: PageHeader[],
+): SidebarItem[] => {
   // resolve sidebar items according to the config
-  if (frontmatter.home || sidebarConfig === false) {
+  if (sidebarConfig === false) {
     return []
   }
 
-  if (sidebarConfig === 'auto') {
-    return resolveAutoSidebarItems(sidebarDepth)
+  if (sidebarConfig === 'heading') {
+    return resolveSidebarHeadingItem(page, headers)
   }
 
-  if (isArray(sidebarConfig)) {
-    return resolveArraySidebarItems(sidebarConfig, sidebarDepth)
+  if (Array.isArray(sidebarConfig)) {
+    return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)
   }
 
   if (isPlainObject(sidebarConfig)) {
-    return resolveMultiSidebarItems(sidebarConfig, sidebarDepth)
+    return resolveMultiSidebarItems(sidebarConfig, page, headers, path)
   }
 
   return []
 }
 
 /**
- * Util to transform page header to sidebar item
+ * Create sidebar items ref and provide as global computed in setup
  */
-export const headerToSidebarItem = (
-  header: PageHeader,
-  sidebarDepth: number
-): ResolvedSidebarItem => ({
-  text: header.title,
-  link: header.link,
-  children: headersToSidebarItemChildren(header.children, sidebarDepth),
-})
+export const setupSidebarItems = (): void => {
+  const { frontmatter, page, routeLocale, themeLocale } = useData<
+    DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
+  >()
+  const headers = useHeaders()
+  const routePath = useRoutePath()
 
-export const headersToSidebarItemChildren = (
-  headers: PageHeader[],
-  sidebarDepth: number
-): ResolvedSidebarItem[] =>
-  sidebarDepth > 0
-    ? headers.map((header) => headerToSidebarItem(header, sidebarDepth - 1))
-    : []
+  // @ts-ignore
+  const sidebarConfig = computed<SidebarOptions | false>(() =>
+    frontmatter.value.home
+      ? false
+      : ((frontmatter.value as DefaultThemeNormalPageFrontmatter).sidebar ??
+        themeLocale.value.sidebar ??
+        'heading'),
+  )
 
-/**
- * Resolve sidebar items if the config is `auto`
- */
-export const resolveAutoSidebarItems = (
-  sidebarDepth: number
-): ResolvedSidebarItem[] => {
-  const page = usePageData()
-
-  return [
-    {
-      text: page.value.title,
-      children: headersToSidebarItemChildren(page.value.headers, sidebarDepth),
-    },
-  ]
-}
-
-/**
- * Resolve sidebar items if the config is an array
- */
-export const resolveArraySidebarItems = (
-  sidebarConfig: SidebarConfigArray,
-  sidebarDepth: number
-): ResolvedSidebarItem[] => {
-  const route = useRoute()
-  const page = usePageData()
-
-  const handleChildItem = (
-    item: ResolvedSidebarItem | SidebarItem | string
-  ): ResolvedSidebarItem => {
-    let childItem: ResolvedSidebarItem
-    if (isString(item)) {
-      childItem = useNavLink(item)
-    } else {
-      childItem = item as ResolvedSidebarItem
-    }
-
-    if (childItem.children) {
-      return {
-        ...childItem,
-        children: childItem.children.map((item) => handleChildItem(item)),
-      }
-    }
-
-    // if the sidebar item is current page and children is not set
-    // use headers of current page as children
-    if (childItem.link === route.path) {
-      // skip h1 header
-      const headers =
-        page.value.headers[0]?.level === 1
-          ? page.value.headers[0].children
-          : page.value.headers
-      return {
-        ...childItem,
-        children: headersToSidebarItemChildren(headers, sidebarDepth),
-      }
-    }
-
-    return childItem
-  }
-
-  return sidebarConfig.map((item) => handleChildItem(item))
-}
-
-/**
- * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
- */
-export const resolveMultiSidebarItems = (
-  sidebarConfig: SidebarConfigObject,
-  sidebarDepth: number
-): ResolvedSidebarItem[] => {
-  const route = useRoute()
-  const sidebarPath = resolveLocalePath(sidebarConfig, route.path)
-  const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
-
-  return resolveArraySidebarItems(matchedSidebarConfig, sidebarDepth)
+  const sidebarItems = computed(() =>
+    resolveSidebarItems(
+      sidebarConfig.value,
+      page.value,
+      routePath.value,
+      routeLocale.value,
+      headers.value,
+    ),
+  )
+  provide(sidebarItemsSymbol, sidebarItems)
 }

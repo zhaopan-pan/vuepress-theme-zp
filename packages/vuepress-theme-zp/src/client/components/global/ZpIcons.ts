@@ -1,4 +1,4 @@
-import { Icon, iconExists, loadIcons } from '@iconify/vue'
+import { Icon, loadIcons, iconLoaded } from '@iconify/vue'
 import { ClientOnly } from '@vuepress/client'
 import {
   computed,
@@ -119,7 +119,7 @@ export default defineComponent({
 
     // Function to check if icon data is available
     const check = (icon: string): void => {
-      const isLoaded = (loaded.value = iconExists(icon))
+      const isLoaded = (loaded.value = iconLoaded(icon))
 
       // Cancel old loader
       if (loaderAbort.value) {
@@ -130,7 +130,7 @@ export default defineComponent({
       if (!isLoaded) {
         // 保存取消方法
         loaderAbort.value = loadIcons([icon], () => {
-          loaded.value = iconExists(icon)
+          loaded.value = iconLoaded(icon)
         })
       }
     }

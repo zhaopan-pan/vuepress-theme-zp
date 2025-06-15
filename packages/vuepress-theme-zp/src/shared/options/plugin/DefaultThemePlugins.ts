@@ -1,8 +1,8 @@
-import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
+import type { DocSearchPluginOptions } from '@vuepress/plugin-docsearch'
 import type { PwaPluginOptions } from '@vuepress/plugin-pwa'
 import type { PwaPopupPluginOptions } from '@vuepress/plugin-pwa-popup'
-import type { BlogOptions } from 'vuepress-plugin-blog2'
-import type { CommentPluginOptions } from 'vuepress-plugin-comment2'
+import type { BlogPluginOptions } from '@vuepress/plugin-blog'
+import type { CommentPluginOptions } from '@vuepress/plugin-comment'
 
 export interface DefaultThemePluginsOptions {
   /**
@@ -51,7 +51,7 @@ export interface DefaultThemePluginsOptions {
    * vuepress-plugin-blog2配置，
    * 作用：分类、标签等页面和元数据的生成
    */
-  blog?: BlogOptions
+  blog?: BlogPluginOptions
 
   /**
    * 评论插件配置
@@ -61,7 +61,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * 搜索插件配置
    */
-  search?: DocsearchPluginOptions
+  search?: DocSearchPluginOptions
 
   /**
    * pwa相关插件配置

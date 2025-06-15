@@ -58,7 +58,7 @@ export const themeConfig = (options?: ZpThemeOptions): ZpThemeOptions => ({
     search: docsearchPlugin,
     pwaOption: {
       pwa: {
-        skipWaiting: false,
+        // skipWaiting: false,
       },
       pwaPopup: {
         locales: {

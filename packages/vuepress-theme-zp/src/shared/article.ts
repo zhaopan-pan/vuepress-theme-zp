@@ -1,4 +1,4 @@
-import type { Article } from 'vuepress-plugin-blog2/client'
+import type { Article } from '@vuepress/plugin-blog/client'
 
 export interface IArticleInfo extends Record<string, unknown> {
   /**

@@ -1,8 +1,8 @@
 import type { IArticleInfo } from '@theme-zp-src/shared/index.js'
 import { inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { useBlogCategory } from 'vuepress-plugin-blog2/client'
-import type { BlogCategoryData } from 'vuepress-plugin-blog2/client'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
+import type { BlogCategoryData } from '@vuepress/plugin-blog/client'
 
 export type TagRef = ComputedRef<BlogCategoryData<IArticleInfo>>
 

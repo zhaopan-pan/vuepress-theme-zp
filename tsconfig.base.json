@@ -3,8 +3,8 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ES2021"],
-    "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
     "noEmitOnError": true,
     "noImplicitAny": false,
     "skipLibCheck": true,

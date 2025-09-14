@@ -1,4 +1,4 @@
-@import '../vars.scss';
+@use '../vars';
 
 .pwa-popup {
   border-radius: var(--card-radius);

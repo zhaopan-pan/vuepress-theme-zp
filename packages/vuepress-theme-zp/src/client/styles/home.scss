@@ -1,5 +1,5 @@
-@import '_variables';
-@import '_mixins';
+@use '_variables.scss' as variables;
+@use '_mixins' as mixins;
 
 .home {
   // max-width: var(--homepage-width);
@@ -65,7 +65,7 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .home {
     .features {
       flex-direction: column;
@@ -78,7 +78,7 @@
   }
 }
 
-@media (max-width: $MQMobileNarrow) {
+@media (max-width: variables.$MQMobileNarrow) {
   .home {
     padding-left: 1.5rem;
     padding-right: 1.5rem;

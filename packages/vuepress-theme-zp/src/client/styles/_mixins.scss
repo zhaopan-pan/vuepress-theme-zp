@@ -1,15 +1,15 @@
-@import '_variables';
+@use '_variables.scss' as variables;
 
 @mixin content_wrapper {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 2rem 2.5rem;
 
-  @media (max-width: $MQNarrow) {
+  @media (max-width: variables.$MQNarrow) {
     padding: 2rem;
   }
 
-  @media (max-width: $MQMobileNarrow) {
+  @media (max-width: variables.$MQMobileNarrow) {
     padding: 1.5rem;
   }
 }

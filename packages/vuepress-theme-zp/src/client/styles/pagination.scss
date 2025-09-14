@@ -1,5 +1,5 @@
 @use 'vars';
-@import '_mixins';
+@use '_mixins' as mixins;
 
 .pagination {
   font-weight: 500;
@@ -8,7 +8,7 @@
   margin: 1rem auto 0;
   display: flex;
   flex-wrap: initial;
-  @include flexStart();
+  @include mixins.flexStart();
   .pagination-list {
     font-size: 0;
     line-height: 3.5rem;
@@ -67,7 +67,7 @@
   }
   .ellipsis {
     padding-bottom: 0.4rem;
-    @include flexCenter;
+    @include mixins.flexCenter();
   }
 
   .jump-container {
@@ -94,7 +94,7 @@
 
     .jumpPoint {
       margin-left: 15px;
-      @include flexCenter;
+      @include mixins.flexCenter();
     }
     .go-page {
       &:hover {

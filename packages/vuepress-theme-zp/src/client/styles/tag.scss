@@ -1,8 +1,8 @@
 @use 'sass:list';
 @use 'sass:color';
-@use 'mixins';
-@import 'vars';
-@import '_variables';
+@use 'mixins' as mixins;
+@use 'vars' as *;
+@use '_variables.scss' as variables;
 
 @mixin tag_wrapper {
   // padding-bottom: 0 !important;
@@ -22,7 +22,7 @@
       color 0.3s;
 
     position: relative;
-    @media (max-width: $MQMobileNarrow) {
+    @media (max-width: variables.$MQMobileNarrow) {
       font-size: 0.9rem;
     }
 
@@ -56,8 +56,8 @@
     }
   }
 
-  @each $color in $tag-colors {
-    $index: list.index($tag-colors, $color) - 1;
+  @each $color in variables.$tag-colors {
+    $index: list.index(variables.$tag-colors, $color) - 1;
 
     .tag-#{$index} {
       display: inline-block;
@@ -78,7 +78,7 @@
         background-color: color.scale($color, $lightness: -70%);
       }
 
-      @media (max-width: $MQMobileNarrow) {
+      @media (max-width: variables.$MQMobileNarrow) {
         font-size: 0.9rem;
       }
 
@@ -97,21 +97,21 @@
         position: absolute;
         top: -0.6rem;
         right: -0.6rem;
-        background-color: darken($color, 10%);
+        background-color: color.scale($color, $lightness: -10%);
 
         .dark & {
-          background-color: darken($color, 35%);
+          background-color: color.scale($color, $lightness: -35%);
         }
       }
 
       &:hover {
         // padding: 0.4rem 0.9rem;
         background-color: $color;
-        color: darken($color, 40%);
+        color: color.scale($color, $lightness: -40%);
         box-shadow: 0 2px 1px 2px var(--card-shadow-color);
 
         .tag-num {
-          background-color: darken($color, 30%);
+          background-color: color.scale($color, $lightness: -30%);
         }
         .dark & {
           background-color: color.scale($color, $lightness: -40%);
@@ -121,11 +121,11 @@
       &.router-link-active {
         padding: 0.7rem 1.2rem;
         background-color: $color;
-        color: darken($color, 40%);
+        color: color.scale($color, $lightness: -40%);
         box-shadow: 0 2px 1px 2px var(--card-shadow-color);
 
         .tag-num {
-          background-color: darken($color, 30%);
+          background-color: color.scale($color, $lightness: -30%);
         }
         .dark & {
           color: color.scale($color, $lightness: 20%);
@@ -140,7 +140,7 @@
   @include mixins.content_wrapper;
   @include tag_wrapper;
   padding: 1rem 0rem !important;
-  @media (max-width: $MQMobileNarrow) {
+  @media (max-width: variables.$MQMobileNarrow) {
     display: flex;
     justify-content: center;
     align-items: center;

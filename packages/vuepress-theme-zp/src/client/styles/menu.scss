@@ -1,5 +1,5 @@
-@import '_mixins';
-@import '_variables';
+@use '_mixins' as mixins;
+@use '_variables.scss' as variables;
 
 .menu {
   ul {
@@ -20,7 +20,7 @@
 
     a {
       font-weight: 600;
-      @include flexStart;
+      @include mixins.flexStart();
     }
 
     .navbar-item {
@@ -40,11 +40,11 @@
     margin: 0.5rem 2.5rem;
     background-color: var(--c-bg-lighter);
     border-radius: var(--btn-radius);
-    @include flexBetween;
+    @include mixins.flexBetween();
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .menu {
     .navbar-items {
       display: block;
@@ -92,7 +92,7 @@
   }
 }
 
-@media screen and (max-width: $MQMobile) {
+@media screen and (max-width: variables.$MQMobile) {
   .toggle-sidebar-button {
     display: block;
   }

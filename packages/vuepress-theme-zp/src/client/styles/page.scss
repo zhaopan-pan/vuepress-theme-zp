@@ -1,13 +1,13 @@
-@import '_mixins';
-@import '_variables';
-@import 'article';
+@use '_mixins' as mixins;
+@use '_variables.scss' as variables;
+@use 'article';
 
 .page {
   display: block;
   min-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 2rem);
 
   .theme-default-content {
-    @include content_wrapper;
+    @include mixins.content_wrapper();
     padding-top: 2rem;
 
     .content-header {
@@ -25,7 +25,7 @@
       border-radius: var(--image-radius);
       max-width: 100%;
       overflow: hidden;
-      @include flexStart;
+      @include mixins.flexStart();
     }
     .content-cover {
       // width: 100%;
@@ -44,14 +44,14 @@
 }
 
 .page-meta {
-  @include content_wrapper;
+  @include mixins.content_wrapper();
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow: auto;
   font-size: 14px;
-  @include flexBetween();
+  @include mixins.flexBetween();
 
-  @media (max-width: $MQMobileNarrow) {
+  @media (max-width: variables.$MQMobileNarrow) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -60,7 +60,7 @@
   .meta-item {
     cursor: default;
     margin-top: 0.8rem;
-    @include flexStart();
+    @include mixins.flexStart();
 
     .meta-item-label {
       font-weight: 500;
@@ -84,7 +84,7 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .page-meta {
     .last-updated {
       float: none;
@@ -97,7 +97,7 @@
 }
 
 .page-nav {
-  @include content_wrapper;
+  @include mixins.content_wrapper();
   padding-top: 1rem;
   padding-bottom: 0;
 
@@ -108,9 +108,9 @@
     transition: border-color var(--t-color);
     padding-top: 1rem;
     overflow: hidden;
-    @include flexBetween();
+    @include mixins.flexBetween();
   }
-  @media (max-width: $MQMobile) {
+  @media (max-width: variables.$MQMobile) {
     .inner {
       display: flex;
       flex-direction: column;
@@ -149,7 +149,7 @@
       font-size: 14px;
       width: 100%;
       line-height: 20px;
-      @include textEllipsis(1);
+      @include mixins.textEllipsis(1);
     }
     a {
       font-size: 14px;

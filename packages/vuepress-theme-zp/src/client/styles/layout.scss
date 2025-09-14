@@ -1,5 +1,5 @@
-@use '_mixins';
-@import '_variables';
+@use '_mixins.scss' as mixins;
+@use '_variables.scss' as variables;
 
 .page {
   padding-top: calc(var(--navbar-height));
@@ -146,7 +146,7 @@
   .sidebar {
     display: none;
 
-    @media (max-width: $MQMobile) {
+    @media (max-width: variables.$MQMobile) {
       display: block;
     }
   }
@@ -215,7 +215,7 @@
   padding-left: var(--sidebar-width);
 }
 // narrow desktop / iPad
-@media (max-width: $MQNarrow) {
+@media (max-width: variables.$MQNarrow) {
   .sidebar {
     font-size: 15px;
     width: var(--sidebar-width-mobile);
@@ -227,7 +227,7 @@
 }
 
 // wide mobile
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .menu {
     top: 0;
     padding-top: var(--navbar-height);
@@ -269,7 +269,7 @@
 }
 
 // narrow mobile
-@media (max-width: $MQMobileNarrow) {
+@media (max-width: variables.$MQMobileNarrow) {
   h1 {
     font-size: 1.9rem;
   }

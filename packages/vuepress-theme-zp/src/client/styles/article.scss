@@ -1,6 +1,6 @@
-@use 'vars.scss';
-@import '_mixins';
-@import '_variables';
+@use 'vars' as *;
+@use '_mixins' as mixins;
+@use '_variables.scss' as variables;
 
 .article-list-wrapper {
   flex: 1;
@@ -10,7 +10,7 @@
   margin-bottom: 2rem;
   // margin-bottom: 5vh;
 
-  @media (max-width: $MQMobile) {
+  @media (max-width: variables.$MQMobile) {
     padding: 0 1.2rem;
     width: calc(100% - 1rem);
   }
@@ -19,7 +19,7 @@
 .article-item-container {
   border-radius: var(--card-radius);
   overflow: hidden;
-  @include card_item;
+  @include mixins.card_item;
 
   &:not(:first-child) {
     margin-top: 2rem;
@@ -36,7 +36,7 @@
   }
   .article-item {
     // padding: 0.5rem 1rem;
-    @include flexBetween();
+    @include mixins.flexBetween();
     align-items: flex-start;
     height: 100%;
     position: relative;
@@ -50,7 +50,7 @@
       box-sizing: border-box;
 
       .article-name-ellipsis {
-        @include textEllipsis(1);
+        @include mixins.textEllipsis(1);
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -93,9 +93,9 @@
         font-size: 0.87rem;
         line-height: 1.7;
         padding: 5px 0;
-        @include textEllipsis(4);
+        @include mixins.textEllipsis(4);
 
-        @media (max-width: $MQMobileNarrow) {
+        @media (max-width: variables.$MQMobileNarrow) {
           margin-right: 0 !important;
         }
         p {

@@ -1,7 +1,7 @@
 @use 'vars';
-@use 'tag';
-@use 'mixins';
-@import '_variables';
+@use 'tag' as tag;
+@use 'mixins' as mixins;
+@use '_variables.scss' as variables;
 
 .author-avatar {
   width: 5rem;
@@ -17,7 +17,7 @@
 }
 
 .blog-info {
-  max-width: $BIMinWidth;
+  max-width: variables.$BIMinWidth;
   margin-left: 1rem;
   position: sticky;
   top: calc(var(--navbar-height) + 1rem);
@@ -101,7 +101,7 @@
   }
 }
 
-@media (max-width: $MQNarrow) {
+@media (max-width: variables.$MQNarrow) {
   .blog-info {
     display: none;
   }

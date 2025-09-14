@@ -1,4 +1,4 @@
-@import '_variables';
+@use './_variables.scss' as variables;
 
 // Safari only support integer pixel value for line-height
 // the original font-size is 16px, 1.375 will make line-height be 22px
@@ -255,7 +255,7 @@ div[class*='language-'] {
 }
 
 // narrow mobile
-@media (max-width: $MQMobileNarrow) {
+@media (max-width: variables.$MQMobileNarrow) {
   .theme-default-content {
     div[class*='language-'] {
       margin: 0.85rem 0rem;

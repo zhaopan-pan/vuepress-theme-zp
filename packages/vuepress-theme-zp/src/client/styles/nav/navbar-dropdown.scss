@@ -1,5 +1,5 @@
-@import '../_mixins';
-@import '../_variables';
+@use '../_mixins' as mixins;
+@use '../_variables.scss' as variables;
 
 .navbar-dropdown-wrapper {
   .arrow {
@@ -138,7 +138,7 @@
 
     .navbar-dropdown-title-mobile {
       width: 100%;
-      @include flexBetween;
+      @include mixins.flexBetween();
     }
 
     .navbar-dropdown {

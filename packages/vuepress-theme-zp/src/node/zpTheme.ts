@@ -17,6 +17,7 @@ export const zpTheme = ({
   themePlugins = {},
   ...localeOptions
 }: ZpThemeOptions): Theme => {
+  // console.log('zpTheme initialized');
   assignDefaultLocaleOptions(localeOptions)
   // 注入css变量,并返回新的临时文件地址
   const templatePaths = injectCssVarToTemplatesFile(

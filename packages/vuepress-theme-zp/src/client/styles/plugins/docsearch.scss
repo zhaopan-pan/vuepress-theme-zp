@@ -1,5 +1,5 @@
-@use '../vars.scss';
-@import '../_variables';
+@use '../vars' as vars;
+@use '../_variables.scss' as variables;
 
 .DocSearch-Button {
   border: 1px solid var(--c-bg-lighter) !important;
@@ -7,7 +7,7 @@
     transition: box-shadow var(--t-color);
   }
 
-  @media (max-width: $MQPcNarrow) {
+  @media (max-width: variables.$MQPcNarrow) {
     .DocSearch-Button-Keys,
     .DocSearch-Button-Placeholder {
       display: none;

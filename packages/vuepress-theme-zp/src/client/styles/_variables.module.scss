@@ -1,8 +1,8 @@
-@import '_variables';
+@use '_variables.scss' as variables;
 
 :export {
-  mobile: $MQMobile;
-  mobileNarrow: $MQMobileNarrow;
+  mobile: variables.$MQMobile;
+  mobileNarrow: variables.$MQMobileNarrow;
   navIconSize: 0.9;
   sidebarIconSize: 0.9;
 }

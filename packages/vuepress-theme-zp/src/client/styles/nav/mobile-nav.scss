@@ -1,11 +1,11 @@
-@import '../_variables';
-@import '../_mixins';
+@use '../_variables.scss' as variables;
+@use '../_mixins' as mixins;
 
 .mobile-nav-block {
   height: var(--mobile-navbar-height);
 }
 .mobile-nav {
-  @include flexStart;
+  @include mixins.flexStart();
   width: 100%;
   height: var(--mobile-navbar-height);
   z-index: 4;
@@ -19,7 +19,7 @@
     border: none;
     background-color: transparent;
     padding: 0;
-    @include flexBetween;
+    @include mixins.flexBetween();
     color: var(--c-text);
     cursor: pointer;
   }
@@ -60,7 +60,7 @@
   .page-toc {
     width: 50%;
     padding-right: 1.5rem;
-    @include flexEnd;
+    @include mixins.flexEnd();
     span {
       margin-right: 0.5rem;
     }

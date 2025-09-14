@@ -1,15 +1,15 @@
-@import '_variables';
-@import 'vars';
-@import '_mixins';
+@use '_variables.scss' as variables;
+@use 'vars' as *;
+@use '_mixins' as mixins;
 
 .zp-img-container {
-  @include flexCenter;
+  @include mixins.flexCenter;
   // border-radius: var(--image-radius);
   overflow: hidden;
 }
 
 .zp-img-skeleton {
-  @include skeleton();
+  @include mixins.skeleton();
 }
 
 .zp-img {

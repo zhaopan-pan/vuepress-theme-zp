@@ -1,4 +1,4 @@
-@import '_mixins';
+@use '_mixins' as mixins;
 
 .text-overflow-ellipsis {
   overflow: hidden;
@@ -34,11 +34,11 @@
 }
 
 .flex-center {
-  @include flexCenter();
+  @include mixins.flexCenter();
 }
 
 .waline-wrapper {
-  @include content_wrapper();
+  @include mixins.content_wrapper();
 
   .wl-panel {
     margin: 0 !important;

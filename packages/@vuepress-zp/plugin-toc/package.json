@@ -36,9 +36,9 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,svg,js}\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-rc.23",
-    "@vuepress/core": "2.0.0-rc.23",
-    "@vuepress/utils": "2.0.0-rc.23",
+    "@vuepress/client": "2.0.0-rc.25",
+    "@vuepress/core": "2.0.0-rc.25",
+    "@vuepress/utils": "2.0.0-rc.25",
     "vue": "^3.5.16",
     "vue-router": "^4.5.1"
   },

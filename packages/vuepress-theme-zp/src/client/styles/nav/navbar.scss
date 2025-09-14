@@ -1,5 +1,5 @@
-@import '../_variables';
-@import '../_mixins';
+@use '../_variables.scss' as variables;
+@use '../_mixins' as mixins;
 
 .navbar {
   --navbar-line-height: calc(var(--navbar-height) - 2 * var(--navbar-padding-v));
@@ -8,7 +8,7 @@
   box-shadow: var(--nav-shadow);
 
   .navbar-brand {
-    @include flexStart;
+    @include mixins.flexStart();
 
     a {
       display: flex;
@@ -44,7 +44,7 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .navbar {
     .can-hide {
       display: none;
@@ -63,7 +63,7 @@
  * navbar-items
  */
 .navbar-items {
-  @include flexCenter;
+  @include mixins.flexCenter();
   font-size: 0.875rem;
 
   a {
@@ -119,7 +119,7 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .navbar-items {
     .navbar-item {
       margin-left: 0;
@@ -152,7 +152,7 @@
  * toggle color mode button
  */
 .toggle-color-mode-button {
-  @include flexCenter;
+  @include mixins.flexCenter();
   border: 0;
   background: none;
   color: var(--c-text);

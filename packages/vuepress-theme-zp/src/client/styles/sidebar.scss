@@ -1,5 +1,5 @@
-@import '_mixins';
-@import '_variables';
+@use '_mixins' as mixins;
+@use '_variables.scss' as variables;
 
 .sidebar {
   ul {
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: $MQMobile) {
+@media (max-width: variables.$MQMobile) {
   .sidebar {
     .sidebar-items {
       padding: 1rem 0;
@@ -51,13 +51,13 @@
     margin: 0;
 
     + .sidebar-item-children {
-      @include dropdown_wrapper;
+      @include mixins.dropdown_wrapper();
       margin-bottom: 0.75rem;
     }
 
     &.collapsible {
       cursor: pointer;
-      @include flexBetween();
+      @include mixins.flexBetween();
 
       .arrow {
         transition: all var(--t-transform);

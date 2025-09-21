@@ -1,5 +1,17 @@
 # vuepress-theme-zp
 
+## 1.1.0
+
+### Minor Changes
+
+- 修ts报错; loading添加300ms延迟
+
+### Patch Changes
+
+- Updated dependencies
+  - @vuepress-zp/plugin-code-copy@1.1.0
+  - @vuepress-zp/plugin-toc@1.1.0
+
 ## 1.0.60
 
 ### Patch Changes
@@ -75,7 +87,6 @@
 ### Patch Changes
 
 - style:
-
   1. 优化翻页器样式
   2. footer 添加图标
 

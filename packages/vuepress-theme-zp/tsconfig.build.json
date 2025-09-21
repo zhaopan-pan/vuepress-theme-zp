@@ -9,7 +9,9 @@
       "@theme-zp-src/*": ["./src/*"],
       "@theme-zp-client/*": ["./src/client/*"]
     },
-    "types": ["@vuepress/client/types"]
+    "types": ["@vuepress/client/types"],
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
   },
   "include": ["./src"]
 }

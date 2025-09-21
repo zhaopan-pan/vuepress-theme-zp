@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {},
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
+  },
   "references": [
     { "path": "./packages/vuepress-theme-zp/tsconfig.build.json" },
     { "path": "./packages/@vuepress-zp/plugin-toc/tsconfig.build.json" },

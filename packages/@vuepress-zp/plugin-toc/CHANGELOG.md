@@ -1,5 +1,11 @@
 # @vuepress-zp/plugin-toc
 
+## 1.1.0
+
+### Minor Changes
+
+- 修ts报错; loading添加300ms延迟
+
 ## 1.0.58
 
 ### Patch Changes

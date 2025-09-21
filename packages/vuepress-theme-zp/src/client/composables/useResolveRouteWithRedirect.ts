@@ -1,6 +1,6 @@
 import { isFunction, isString } from '@vuepress/shared'
 import { useRouter } from 'vue-router'
-import type { Router } from 'vue-router'
+import type { RouteLocationAsRelativeGeneric, Router } from 'vue-router'
 
 /**
  * Resolve a route with redirection
@@ -22,7 +22,7 @@ export const useResolveRouteWithRedirect = (
   return useResolveRouteWithRedirect({
     hash: route.hash,
     query: route.query,
-    params: route.params,
+    params: route.params as unknown as RouteLocationAsRelativeGeneric['params'],
     ...resolvedRedirectObj,
-  })
+  } as RouteLocationAsRelativeGeneric)
 }

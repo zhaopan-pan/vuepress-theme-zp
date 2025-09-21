@@ -19,5 +19,5 @@ const articles = useArticles()
 </template>
 
 <style lang="scss" scoped>
-@import '../../styles/_variables';
+@use '../../styles/_variables';
 </style>
